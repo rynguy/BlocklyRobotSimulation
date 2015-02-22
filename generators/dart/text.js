@@ -240,9 +240,11 @@ Blockly.Dart['text_trim'] = function(block) {
 
 Blockly.Dart['text_print'] = function(block) {
   // Print statement.
+  Blockly.Dart.definitions_['import_stdio'] =
+      '#include <stdio.h>';
   var argument0 = Blockly.Dart.valueToCode(block, 'TEXT',
       Blockly.Dart.ORDER_NONE) || '\'\'';
-  return 'print(' + argument0 + ');\n';
+  return 'printf(' + argument0 + ');\n';
 };
 
 Blockly.Dart['text_prompt'] = function(block) {

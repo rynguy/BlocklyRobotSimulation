@@ -41,7 +41,7 @@ Blockly.Dart['lists_create_with'] = function(block) {
   var code = new Array(block.itemCount_);
   for (var n = 0; n < block.itemCount_; n++) {
     code[n] = Blockly.Dart.valueToCode(block, 'ADD' + n,
-        Blockly.Dart.ORDER_NONE) || 'null';
+        Blockly.Dart.ORDER_NONE) || 'NULL';
   }
   code = '[' + code.join(', ') + ']';
   return [code, Blockly.Dart.ORDER_ATOMIC];
@@ -50,7 +50,7 @@ Blockly.Dart['lists_create_with'] = function(block) {
 Blockly.Dart['lists_repeat'] = function(block) {
   // Create a list with one element repeated.
   var argument0 = Blockly.Dart.valueToCode(block, 'ITEM',
-    Blockly.Dart.ORDER_NONE) || 'null';
+    Blockly.Dart.ORDER_NONE) || 'NULL';
   var argument1 = Blockly.Dart.valueToCode(block, 'NUM',
     Blockly.Dart.ORDER_NONE) || '0';
   var code = 'new List.filled(' + argument1 + ', ' + argument0 + ')';
@@ -191,7 +191,7 @@ Blockly.Dart['lists_setIndex'] = function(block) {
   var at = Blockly.Dart.valueToCode(block, 'AT',
       Blockly.Dart.ORDER_ADDITIVE) || '1';
   var value = Blockly.Dart.valueToCode(block, 'TO',
-      Blockly.Dart.ORDER_ASSIGNMENT) || 'null';
+      Blockly.Dart.ORDER_ASSIGNMENT) || 'NULL';
   // Cache non-trivial values to variables to prevent repeated look-ups.
   // Closure, which accesses and modifies 'list'.
   function cacheList() {

@@ -19,8 +19,8 @@
  */
 
 /**
- * @fileoverview Helper functions for generating Dart for blocks.
- * @author fraser@google.com (Neil Fraser)
+ * @fileoverview Helper functions for generating Ch for blocks.
+ * @author 
  */
 'use strict';
 
@@ -30,7 +30,7 @@ goog.require('Blockly.Generator');
 
 
 /**
- * Dart code generator.
+ * Ch code generator.
  * @type !Blockly.Generator
  */
 Blockly.Dart = new Blockly.Generator('Dart');
@@ -43,15 +43,11 @@ Blockly.Dart = new Blockly.Generator('Dart');
  * @private
  */
 Blockly.Dart.addReservedWords(
-    // https://www.dartlang.org/docs/spec/latest/dart-language-specification.pdf
-    // Section 16.1.1
     'assert,break,case,catch,class,const,continue,default,do,else,enum,extends,false,final,finally,for,if,in,is,new,null,rethrow,return,super,switch,this,throw,true,try,var,void,while,with,' +
-    // https://api.dartlang.org/dart_core.html
     'print,identityHashCode,identical,BidirectionalIterator,Comparable,double,Function,int,Invocation,Iterable,Iterator,List,Map,Match,num,Pattern,RegExp,Set,StackTrace,String,StringSink,Type,bool,DateTime,Deprecated,Duration,Expando,Null,Object,RuneIterator,Runes,Stopwatch,StringBuffer,Symbol,Uri,Comparator,AbstractClassInstantiationError,ArgumentError,AssertionError,CastError,ConcurrentModificationError,CyclicInitializationError,Error,Exception,FallThroughError,FormatException,IntegerDivisionByZeroException,NoSuchMethodError,NullThrownError,OutOfMemoryError,RangeError,StackOverflowError,StateError,TypeError,UnimplementedError,UnsupportedError');
 
 /**
  * Order of operation ENUMs.
- * https://www.dartlang.org/docs/dart-up-and-running/ch02.html#operator_table
  */
 Blockly.Dart.ORDER_ATOMIC = 0;         // 0 "" ...
 Blockly.Dart.ORDER_UNARY_POSTFIX = 1;  // expr++ expr-- () [] .
@@ -92,7 +88,7 @@ Blockly.Dart.init = function(workspace) {
   var defvars = [];
   var variables = Blockly.Variables.allVariables(workspace);
   for (var x = 0; x < variables.length; x++) {
-    defvars[x] = 'var ' +
+    defvars[x] = 'double ' +
         Blockly.Dart.variableDB_.getName(variables[x],
         Blockly.Variables.NAME_TYPE) + ';';
   }
@@ -109,7 +105,6 @@ Blockly.Dart.finish = function(code) {
   if (code) {
     code = Blockly.Dart.prefixLines(code, Blockly.Dart.INDENT);
   }
-  code = 'main() {\n' + code + '}';
 
   // Convert the definitions dictionary into a list.
   var imports = [];
@@ -137,9 +132,9 @@ Blockly.Dart.scrubNakedValue = function(line) {
 };
 
 /**
- * Encode a string as a properly escaped Dart string, complete with quotes.
+ * Encode a string as a properly escaped Ch string, complete with quotes.
  * @param {string} string Text to encode.
- * @return {string} Dart string.
+ * @return {string} Ch string.
  * @private
  */
 Blockly.Dart.quote_ = function(string) {
@@ -152,12 +147,12 @@ Blockly.Dart.quote_ = function(string) {
 };
 
 /**
- * Common tasks for generating Dart from blocks.
+ * Common tasks for generating Ch from blocks.
  * Handles comments for the specified block and any connected value blocks.
  * Calls any statements following this block.
  * @param {!Blockly.Block} block The current block.
- * @param {string} code The Dart code created for this block.
- * @return {string} Dart code with comments and subsequent blocks added.
+ * @param {string} code The Ch code created for this block.
+ * @return {string} Ch code with comments and subsequent blocks added.
  * @private
  */
 Blockly.Dart.scrub_ = function(block, code) {

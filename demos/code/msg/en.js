@@ -13,6 +13,7 @@ var MSG = {
   catText: "Text",
   catLists: "Lists",
   catColour: "Colour",
+  catLinkbot: "Linkbot",
   catVariables: "Variables",
   catFunctions: "Functions",
   listVariable: "list",

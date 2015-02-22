@@ -109,7 +109,7 @@ Blockly.Dart['logic_boolean'] = function(block) {
 
 Blockly.Dart['logic_null'] = function(block) {
   // Null data type.
-  return ['null', Blockly.Dart.ORDER_ATOMIC];
+  return ['NULL', Blockly.Dart.ORDER_ATOMIC];
 };
 
 Blockly.Dart['logic_ternary'] = function(block) {
@@ -117,9 +117,9 @@ Blockly.Dart['logic_ternary'] = function(block) {
   var value_if = Blockly.Dart.valueToCode(block, 'IF',
       Blockly.Dart.ORDER_CONDITIONAL) || 'false';
   var value_then = Blockly.Dart.valueToCode(block, 'THEN',
-      Blockly.Dart.ORDER_CONDITIONAL) || 'null';
+      Blockly.Dart.ORDER_CONDITIONAL) || 'NULL';
   var value_else = Blockly.Dart.valueToCode(block, 'ELSE',
-      Blockly.Dart.ORDER_CONDITIONAL) || 'null';
+      Blockly.Dart.ORDER_CONDITIONAL) || 'NULL';
   var code = value_if + ' ? ' + value_then + ' : ' + value_else;
   return [code, Blockly.Dart.ORDER_CONDITIONAL];
 };

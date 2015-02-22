@@ -59,8 +59,8 @@ Blockly.Dart['math_arithmetic'] = function(block) {
   // Power in Dart requires a special case since it has no operator.
   if (!operator) {
     Blockly.Dart.definitions_['import_dart_math'] =
-        'import \'dart:math\' as Math;';
-    code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
+        '#include <math.h>';
+    code = 'pow(' + argument0 + ', ' + argument1 + ')';
     return [code, Blockly.Dart.ORDER_UNARY_POSTFIX];
   }
   code = argument0 + operator + argument1;
@@ -84,7 +84,7 @@ Blockly.Dart['math_single'] = function(block) {
     return [code, Blockly.Dart.ORDER_UNARY_PREFIX];
   }
   Blockly.Dart.definitions_['import_dart_math'] =
-      'import \'dart:math\' as Math;';
+      '#include <math.h>';
   if (operator == 'ABS' || operator.substring(0, 5) == 'ROUND') {
     arg = Blockly.Dart.valueToCode(block, 'NUM',
         Blockly.Dart.ORDER_UNARY_POSTFIX) || '0';
@@ -99,37 +99,37 @@ Blockly.Dart['math_single'] = function(block) {
   // wrapping the code.
   switch (operator) {
     case 'ABS':
-      code = arg + '.abs()';
+      code = 'abs(' + arg + ')';
       break;
     case 'ROOT':
-      code = 'Math.sqrt(' + arg + ')';
+      code = 'sqrt(' + arg + ')';
       break;
     case 'LN':
-      code = 'Math.log(' + arg + ')';
+      code = 'log(' + arg + ')';
       break;
     case 'EXP':
-      code = 'Math.exp(' + arg + ')';
+      code = 'exp(' + arg + ')';
       break;
     case 'POW10':
-      code = 'Math.pow(10,' + arg + ')';
+      code = 'pow(10.0,' + arg + ')';
       break;
     case 'ROUND':
-      code = arg + '.round()';
+      code = 'round(' + arg + ')';
       break;
     case 'ROUNDUP':
-      code = arg + '.ceil()';
+      code = 'ceil(' + arg + ')';
       break;
     case 'ROUNDDOWN':
-      code = arg + '.floor()';
+      code = 'floor(' + arg + ')';
       break;
     case 'SIN':
-      code = 'Math.sin(' + arg + ' / 180 * Math.PI)';
+      code = 'sin(' + arg + ' / 180.0 * M_PI)';
       break;
     case 'COS':
-      code = 'Math.cos(' + arg + ' / 180 * Math.PI)';
+      code = 'cos(' + arg + ' / 180.0 * M_PI)';
       break;
     case 'TAN':
-      code = 'Math.tan(' + arg + ' / 180 * Math.PI)';
+      code = 'tan(' + arg + ' / 180.0 * M_PI)';
       break;
   }
   if (code) {
@@ -139,16 +139,16 @@ Blockly.Dart['math_single'] = function(block) {
   // wrapping the code.
   switch (operator) {
     case 'LOG10':
-      code = 'Math.log(' + arg + ') / Math.log(10)';
+      code = 'log10(' + arg + ')';
       break;
     case 'ASIN':
-      code = 'Math.asin(' + arg + ') / Math.PI * 180';
+      code = 'asin(' + arg + ') / M_PI * 180.0';
       break;
     case 'ACOS':
-      code = 'Math.acos(' + arg + ') / Math.PI * 180';
+      code = 'acos(' + arg + ') / M_PI * 180.0';
       break;
     case 'ATAN':
-      code = 'Math.atan(' + arg + ') / Math.PI * 180';
+      code = 'atan(' + arg + ') / M_PI * 180.0';
       break;
     default:
       throw 'Unknown math operator: ' + operator;
@@ -159,18 +159,18 @@ Blockly.Dart['math_single'] = function(block) {
 Blockly.Dart['math_constant'] = function(block) {
   // Constants: PI, E, the Golden Ratio, sqrt(2), 1/sqrt(2), INFINITY.
   var CONSTANTS = {
-    'PI': ['Math.PI', Blockly.Dart.ORDER_UNARY_POSTFIX],
-    'E': ['Math.E', Blockly.Dart.ORDER_UNARY_POSTFIX],
+    'PI': ['M_PI', Blockly.Dart.ORDER_UNARY_POSTFIX],
+    'E': ['M_E', Blockly.Dart.ORDER_UNARY_POSTFIX],
     'GOLDEN_RATIO':
-        ['(1 + Math.sqrt(5)) / 2', Blockly.Dart.ORDER_MULTIPLICATIVE],
-    'SQRT2': ['Math.SQRT2', Blockly.Dart.ORDER_UNARY_POSTFIX],
-    'SQRT1_2': ['Math.SQRT1_2', Blockly.Dart.ORDER_UNARY_POSTFIX],
-    'INFINITY': ['double.INFINITY', Blockly.Dart.ORDER_ATOMIC]
+        ['(1.0 + sqrt(5.0)) / 2.0', Blockly.Dart.ORDER_MULTIPLICATIVE],
+    'SQRT2': ['M_SQRT2', Blockly.Dart.ORDER_UNARY_POSTFIX],
+    'SQRT1_2': ['M_SQRT1_2', Blockly.Dart.ORDER_UNARY_POSTFIX],
+    'INFINITY': ['INFINITY', Blockly.Dart.ORDER_ATOMIC]
   };
   var constant = block.getFieldValue('CONSTANT');
   if (constant != 'INFINITY') {
     Blockly.Dart.definitions_['import_dart_math'] =
-        'import \'dart:math\' as Math;';
+        '#include <math.h>';
   }
   return CONSTANTS[constant];
 };
@@ -441,7 +441,7 @@ Blockly.Dart['math_constrain'] = function(block) {
   var argument1 = Blockly.Dart.valueToCode(block, 'LOW',
       Blockly.Dart.ORDER_NONE) || '0';
   var argument2 = Blockly.Dart.valueToCode(block, 'HIGH',
-      Blockly.Dart.ORDER_NONE) || 'double.INFINITY';
+      Blockly.Dart.ORDER_NONE) || 'INFINITY';
   var code = 'Math.min(Math.max(' + argument0 + ', ' + argument1 + '), ' +
       argument2 + ')';
   return [code, Blockly.Dart.ORDER_UNARY_POSTFIX];
@@ -450,21 +450,21 @@ Blockly.Dart['math_constrain'] = function(block) {
 Blockly.Dart['math_random_int'] = function(block) {
   // Random integer between [X] and [Y].
   Blockly.Dart.definitions_['import_dart_math'] =
-      'import \'dart:math\' as Math;';
+      '#include <stdlib.h>';
   var argument0 = Blockly.Dart.valueToCode(block, 'FROM',
       Blockly.Dart.ORDER_NONE) || '0';
   var argument1 = Blockly.Dart.valueToCode(block, 'TO',
       Blockly.Dart.ORDER_NONE) || '0';
   var functionName = Blockly.Dart.provideFunction_(
       'math_random_int',
-      [ 'int ' + Blockly.Dart.FUNCTION_NAME_PLACEHOLDER_ + '(num a, num b) {',
+      [ 'int ' + Blockly.Dart.FUNCTION_NAME_PLACEHOLDER_ + '(int a, int b) {',
         '  if (a > b) {',
         '    // Swap a and b to ensure a is smaller.',
-        '    num c = a;',
+        '    int c = a;',
         '    a = b;',
         '    b = c;',
         '  }',
-        '  return new Math.Random().nextInt(b - a + 1) + a;',
+        '  return round(rand() % (b - a + 1) + a;',
         '}']);
   var code = functionName + '(' + argument0 + ', ' + argument1 + ')';
   return [code, Blockly.Dart.ORDER_UNARY_POSTFIX];
@@ -473,6 +473,6 @@ Blockly.Dart['math_random_int'] = function(block) {
 Blockly.Dart['math_random_float'] = function(block) {
   // Random fraction between 0 and 1.
   Blockly.Dart.definitions_['import_dart_math'] =
-      'import \'dart:math\' as Math;';
-  return ['new Math.Random().nextDouble()', Blockly.Dart.ORDER_UNARY_POSTFIX];
+      '#include <stdlib.h>';
+  return ['(float)rand()/(float)(RAND_MAX);', Blockly.Dart.ORDER_UNARY_POSTFIX];
 };
