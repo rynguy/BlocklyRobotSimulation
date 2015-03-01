@@ -29,47 +29,100 @@ goog.provide('Blockly.Blocks.linkbot');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.linkbot.HUE = 330;
+Blockly.Blocks.linkbot.HUE = 290;
+
+Blockly.Blocks['linkbot_constructor'] = {
+  init: function() {
+    this.setHelpUrl('http://www.example.com/');
+    this.setColour(290);
+    this.appendDummyInput()
+        .appendField("Creating Linkbot with name")
+        .appendField(new Blockly.FieldVariable("robot"), "Linkbot");
+    this.setPreviousStatement(true, "null");
+    this.setNextStatement(true, "null");
+    this.setTooltip('');
+  },
+  getVars: function() {
+    return [this.getFieldValue('Linkbot')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('Linkbot'))) {
+      this.setFieldValue(newName, 'Linkbot');
+    }
+  }
+};
 
 Blockly.Blocks['linkbot_turn'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
-    this.setColour(230);
+    this.setColour(290);
     this.appendDummyInput()
+        .appendField(new Blockly.FieldVariable("robot"), "Linkbot")
         .appendField("turn")
         .appendField(new Blockly.FieldDropdown([["left", "turnLeft"], ["right", "turnRight"]]), "direction")
         .appendField(new Blockly.FieldAngle("90"), "turn direction");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
+  },
+  getVars: function() {
+    return [this.getFieldValue('Linkbot')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('Linkbot'))) {
+      this.setFieldValue(newName, 'Linkbot');
+    }
   }
 };
 
 Blockly.Blocks['linkbot_drive'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
-    this.setColour(120);
+    this.setColour(290);
     this.appendDummyInput()
+        .appendField(new Blockly.FieldVariable("robot"), "Linkbot")
         .appendField("drive")
         .appendField(new Blockly.FieldDropdown([["forward", "driveForward"], ["backward", "driveBackward"]]), "direction")
-        .appendField(new Blockly.FieldTextInput("30"), "degree")
+        .appendField(new Blockly.FieldTextInput("30",
+            Blockly.FieldTextInput.nonnegativeIntegerValidator), "degree")
         .appendField(" °");
     this.setInputsInline(true);
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
+  },
+  getVars: function() {
+    return [this.getFieldValue('Linkbot')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('Linkbot'))) {
+      this.setFieldValue(newName, 'Linkbot');
+    }
   }
 };
 
 Blockly.Blocks['linkbot_speed'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
-    this.setColour(230);
-    this.appendValueInput("speed")
-        .setCheck("Number")
-        .appendField("set speed to");
+    this.setColour(290);
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldVariable("robot"), "Linkbot")
+        .appendField("set speed to")
+        .appendField(new Blockly.FieldTextInput("10",
+            Blockly.FieldTextInput.nonnegativeIntegerValidator), "speed")
+    this.setInputsInline(true);
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
+  },
+  getVars: function() {
+    return [this.getFieldValue('Linkbot')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('Linkbot'))) {
+      this.setFieldValue(newName, 'Linkbot');
+    }
   }
 };
+
+

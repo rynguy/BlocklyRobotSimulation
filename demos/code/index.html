@@ -10,7 +10,7 @@
   <script src="../../blocks_compressed.js"></script>
   <script src="../../javascript_compressed.js"></script>
   <script src="../../python_compressed.js"></script>
-  <script src="../../dart_compressed.js"></script>
+  <script src="../../ch_compressed.js"></script>
   <script src="code.js"></script>
 </head>
 <body>
@@ -36,7 +36,7 @@
             <td class="tabmin">&nbsp;</td>
             <td id="tab_python" class="taboff">Python</td>
             <td class="tabmin">&nbsp;</td>
-            <td id="tab_dart" class="taboff">Dart</td>
+            <td id="tab_ch" class="taboff">Ch</td>
             <td class="tabmin">&nbsp;</td>
             <td id="tab_xml" class="taboff">XML</td>
             <td class="tabmax">
@@ -62,7 +62,7 @@
   <div id="content_blocks" class="content"></div>
   <pre id="content_javascript" class="content"></pre>
   <pre id="content_python" class="content"></pre>
-  <pre id="content_dart" class="content"></pre>
+  <pre id="content_ch" class="content"></pre>
   <textarea id="content_xml" class="content" wrap="off"></textarea>
 
   <xml id="toolbox" style="display: none">
@@ -274,6 +274,7 @@
       </block>
     </category>
     <category id="catLinkbot">
+      <block type="linkbot_constructor"></block>
       <block type="linkbot_turn"></block>
       <block type="linkbot_drive"></block>
       <block type="linkbot_speed"></block>
