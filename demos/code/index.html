@@ -13,8 +13,37 @@
   <script src="../../ch_compressed.js"></script>
   <script src="code.js"></script>
 </head>
+<style type="text/css">
+#content{
+    background-color: transparent;
+    background-image:       linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
+  background-size:50px 50px;
+}
+body {
+  margin: 0;
+  padding: 0;
+    background-color: #FFFFFF;
+    background-image:linear-gradient(#FFFFFF, #FFFFFF);
+}
+  .box {
+  margin: 30px;
+  height: 50px;
+  width: 50px;
+  background-color: #434343;
+}
+.box.horizTranslate {
+  -webkit-transition: 1s linear;
+  -moz-transition: 1s linear;
+  -ms-transition: 1s linear;
+  -o-transition: 1s linear;
+  transition: 1s linear;
+  margin-left: 170px !important;
+}
+
+</style>
 <body>
-  <table width="100%" height="100%">
+<!-- linkbot: 1.5 1.75 2  lego: 1.1 1.61 inches-->
+  <table width="100%" height="80%">
     <tr>
       <td>
         <h1><a href="https://developers.google.com/blockly/">Blockly</a> &gt;
@@ -26,6 +55,19 @@
         <select id="languageMenu"></select>
       </td>
     </tr>
+
+    <script src="./jquery/dist/jquery.js"></script>
+    <div id="content">
+<h3>Linkbot</h3>
+<div class='box'><img style="background-color: #434343;" src="./img/minds.png"></div> 
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="340px" height="333px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+
+  <path id="tits" style="visibility:hidden" class="path" fill="#FFFFFF" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 10 10 L 200 10"/>
+  
+</svg>
+</div>
+<button class='toggleButton' value='play'>Play</button>
     <tr>
       <td colspan=2>
         <table width="100%">
@@ -283,6 +325,86 @@
     <category id="catVariables" custom="VARIABLE"></category>
     <category id="catFunctions" custom="PROCEDURE"></category>
   </xml>
+
+
+  <script type="text/javascript">
+      var boxOne = document.getElementsByClassName('box')[0],
+    $boxTwo = $('.box:eq(1)');
+
+document.getElementsByClassName('toggleButton')[0].onclick = function() {
+  if(this.innerHTML === 'Play') 
+  { 
+    updateStyleSheet('line');
+    this.innerHTML = 'Pause';
+    boxOne.classList.add('horizTranslate');
+  } else {
+    this.innerHTML = 'Play';
+    var computedStyle = window.getComputedStyle(boxOne),
+        marginLeft = computedStyle.getPropertyValue('margin-left');
+    boxOne.style.marginLeft = marginLeft;
+    boxOne.classList.remove('horizTranslate');    
+  }  
+}
+
+$('.toggleButton:eq(1)').on('click', function() { 
+  if($(this).html() === 'Play') 
+  {
+    $(this).html('Pause');
+    $boxTwo.addClass('horizTranslate');
+  } else {
+    $(this).html('Play');
+    var computedStyle = $boxTwo.css('margin-left');
+    $boxTwo.removeClass('horizTranslate');
+    $boxTwo.css('margin-left', computedStyle);
+  }  
+});
+  </script>
+
+  <script>
+    function updateStyleSheet(filename) {
+ 
+    // Create the CSS file name:
+ 
+    newstylesheet = "style_" + filename + ".css";
+ 
+    // Does the <link> tag (with id:dynamic_css) exist?
+    // If not, we need to create it.
+ 
+    if ($("#dynamic_css").length == 0) {
+ 
+        // The next line will add the
+        // <link> tag between the
+        // <head> tags.
+ 
+        $("head").append("<link>")
+ 
+        // The next line will select the
+        // <link> element you just added.
+ 
+        css = $("head").children(":last");
+ 
+        // The next line will set the
+        // attributes of the elements
+        // to make it load the CSS file.
+
+        $("#tits").css({'visibility':'visible'});
+ 
+        css.attr({
+          id: "dynamic_css",
+          rel:  "stylesheet",
+          type: "text/css",
+          href: newstylesheet
+        });
+ 
+    // If the <link> element already exists, we
+    // simply need to change the value of "href". 
+ 
+    } else {
+        $("#dynamic_css").attr("href",newstylesheet);
+    }
+ 
+}
+  </script>
 
 </body>
 </html>
