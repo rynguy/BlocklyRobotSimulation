@@ -91,11 +91,10 @@ Blockly.Ch.init = function(workspace) {
 
   var defvars = [];
   var variables = Blockly.Variables.allVariables(workspace);
-  defvars[0] = 'CLinkbotI Robot1;';
-  defvars[1] = 'CLinkbotI Robot2;';
-  for (var x = 2; x < variables.length + 2; x++) {
+  defvars[0] = 'CLinkbotI robot;\n';
+  for (var x = 1; x < variables.length + 1; x++) {
     defvars[x] = 'double ' +
-        Blockly.Ch.variableDB_.getName(variables[x-2],
+        Blockly.Ch.variableDB_.getName(variables[x-1],
         Blockly.Variables.NAME_TYPE) + ';';
   }
   Blockly.Ch.definitions_['variables'] = defvars.join('\n');

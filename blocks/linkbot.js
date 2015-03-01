@@ -31,47 +31,25 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.linkbot.HUE = 290;
 
-Blockly.Blocks['linkbot_constructor'] = {
-  init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
-    this.appendDummyInput()
-        .appendField("Creating Linkbot with name")
-        .appendField(new Blockly.FieldVariable("robot"), "Linkbot");
-    this.setPreviousStatement(true, "null");
-    this.setNextStatement(true, "null");
-    this.setTooltip('');
-  },
-  getVars: function() {
-    return [this.getFieldValue('Linkbot')];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('Linkbot'))) {
-      this.setFieldValue(newName, 'Linkbot');
-    }
-  }
-};
-
 Blockly.Blocks['linkbot_turn'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("robot"), "Linkbot")
         .appendField("turn")
         .appendField(new Blockly.FieldDropdown([["left", "turnLeft"], ["right", "turnRight"]]), "direction")
         .appendField(new Blockly.FieldAngle("90"), "turn direction");
+    this.appendDummyInput()
+        .appendField("with a wheel radius of")
+        .appendField(new Blockly.FieldDropdown([["1.5", "1.5"], ["1.75", "1.75"], ["2.0", "2.0"]]), "radius")
+        .appendField("inches");
+    this.appendDummyInput()
+        .appendField("and a track width of")
+        .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
+        .appendField("inches");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
-  },
-  getVars: function() {
-    return [this.getFieldValue('Linkbot')];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('Linkbot'))) {
-      this.setFieldValue(newName, 'Linkbot');
-    }
   }
 };
 
@@ -80,24 +58,22 @@ Blockly.Blocks['linkbot_drive'] = {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("robot"), "Linkbot")
         .appendField("drive")
         .appendField(new Blockly.FieldDropdown([["forward", "driveForward"], ["backward", "driveBackward"]]), "direction")
-        .appendField(new Blockly.FieldTextInput("30",
-            Blockly.FieldTextInput.nonnegativeIntegerValidator), "degree")
-        .appendField(" °");
-    this.setInputsInline(true);
+        .appendField(new Blockly.FieldTextInput("10",
+            Blockly.FieldTextInput.nonnegativeIntegerValidator), "distance")
+        .appendField("inches");
+    this.appendDummyInput()
+        .appendField("with a wheel radius of")
+        .appendField(new Blockly.FieldDropdown([["1.5", "1.5"], ["1.75", "1.75"], ["2.0", "2.0"]]), "radius")
+        .appendField("inches");
+    this.appendDummyInput()
+        .appendField("and a track width of")
+        .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
+        .appendField("inches");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
-  },
-  getVars: function() {
-    return [this.getFieldValue('Linkbot')];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('Linkbot'))) {
-      this.setFieldValue(newName, 'Linkbot');
-    }
   }
 };
 
@@ -106,7 +82,6 @@ Blockly.Blocks['linkbot_speed'] = {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("robot"), "Linkbot")
         .appendField("set speed to")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.nonnegativeIntegerValidator), "speed")
@@ -114,15 +89,5 @@ Blockly.Blocks['linkbot_speed'] = {
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
-  },
-  getVars: function() {
-    return [this.getFieldValue('Linkbot')];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('Linkbot'))) {
-      this.setFieldValue(newName, 'Linkbot');
-    }
   }
 };
-
-
