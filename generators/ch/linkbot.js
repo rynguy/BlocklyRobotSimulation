@@ -50,9 +50,8 @@ Blockly.Ch['linkbot_drive'] = function(block) {
   var dropdown_direction = block.getFieldValue('direction');
   var text_distance = block.getFieldValue('distance');
   var dropdown_radius = block.getFieldValue('radius');
-  var dropdown_width = block.getFieldValue('width');
   // TODO: Assemble Dart into code variable.
-  var code = 'robot.' + dropdown_direction + '((' + text_distance + ' * 180.0 / (PI * ' + dropdown_radius + ')), ' + dropdown_radius + ', ' + dropdown_width + ');\n';
+  var code = 'robot.' + dropdown_direction + '(' + text_distance + ' * 180.0 / (M_PI * ' + dropdown_radius + ')' + ');\n';
   return code;
 };
 

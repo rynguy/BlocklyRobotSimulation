@@ -41,7 +41,7 @@ Blockly.Blocks['linkbot_turn'] = {
         .appendField(new Blockly.FieldAngle("90"), "turn direction");
     this.appendDummyInput()
         .appendField("with a wheel radius of")
-        .appendField(new Blockly.FieldDropdown([["1.5", "1.5"], ["1.75", "1.75"], ["2.0", "2.0"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
         .appendField("inches");
     this.appendDummyInput()
         .appendField("and a track width of")
@@ -65,11 +65,7 @@ Blockly.Blocks['linkbot_drive'] = {
         .appendField("inches");
     this.appendDummyInput()
         .appendField("with a wheel radius of")
-        .appendField(new Blockly.FieldDropdown([["1.5", "1.5"], ["1.75", "1.75"], ["2.0", "2.0"]]), "radius")
-        .appendField("inches");
-    this.appendDummyInput()
-        .appendField("and a track width of")
-        .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
+        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
         .appendField("inches");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
