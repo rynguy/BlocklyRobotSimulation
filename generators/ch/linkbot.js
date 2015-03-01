@@ -31,35 +31,41 @@ goog.require('Blockly.Ch');
 
 Blockly.Ch.addReservedWords('Math');
 
+Blockly.Ch['linkbot_constructor'] = function(block) {
+  Blockly.Ch.definitions_['include_linkbot'] =
+      '#include <linkbot.h>';
+  var variable_linkbot = Blockly.Ch.variableDB_.getName(block.getFieldValue('Linkbot'), Blockly.Variables.NAME_TYPE);
+  return 'Linkbot ' + variable_linkbot + ';\n';
+};
+
 Blockly.Ch['linkbot_turn'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
+  var varName = Blockly.Ch.variableDB_.getName(block.getFieldValue('Linkbot'),
+      Blockly.Variables.NAME_TYPE);
   var dropdown_direction = block.getFieldValue('direction');
   var angle_turn_direction = block.getFieldValue('turn direction');
-  var dropdown_radius = block.getFieldValue('radius');
-  var dropdown_width = block.getFieldValue('width');
-  var code = 'robot.' + dropdown_direction + '(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
+  var code = varName + '.' + dropdown_direction + '(' + angle_turn_direction + ', radius, trackwidth);\n';
   return code;
 };
 
 Blockly.Ch['linkbot_drive'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_ch_math'] =
-      '#include <math.h>';
+  var varName = Blockly.Ch.variableDB_.getName(block.getFieldValue('Linkbot'),
+      Blockly.Variables.NAME_TYPE);
   var dropdown_direction = block.getFieldValue('direction');
-  var text_distance = block.getFieldValue('distance');
-  var dropdown_radius = block.getFieldValue('radius');
-  var dropdown_width = block.getFieldValue('width');
-  // TODO: Assemble Dart into code variable.
-  var code = 'robot.' + dropdown_direction + '((' + text_distance + ' * 180.0 / (PI * ' + dropdown_radius + ')), ' + dropdown_radius + ', ' + dropdown_width + ');\n';
+  var text_degree = block.getFieldValue('degree');
+  var code = varName + '.' + dropdown_direction + '(' + text_degree + ');\n';
   return code;
 };
 
 Blockly.Ch['linkbot_speed'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
+  var varName = Blockly.Ch.variableDB_.getName(block.getFieldValue('Linkbot'),
+      Blockly.Variables.NAME_TYPE);
   var text_speed = block.getFieldValue('speed');
-  var code = 'robot.' + 'setSpeed(' + text_speed + ', radius);\n';
+  var code = varName + '.' + 'setSpeed(' + text_speed + ', radius);\n';
   return code;
 };
