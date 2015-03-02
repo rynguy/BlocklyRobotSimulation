@@ -32,7 +32,6 @@ body {
   margin: 30px;
   height: 50px;
   width: 50px;
-  background-color: #434343;
 }
 #horizTranslate {
   -webkit-transition: 1s linear;
@@ -40,7 +39,6 @@ body {
   -ms-transition: 1s linear;
   -o-transition: 1s linear;
   transition: 1s linear;
-  margin-left: 170px !important;
 }
 
 </style>
@@ -62,7 +60,7 @@ body {
     <script src="./jquery/dist/jquery.js"></script>
     <div id="content" style="height:50%">
 <h3>Linkbot</h3>
-<div class='box'><img style="background-color: #434343;" src="./img/minds_Transparent.png"></div> 
+<div class='box'><img src="./img/minds_Transparent.png"></div> 
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="340px" height="333px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
 
@@ -330,14 +328,13 @@ body {
 
 
   <script type="text/javascript">
+  var round = Math.round;
       var boxOne = document.getElementsByClassName('box')[0],
     $boxTwo = $('.box:eq(1)');
 
 document.getElementsByClassName('toggleButton')[0].onclick = function() {
   if(this.innerHTML === 'Play') 
   { 
-    $('#horizTranslate').css({'margin-left': '300px'})
-    boxOne.id = 'horizTranslate';
     var rootBlock = null;
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
     for (var i = 0, block; block = blocks[i]; i++) {
@@ -345,11 +342,15 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         rootBlock = block;
       }
     }
-    var d = rootBlock.getFieldValue('distance') + 'px !important';
+    var $d = round(rootBlock.getFieldValue('distance')) + round(30);
+    boxOne.id = 'horizTranslate';
+    $('#horizTranslate').css({'margin-left': $d + "px"});
+    
+    
   //console.log("capacity: " + Blockly.Workspace.prototype.remainingCapacity())
     //var block = Blockly.Workspace.prototype.getBlockById('linkbot_drive');
     console.log("block id: " + rootBlock);
-    console.log("distance in the block: " +d);
+    console.log("distance in the block: " +$d);
     updateStyleSheet('line');
     this.innerHTML = 'Pause';
     boxOne.classList.add('horizTranslate');
