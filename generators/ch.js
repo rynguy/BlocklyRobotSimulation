@@ -91,7 +91,7 @@ Blockly.Ch.init = function(workspace) {
 
   var defvars = [];
   var variables = Blockly.Variables.allVariables(workspace);
-  defvars[0] = 'CLinkbotI robot;\n';
+  defvars[0] = 'CLinkbotI robot;\nrobot.connect();\nrobot.resetToZero();\n';
   for (var x = 1; x < variables.length + 1; x++) {
     defvars[x] = 'double ' +
         Blockly.Ch.variableDB_.getName(variables[x-1],
@@ -116,7 +116,7 @@ Blockly.Ch.finish = function(code) {
   var definitions = [];
   for (var name in Blockly.Ch.definitions_) {
     var def = Blockly.Ch.definitions_[name];
-    if (def.match(/^import\s/)) {
+    if (def.match(/^#include\s/)) {
       imports.push(def);
     } else {
       definitions.push(def);
