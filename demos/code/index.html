@@ -12,7 +12,9 @@
   <script src="../../python_compressed.js"></script>
   <script src="../../ch_compressed.js"></script>
   <script src="code.js"></script>
-  <script src="linkbot.js"></script>
+  <script> var a = require('../../generators/ch/linkbot.js')();</script>
+  <script src="../../core/workspace.js"></script>
+  <script src="../../generators/ch/linkbot.js"></script>
 </head>
 <style type="text/css">
 #content{
@@ -32,7 +34,7 @@ body {
   width: 50px;
   background-color: #434343;
 }
-.box.horizTranslate {
+#horizTranslate {
   -webkit-transition: 1s linear;
   -moz-transition: 1s linear;
   -ms-transition: 1s linear;
@@ -317,7 +319,6 @@ body {
       </block>
     </category>
     <category id="catLinkbot">
-      <block type="linkbot_constructor"></block>
       <block type="linkbot_turn"></block>
       <block type="linkbot_drive"></block>
       <block type="linkbot_speed"></block>
@@ -335,9 +336,24 @@ body {
 document.getElementsByClassName('toggleButton')[0].onclick = function() {
   if(this.innerHTML === 'Play') 
   { 
+    $('#horizTranslate').css({'margin-left': '300px'})
+    boxOne.id = 'horizTranslate';
+    var rootBlock = null;
+    var blocks = Blockly.mainWorkspace.getTopBlocks(false);
+    for (var i = 0, block; block = blocks[i]; i++) {
+      if (block.type == 'linkbot_drive') {
+        rootBlock = block;
+      }
+    }
+    var d = rootBlock.getFieldValue('distance') + 'px !important';
+  //console.log("capacity: " + Blockly.Workspace.prototype.remainingCapacity())
+    //var block = Blockly.Workspace.prototype.getBlockById('linkbot_drive');
+    console.log("block id: " + rootBlock);
+    console.log("distance in the block: " +d);
     updateStyleSheet('line');
     this.innerHTML = 'Pause';
     boxOne.classList.add('horizTranslate');
+      console.log("tits " + boxOne.classList)
   } else {
     this.innerHTML = 'Play';
     var computedStyle = window.getComputedStyle(boxOne),
@@ -362,6 +378,7 @@ $('.toggleButton:eq(1)').on('click', function() {
   </script>
 
   <script>
+  //function to change style sheet
     function updateStyleSheet(filename) {
  
     // Create the CSS file name:
@@ -407,5 +424,21 @@ $('.toggleButton:eq(1)').on('click', function() {
 }
   </script>
 
+
+  <script>
+
+    var rootBlock = null;
+    var blocks = Blockly.mainWorkspace.getTopBlocks(false);
+    for (var i = 0, block; block = blocks[i]; i++) {
+      if (block.type == 'linkbot_drive') {
+        rootBlock = block;
+      }
+    }
+  //console.log("capacity: " + Blockly.Workspace.prototype.remainingCapacity())
+    //var block = Blockly.Workspace.prototype.getBlockById('linkbot_drive');
+    console.log("block id: " + block);
+    console.log("distance in the block: " + Blockly.Ch['linkbot_drive'](rootBlock).text_distance);
+  </script>
+  <div id="horizTranslate" style="visibility:hidden"></div>
 </body>
 </html>

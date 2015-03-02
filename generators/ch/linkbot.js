@@ -43,10 +43,10 @@ Blockly.Ch['linkbot_turn'] = function(block) {
 };
 
 Blockly.Ch['linkbot_drive'] = function(block) {
-  Blockly.Ch.definitions_['include_linkbot'] =
+  /*Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
   Blockly.Ch.definitions_['include_ch_math'] =
-      '#include <math.h>';
+      '#include <math.h>';*/
   var dropdown_direction = block.getFieldValue('direction');
   var text_distance = block.getFieldValue('distance');
   var dropdown_radius = block.getFieldValue('radius');
