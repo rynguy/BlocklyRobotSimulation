@@ -91,10 +91,9 @@ Blockly.Ch.init = function(workspace) {
 
   var defvars = [];
   var variables = Blockly.Variables.allVariables(workspace);
-  defvars[0] = 'CLinkbotI robot;\nrobot.connect();\nrobot.resetToZero();\n';
-  for (var x = 1; x < variables.length + 1; x++) {
+  for (var x = 0; x < variables.length; x++) {
     defvars[x] = 'double ' +
-        Blockly.Ch.variableDB_.getName(variables[x-1],
+        Blockly.Ch.variableDB_.getName(variables[x],
         Blockly.Variables.NAME_TYPE) + ';';
   }
   Blockly.Ch.definitions_['variables'] = defvars.join('\n');
@@ -107,9 +106,9 @@ Blockly.Ch.init = function(workspace) {
  */
 Blockly.Ch.finish = function(code) {
   // Indent every line.
-  if (code) {
-    code = Blockly.Ch.prefixLines(code, Blockly.Ch.INDENT);
-  }
+//  if (code) {
+//    code = Blockly.Ch.prefixLines(code, Blockly.Ch.INDENT);
+//  }
 
   // Convert the definitions dictionary into a list.
   var imports = [];
