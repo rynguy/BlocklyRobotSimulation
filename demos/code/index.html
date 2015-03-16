@@ -17,8 +17,7 @@
   <script src="../../generators/ch/linkbot.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Dosis:300,400,800' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
-
+  <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'> 
 
 </head>
 <style type="text/css">
@@ -69,6 +68,7 @@ body {
 </div>
 <button class='toggleButton' value='play'>Play</button>
 <button class='resetButton' value='reset'>Reset</button>
+<button style="margin-top:-150px" id='settingsButton' data-toggle="modal" data-target="#exampleModal">Settings</button>
 
 <h3 style="PADDING-RIGHT: 4%; PADDING-LEFT: 4%; margin-left:150px; margin-top:-20px; display:inline;"><img src="./img/minds_Transparent.png">
       <strong style="font-family:Sanchez;">Hi! I'm Lego Mindstorm. Help me create a single line.</strong>
@@ -331,6 +331,24 @@ body {
     <category id="catFunctions" custom="PROCEDURE"></category>
   </xml>
 
+   <div id="myModal" class="modal fade" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
   <script type="text/javascript">
   var $robotime;
@@ -452,6 +470,13 @@ $('.toggleButton:eq(1)').on('click', function() {
  
 }
   </script>
+
+  <script>
+  $("#settingsButton").click(function() {
+    $('#myModal').modal('show')
+  }); 
+</script>
+
 
 
   <script>
