@@ -361,14 +361,26 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
   { 
     var rootBlock = null;
     var secBlock = null;
+
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
-    for (var i = 0, block; block = blocks[i]; i++) {
+    for (var i = 0, block; i < blocks.length; i++) {
+      block = blocks[i];
+      console.log(blocks.length + "dicks");
       if (block.type == 'linkbot_drive') {
         rootBlock = block;
       }
-      if (block.type == 'linkbot_turn') {
-        secBlock = block;
+      //if (block.type == 'linkbot_turn') {
+        //secBlock = block;
+      //}
+    }
+    for (var i = 0, block; block = blocks[i]; i++) {
+      if (block.type == 'linkbot_drive') {
+        rootBlock = block;
+        break;
       }
+      //if (block.type == 'linkbot_turn') {
+        //secBlock = block;
+      //}
     }
     //dis is the input from the puzzle
     var $dis2 = (round(rootBlock.getFieldValue('distance'))*25)  + round(60);
