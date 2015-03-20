@@ -23,8 +23,8 @@
 <style type="text/css">
 
 html{
-  /*overflow: scroll;*/
-}
+/*  overflow: scroll;
+*/}
 
 #content{
     background-color: #4E6E39;
@@ -42,7 +42,8 @@ body {
   height: 50px;
   width: 50px;
 }
-#horizTranslate {
+#mysvg {
+
 }
 
 </style>
@@ -61,23 +62,23 @@ body {
     </tr>
 
     <script src="./jquery/dist/jquery.js"></script>
-    <div style="background-color:#CCC; height:25px; font-family:Dosis; font-weight: 800;">Lesson 1</div>
+    <div style="background-color:#CCC; height:25px; font-family:Dosis; font-weight: 800;">Lesson 2</div>
     <div id="content" style="height:50%">
 <div style="position:absolute; z-index:1; " class='box'><img src="./img/minds_Transparent.png"></div> 
 <svg id="mysvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="100%" height="333px" viewBox="0 0 100% 333" enable-background="new 0 0 100% 333" xml:space="preserve">
 
-  <path id="tits" style="visibility:hidden" class="path" fill="#FFFFFF" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 0 10 L 200 10"/>
+  <path id="tits" style="visibility:hidden" class="path" fill="#FFFFFF" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 0 10 L 0 200"/>
   
 </svg>
 </div>
 <button class='toggleButton' value='play'>Play</button>
 <button class='resetButton' value='reset'>Reset</button>
 <button id='settingsButton'>Settings</button>
-<a href="./movedown.html"><button id='lessonButton'>Next Lesson</button>
-</a>
+<a href="./all.html"><button id='lessonButton'>Next Lesson</button></a>
+
 <h3 style="PADDING-RIGHT: 4%; PADDING-LEFT: 4%; margin-left:150px; margin-top:-20px; display:inline;"><img src="./img/minds_Transparent.png">
-      <strong style="font-family:Sanchez;">Hi! I'm Lego Mindstorm. Help me create a single line.</strong>
+      <strong style="font-family:Sanchez;">Hey, me again! I want to move down, but first help me rotate.</strong>
     </h3>
     <h1 id="success" style="visibility:hidden; margin-left:25px; font-family:Dosis; font-weight: 800; font-size:70px; color:green; display:inline;">SUCCESS</h1>
     <tr>
@@ -109,9 +110,12 @@ body {
       </td>
     </tr>
     <tr>
+
       <td height="99%" colspan=2 id="content_area">
       </td>
     </tr>
+    </div>
+
   </table>
   <div id="content_blocks" class="content"></div>
   <pre id="content_javascript" class="content"></pre>
@@ -329,6 +333,7 @@ body {
     </category>
     <category id="catLinkbot">
       <block type="linkbot_drive_distance"></block>
+      <block type="linkbot_turn"></block>
     </category>
     <sep></sep>
     <category id="catVariables" custom="VARIABLE"></category>
@@ -346,41 +351,101 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
   if(this.innerHTML === 'Play') 
   { 
     var rootBlock = null;
-    var secBlock = null;
+    var driveBlock = null;
+    var angleBlock = null;
+    var x;
+    var y;
+    var a;
+    var b;
+    var angle = 0;
+    var $dis2;
+    var $dis;
 
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
-    for (var i = 0, block; i < blocks.length; i++) {
-      block = blocks[i];
-      console.log(blocks.length + "dicks");
+    var childBlocks = null;
+    rootBlock = blocks[0];
+    
+    //for (var i = 0, block; block = blocks[i]; i++) {
+    if (rootBlock.type == 'linkbot_drive_distance') {
+        driveBlock = rootBlock;
+    }
+    if (rootBlock.type == 'linkbot_turn') {
+      angleBlock = rootBlock;
+      angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+    }
+    childBlocks= rootBlock.getChildren();
+    for (var i = 0, block; i < childBlocks.length; i++) {
+      block = childBlocks[i];
+      if (block.type == 'linkbot_turn') {
+        angleBlock = block;
+        angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+      }
+
       if (block.type == 'linkbot_drive_distance') {
-        rootBlock = block;
+        driveBlock = block;
+        /**************
+        drive code
+        
+        $$$$$$$$$$$$$$$$$*/
+
+
       }
-      //if (block.type == 'linkbot_turn') {
-        //secBlock = block;
-      //}
-    }
-    for (var i = 0, block; block = blocks[i]; i++) {
-      if (block.type == 'linkbot_drive') {
-        rootBlock = block;
-        break;
-      }
-      //if (block.type == 'linkbot_turn') {
-        //secBlock = block;
-      //}
-    }
+          } //for loop
     //dis is the input from the puzzle
-    var $dis2 = (round(rootBlock.getFieldValue('distance'))*25)  + round(60);
-    var $dis = (round(rootBlock.getFieldValue('distance'))*25)+ round(30);
-    $robotime = (round(rootBlock.getFieldValue('distance'))*25)/500;
+    
+    $dis2 = (round(driveBlock.getFieldValue('distance'))*25);
+    $dis = (round(driveBlock.getFieldValue('distance'))*25);  
+    //dis 1 x y coords for robot 
+    x = $dis * Math.cos(angle) + round(30)* Math.cos(angle);
+    y = $dis * Math.sin(angle) - round(30);
+    //dis 2 x y  coords for line
+    a = $dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
+    b = $dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
+    
+    $robotime = (round(driveBlock.getFieldValue('distance'))*25)/500;
     boxOne.id = 'horizTranslate';
     $('#horizTranslate').css({'-webkit-transition': $robotime+'s linear'});
     $('#horizTranslate').css({'-moz-transition': $robotime+'s linear'});
     $('#horizTranslate').css({'-ms-transition': $robotime+'s linear'});
     $('#horizTranslate').css({'-o-transition': $robotime+'s linear'});
     $('#horizTranslate').css({'transition': $robotime+'s linear'});
-    $('#horizTranslate').css({'margin-left': $dis + "px"});
+    if(y<0){
+      if(x<0){
+        $('#horizTranslate').css({'margin-top': -y + "px"});
+        $('#horizTranslate').css({'margin-left': x + "px"});
+      }
+      else{
+        $('#horizTranslate').css({'margin-top': -y + "px"});
+        $('#horizTranslate').css({'margin-left': x + "px"});
+      }
+    }
+    else{
+      if(x<0){
+        $('#horizTranslate').css({'margin-top': -y + "px"});
+        $('#horizTranslate').css({'margin-left': x + "px"});
+      }
+      else{
+        $('#horizTranslate').css({'margin-top': -y + "px"});
+        $('#horizTranslate').css({'margin-left': x + "px"});
+      }
+    }
     elem = sv.getElementById("tits");
-    elem.setAttribute("d", "M 113 113 L"+ $dis2 + " 113");
+    if(a<0) {
+      if(b<0)
+        elem.setAttribute("d", "M 63 63 L" + -a + -b);
+      else
+        elem.setAttribute("d", "M 63 63 L" + -a + b);
+    }
+    else {
+      if(b<0)
+        elem.setAttribute("d", "M 63 63 L" + a + -b);
+      else
+        elem.setAttribute("d", "M 63 63 L" + a + b);
+    }
+
+    
+    
+
  
   //console.log("capacity: " + Blockly.Workspace.prototype.remainingCapacity())
     //var block = Blockly.Workspace.prototype.getBlockById('linkbot_drive');

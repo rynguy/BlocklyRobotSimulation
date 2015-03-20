@@ -61,7 +61,7 @@ body {
     </tr>
 
     <script src="./jquery/dist/jquery.js"></script>
-    <div style="background-color:#CCC; height:25px; font-family:Dosis; font-weight: 800;">Lesson 1</div>
+    <div style="background-color:#CCC; height:25px; font-family:Dosis; font-weight: 800;">Lesson 3</div>
     <div id="content" style="height:50%">
 <div style="position:absolute; z-index:1; " class='box'><img src="./img/minds_Transparent.png"></div> 
 <svg id="mysvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -74,7 +74,7 @@ body {
 <button class='toggleButton' value='play'>Play</button>
 <button class='resetButton' value='reset'>Reset</button>
 <button id='settingsButton'>Settings</button>
-<a href="./movedown.html"><button id='lessonButton'>Next Lesson</button>
+<a href="./index.html"><button id='lessonButton'>Next Lesson</button>
 </a>
 <h3 style="PADDING-RIGHT: 4%; PADDING-LEFT: 4%; margin-left:150px; margin-top:-20px; display:inline;"><img src="./img/minds_Transparent.png">
       <strong style="font-family:Sanchez;">Hi! I'm Lego Mindstorm. Help me create a single line.</strong>
@@ -85,14 +85,13 @@ body {
         <table width="100%">
           <tr id="tabRow" height="1em">
             <td id="tab_blocks" class="tabon">...</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_javascript" class="taboff">JavaScript</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_python" class="taboff">Python</td>
-            <td class="tabmin">&nbsp;</td>
             <td id="tab_ch" class="taboff">Ch</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_xml" class="taboff">XML</td>
+            <td style="visibility:hidden;" id="tab_javascript" class="taboff">JavaScript</td>
+            <td style="visibility:hidden;" class="tabmin">&nbsp;</td>
+            <td style="visibility:hidden;" id="tab_python" class="taboff">Python</td>
+            <td style="visibility:hidden;" class="tabmin">&nbsp;</td>
+            <td style="visibility:hidden;" class="tabmin">&nbsp;</td>
+            <td style="visibility:hidden;" id="tab_xml" class="taboff">XML</td>
             <td class="tabmax">
               <button id="trashButton" class="notext" title="...">
                 <img src='../../media/1x1.gif' class="trash icon21">
@@ -329,11 +328,46 @@ body {
     </category>
     <category id="catLinkbot">
       <block type="linkbot_drive_distance"></block>
+      <block type="linkbot_turn"></block>
+      <block type="linkbot_drive_time"></block>
+      <block type="linkbot_drive_angle"></block>
+      <block type="linkbot_speed"></block>
+      <block type="linkbot_blink_LED"></block>
+      <block type="linkbot_connect"></block>
+      <block type="linkbot_close_gripper"></block>
+      <block type="linkbot_delay"></block>
+      <block type="linkbot_disconnect"></block>
+      <block type="linkbot_reset"></block>
+      <block type="linkbot_move_joints"></block>
+      <block type="linkbot_constructor"></block>
+      <block type="linkbot_turn_2"></block>
+      <block type="linkbot_drive_distance_2"></block>
+      <block type="linkbot_drive_time_2"></block>
+      <block type="linkbot_drive_angle_2"></block>
+      <block type="linkbot_speed_2"></block>
     </category>
     <sep></sep>
     <category id="catVariables" custom="VARIABLE"></category>
     <category id="catFunctions" custom="PROCEDURE"></category>
   </xml>
+
+   <div id="myModal" class="modal fade" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
   <script type="text/javascript">
@@ -469,6 +503,11 @@ $('.toggleButton:eq(1)').on('click', function() {
 }
   </script>
 
+  <script>
+  $("#settingsButton").click(function() {
+    $('#myModal').modal('show')
+  }); 
+</script>
 
 
 
