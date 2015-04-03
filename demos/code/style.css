@@ -9,6 +9,8 @@ body {
   overflow: hidden;
 }
 
+.progress_container{background-color:#eee;border:1px solid #ccc;display:inline-block;padding:4px 8px;border-radius:5px}.header_level .progress_container .puzzle_outer_level,.header_level .progress_container .puzzle_outer_assessment,.header_level .progress_container .puzzle_outer_current{vertical-align:middle;margin:0 -2px}.header_level .puzzle_outer_current .level_link{box-sizing:border-box;border-radius:28px;height:28px;min-width:28px;width:28px;font-size:14px;line-height:24px;padding:0px;text-align:center;display:inline-block}.header_level .puzzle_outer_current .level_link.unplugged_level{font-size:12px;padding-left:10px;padding-right:10px;width:auto}.header_level .puzzle_outer_level,.header_level .puzzle_outer_assessment{line-height:1px}.header_level .puzzle_outer_level .level_link,.header_level .puzzle_outer_assessment .level_link{box-sizing:border-box;min-width:11px;width:11px;height:11px;border-radius:11px;padding:3px;margin:0px;font-size:0px;color:transparent}.header_level .level_link:hover{text-decoration:none;background-color:#ffa400}
+
 .farSide {
   text-align: right;
 }
