@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="google" value="notranslate">
+  <title>Blockly Demo:</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/storage.js"></script>
+  <script src="../../blockly_compressed.js"></script>
+  <script src="../../blocks_compressed.js"></script>
+  <script src="../../javascript_compressed.js"></script>
+  <script src="../../python_compressed.js"></script>
+  <script src="../../ch_compressed.js"></script>
+  <script src="code.js"></script>
+  <script> var a = require('../../generators/ch/linkbot.js')();</script>
+  <script src="../../core/workspace.js"></script>
+  <script src="../../generators/ch/linkbot.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Dosis:300,400,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'> 
+
+</head>
+<style type="text/css">
+
+html{
+  /*overflow: scroll;*/
+}
+
+#content{
+    background-color: #4E6E39;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%,  transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent);
+  background-size:50px 50px;
+}
+body {
+  margin: 0;
+  padding: 0;
+    
+    
+}
+  .box {
+  margin: 30px;
+  height: 50px;
+  width: 50px;
+}
+#horizTranslate {
+}
+
+</style>
+<body>
+<!-- linkbot: 1.5 1.75 2  lego: 1.1 1.61 inches-->
+  <table width="100%" height="50%">
+    <tr>
+      <td>
+        <h1><a href="https://developers.google.com/blockly/">Blockly</a> &gt;
+          <span id="title">...</span>
+        </h1>
+      </td>
+      <td class="farSide">
+        <select id="languageMenu"></select>
+      </td>
+    </tr>
+
+    <script src="./jquery/dist/jquery.js"></script>
+    <div style="background-color:#CCC; height:25px; font-family:Dosis; font-weight: 800;">Lesson 1</div>
+    <div id="content" style="height:50%">
+<div style="position:absolute; z-index:1; " class='box'><img src="./img/minds_Transparent.png"></div> 
+<svg id="mysvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="100%" height="333px" viewBox="0 0 100% 333" enable-background="new 0 0 100% 333" xml:space="preserve">
+
+  <path id="tits" style="visibility:hidden" class="path" fill="#FFFFFF" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 0 10 L 200 10"/>
+  
+</svg>
+</div>
+<button class='toggleButton' value='play'>Play</button>
+<button class='resetButton' value='reset'>Reset</button>
+<button id='settingsButton'>Settings</button>
+<a href="./movedown.html"><button id='lessonButton'>Next Lesson</button>
+</a>
+<h3 style="PADDING-RIGHT: 4%; PADDING-LEFT: 4%; margin-left:150px; margin-top:-20px; display:inline;"><img src="./img/minds_Transparent.png">
+      <strong style="font-family:Sanchez;">Hi! I'm Lego Mindstorm. Help me create a single line.</strong>
+    </h3>
+    <h1 id="success" style="visibility:hidden; margin-left:25px; font-family:Dosis; font-weight: 800; font-size:70px; color:green; display:inline;">SUCCESS</h1>
+    <tr>
+      <td colspan=2>
+        <table width="100%">
+          <tr id="tabRow" height="1em">
+            <td id="tab_blocks" class="tabon">...</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_javascript" class="taboff">JavaScript</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_python" class="taboff">Python</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_ch" class="taboff">Ch</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_xml" class="taboff">XML</td>
+            <td class="tabmax">
+              <button id="trashButton" class="notext" title="...">
+                <img src='../../media/1x1.gif' class="trash icon21">
+              </button>
+              <button id="linkButton" class="notext" title="...">
+                <img src='../../media/1x1.gif' class="link icon21">
+              </button>
+              <button style="visibility:hidden" id="runButton" class="notext primary" title="...">
+                <img src='../../media/1x1.gif' class="run icon21">
+              </button>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height="99%" colspan=2 id="content_area">
+      </td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_javascript" class="content"></pre>
+  <pre id="content_python" class="content"></pre>
+  <pre id="content_ch" class="content"></pre>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+
+  <xml id="toolbox" style="display: none">
+    <category id="catLogic">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category id="catLoops">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for">
+        <value name="FROM">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+    </category>
+    <category id="catMath">
+      <block type="math_number"></block>
+      <block type="math_arithmetic"></block>
+      <block type="math_single"></block>
+      <block type="math_trig"></block>
+      <block type="math_constant"></block>
+      <block type="math_number_property"></block>
+      <block type="math_change">
+        <value name="DELTA">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_round"></block>
+      <block type="math_on_list"></block>
+      <block type="math_modulo"></block>
+      <block type="math_constrain">
+        <value name="LOW">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="HIGH">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+    </category>
+    <category id="catText">
+      <block type="text"></block>
+      <block type="text_join"></block>
+      <block type="text_append">
+        <value name="TEXT">
+          <block type="text"></block>
+        </value>
+      </block>
+      <block type="text_length"></block>
+      <block type="text_isEmpty"></block>
+      <block type="text_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" class="textVar">...</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" class="textVar">...</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <value name="STRING">
+          <block type="variables_get">
+            <field name="VAR" class="textVar">...</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase"></block>
+      <block type="text_trim"></block>
+      <block type="text_print"></block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <block type="text"></block>
+        </value>
+      </block>
+    </category>
+    <category id="catLists">
+      <block type="lists_create_empty"></block>
+      <block type="lists_create_with"></block>
+      <block type="lists_repeat">
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_isEmpty"></block>
+      <block type="lists_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" class="listVar">...</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getIndex">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" class="listVar">...</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR" class="listVar">...</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getSublist">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR" class="listVar">...</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_split">
+        <value name="DELIM">
+          <block type="text">
+            <field name="TEXT">,</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category id="catColour">
+      <block type="colour_picker"></block>
+      <block type="colour_random"></block>
+      <block type="colour_rgb">
+        <value name="RED">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+      <block type="colour_blend">
+        <value name="COLOUR1">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
+        <value name="COLOUR2">
+          <block type="colour_picker">
+            <field name="COLOUR">#3333ff</field>
+          </block>
+        </value>
+        <value name="RATIO">
+          <block type="math_number">
+            <field name="NUM">0.5</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category id="catLinkbot">
+      <block type="linkbot_drive_distance"></block>
+    </category>
+    <sep></sep>
+    <category id="catVariables" custom="VARIABLE"></category>
+    <category id="catFunctions" custom="PROCEDURE"></category>
+  </xml>
+
+
+  <script type="text/javascript">
+  var $robotime;
+  var round = Math.round;
+      var boxOne = document.getElementsByClassName('box')[0],
+    $boxTwo = $('.box:eq(1)');
+
+document.getElementsByClassName('toggleButton')[0].onclick = function() {
+  if(this.innerHTML === 'Play') 
+  { 
+    var rootBlock = null;
+    var secBlock = null;
+
+    var blocks = Blockly.mainWorkspace.getTopBlocks(false);
+    for (var i = 0, block; i < blocks.length; i++) {
+      block = blocks[i];
+      console.log(blocks.length + "dicks");
+      if (block.type == 'linkbot_drive_distance') {
+        rootBlock = block;
+      }
+      //if (block.type == 'linkbot_turn') {
+        //secBlock = block;
+      //}
+    }
+    for (var i = 0, block; block = blocks[i]; i++) {
+      if (block.type == 'linkbot_drive') {
+        rootBlock = block;
+        break;
+      }
+      //if (block.type == 'linkbot_turn') {
+        //secBlock = block;
+      //}
+    }
+    //dis is the input from the puzzle
+    var $dis2 = (round(rootBlock.getFieldValue('distance'))*25)  + round(60);
+    var $dis = (round(rootBlock.getFieldValue('distance'))*25)+ round(30);
+    $robotime = (round(rootBlock.getFieldValue('distance'))*25)/500;
+    boxOne.id = 'horizTranslate';
+    $('#horizTranslate').css({'-webkit-transition': $robotime+'s linear'});
+    $('#horizTranslate').css({'-moz-transition': $robotime+'s linear'});
+    $('#horizTranslate').css({'-ms-transition': $robotime+'s linear'});
+    $('#horizTranslate').css({'-o-transition': $robotime+'s linear'});
+    $('#horizTranslate').css({'transition': $robotime+'s linear'});
+    $('#horizTranslate').css({'margin-left': $dis + "px"});
+    elem = sv.getElementById("tits");
+    elem.setAttribute("d", "M 113 113 L"+ $dis2 + " 113");
+ 
+  //console.log("capacity: " + Blockly.Workspace.prototype.remainingCapacity())
+    //var block = Blockly.Workspace.prototype.getBlockById('linkbot_drive');
+    console.log("block id: " + rootBlock);
+    console.log("distance in the block: " + $dis);
+    updateStyleSheet('line');
+    //this.innerHTML = 'Pause';
+    boxOne.classList.add('horizTranslate');
+    $("#success").css({'visibility':'visible'});
+  } else {
+    this.innerHTML = 'Play';
+    var computedStyle = window.getComputedStyle(boxOne),
+        marginLeft = computedStyle.getPropertyValue('margin-left');
+    boxOne.style.marginLeft = marginLeft;
+    boxOne.classList.remove('horizTranslate');    
+  }  
+}
+
+$('.toggleButton:eq(1)').on('click', function() { 
+  if($(this).html() === 'Play') 
+  {
+    $(this).html('Pause');
+    $boxTwo.addClass('horizTranslate');
+  } else {
+    $(this).html('Play');
+    var computedStyle = $boxTwo.css('margin-left');
+    $boxTwo.removeClass('horizTranslate');
+    $boxTwo.css('margin-left', computedStyle);
+  }  
+});
+  </script>
+
+  <script type="text/javascript">
+  document.getElementsByClassName('resetButton')[0].onclick = function(){
+    updateStyleSheet('nothing');
+    elem = sv.getElementById("tits");
+    $("#success").css({'visibility':'hidden'});
+    $('#horizTranslate').css({'margin-left': 0 + "px"});
+  }
+  </script>
+
+  <script>
+  //function to change style sheet
+    function updateStyleSheet(filename) {
+ 
+    // Create the CSS file name:
+ 
+    newstylesheet = "style_" + filename + ".css";
+ 
+    // Does the <link> tag (with id:dynamic_css) exist?
+    // If not, we need to create it.
+ 
+    if ($("#dynamic_css").length == 0) {
+ 
+        // The next line will add the
+        // <link> tag between the
+        // <head> tags.
+ 
+        $("head").append("<link>")
+ 
+        // The next line will select the
+        // <link> element you just added.
+ 
+        css = $("head").children(":last");
+ 
+        // The next line will set the
+        // attributes of the elements
+        // to make it load the CSS file.
+ 
+        css.attr({
+          id: "dynamic_css",
+          rel:  "stylesheet",
+          type: "text/css",
+          href: newstylesheet
+        });
+
+        //$("#tits").css({'visibility':'visible'});
+ 
+    // If the <link> element already exists, we
+    // simply need to change the value of "href". 
+ 
+    } else {
+        $("#dynamic_css").attr("href",newstylesheet);
+    }
+ 
+}
+  </script>
+
+
+
+
+  <script>
+  var elem;
+  var sv = document.getElementById("mysvg");
+  console.log("ass");
+  console.log(sv);
+  console.log("balls")
+  //var sdoc = sv.getSVGDocument();
+  console.log(sv);
+  </script>
+  <div id="horizTranslate" style="visibility:hidden"></div>
+</body>
+</html>
