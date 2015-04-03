@@ -8,100 +8,84 @@
   <script src="/storage.js"></script>
   <script src="../../blockly_compressed.js"></script>
   <script src="../../blocks_compressed.js"></script>
-  <script src="../../javascript_compressed.js"></script>
-  <script src="../../python_compressed.js"></script>
   <script src="../../ch_compressed.js"></script>
-  <script src="code.js"></script>
-  <script> var a = require('../../generators/ch/linkbot.js')();</script>
+  <script src="../../cpp_compressed.js"></script>
   <script src="../../core/workspace.js"></script>
   <script src="../../generators/ch/linkbot.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Dosis:300,400,800' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Arbutus+Slab' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'> 
+  <script src="../../generators/cpp/linkbot.js"></script>
+  <script src="code.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-</head>
-<style type="text/css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-html{
-  /*overflow: scroll;*/
-}
-
-#content{
-    background-color: #4E6E39;
-    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%,  transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent);
-  background-size:50px 50px;
-}
-body {
-  margin: 0;
-  padding: 0;
-    
-    
-}
-  .box {
-  margin: 30px;
-  height: 50px;
-  width: 50px;
-}
-#horizTranslate {
-}
-
-</style>
-<body>
-<!-- linkbot: 1.5 1.75 2  lego: 1.1 1.61 inches-->
-  <table width="100%" height="50%">
-    <tr>
-      <td>
-        <h1><a href="https://developers.google.com/blockly/">Blockly</a> &gt;
-          <span id="title">...</span>
-        </h1>
-      </td>
-      <td class="farSide">
-        <select id="languageMenu"></select>
-      </td>
-    </tr>
-
-    <script src="./jquery/dist/jquery.js"></script>
-    <div style="background-color:#CCC; height:25px; font-family:Dosis; font-weight: 800;">Lesson 1</div>
-    <div id="content" style="height:50%">
-<div style="position:absolute; z-index:1; " class='box'><img src="./img/minds_Transparent.png"></div> 
-<svg id="mysvg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     width="100%" height="333px" viewBox="0 0 100% 333" enable-background="new 0 0 100% 333" xml:space="preserve">
-
-  <path id="tits" style="visibility:hidden" class="path" fill="#FFFFFF" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M 0 10 L 200 10"/>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   
-</svg>
-</div>
-<button class='toggleButton' value='play'>Play</button>
-<button class='resetButton' value='reset'>Reset</button>
-<button id='settingsButton'>Settings</button>
-<a href="./movedown.html"><button id='lessonButton'>Next Lesson</button>
-</a>
-<h3 style="PADDING-RIGHT: 4%; PADDING-LEFT: 4%; margin-left:150px; margin-top:-20px; display:inline;"><img src="./img/minds_Transparent.png">
-      <strong style="font-family:Sanchez;">Hi! I'm Lego Mindstorm. Help me create a single line.</strong>
-    </h3>
-    <h1 id="success" style="visibility:hidden; margin-left:25px; font-family:Dosis; font-weight: 800; font-size:70px; color:green; display:inline;">SUCCESS</h1>
+  <nav class="navbar navbar-default">
+  <div style="background-color:#00ADBC; color:#FFF;" class="container-fluid">
+    <div style="background-color:#00ADBC; color:#FFF;" class="navbar-header">
+      <a style="background-color:#00ADBC; color:#FFF;" class="navbar-brand" href="#">
+        <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
+        Robot Coding Lessons
+      </a>
+    </div>
+  </div>
+</nav>
+<style>
+  #horizTranslate {
+  }
+</style>
+</head>
+<body>
+  <h1 style="visibility:hidden;"><a href="https://developers.google.com/blockly/">Blockly</a> &gt;
+    <a href="../index.html">Demos</a> &gt; Fixed Blockly</h1>
+
+  <div class="row">
+
+    <div style="margin-left:10px;" class="col-md-5">
+    <div style="position:absolute; z-index:1; " class='box'><img src="./img/minds_Transparent.png"></div> 
+
+      <div id= "grid" style="width:100%; height:480px; float:left; background-color:#00FFFF">
+       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+         <defs>
+           <pattern id="smallGrid" width="16" height="16" patternUnits="userSpaceOnUse">
+             <path d="M 16 0 L 0 0 0 16" fill="none" stroke="gray" stroke-width=".5"/>
+           </pattern>
+           <pattern id="grid" width="160" height="160" patternUnits="userSpaceOnUse">
+             <rect width="160" height="160" fill="url(#smallGrid)"/>
+             <path d="M 160 0 L 0 0 0 160" fill="none" stroke="gray" stroke-width="1"/>
+           </pattern>
+         </defs>
+
+         <rect width="100%" height="100%" fill="url(#grid)" />
+       </svg>
+      </div>
+    </div>
+    <div class="col-md-6">
+    <table width="100%" height="100%">
+    
     <tr>
       <td colspan=2>
         <table width="100%">
-          <tr id="tabRow" height="1em">
-            <td id="tab_blocks" class="tabon">...</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_javascript" class="taboff">JavaScript</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_python" class="taboff">Python</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_ch" class="taboff">Ch</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_xml" class="taboff">XML</td>
+          <tr style="background-color:#7665A0;" id="tabRow" height="1em">
+            <td style="background-color:#7665A0;" id="tab_blocks" class="tabon">Blocks</td>
+            <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
+            <td style="background-color:#7665A0;" id="tab_ch" class="taboff">ch</td>
+            <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
+            <td style="background-color:#7665A0;" id="tab_cpp" class="taboff">cpp</td>
+            <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
             <td class="tabmax">
-              <button id="trashButton" class="notext" title="...">
+              <button style="margin-top:5px;" id="trashButton"  title="...">
                 <img src='../../media/1x1.gif' class="trash icon21">
               </button>
               <button id="linkButton" class="notext" title="...">
                 <img src='../../media/1x1.gif' class="link icon21">
               </button>
-              <button style="visibility:hidden" id="runButton" class="notext primary" title="...">
-                <img src='../../media/1x1.gif' class="run icon21">
+              
+              <button style="margin-bottom:5px; width:35spx; height:27px;" class='toggleButton' value='play'><img src='../../media/1x1.gif' class="run icon21">
               </button>
             </td>
           </tr>
@@ -114,237 +98,40 @@ body {
     </tr>
   </table>
   <div id="content_blocks" class="content"></div>
-  <pre id="content_javascript" class="content"></pre>
-  <pre id="content_python" class="content"></pre>
   <pre id="content_ch" class="content"></pre>
+  <pre id="content_cpp" class="content"></pre>
   <textarea id="content_xml" class="content" wrap="off"></textarea>
-
+      <div id="blocklyDiv" style="height: 449px; width: 100%;"></div>
+    </div>
+  </div>
   <xml id="toolbox" style="display: none">
-    <category id="catLogic">
-      <block type="controls_if"></block>
-      <block type="logic_compare"></block>
-      <block type="logic_operation"></block>
-      <block type="logic_negate"></block>
-      <block type="logic_boolean"></block>
-      <block type="logic_null"></block>
-      <block type="logic_ternary"></block>
-    </category>
-    <category id="catLoops">
-      <block type="controls_repeat_ext">
-        <value name="TIMES">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="controls_whileUntil"></block>
-      <block type="controls_for">
-        <value name="FROM">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="TO">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-        <value name="BY">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
-      <block type="controls_forEach"></block>
-      <block type="controls_flow_statements"></block>
-    </category>
-    <category id="catMath">
-      <block type="math_number"></block>
-      <block type="math_arithmetic"></block>
-      <block type="math_single"></block>
-      <block type="math_trig"></block>
-      <block type="math_constant"></block>
-      <block type="math_number_property"></block>
-      <block type="math_change">
-        <value name="DELTA">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
-      <block type="math_round"></block>
-      <block type="math_on_list"></block>
-      <block type="math_modulo"></block>
-      <block type="math_constrain">
-        <value name="LOW">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="HIGH">
-          <block type="math_number">
-            <field name="NUM">100</field>
-          </block>
-        </value>
-      </block>
-      <block type="math_random_int">
-        <value name="FROM">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="TO">
-          <block type="math_number">
-            <field name="NUM">100</field>
-          </block>
-        </value>
-      </block>
-      <block type="math_random_float"></block>
-    </category>
-    <category id="catText">
-      <block type="text"></block>
-      <block type="text_join"></block>
-      <block type="text_append">
-        <value name="TEXT">
-          <block type="text"></block>
-        </value>
-      </block>
-      <block type="text_length"></block>
-      <block type="text_isEmpty"></block>
-      <block type="text_indexOf">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR" class="textVar">...</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_charAt">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR" class="textVar">...</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_getSubstring">
-        <value name="STRING">
-          <block type="variables_get">
-            <field name="VAR" class="textVar">...</field>
-          </block>
-        </value>
-      </block>
-      <block type="text_changeCase"></block>
-      <block type="text_trim"></block>
-      <block type="text_print"></block>
-      <block type="text_prompt_ext">
-        <value name="TEXT">
-          <block type="text"></block>
-        </value>
-      </block>
-    </category>
-    <category id="catLists">
-      <block type="lists_create_empty"></block>
-      <block type="lists_create_with"></block>
-      <block type="lists_repeat">
-        <value name="NUM">
-          <block type="math_number">
-            <field name="NUM">5</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_length"></block>
-      <block type="lists_isEmpty"></block>
-      <block type="lists_indexOf">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR" class="listVar">...</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_getIndex">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR" class="listVar">...</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_setIndex">
-        <value name="LIST">
-          <block type="variables_get">
-            <field name="VAR" class="listVar">...</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_getSublist">
-        <value name="LIST">
-          <block type="variables_get">
-            <field name="VAR" class="listVar">...</field>
-          </block>
-        </value>
-      </block>
-      <block type="lists_split">
-        <value name="DELIM">
-          <block type="text">
-            <field name="TEXT">,</field>
-          </block>
-        </value>
-      </block>
-    </category>
-    <category id="catColour">
-      <block type="colour_picker"></block>
-      <block type="colour_random"></block>
-      <block type="colour_rgb">
-        <value name="RED">
-          <block type="math_number">
-            <field name="NUM">100</field>
-          </block>
-        </value>
-        <value name="GREEN">
-          <block type="math_number">
-            <field name="NUM">50</field>
-          </block>
-        </value>
-        <value name="BLUE">
-          <block type="math_number">
-            <field name="NUM">0</field>
-          </block>
-        </value>
-      </block>
-      <block type="colour_blend">
-        <value name="COLOUR1">
-          <block type="colour_picker">
-            <field name="COLOUR">#ff0000</field>
-          </block>
-        </value>
-        <value name="COLOUR2">
-          <block type="colour_picker">
-            <field name="COLOUR">#3333ff</field>
-          </block>
-        </value>
-        <value name="RATIO">
-          <block type="math_number">
-            <field name="NUM">0.5</field>
-          </block>
-        </value>
-      </block>
-    </category>
-    <category id="catLinkbot">
-      <block type="linkbot_drive_distance"></block>
-    </category>
-    <sep></sep>
-    <category id="catVariables" custom="VARIABLE"></category>
-    <category id="catFunctions" custom="PROCEDURE"></category>
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="controls_repeat_ext"></block>
+    <block type="math_number"></block>
+    <block type="math_arithmetic"></block>
+    <block type="text"></block>
+    <block type="text_print"></block>
+    <block type="linkbot_drive_distance"></block>
   </xml>
 
+  <script>
+    Blockly.inject(document.getElementById('blocklyDiv'),
+        {toolbox: document.getElementById('toolbox')});
+  </script>
 
-  <script type="text/javascript">
+
+
+
+
+<script type="text/javascript">
   var $robotime;
   var round = Math.round;
       var boxOne = document.getElementsByClassName('box')[0],
     $boxTwo = $('.box:eq(1)');
 
 document.getElementsByClassName('toggleButton')[0].onclick = function() {
-  if(this.innerHTML === 'Play') 
-  { 
+  
     var rootBlock = null;
     var secBlock = null;
 
@@ -390,13 +177,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     //this.innerHTML = 'Pause';
     boxOne.classList.add('horizTranslate');
     $("#success").css({'visibility':'visible'});
-  } else {
-    this.innerHTML = 'Play';
-    var computedStyle = window.getComputedStyle(boxOne),
-        marginLeft = computedStyle.getPropertyValue('margin-left');
-    boxOne.style.marginLeft = marginLeft;
-    boxOne.classList.remove('horizTranslate');    
-  }  
+   
 }
 
 $('.toggleButton:eq(1)').on('click', function() { 
@@ -482,5 +263,7 @@ $('.toggleButton:eq(1)').on('click', function() {
   console.log(sv);
   </script>
   <div id="horizTranslate" style="visibility:hidden"></div>
+
+
 </body>
 </html>
