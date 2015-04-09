@@ -36,15 +36,18 @@ Blockly.Ch['controls_repeat'] = function(block) {
   branch = Blockly.Ch.addLoopTrap(branch, block.id);
   var loopVar = Blockly.Ch.variableDB_.getDistinctName(
       'count', Blockly.Variables.NAME_TYPE);
-  var code = 'for (int ' + loopVar + ' = 0; ' +
+  var code = 'for (' + loopVar + ' = 0; ' +
       loopVar + ' < ' + repeats + '; ' +
       loopVar + '++) {\n' +
       branch + '}\n';
+  Blockly.Ch.definitions_['include_count'] =
+      'int ' + loopVar + ';\n';
   return code;
 };
 
 Blockly.Ch['controls_repeat_ext'] = function(block) {
   // Repeat n times (external number).
+  
   var repeats = Blockly.Ch.valueToCode(block, 'TIMES',
       Blockly.Ch.ORDER_ASSIGNMENT) || '0';
   var branch = Blockly.Ch.statementToCode(block, 'DO');
@@ -58,10 +61,12 @@ Blockly.Ch['controls_repeat_ext'] = function(block) {
         'repeat_end', Blockly.Variables.NAME_TYPE);
     code += 'var ' + endVar + ' = ' + repeats + ';\n';
   }
-  code += 'for (int ' + loopVar + ' = 0; ' +
+  code += 'for (' + loopVar + ' = 0; ' +
       loopVar + ' < ' + endVar + '; ' +
       loopVar + '++) {\n' +
       branch + '}\n';
+  Blockly.Ch.definitions_['include_count'] =
+      'int ' + loopVar + ';\n';
   return code;
 };
 

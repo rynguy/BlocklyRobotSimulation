@@ -58,8 +58,6 @@ Blockly.Cpp['math_arithmetic'] = function(block) {
   var code;
   // Power in Cpp requires a special case since it has no operator.
   if (!operator) {
-    Blockly.Cpp.definitions_['include_ch_math'] =
-      '#include <math.h>';
     code = 'pow(' + argument0 + ', ' + argument1 + ')';
     return [code, Blockly.Cpp.ORDER_UNARY_POSTFIX];
   }
@@ -83,8 +81,6 @@ Blockly.Cpp['math_single'] = function(block) {
     code = '-' + arg;
     return [code, Blockly.Cpp.ORDER_UNARY_PREFIX];
   }
-  Blockly.Cpp.definitions_['include_ch_math'] =
-    '#include <math.h>';
   if (operator == 'ABS' || operator.substring(0, 5) == 'ROUND') {
     arg = Blockly.Cpp.valueToCode(block, 'NUM',
         Blockly.Cpp.ORDER_UNARY_POSTFIX) || '0';
@@ -168,11 +164,6 @@ Blockly.Cpp['math_constant'] = function(block) {
     'INFINITY': ['INFINITY', Blockly.Cpp.ORDER_ATOMIC]
   };
   var constant = block.getFieldValue('CONSTANT');
-  if (constant != 'INFINITY') {
-    Blockly.Cpp.definitions_['include_ch_math'] =
-      '#include <math.h>';
-
-  }
   return CONSTANTS[constant];
 };
 
@@ -188,8 +179,6 @@ Blockly.Cpp['math_number_property'] = function(block) {
   var code;
   if (dropdown_property == 'PRIME') {
     // Prime is a special case as it is not a one-liner test.
-    Blockly.Cpp.definitions_['include_ch_math'] =
-      '#include <math.h>';
 
     var functionName = Blockly.Cpp.provideFunction_(
         'math_isPrime',
@@ -277,8 +266,6 @@ Blockly.Cpp['math_on_list'] = function(block) {
       code = functionName + '(' + list + ')';
       break;
     case 'MIN':
-      Blockly.Cpp.definitions_['include_ch_math'] =
-        '#include <math.h>';
       var functionName = Blockly.Cpp.provideFunction_(
           'math_min',
           [ 'num ' + Blockly.Cpp.FUNCTION_NAME_PLACEHOLDER_ +
@@ -292,8 +279,6 @@ Blockly.Cpp['math_on_list'] = function(block) {
       code = functionName + '(' + list + ')';
       break;
     case 'MAX':
-      Blockly.Cpp.definitions_['include_ch_math'] =
-        '#include <math.h>';
       var functionName = Blockly.Cpp.provideFunction_(
           'math_max',
           [ 'num ' + Blockly.Cpp.FUNCTION_NAME_PLACEHOLDER_ +
@@ -346,8 +331,6 @@ Blockly.Cpp['math_on_list'] = function(block) {
       code = functionName + '(' + list + ')';
       break;
     case 'MODE':
-      Blockly.Cpp.definitions_['include_ch_math'] =
-        '#include <math.h>';
 
       // As a list of numbers can contain more than one mode,
       // the returned result is provided as an array.
@@ -386,8 +369,6 @@ Blockly.Cpp['math_on_list'] = function(block) {
       code = functionName + '(' + list + ')';
       break;
     case 'STD_DEV':
-      Blockly.Cpp.definitions_['include_ch_math'] =
-        '#include <math.h>';
       var functionName = Blockly.Cpp.provideFunction_(
           'math_standard_deviation',
           [ 'num ' + Blockly.Cpp.FUNCTION_NAME_PLACEHOLDER_ +
@@ -408,8 +389,6 @@ Blockly.Cpp['math_on_list'] = function(block) {
       code = functionName + '(' + list + ')';
       break;
     case 'RANDOM':
-      Blockly.Cpp.definitions_['include_ch_math'] =
-        '#include <math.h>';
       var functionName = Blockly.Cpp.provideFunction_(
           'math_random_item',
           [ 'dynamic ' + Blockly.Cpp.FUNCTION_NAME_PLACEHOLDER_ +
@@ -437,8 +416,6 @@ Blockly.Cpp['math_modulo'] = function(block) {
 
 Blockly.Cpp['math_constrain'] = function(block) {
   // Constrain a number between two limits.
-  Blockly.Cpp.definitions_['include_ch_math'] =
-      '#include <math.h>';
   var argument0 = Blockly.Cpp.valueToCode(block, 'VALUE',
       Blockly.Cpp.ORDER_NONE) || '0';
   var argument1 = Blockly.Cpp.valueToCode(block, 'LOW',
@@ -452,8 +429,6 @@ Blockly.Cpp['math_constrain'] = function(block) {
 
 Blockly.Cpp['math_random_int'] = function(block) {
   // Random integer between [X] and [Y].
-  Blockly.Cpp.definitions_['include_ch_math'] =
-      '#include <math.h>';
   var argument0 = Blockly.Cpp.valueToCode(block, 'FROM',
       Blockly.Cpp.ORDER_NONE) || '0';
   var argument1 = Blockly.Cpp.valueToCode(block, 'TO',
@@ -475,7 +450,5 @@ Blockly.Cpp['math_random_int'] = function(block) {
 
 Blockly.Cpp['math_random_float'] = function(block) {
   // Random fraction between 0 and 1.
-  Blockly.Cpp.definitions_['include_ch_math'] =
-      '#include <math.h>';
   return ['(float)rand()/(float)(RAND_MAX);', Blockly.Cpp.ORDER_UNARY_POSTFIX];
 };

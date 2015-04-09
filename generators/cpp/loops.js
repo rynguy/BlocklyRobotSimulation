@@ -36,15 +36,18 @@ Blockly.Cpp['controls_repeat'] = function(block) {
   branch = Blockly.Cpp.addLoopTrap(branch, block.id);
   var loopVar = Blockly.Cpp.variableDB_.getDistinctName(
       'count', Blockly.Variables.NAME_TYPE);
-  var code = 'for (int ' + loopVar + ' = 0; ' +
+  var code = 'for (' + loopVar + ' = 0; ' +
       loopVar + ' < ' + repeats + '; ' +
       loopVar + '++) {\n' +
       branch + '}\n';
+  Blockly.Cpp.definitions_['include_count'] =
+      'int ' + loopVar + ';\n';
   return code;
 };
 
 Blockly.Cpp['controls_repeat_ext'] = function(block) {
   // Repeat n times (external number).
+  
   var repeats = Blockly.Cpp.valueToCode(block, 'TIMES',
       Blockly.Cpp.ORDER_ASSIGNMENT) || '0';
   var branch = Blockly.Cpp.statementToCode(block, 'DO');
@@ -58,10 +61,12 @@ Blockly.Cpp['controls_repeat_ext'] = function(block) {
         'repeat_end', Blockly.Variables.NAME_TYPE);
     code += 'var ' + endVar + ' = ' + repeats + ';\n';
   }
-  code += 'for (int ' + loopVar + ' = 0; ' +
+  code += 'for (' + loopVar + ' = 0; ' +
       loopVar + ' < ' + endVar + '; ' +
       loopVar + '++) {\n' +
       branch + '}\n';
+  Blockly.Cpp.definitions_['include_count'] =
+      'int ' + loopVar + ';\n';
   return code;
 };
 
