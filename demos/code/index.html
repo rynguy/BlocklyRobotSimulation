@@ -23,14 +23,37 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  
-  <nav class="navbar navbar-default">
-  <div style="background-color:#00ADBC; color:#FFF;" class="container-fluid">
-    <div style="background-color:#00ADBC; color:#FFF;" class="navbar-header">
-      <a style="background-color:#00ADBC; color:#FFF;" class="navbar-brand" href="#">
-        <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
-        Robot Coding Lessons 
-<nav>
+
+  <style>
+  #horizTranslate {
+  }
+
+  .navbar .nav,
+  .navbar .nav > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    *zoom:1; /* hasLayout ie7 trigger */
+    vertical-align: top;
+  }
+
+  .navbar-inner {
+    text-align:center;
+  }
+
+  #numNav{
+    
+  }
+</style>
+
+ 
+</head>
+<nav class="navbar">
+ <div align="center" style="background-color:#00ADBC; color:#FFF;" class="container-fluid">
+   <div align="center" style="background-color:#00ADBC; color:#FFF;" class="navbar-header">
+       <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
+       Robot Coding Lessons 
+<nav id="numNav">
   <ul class="pager">
     <li><a href="#">1</a></li>
     <li><a href="#">2</a></li>
@@ -39,16 +62,10 @@
     <li><a href="#">5</a></li>
   </ul>
 </nav>
-      </a>
     </div>
   </div>
 </nav>
-<style>
-  #horizTranslate {
-  }
-</style>
-</head>
-<body>
+<body style="overflow:scroll">
   <h1 style="visibility:hidden;"><a href="https://developers.google.com/blockly/">Blockly</a> &gt;
     <a href="../index.html">Demos</a> &gt; Fixed Blockly</h1>
 
@@ -60,12 +77,12 @@
       <div id= "grid" style="width:100%; height:480px; float:left; background-color:#00FFFF">
        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
          <defs>
-           <pattern id="smallGrid" width="16" height="16" patternUnits="userSpaceOnUse">
-             <path d="M 16 0 L 0 0 0 16" fill="none" stroke="gray" stroke-width=".5"/>
+           <pattern id="smallGrid" width="15" height="15" patternUnits="userSpaceOnUse">
+             <path d="M 15 0 L 0 0 0 15" fill="none" stroke="gray" stroke-width="1"/>
            </pattern>
-           <pattern id="grid" width="160" height="160" patternUnits="userSpaceOnUse">
-             <rect width="160" height="160" fill="url(#smallGrid)"/>
-             <path d="M 160 0 L 0 0 0 160" fill="none" stroke="gray" stroke-width="1"/>
+           <pattern id="grid" width="180" height="180" patternUnits="userSpaceOnUse">
+             <rect width="180" height="180" fill="url(#smallGrid)"/>
+             <path d="M 180 0 L 0 0 0 180" fill="none" stroke="black" stroke-width="4"/>
            </pattern>
          </defs>
 
@@ -79,22 +96,18 @@
     <tr>
       <td colspan=2>
         <table width="100%">
-          <tr style="background-color:#7665A0;" id="tabRow" height="1em">
-            <td style="background-color:#7665A0;" id="tab_blocks" class="tabon">Blocks</td>
-            <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
-            <td style="background-color:#7665A0;" id="tab_ch" class="taboff">ch</td>
-            <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
-            <td style="background-color:#7665A0;" id="tab_cpp" class="taboff">cpp</td>
+          <tr style="background-color:#7665A0; color:#FFF;" id="tabRow" height="1em">
+            <td style="background-color:#7665A0; color:#FFF;" id="tab_blocks" class="tabon">Blocks</td>
+            <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
+            <td style="background-color:#7665A0; color:#FFF;" id="tab_ch" class="taboff">ch</td>
+            <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
+            <td style="background-color:#7665A0; color:#FFF;" id="tab_cpp" class="taboff">cpp</td>
             <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
             <td class="tabmax">
-              <button style="margin-top:5px;" id="trashButton"  title="...">
+              <button style="margin-top:5px; border:none;" id="trashButton">
                 <img src='../../media/1x1.gif' class="trash icon21">
               </button>
-              <button id="linkButton" class="notext" title="...">
-                <img src='../../media/1x1.gif' class="link icon21">
-              </button>
-              
-              <button style="margin-bottom:5px; width:35spx; height:27px;" class='toggleButton' value='play'><img src='../../media/1x1.gif' class="run icon21">
+              <button style="margin-bottom:5px; width:34spx; height:25px; background-color:red; color:white; border:none;" class='toggleButton' value='play'><span style="height:21px">Run</span>
               </button>
             </td>
           </tr>
@@ -281,6 +294,13 @@ $('.toggleButton:eq(1)').on('click', function() {
   </script>
   <div id="horizTranslate" style="visibility:hidden"></div>
 
-
+  <script>
+  var w = ($( window ).width())/2.5;
+ $( window ).resize(function() {
+   w = ($( window ).width())/2.5;
+   console.log(w + 'tits')
+   $("#numNav").css({'margin-left':w});
+ });
+</script>
 </body>
 </html>
