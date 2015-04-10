@@ -51,17 +51,17 @@
  
 </head>
 <nav class="navbar">
- <div align="center" style="background-color:#00ADBC; color:#FFF;" class="container-fluid">
-   <div align="center" style="background-color:#00ADBC; color:#FFF;" class="navbar-header">
+ <div align="center" style="background-color:#C99700; color:#113661;" class="container-fluid">
+   <div align="center" style="background-color:#C99700; color:#113661;" class="navbar-header">
        <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
        Robot Coding Lessons 
 <nav id="numNav">
   <ul class="pager">
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+    <li><a href="./index.html">1</a></li>
+    <li><a href="./lsn2.html">2</a></li>
+    <li><a href="./lsn3.html">3</a></li>
+    <li><a href="./lsn4.html">4</a></li>
+    <li><a href="./lsn5.html">5</a></li>
   </ul>
 </nav>
     </div>
@@ -76,7 +76,7 @@
     <div style="margin-left:10px;" class="col-md-5">
     <div style="position:absolute; z-index:1; " class='box'><img src="./img/minds_Transparent.png"></div> 
 
-      <div id= "grid" style="width:100%; height:480px; float:left; background-color:#00FFFF">
+      <div id= "grid" style="width:100%; height:480px; float:left; background-color:#002855">
        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
          <defs>
            <pattern id="smallGrid" width="15" height="15" patternUnits="userSpaceOnUse">
@@ -84,7 +84,7 @@
            </pattern>
            <pattern id="grid" width="180" height="180" patternUnits="userSpaceOnUse">
              <rect width="180" height="180" fill="url(#smallGrid)"/>
-             <path d="M 180 0 L 0 0 0 180" fill="none" stroke="black" stroke-width="4"/>
+             <path d="M 180 0 L 0 0 0 180" fill="none" stroke="#C99700" stroke-width="4"/>
            </pattern>
          </defs>
 
@@ -98,18 +98,20 @@
     <tr>
       <td colspan=2>
         <table width="100%">
-          <tr style="background-color:#7665A0; color:#FFF;" id="tabRow" height="1em">
-            <td style="background-color:#7665A0; color:#FFF;" id="tab_blocks" class="tabon">Blocks</td>
+          <tr style="background-color:#335379; color:#FFF;" id="tabRow" height="1em">
+            <td style="background-color:#335379; color:#FFF;" id="tab_blocks" class="tabon">Blocks</td>
             <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
-            <td style="background-color:#7665A0; color:#FFF;" id="tab_ch" class="taboff">ch</td>
+            <td style="background-color:#335379; color:#FFF;" id="tab_ch" class="taboff">ch</td>
             <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
-            <td style="background-color:#7665A0; color:#FFF;" id="tab_cpp" class="taboff">cpp</td>
+            <td style="background-color:#335379; color:#FFF;" id="tab_cpp" class="taboff">cpp</td>
             <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
             <td class="tabmax">
-              <button style="margin-top:5px; border:none;" id="trashButton">
+              <button style="margin-top:5px; border:none; background-color:#C99700;" id="trashButton">
                 <img src='../../media/1x1.gif' class="trash icon21">
               </button>
-              <button style="margin-bottom:5px; width:34spx; height:25px; background-color:red; color:white; border:none;" class='toggleButton' value='play'><span style="height:21px">Run</span>
+              <button id="reset" style="margin-bottom:5px; width:34spx; height:25px; background-color:#C99700; color:white; border:none;" class='resetButton' value='play'><span style="height:21px">Reset</span>
+              </button>
+              <button style="margin-bottom:5px; width:34spx; height:25px; background-color:#C99700; color:white; border:none;" class='toggleButton' value='play'><span style="height:21px">Run</span>
               </button>
             </td>
           </tr>
@@ -132,7 +134,7 @@
     <div class="col-md-6">
       <h3 style="PADDING-RIGHT: 4%; margin-top:-20px; display:inline;"><img src="./img/minds_Transparent.png">
         <strong style="font-family:Sanchez;">
-          Hey again! Can you help me make a square?
+          Hey there! Can you help me move down?
         </strong>
       </h3>
   </div>
@@ -340,12 +342,13 @@ $('.toggleButton:eq(1)').on('click', function() {
   </script>
 
   <script type="text/javascript">
-  /*document.getElementsByClassName('resetButton')[0].onclick = function(){
-    updateStyleSheet('nothing');
-    elem = sv.getElementById("tits");
-    $("#success").css({'visibility':'hidden'});
+  document.getElementsByClassName('resetButton')[0].onclick = function(){
+    //updateStyleSheet('nothing');
+    //elem = sv.getElementById("tits");
+    //$("#success").css({'visibility':'hidden'});
+    $('#horizTranslate').css({'margin-top': 0 + "px"});
     $('#horizTranslate').css({'margin-left': 0 + "px"});
-  }*/
+  }
   </script>
 
   <script>
