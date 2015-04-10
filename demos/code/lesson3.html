@@ -299,13 +299,26 @@ function drive(x, y, robotime){
       console.log(' 2oldx' + oldx);
     }
     else{
-      console.log('leftssss ' + $('#horizTranslate').css('margin-left'));
-      console.log('topssss ' + $('#horizTranslate').css('margin-top'));
+      console.log('leftssss ' + Math.floor(parseInt($('#horizTranslate').css('margin-left'))));
+      console.log('topssss ' + Math.floor(parseInt($('#horizTranslate').css('margin-top'))));
       //console.log(' x' + x);
-      console.log(' oldy ' + oldy);
+      console.log(' oldy ' + Math.floor(oldy));
       console.log('oldx ' + oldx)
       console.log(' dicks');
-      $('#horizTranslate').css({'margin-top': -y + "px"});
+      if (y>0 && oldx>0) {
+        console.log('comon');
+        y=(-oldy);
+      }
+      else if(y>0){
+        y=oldy - oldy
+      }
+      if(Math.floor(Math.abs(oldy)) == Math.floor(parseInt($('#horizTranslate').css('margin-top')))){
+        $('#horizTranslate').css({'margin-top': -(2*y) + "px"});
+      }
+      else{
+        console.log('blah')
+        $('#horizTranslate').css({'margin-top': -y + "px"});
+      }
       $('#horizTranslate').css({'margin-left': x + "px"});
     }
     
