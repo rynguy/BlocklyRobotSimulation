@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Make a box -->
+  <meta charset="utf-8">
+  <meta name="google" value="notranslate">
+  <title>Blockly Demo:</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/storage.js"></script>
+  <script src="../../blockly_compressed.js"></script>
+  <script src="../../blocks_compressed.js"></script>
+  <script src="../../ch_compressed.js"></script>
+  <script src="../../cpp_compressed.js"></script>
+  <script src="../../core/workspace.js"></script>
+  <script src="../../generators/ch/linkbot.js"></script>
+  <script src="../../generators/cpp/linkbot.js"></script>
+  <script src="codeorig.js"></script>
+  <script src="./jquery/dist/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
+
+  <style>
+  #horizTranslate {
+  }
+
+  .navbar .nav,
+  .navbar .nav > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    *zoom:1; /* hasLayout ie7 trigger */
+    vertical-align: top;
+  }
+
+  .navbar-inner {
+    text-align:center;
+  }
+
+  #numNav{
+    
+  }
+</style>
+
+ 
+</head>
+<nav class="navbar">
+ <div align="center" style="background-color:#C99700; color:#113661;" class="container-fluid">
+   <div align="center" style="background-color:#C99700; color:#113661;" class="navbar-header">
+       <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
+       Robot Coding Lessons 
+<nav id="numNav">
+  <ul class="pager">
+    <li><a href="./index.html">1</a></li>
+    <li><a href="./lsn2.html">2</a></li>
+    <li><a href="./lsn3.html">3</a></li>
+    <li><a href="./lsn4.html">4</a></li>
+    <li><a href="./lsn5.html">5</a></li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</nav>
+<body style="overflow:scroll">
+  <h1 style="visibility:hidden;"><a href="https://developers.google.com/blockly/">Blockly</a> &gt;
+    <a href="../index.html">Demos</a> &gt; Fixed Blockly</h1>
+
+  <div class="row">
+
+    <div style="margin-left:10px;" class="col-md-5">
+    <div style="position:absolute; z-index:1; " class='box'><img src="./img/minds_Transparent.png"></div> 
+
+      <div id= "grid" style="width:100%; height:480px; float:left; background-color:#002855">
+       <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+         <defs>
+           <pattern id="smallGrid" width="15" height="15" patternUnits="userSpaceOnUse">
+             <path d="M 15 0 L 0 0 0 15" fill="none" stroke="gray" stroke-width="1"/>
+           </pattern>
+           <pattern id="grid" width="180" height="180" patternUnits="userSpaceOnUse">
+             <rect width="180" height="180" fill="url(#smallGrid)"/>
+             <path d="M 180 0 L 0 0 0 180" fill="none" stroke="#C99700" stroke-width="4"/>
+           </pattern>
+         </defs>
+
+         <rect width="100%" height="100%" fill="url(#grid)" />
+       </svg>
+      </div>
+    </div>
+    <div class="col-md-6">
+    <table width="100%" height="100%">
+    
+    <tr>
+      <td colspan=2>
+        <table width="100%">
+          <tr style="background-color:#335379; color:#FFF;" id="tabRow" height="1em">
+            <td style="background-color:#335379; color:#FFF;" id="tab_blocks" class="tabon">Blocks</td>
+            <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
+            <td style="background-color:#335379; color:#FFF;" id="tab_ch" class="taboff">ch</td>
+            <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
+            <td style="background-color:#335379; color:#FFF;" id="tab_cpp" class="taboff">cpp</td>
+            <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
+            <td class="tabmax">
+              <button style="margin-top:5px; border:none; background-color:#C99700;" id="trashButton">
+                <img src='../../media/1x1.gif' class="trash icon21">
+              </button>
+              <button id="reset" style="margin-bottom:5px; width:34spx; height:25px; background-color:#C99700; color:white; border:none;" class='resetButton' value='play'><span style="height:21px">Reset</span>
+              </button>
+              <button style="margin-bottom:5px; width:34spx; height:25px; background-color:#C99700; color:white; border:none;" class='toggleButton' value='play'><span style="height:21px">Run</span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height="99%" colspan=2 id="content_area">
+      </td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_ch" class="content"></pre>
+  <pre id="content_cpp" class="content"></pre>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+      <div id="blocklyDiv" style="height: 449px; width: 100%;"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 style="PADDING-RIGHT: 4%; margin-top:-20px; display:inline;"><img src="./img/minds_Transparent.png">
+        <strong style="font-family:Sanchez;">
+          Hey again! Can you help me make a square?
+        </strong>
+      </h3>
+  </div>
+  <xml id="toolbox" style="display: none">
+    <block type="linkbot_drive_distance_in"></block>
+    <block type="linkbot_turn_in"></block>
+  </xml>
+
+  <script>
+    Blockly.inject(document.getElementById('blocklyDiv'),
+        {toolbox: document.getElementById('toolbox')});
+  </script>
+
+
+
+
+
+  <script type="text/javascript">
+  var round = Math.round;
+      var boxOne = document.getElementsByClassName('box')[0],
+    $boxTwo = $('.box:eq(1)');
+    boxOne.classList.add('horizTranslate');
+    boxOne.id = 'horizTranslate';
+
+document.getElementsByClassName('toggleButton')[0].onclick = function() {
+    var robotime = 0;
+    var rootBlock = null;
+    var driveBlock = null;
+    var angleBlock = null;
+    var x = 0;
+    var y = 0;
+    var a = 0;
+    var b = 0;
+    var angle = 0;
+    var dis2 = 0;
+    var dis = 0;
+
+    var blocks = Blockly.mainWorkspace.getTopBlocks(false);
+    var childBlocks = null;
+    rootBlock = blocks[0];
+    
+    //for (var i = 0, block; block = blocks[i]; i++) {
+    if (rootBlock.type == 'linkbot_drive_distance_in') {
+
+        driveBlock = rootBlock;
+        dis2 = (round(driveBlock.getFieldValue('distance'))*25);
+        dis = (round(driveBlock.getFieldValue('distance'))*25);
+        //dis 1 x y coords for robot 
+        x = dis * Math.cos(angle) + round(30)* Math.cos(angle);
+        y = dis * Math.sin(angle);
+        //dis 2 x y  coords for line
+        a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
+        b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
+      
+        robotime = (round(driveBlock.getFieldValue('distance'))*25)/500;
+        console.log('dis x' + x)
+        drive(x,y,robotime);
+    }//if first is drive
+    if (rootBlock.type == 'linkbot_turn_in') {
+      angleBlock = rootBlock;
+      angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+    }//if first is turn
+    var i = 0;
+    childBlocks = rootBlock.getChildren();
+    console.log('child ' + childBlocks.length);
+    console.log('#####################################')
+    if(childBlocks.length > 0){
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks)}, 1000);
+    }//if only one block
+    //dis is the input from the puzzle
+
+
+    /*elem = sv.getElementById("tits");
+    if(a<0) {
+      if(b<0)
+        elem.setAttribute("d", "M 63 63 L" + -a + -b);
+      else
+        elem.setAttribute("d", "M 63 63 L" + -a + b);
+    }
+    else {
+      if(b<0)
+        elem.setAttribute("d", "M 63 63 L" + a + -b);
+      else
+        elem.setAttribute("d", "M 63 63 L" + a + b);
+    }*/
+
+    
+    
+console.log("distance in the block: " + dis);
+ 
+  //console.log("capacity: " + Blockly.Workspace.prototype.remainingCapacity())
+    //var block = Blockly.Workspace.prototype.getBlockById('linkbot_drive');
+    /*console.log("block id: " + rootBlock);
+    console.log("distance in the block: " + dis);
+    updateStyleSheet('line');
+    //this.innerHTML = 'Pause';
+    boxOne.classList.add('horizTranslate');
+    $("#success").css({'visibility':'visible'});*/
+}
+function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks){
+        console.log('i ' + i);
+        console.log('angle ' + angle);
+        block = childBlocks[0];
+        console.log('i ' + i);
+        console.log('child ' + childBlocks.length);
+        if (block.type == 'linkbot_drive_distance_in') {
+          driveBlock = block;
+          dis2 = (round(driveBlock.getFieldValue('distance'))*25);
+          dis = (round(driveBlock.getFieldValue('distance'))*25);
+          //dis 1 x y coords for robot 
+          console.log('angtle ' + angle)
+          x = dis * Math.cos(angle) + round(30)* Math.cos(angle);
+          y = dis * Math.sin(angle);
+          //dis 2 x y  coords for line
+          a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
+          b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
+        
+          robotime = (round(driveBlock.getFieldValue('distance'))*25)/500;
+
+          drive(x,y,robotime);
+        }//if drive
+        if (block.type == 'linkbot_turn_in') {
+          angleBlock = block;
+          angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+        }//if turn
+          childBlocks = block.getChildren();
+      if(childBlocks.length > 0){
+        i = i + 1;
+        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks)}, 1000);
+    }//if only one block
+    }
+//Drive funtion
+function drive(x, y, robotime){
+  console.log('nigga' + x + ' ' + x);
+  console.log('nigga' + y + ' ' + y);
+  console.log('top' + ' ' + parseInt($('#horizTranslate').css('margin-top')));
+  console.log('left' + ' ' + parseInt($('#horizTranslate').css('margin-left')));
+  var oldx = x;
+  var oldy = y;
+  x = x + parseInt($('#horizTranslate').css('margin-left'));
+  //y = y + parseInt($('#horizTranslate').css('margin-top'));
+  console.log('x ' + x);
+  console.log('y ' + y);
+  $('#horizTranslate').css({'-webkit-transition': robotime+'s linear'});
+    $('#horizTranslate').css({'-moz-transition': robotime+'s linear'});
+    $('#horizTranslate').css({'-ms-transition': robotime+'s linear'});
+    $('#horizTranslate').css({'-o-transition': robotime+'s linear'});
+    $('#horizTranslate').css({'transition': robotime+'s linear'});
+    if(oldy == 0 && oldx == 0){
+        //nonething
+      }
+    else if(Math.abs(oldy) < 1){
+      console.log('topssss ' + $('#horizTranslate').css('margin-top'));
+      console.log(' 1oldx' + oldx);
+      console.log(' 1oldy' + oldy);
+      $('#horizTranslate').css({'margin-left': x + "px"});
+    }
+    else if(Math.abs(oldx) < 1){
+      console.log('leftssss ' + $('#horizTranslate').css('margin-left'));
+      if (y>0) {y=oldy - oldy};
+      $('#horizTranslate').css({'margin-top': -y + "px"});
+      console.log(' 2oldy' + oldy);
+      console.log(' 2oldx' + oldx);
+    }
+    else{
+      console.log('leftssss ' + Math.floor(parseInt($('#horizTranslate').css('margin-left'))));
+      console.log('topssss ' + Math.floor(parseInt($('#horizTranslate').css('margin-top'))));
+      //console.log(' x' + x);
+      console.log(' oldy ' + Math.floor(oldy));
+      console.log('oldx ' + oldx)
+      console.log(' dicks');
+      if (y>0 && oldx>0) {
+        console.log('comon');
+        y=(-oldy);
+      }
+      else if(y>0){
+        y=oldy - oldy
+      }
+      if(Math.floor(Math.abs(oldy)) == Math.floor(parseInt($('#horizTranslate').css('margin-top')))){
+        $('#horizTranslate').css({'margin-top': -(2*y) + "px"});
+      }
+      else{
+        console.log('blah')
+        $('#horizTranslate').css({'margin-top': -y + "px"});
+      }
+      $('#horizTranslate').css({'margin-left': x + "px"});
+    }
+    
+      console.log('wtf');
+}//drive func
+
+$('.toggleButton:eq(1)').on('click', function() { 
+  if($(this).html() === 'Play') 
+  {
+    $(this).html('Pause');
+    $boxTwo.addClass('horizTranslate');
+  } else {
+    $(this).html('Play');
+    var computedStyle = $boxTwo.css('margin-left');
+    $boxTwo.removeClass('horizTranslate');
+    $boxTwo.css('margin-left', computedStyle);
+  }  
+});
+  </script>
+
+  <script type="text/javascript">
+  document.getElementsByClassName('resetButton')[0].onclick = function(){
+    //updateStyleSheet('nothing');
+    //elem = sv.getElementById("tits");
+    //$("#success").css({'visibility':'hidden'});
+    $('#horizTranslate').css({'margin-top': 0 + "px"});
+    $('#horizTranslate').css({'margin-left': 0 + "px"});
+  }
+  </script>
+
+  <script>
+  //function to change style sheet
+    function updateStyleSheet(filename) {
+ 
+    // Create the CSS file name:
+ 
+    newstylesheet = "style_" + filename + ".css";
+ 
+    // Does the <link> tag (with id:dynamic_css) exist?
+    // If not, we need to create it.
+ 
+    if ($("#dynamic_css").length == 0) {
+ 
+        // The next line will add the
+        // <link> tag between the
+        // <head> tags.
+ 
+        $("head").append("<link>")
+ 
+        // The next line will select the
+        // <link> element you just added.
+ 
+        css = $("head").children(":last");
+ 
+        // The next line will set the
+        // attributes of the elements
+        // to make it load the CSS file.
+ 
+        css.attr({
+          id: "dynamic_css",
+          rel:  "stylesheet",
+          type: "text/css",
+          href: newstylesheet
+        });
+
+        //$("#tits").css({'visibility':'visible'});
+ 
+    // If the <link> element already exists, we
+    // simply need to change the value of "href". 
+ 
+    } else {
+        $("#dynamic_css").attr("href",newstylesheet);
+    }
+ 
+}
+  </script>
+
+
+
+
+  <script>
+  var elem;
+  var sv = document.getElementById("mysvg");
+  console.log("ass");
+  console.log(sv);
+  console.log("balls")
+  //var sdoc = sv.getSVGDocument();
+  console.log(sv);
+  </script>
+
+  <script>
+  var w = ($( window ).width())/2.5;
+ $( window ).resize(function() {
+   w = ($( window ).width())/2.5;
+   console.log(w + 'tits')
+   $("#numNav").css({'margin-left':w});
+ });
+</script>
+</body>
+</html>
