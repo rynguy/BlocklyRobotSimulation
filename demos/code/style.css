@@ -71,7 +71,7 @@ h1 {
 }
 td.tabon {
   border-bottom-color: #ddd !important;
-  background-color: #ddd;
+  background-color: #ddd  !important;
   padding: 5px 19px;
 }
 td.taboff {
@@ -79,7 +79,7 @@ td.taboff {
   padding: 5px 19px;
 }
 td.taboff:hover {
-  background-color: #eee;
+  background-color: #eee  !important;
 }
 td.tabmin {
   border-top-style: none !important;

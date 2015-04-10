@@ -15,15 +15,16 @@
   <script src="../../generators/ch/linkbot.js"></script>
   <script src="../../generators/cpp/linkbot.js"></script>
   <script src="codeorig.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="./jquery/dist/jquery.min.js"></script>
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
 
   <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
 
   <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
 
   <style>
   #horizTranslate {
@@ -161,13 +162,13 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var rootBlock = null;
     var driveBlock = null;
     var angleBlock = null;
-    var x;
-    var y;
-    var a;
-    var b;
+    var x = 0;
+    var y = 0;
+    var a = 0;
+    var b = 0;
     var angle = 0;
-    var dis2;
-    var dis;
+    var dis2 = 0;
+    var dis = 0;
 
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
     var childBlocks = null;
@@ -273,9 +274,9 @@ function drive(x, y, robotime){
   var oldx = x;
   var oldy = y;
   x = x + parseInt($('#horizTranslate').css('margin-left'));
-  y = y + parseInt($('#horizTranslate').css('margin-top'));
-  console.log('nigga' + x + ' ' + x);
-  console.log('nigga' + y + ' ' + y);
+  //y = y + parseInt($('#horizTranslate').css('margin-top'));
+  console.log('x ' + x);
+  console.log('y ' + y);
   $('#horizTranslate').css({'-webkit-transition': robotime+'s linear'});
     $('#horizTranslate').css({'-moz-transition': robotime+'s linear'});
     $('#horizTranslate').css({'-ms-transition': robotime+'s linear'});
@@ -284,22 +285,25 @@ function drive(x, y, robotime){
     if(oldy == 0 && oldx == 0){
         //nonething
       }
-    else if(oldy == 0){
+    else if(Math.abs(oldy) < 1){
       console.log('topssss ' + $('#horizTranslate').css('margin-top'));
-      console.log(' x' + x);
+      console.log(' 1oldx' + oldx);
+      console.log(' 1oldy' + oldy);
       $('#horizTranslate').css({'margin-left': x + "px"});
     }
-    else if(oldx == 0){
+    else if(Math.abs(oldx) < 1){
       console.log('leftssss ' + $('#horizTranslate').css('margin-left'));
+      if (y>0) {y=oldy - oldy};
       $('#horizTranslate').css({'margin-top': -y + "px"});
-      console.log(' y' + y);
+      console.log(' 2oldy' + oldy);
+      console.log(' 2oldx' + oldx);
     }
     else{
       console.log('leftssss ' + $('#horizTranslate').css('margin-left'));
       console.log('topssss ' + $('#horizTranslate').css('margin-top'));
       //console.log(' x' + x);
-      console.log(' y ' + oldy);
-      console.log('x ' + oldx)
+      console.log(' oldy ' + oldy);
+      console.log('oldx ' + oldx)
       console.log(' dicks');
       $('#horizTranslate').css({'margin-top': -y + "px"});
       $('#horizTranslate').css({'margin-left': x + "px"});
