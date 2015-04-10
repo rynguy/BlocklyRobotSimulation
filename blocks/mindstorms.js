@@ -24,14 +24,14 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.linkbot');
+goog.provide('Blockly.Blocks.mindstorms');
 
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.linkbot.HUE = 290;
+Blockly.Blocks.mindstorms.HUE = 290;
 
-Blockly.Blocks['linkbot_speed_in'] = {
+Blockly.Blocks['mindstorms_speed_in'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -50,7 +50,7 @@ Blockly.Blocks['linkbot_speed_in'] = {
   }
 };
 
-Blockly.Blocks['linkbot_speed_cm'] = {
+Blockly.Blocks['mindstorms_speed_cm'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -69,7 +69,7 @@ Blockly.Blocks['linkbot_speed_cm'] = {
   }
 };
 
-Blockly.Blocks['linkbot_blink_LED'] = {
+Blockly.Blocks['mindstorms_blink_LED'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -88,7 +88,7 @@ Blockly.Blocks['linkbot_blink_LED'] = {
   }
 };
 
-Blockly.Blocks['linkbot_delay'] = {
+Blockly.Blocks['mindstorms_delay'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -104,7 +104,7 @@ Blockly.Blocks['linkbot_delay'] = {
   }
 };
 
-Blockly.Blocks['linkbot_move_joints'] = {
+Blockly.Blocks['mindstorms_move_joints'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -125,7 +125,7 @@ Blockly.Blocks['linkbot_move_joints'] = {
   }
 };
 
-Blockly.Blocks['linkbot_move_wait'] = {
+Blockly.Blocks['mindstorms_move_wait'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -137,7 +137,7 @@ Blockly.Blocks['linkbot_move_wait'] = {
   }
 };
 
-Blockly.Blocks['linkbot_turn_in'] = {
+Blockly.Blocks['mindstorms_turn_in'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -160,7 +160,7 @@ Blockly.Blocks['linkbot_turn_in'] = {
   }
 };
 
-Blockly.Blocks['linkbot_turn_cm'] = {
+Blockly.Blocks['mindstorms_turn_cm'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -183,7 +183,7 @@ Blockly.Blocks['linkbot_turn_cm'] = {
   }
 };
 
-Blockly.Blocks['linkbot_drive_distance_in'] = {
+Blockly.Blocks['mindstorms_drive_distance_in'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -202,7 +202,7 @@ Blockly.Blocks['linkbot_drive_distance_in'] = {
   }
 };
 
-Blockly.Blocks['linkbot_drive_distance_cm'] = {
+Blockly.Blocks['mindstorms_drive_distance_cm'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -221,7 +221,7 @@ Blockly.Blocks['linkbot_drive_distance_cm'] = {
   }
 };
 
-Blockly.Blocks['linkbot_drive_time'] = {
+Blockly.Blocks['mindstorms_drive_time'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -236,7 +236,7 @@ Blockly.Blocks['linkbot_drive_time'] = {
   }
 };
 
-Blockly.Blocks['linkbot_drive_angle'] = {
+Blockly.Blocks['mindstorms_drive_angle'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -251,7 +251,7 @@ Blockly.Blocks['linkbot_drive_angle'] = {
   }
 };
 
-Blockly.Blocks['linkbot_reset'] = {
+Blockly.Blocks['mindstorms_reset'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -263,7 +263,7 @@ Blockly.Blocks['linkbot_reset'] = {
   }
 };
 
-Blockly.Blocks['linkbot_turn_in_NB'] = {
+Blockly.Blocks['mindstorms_turn_in_NB'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -286,7 +286,7 @@ Blockly.Blocks['linkbot_turn_in_NB'] = {
   }
 };
 
-Blockly.Blocks['linkbot_turn_cm_NB'] = {
+Blockly.Blocks['mindstorms_turn_cm_NB'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -309,7 +309,7 @@ Blockly.Blocks['linkbot_turn_cm_NB'] = {
   }
 };
 
-Blockly.Blocks['linkbot_drive_distance_in_NB'] = {
+Blockly.Blocks['mindstorms_drive_distance_in_NB'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -328,7 +328,7 @@ Blockly.Blocks['linkbot_drive_distance_in_NB'] = {
   }
 };
 
-Blockly.Blocks['linkbot_drive_distance_cm_NB'] = {
+Blockly.Blocks['mindstorms_drive_distance_cm_NB'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -347,7 +347,7 @@ Blockly.Blocks['linkbot_drive_distance_cm_NB'] = {
   }
 };
 
-Blockly.Blocks['linkbot_drive_time_NB'] = {
+Blockly.Blocks['mindstorms_drive_time_NB'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -362,7 +362,7 @@ Blockly.Blocks['linkbot_drive_time_NB'] = {
   }
 };
 
-Blockly.Blocks['linkbot_drive_angle_NB'] = {
+Blockly.Blocks['mindstorms_drive_angle_NB'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);
@@ -377,7 +377,7 @@ Blockly.Blocks['linkbot_drive_angle_NB'] = {
   }
 };
 
-Blockly.Blocks['linkbot_reset_NB'] = {
+Blockly.Blocks['mindstorms_reset_NB'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(290);

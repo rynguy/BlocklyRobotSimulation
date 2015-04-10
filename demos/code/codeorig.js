@@ -237,7 +237,7 @@ Code.LANG = Code.getLang();
  * List of tab names.
  * @private
  */
-Code.TABS_ = ['blocks', 'javascript', 'python', 'ch', 'xml'];
+Code.TABS_ = ['blocks', 'ch', 'cpp'];
 
 Code.selected = 'blocks';
 
@@ -247,7 +247,7 @@ Code.selected = 'blocks';
  */
 Code.tabClick = function(clickedName) {
   // If the XML tab was open, save and render the content.
-  if (document.getElementById('tab_xml').className == 'tabon') {
+  /*if (document.getElementById('tab_xml').className == 'tabon') {
     var xmlTextarea = document.getElementById('content_xml');
     var xmlText = xmlTextarea.value;
     var xmlDom = null;
@@ -265,7 +265,7 @@ Code.tabClick = function(clickedName) {
       Blockly.mainWorkspace.clear();
       Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
     }
-  }
+  }*/
 
   // Deselect all tabs and hide all panes.
   for (var i = 0; i < Code.TABS_.length; i++) {
@@ -327,7 +327,7 @@ Code.renderContent = function() {
  * Initialize Blockly.  Called on page load.
  */
 Code.init = function() {
-  Code.initLanguage();
+  //Code.initLanguage();
 
   // Disable the link button if page isn't backed by App Engine storage.
   var linkButton = document.getElementById('linkButton');
@@ -345,37 +345,37 @@ Code.init = function() {
   var container = document.getElementById('content_area');
   var onresize = function(e) {
     var bBox = Code.getBBox_(container);
-    for (var i = 0; i < Code.TABS_.length; i++) {
+    for (var i = 1; i < Code.TABS_.length; i++) {
       var el = document.getElementById('content_' + Code.TABS_[i]);
-      el.style.top = bBox.y + 'px';
-      el.style.left = bBox.x + 'px';
+      //el.style.top = bBox.y + 'px';
+      //el.style.left = bBox.x + 'px';
       // Height and width need to be set, read back, then set again to
       // compensate for scrollbars.
-      el.style.height = bBox.height + 'px';
-      el.style.height = (2 * bBox.height - el.offsetHeight) + 'px';
-      el.style.width = bBox.width + 'px';
-      el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
+      el.style.height = '449px';
+      //el.style.height = (2 * bBox.height - el.offsetHeight) + 'px';
+      el.style.width = '100%';
+      //el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
     }
     // Make the 'Blocks' tab line up with the toolbox.
-    if (Blockly.mainWorkspace.toolbox_.width) {
+    /*if (Blockly.mainWorkspace.toolbox_.width) {
       document.getElementById('tab_blocks').style.minWidth =
           (Blockly.mainWorkspace.toolbox_.width - 38) + 'px';
           // Account for the 19 pixel margin and on each side.
-    }
+    }*/
   };
   window.addEventListener('resize', onresize, false);
 
   var toolbox = document.getElementById('toolbox');
 
-  var toolbox = document.getElementById('toolbox');
+  /*var toolbox = document.getElementById('toolbox');
   Blockly.inject(document.getElementById('content_blocks'),
       {media: '../../media/',
        rtl: rtl,
-       toolbox: toolbox});
+       toolbox: toolbox});*/
 
   // Add to reserved word list: Local variables in execution evironment (runJS)
   // and the infinite loop detection function.
-  Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
+  //Blockly.JavaScript.addReservedWords('code,timeouts,checkTimeout');
 
   Code.loadBlocks('');
 
@@ -389,7 +389,7 @@ Code.init = function() {
 
   Code.bindClick('trashButton',
       function() {Code.discard(); Code.renderContent();});
-  Code.bindClick('runButton', Code.runJS);
+  //Code.bindClick('runButton', Code.runJS);
 
   for (var i = 0; i < Code.TABS_.length; i++) {
     var name = Code.TABS_[i];
@@ -404,7 +404,7 @@ Code.init = function() {
 /**
  * Initialize the page language.
  */
-Code.initLanguage = function() {
+/*Code.initLanguage = function() {
   // Set the HTML's language and direction.
   // document.dir fails in Mozilla, use document.body.parentNode.dir instead.
   // https://bugzilla.mozilla.org/show_bug.cgi?id=151407
@@ -460,13 +460,13 @@ Code.initLanguage = function() {
   for (var i = 0, listVar; listVar = listVars[i]; i++) {
     listVar.textContent = MSG['listVariable'];
   }
-};
+};*/
 
 /**
  * Execute the user's code.
  * Just a quick and dirty eval.  Catch infinite loops.
  */
-Code.runJS = function() {
+/*Code.runJS = function() {
   Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
   var timeouts = 0;
   var checkTimeout = function() {
@@ -481,7 +481,7 @@ Code.runJS = function() {
   } catch (e) {
     alert(MSG['badCode'].replace('%1', e));
   }
-};
+};*/
 
 /**
  * Discard all blocks from the workspace.
