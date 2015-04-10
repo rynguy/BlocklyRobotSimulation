@@ -131,18 +131,11 @@
     <div class="col-md-6">
       <h3 style="PADDING-RIGHT: 4%; margin-top:-20px; display:inline;"><img src="./img/minds_Transparent.png">
         <strong style="font-family:Sanchez;">
-          Hey Bitch! I'm Lego NiggaStorm. Help me fuck your bitch.
+          Hey again! Can you help me make a square?
         </strong>
       </h3>
   </div>
   <xml id="toolbox" style="display: none">
-    <block type="controls_if"></block>
-    <block type="logic_compare"></block>
-    <block type="controls_repeat_ext"></block>
-    <block type="math_number"></block>
-    <block type="math_arithmetic"></block>
-    <block type="text"></block>
-    <block type="text_print"></block>
     <block type="linkbot_drive_distance_in"></block>
     <block type="linkbot_turn_in"></block>
   </xml>
@@ -164,7 +157,7 @@
     boxOne.id = 'horizTranslate';
 
 document.getElementsByClassName('toggleButton')[0].onclick = function() {
-    var robotime;
+    var robotime = 0;
     var rootBlock = null;
     var driveBlock = null;
     var angleBlock = null;
@@ -173,25 +166,25 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var a;
     var b;
     var angle = 0;
-    var $dis2;
-    var $dis;
+    var dis2;
+    var dis;
 
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
     var childBlocks = null;
     rootBlock = blocks[0];
     
     //for (var i = 0, block; block = blocks[i]; i++) {
-    if (rootBlock.type == 'linkbot_drive_distance_in') {console.log('yes')
+    if (rootBlock.type == 'linkbot_drive_distance_in') {
 
         driveBlock = rootBlock;
-        $dis2 = (round(driveBlock.getFieldValue('distance'))*25);
-        $dis = (round(driveBlock.getFieldValue('distance'))*25);
+        dis2 = (round(driveBlock.getFieldValue('distance'))*25);
+        dis = (round(driveBlock.getFieldValue('distance'))*25);
         //dis 1 x y coords for robot 
-        x = $dis * Math.cos(angle) + round(30)* Math.cos(angle);
-        y = $dis * Math.sin(angle);
+        x = dis * Math.cos(angle) + round(30)* Math.cos(angle);
+        y = dis * Math.sin(angle);
         //dis 2 x y  coords for line
-        a = $dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
-        b = $dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
+        a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
+        b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
       
         robotime = (round(driveBlock.getFieldValue('distance'))*25)/500;
         console.log('dis x' + x)
@@ -201,34 +194,12 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       angleBlock = rootBlock;
       angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
     }//if first is turn
-    
+    var i = 0;
     childBlocks = rootBlock.getChildren();
-    if(childBlocks != 'undefined'){
-      for (var i = 0, block; childBlocks!='undefined'; i++) {
-        block = childBlocks[0];
-        console.log('i ' + i)
-        console.log('child ' + childBlocks[0])
-        if (block.type == 'linkbot_drive_distance_in') {
-          driveBlock = block;
-          $dis2 = (round(driveBlock.getFieldValue('distance'))*25);
-          $dis = (round(driveBlock.getFieldValue('distance'))*25);
-          //dis 1 x y coords for robot 
-          x = $dis * Math.cos(angle) + round(30)* Math.cos(angle);
-          y = $dis * Math.sin(angle);
-          //dis 2 x y  coords for line
-          a = $dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
-          b = $dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
-        
-          robotime = (round(driveBlock.getFieldValue('distance'))*25)/500;
-
-          drive(x,y,robotime);
-        }//if drive
-        if (block.type == 'linkbot_turn_in') {
-          angleBlock = block;
-          angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
-        }//if turn
-          childBlocks = block.getChildren();
-      } //for loop
+    console.log('child ' + childBlocks.length);
+    console.log('#####################################')
+    if(childBlocks.length > 0){
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks)}, 1000);
     }//if only one block
     //dis is the input from the puzzle
 
@@ -249,28 +220,92 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
 
     
     
-console.log("distance in the block: " + $dis);
+console.log("distance in the block: " + dis);
  
   //console.log("capacity: " + Blockly.Workspace.prototype.remainingCapacity())
     //var block = Blockly.Workspace.prototype.getBlockById('linkbot_drive');
     /*console.log("block id: " + rootBlock);
-    console.log("distance in the block: " + $dis);
+    console.log("distance in the block: " + dis);
     updateStyleSheet('line');
     //this.innerHTML = 'Pause';
     boxOne.classList.add('horizTranslate');
     $("#success").css({'visibility':'visible'});*/
 }
+function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks){
+        console.log('i ' + i);
+        console.log('angle ' + angle);
+        block = childBlocks[0];
+        console.log('i ' + i);
+        console.log('child ' + childBlocks.length);
+        if (block.type == 'linkbot_drive_distance_in') {
+          driveBlock = block;
+          dis2 = (round(driveBlock.getFieldValue('distance'))*25);
+          dis = (round(driveBlock.getFieldValue('distance'))*25);
+          //dis 1 x y coords for robot 
+          console.log('angtle ' + angle)
+          x = dis * Math.cos(angle) + round(30)* Math.cos(angle);
+          y = dis * Math.sin(angle);
+          //dis 2 x y  coords for line
+          a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
+          b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
+        
+          robotime = (round(driveBlock.getFieldValue('distance'))*25)/500;
+
+          drive(x,y,robotime);
+        }//if drive
+        if (block.type == 'linkbot_turn_in') {
+          angleBlock = block;
+          angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+        }//if turn
+          childBlocks = block.getChildren();
+      if(childBlocks.length > 0){
+        i = i + 1;
+        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks)}, 1000);
+    }//if only one block
+    }
 //Drive funtion
 function drive(x, y, robotime){
-  console.log('nigga' + x + ' ' + robotime)
+  console.log('nigga' + x + ' ' + x);
+  console.log('nigga' + y + ' ' + y);
+  console.log('top' + ' ' + parseInt($('#horizTranslate').css('margin-top')));
+  console.log('left' + ' ' + parseInt($('#horizTranslate').css('margin-left')));
+  var oldx = x;
+  var oldy = y;
+  x = x + parseInt($('#horizTranslate').css('margin-left'));
+  y = y + parseInt($('#horizTranslate').css('margin-top'));
+  console.log('nigga' + x + ' ' + x);
+  console.log('nigga' + y + ' ' + y);
   $('#horizTranslate').css({'-webkit-transition': robotime+'s linear'});
     $('#horizTranslate').css({'-moz-transition': robotime+'s linear'});
     $('#horizTranslate').css({'-ms-transition': robotime+'s linear'});
     $('#horizTranslate').css({'-o-transition': robotime+'s linear'});
     $('#horizTranslate').css({'transition': robotime+'s linear'});
-    $('#horizTranslate').css({'margin-top': -y + "px"});
-    $('#horizTranslate').css({'margin-left': x + "px"});
-      console.log('wtf')
+    if(oldy == 0 && oldx == 0){
+        //nonething
+      }
+    else if(oldy == 0){
+      console.log('topssss ' + $('#horizTranslate').css('margin-top'));
+      console.log(' x' + x);
+      $('#horizTranslate').css({'margin-left': x + "px"});
+    }
+    else if(oldx == 0){
+      console.log('leftssss ' + $('#horizTranslate').css('margin-left'));
+      $('#horizTranslate').css({'margin-top': -y + "px"});
+      console.log(' y' + y);
+    }
+    else{
+      console.log('leftssss ' + $('#horizTranslate').css('margin-left'));
+      console.log('topssss ' + $('#horizTranslate').css('margin-top'));
+      //console.log(' x' + x);
+      console.log(' y ' + oldy);
+      console.log('x ' + oldx)
+      console.log(' dicks');
+      $('#horizTranslate').css({'margin-top': -y + "px"});
+      $('#horizTranslate').css({'margin-left': x + "px"});
+    }
+    
+      console.log('wtf');
 }//drive func
 
 $('.toggleButton:eq(1)').on('click', function() { 
