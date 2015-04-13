@@ -320,6 +320,14 @@ Code.renderContent = function() {
       code = prettyPrintOne(code, 'ch');
       content.innerHTML = code;
     }
+  } else if (content.id == 'content_cpp') {
+    code = Blockly.Cpp.workspaceToCode();
+    content.textContent = code;
+    if (typeof prettyPrintOne == 'function') {
+      code = content.innerHTML;
+      code = prettyPrintOne(code, 'cpp');
+      content.innerHTML = code;
+    }
   }
 };
 
