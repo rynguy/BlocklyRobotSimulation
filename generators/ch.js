@@ -121,7 +121,7 @@ Blockly.Ch.finish = function(code) {
       definitions.push(def);
     }
   }
-  var allDefs = imports.join('\n') + '\n\n' + definitions.join('\n\n');
+  var allDefs = imports.join('\n') + definitions.join('\n');
   return allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n\n') + code;
 };
 

@@ -19,7 +19,7 @@
  */
 
 /**
- * @fileoverview Generating Ch for linkbot blocks.
+ * @fileoverview Generating Ch for linkbot2 blocks.
  * @author 
  */
 'use strict';
@@ -28,253 +28,230 @@ goog.provide('Blockly.Ch.linkbot2');
 
 goog.require('Blockly.Ch');
 
-
-Blockly.Ch.addReservedWords('Math');
-
-Blockly.Ch['linkbot_speed_in_2'] = function(block) {
+Blockly.Ch['linkbot2_speed_in'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_speed = block.getFieldValue('speed');
   var dropdown_radius = block.getFieldValue('radius');
-  var code = 'l_robot' + dropdown_number + '.setSpeed(' + text_speed + ', ' + dropdown_radius + ');\n';
+  var code = 'l_robot2.' + 'setSpeed(' + text_speed + ', ' + dropdown_radius + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_speed_cm_2'] = function(block) {
+Blockly.Ch['linkbot2_speed_cm'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_speed = block.getFieldValue('speed');
   var dropdown_radius = block.getFieldValue('radius');
-  var code = 'l_robot' + dropdown_number + '.setSpeed(' + text_speed + ', ' + dropdown_radius + ');\n';
+  var code = 'l_robot2.' + 'setSpeed(' + text_speed + ', ' + dropdown_radius + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_blink_LED_2'] = function(block) {
+Blockly.Ch['linkbot2_blink_LED'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_delay = block.getFieldValue('delay');
   var text_numBlinks = block.getFieldValue('numBlinks');
-  var code = 'l_robot' + dropdown_number + '.blinkLED(' + text_delay + ', ' + text_numBlinks + ');\n';
+  var code = 'l_robot2.blinkLED(' + text_delay + ', ' + text_numBlinks + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_delay_2'] = function(block) {
+Blockly.Ch['linkbot2_delay'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_time = block.getFieldValue('time');
-  var code = 'l_robot' + dropdown_number + '.delaySeconds(' + text_time + ');\n';
+  var code = 'l_robot2.delaySeconds(' + text_time + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_move_joints_2'] = function(block) {
+Blockly.Ch['linkbot2_move_joints'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_angle1 = block.getFieldValue('angle1');
   var text_angle2 = block.getFieldValue('angle2');
   var text_angle3 = block.getFieldValue('angle3');
-  var code = 'l_robot' + dropdown_number + '.move(' + text_angle1 + ', ' + text_angle2 + ', ' + text_angle3 + ');\n';
+  var code = 'l_robot2.move(' + text_angle1 + ', ' + text_angle2 + ', ' + text_angle3 + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_move_wait_2'] = function(block) {
+Blockly.Ch['linkbot2_move_wait'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
-  var code = 'l_robot' + dropdown_number + '.moveWait();\n';
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
+  var code = 'l_robot2.moveWait();\n';
   return code;
 };
 
-Blockly.Ch['linkbot_turn_in_2'] = function(block) {
+Blockly.Ch['linkbot2_turn_in'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var dropdown_direction = block.getFieldValue('direction');
   var angle_turn_direction = block.getFieldValue('turn direction');
   var dropdown_radius = block.getFieldValue('radius');
   var dropdown_width = block.getFieldValue('width');
-  var code = 'l_robot' + dropdown_number + '.' + dropdown_direction + '(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
+  var code = 'l_robot2.' + dropdown_direction + '(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_turn_cm_2'] = function(block) {
+Blockly.Ch['linkbot2_turn_cm'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var dropdown_direction = block.getFieldValue('direction');
   var angle_turn_direction = block.getFieldValue('turn direction');
   var dropdown_radius = block.getFieldValue('radius');
   var dropdown_width = block.getFieldValue('width');
-  var code = 'l_robot' + dropdown_number + '.' + dropdown_direction + '(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
+  var code = 'l_robot2.' + dropdown_direction + '(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_drive_distance_in_2'] = function(block) {
+Blockly.Ch['linkbot2_drive_distance_in'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_distance = block.getFieldValue('distance');
   var dropdown_radius = block.getFieldValue('radius');
-  var code = 'l_robot' + dropdown_number + '.driveDistance(' + text_distance + ', ' + dropdown_radius + ');\n';
+  var code = 'l_robot2.driveDistance(' + text_distance + ', ' + dropdown_radius + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_drive_distance_cm_2'] = function(block) {
+Blockly.Ch['linkbot2_drive_distance_cm'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_distance = block.getFieldValue('distance');
   var dropdown_radius = block.getFieldValue('radius');
-  var code = 'l_robot' + dropdown_number + '.driveDistance(' + text_distance + ', ' + dropdown_radius + ');\n';
+  var code = 'l_robot2.driveDistance(' + text_distance + ', ' + dropdown_radius + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_drive_time_2'] = function(block) {
+Blockly.Ch['linkbot2_drive_time'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_time = block.getFieldValue('time');
-  var code = 'l_robot' + dropdown_number + '.driveTime(' + text_time + ');\n';
+  var code = 'l_robot2.driveTime(' + text_time + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_drive_angle_2'] = function(block) {
+Blockly.Ch['linkbot2_drive_angle'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_angle = block.getFieldValue('angle');
   if(Number(text_angle) >= 0)
-    var code = 'l_robot' + dropdown_number + '.driveForward(' + text_angle + ');\n';
+    var code = 'l_robot2.driveForward(' + text_angle + ');\n';
   else {
     text_angle = (-Number(text_angle)).toString();
-    var code = 'l_robot' + dropdown_number + '.driveBackward(' + text_angle + ');\n';
+    var code = 'l_robot2.driveBackward(' + text_angle + ');\n';
   }
   return code;
 };
 
-Blockly.Ch['linkbot_reset_2'] = function(block) {
+Blockly.Ch['linkbot2_reset'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
-  var code = 'l_robot' + dropdown_number + '.resetToZero();\n';
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
+  var code = 'l_robot2.resetToZero();\n';
   return code;
 };
 
-Blockly.Ch['linkbot_turn_in_2_NB'] = function(block) {
+Blockly.Ch['linkbot2_turn_in_NB'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var dropdown_direction = block.getFieldValue('direction');
   var angle_turn_direction = block.getFieldValue('turn direction');
   var dropdown_radius = block.getFieldValue('radius');
   var dropdown_width = block.getFieldValue('width');
-  var code = 'l_robot' + dropdown_number + '.' + dropdown_direction + 'NB(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
+  var code = 'l_robot2.' + dropdown_direction + 'NB(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_turn_cm_2_NB'] = function(block) {
+Blockly.Ch['linkbot2_turn_cm_NB'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var dropdown_direction = block.getFieldValue('direction');
   var angle_turn_direction = block.getFieldValue('turn direction');
   var dropdown_radius = block.getFieldValue('radius');
   var dropdown_width = block.getFieldValue('width');
-  var code = 'l_robot' + dropdown_number + '.' + dropdown_direction + 'NB(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
+  var code = 'l_robot2.' + dropdown_direction + 'NB(' + angle_turn_direction + ', ' + dropdown_radius + ', ' + dropdown_width + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_drive_distance_in_2_NB'] = function(block) {
+Blockly.Ch['linkbot2_drive_distance_in_NB'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_distance = block.getFieldValue('distance');
   var dropdown_radius = block.getFieldValue('radius');
-  var code = 'l_robot' + dropdown_number + '.driveDistanceNB(' + text_distance + ', ' + dropdown_radius + ');\n';
+  var code = 'l_robot2.driveDistanceNB(' + text_distance + ', ' + dropdown_radius + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_drive_distance_cm_2_NB'] = function(block) {
+Blockly.Ch['linkbot2_drive_distance_cm_NB'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_distance = block.getFieldValue('distance');
   var dropdown_radius = block.getFieldValue('radius');
-  var code = 'l_robot' + dropdown_number + '.driveDistanceNB(' + text_distance + ', ' + dropdown_radius + ');\n';
+  var code = 'l_robot2.driveDistanceNB(' + text_distance + ', ' + dropdown_radius + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_drive_time_2_NB'] = function(block) {
+Blockly.Ch['linkbot2_drive_time_NB'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_time = block.getFieldValue('time');
-  var code = 'l_robot' + dropdown_number + '.driveTimeNB(' + text_time + ');\n';
+  var code = 'l_robot2.driveTimeNB(' + text_time + ');\n';
   return code;
 };
 
-Blockly.Ch['linkbot_drive_angle_2_NB'] = function(block) {
+Blockly.Ch['linkbot2_drive_angle_NB'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
   var text_angle = block.getFieldValue('angle');
   if(Number(text_angle) >= 0)
-    var code = 'l_robot' + dropdown_number + '.driveForwardNB(' + text_angle + ');\n';
+    var code = 'l_robot2.driveForwardNB(' + text_angle + ');\n';
   else {
     text_angle = (-Number(text_angle)).toString();
-    var code = 'l_robot' + dropdown_number + '.driveBackwardNB(' + text_angle + ');\n';
+    var code = 'l_robot2.driveBackwardNB(' + text_angle + ');\n';
   }
   return code;
 };
 
-Blockly.Ch['linkbot_reset_2_NB'] = function(block) {
+Blockly.Ch['linkbot2_reset_NB'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
-  Blockly.Ch.definitions_['include_lrobots'] = 
-      'CLinkbotI l_robot1, l_robot2;\n';
-  var dropdown_number = block.getFieldValue('number');
-  var code = 'l_robot' + dropdown_number + '.resetToZeroNB();\n';
+  Blockly.Ch.definitions_['include_lrobot2'] = 
+      'CLinkbotI l_robot2;';
+  var code = 'l_robot2.resetToZeroNB();\n';
   return code;
 };

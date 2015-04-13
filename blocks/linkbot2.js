@@ -28,381 +28,314 @@ goog.provide('Blockly.Blocks.linkbot2');
 
 goog.require('Blockly.Blocks');
 
+Blockly.Blocks.linkbot2.HUE = 90;
 
-Blockly.Blocks.linkbot2.HUE = 290;
-
-Blockly.Blocks['linkbot_speed_in_2'] = {
+Blockly.Blocks['linkbot2_speed_in'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("set speed")
+        .appendField("setSpeed(speed")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.nonnegativeIntegerValidator), "speed")
-        .appendField("in/sec");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField("in/sec, radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
-        .appendField("inches");
+        .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_speed_cm_2'] = {
+Blockly.Blocks['linkbot2_speed_cm'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("set speed")
+        .appendField("setSpeed(speed")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.nonnegativeIntegerValidator), "speed")
-        .appendField("cm/sec");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
-        .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
-        .appendField("cm");
+        .appendField("cm/sec, radius")
+        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
+        .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_blink_LED_2'] = {
+Blockly.Blocks['linkbot2_blink_LED'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("blink for")
+        .appendField("blinkLED(delay")
         .appendField(new Blockly.FieldTextInput(".1",
             Blockly.FieldTextInput.numberValidator), "delay")
-        .appendField("seconds");
-    this.appendDummyInput()
+        .appendField(", numBlinks")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.nonnegativeIntegerValidator), "numBlinks")
-        .appendField("times");
+        .appendField(");");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_delay_2'] = {
+Blockly.Blocks['linkbot2_delay'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("delay by")
+        .appendField("delaySeconds(seconds")
         .appendField(new Blockly.FieldTextInput("3",
             Blockly.FieldTextInput.nonnegativeIntegerValidator), "time")
-        .appendField("seconds");
-    this.setInputsInline(true);
+        .appendField(");");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_move_joints_2'] = {
+Blockly.Blocks['linkbot2_move_joints'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("move joints")
+        .appendField("move(angle1")
         .appendField(new Blockly.FieldTextInput("90",
             Blockly.FieldTextInput.numberValidator), "angle1")
-        .appendField("°,")
+        .appendField("°, angle2")
         .appendField(new Blockly.FieldTextInput("90",
             Blockly.FieldTextInput.numberValidator), "angle2")
-        .appendField("°,")
+        .appendField("°, angle3")
         .appendField(new Blockly.FieldTextInput("90",
             Blockly.FieldTextInput.numberValidator), "angle3")
-        .appendField("°");
+        .appendField("°);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_move_wait_2'] = {
+Blockly.Blocks['linkbot2_move_wait'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("move wait");
+        .appendField("moveWait();");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_turn_in_2'] = {
+Blockly.Blocks['linkbot2_turn_in'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
         .appendField("turn")
-        .appendField(new Blockly.FieldDropdown([["left", "turnLeft"], ["right", "turnRight"]]), "direction")
-        .appendField("by")
-        .appendField(new Blockly.FieldAngle("90"), "turn direction");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField(new Blockly.FieldDropdown([["Left", "turnLeft"], ["Right", "turnRight"]]), "direction")
+        .appendField("(angle")
+        .appendField(new Blockly.FieldAngle("90"), "turn direction")
+        .appendField(", radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
-        .appendField("inches");
-    this.appendDummyInput()
-        .appendField("and a track width of")
+        .appendField("in, trackwidth")
         .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
-        .appendField("inches");
+        .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_turn_cm_2'] = {
+Blockly.Blocks['linkbot2_turn_cm'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
         .appendField("turn")
-        .appendField(new Blockly.FieldDropdown([["left", "turnLeft"], ["right", "turnRight"]]), "direction")
-        .appendField("by")
-        .appendField(new Blockly.FieldAngle("90"), "turn direction");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField(new Blockly.FieldDropdown([["Left", "turnLeft"], ["Right", "turnRight"]]), "direction")
+        .appendField("(angle")
+        .appendField(new Blockly.FieldAngle("90"), "turn direction")
+        .appendField(", radius")
         .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
-        .appendField("cm");
-    this.appendDummyInput()
-        .appendField("and a track width of")
+        .appendField("cm, trackwidth")
         .appendField(new Blockly.FieldDropdown([["9.37", "9.37"]]), "width")
-        .appendField("cm");
+        .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_drive_distance_in_2'] = {
+Blockly.Blocks['linkbot2_drive_distance_in'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("drive")
+        .appendField("driveDistance(distance")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.numberValidator), "distance")
-        .appendField("inches");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField("in, radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
-        .appendField("inches");
+        .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_drive_distance_cm_2'] = {
+Blockly.Blocks['linkbot2_drive_distance_cm'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("drive")
+        .appendField("driveDistance(distance")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.numberValidator), "distance")
-        .appendField("cm");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField("cm, radius")
         .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
-        .appendField("cm");
+        .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_drive_time_2'] = {
+Blockly.Blocks['linkbot2_drive_time'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("drive for")
+        .appendField("driveTime(")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.numberValidator), "time")
-        .appendField("seconds");
+        .appendField("sec);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_drive_angle_2'] = {
+Blockly.Blocks['linkbot2_drive_angle'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("drive wheels by")
+        .appendField("driveAngle(angle")
         .appendField(new Blockly.FieldTextInput("90",
             Blockly.FieldTextInput.numberValidator), "angle")
-        .appendField("°");
+        .appendField("°);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_reset_2'] = {
+Blockly.Blocks['linkbot2_reset'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("reset to zero position");
+        .appendField("resetToZero();");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_turn_in_2_NB'] = {
+Blockly.Blocks['linkbot2_turn_in_NB'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
         .appendField("turn")
-        .appendField(new Blockly.FieldDropdown([["left", "turnLeft"], ["right", "turnRight"]]), "direction")
-        .appendField("by")
-        .appendField(new Blockly.FieldAngle("90"), "turn direction");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField(new Blockly.FieldDropdown([["Left", "turnLeft"], ["Right", "turnRight"]]), "direction")
+        .appendField("NB(angle")
+        .appendField(new Blockly.FieldAngle("90"), "turn direction")
+        .appendField(", radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
-        .appendField("inches");
-    this.appendDummyInput()
-        .appendField("and a track width of")
+        .appendField("in, trackwidth")
         .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
-        .appendField("inches (NB)");
+        .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_turn_cm_2_NB'] = {
+Blockly.Blocks['linkbot2_turn_cm_NB'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
         .appendField("turn")
-        .appendField(new Blockly.FieldDropdown([["left", "turnLeft"], ["right", "turnRight"]]), "direction")
-        .appendField("by")
-        .appendField(new Blockly.FieldAngle("90"), "turn direction");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField(new Blockly.FieldDropdown([["Left", "turnLeft"], ["Right", "turnRight"]]), "direction")
+        .appendField("NB(angle")
+        .appendField(new Blockly.FieldAngle("90"), "turn direction")
+        .appendField(", radius")
         .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
-        .appendField("cm");
-    this.appendDummyInput()
-        .appendField("and a track width of")
+        .appendField("cm, trackwidth")
         .appendField(new Blockly.FieldDropdown([["9.37", "9.37"]]), "width")
-        .appendField("cm (NB)");
+        .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_drive_distance_in_2_NB'] = {
+Blockly.Blocks['linkbot2_drive_distance_in_NB'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("drive")
+        .appendField("driveDistanceNB(distance")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.numberValidator), "distance")
-        .appendField("inches");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField("in, radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
-        .appendField("inches (NB)");
+        .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_drive_distance_cm_2_NB'] = {
+Blockly.Blocks['linkbot2_drive_distance_cm_NB'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("drive")
+        .appendField("driveDistanceNB(distance")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.numberValidator), "distance")
-        .appendField("cm");
-    this.appendDummyInput()
-        .appendField("with a wheel radius of")
+        .appendField("cm, radius")
         .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
-        .appendField("cm (NB)");
+        .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_drive_time_2_NB'] = {
+Blockly.Blocks['linkbot2_drive_time_NB'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("drive for")
+        .appendField("driveTimeNB(")
         .appendField(new Blockly.FieldTextInput("10",
             Blockly.FieldTextInput.numberValidator), "time")
-        .appendField("seconds (NB)");
+        .appendField("sec);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_drive_angle_2_NB'] = {
+Blockly.Blocks['linkbot2_drive_angle_NB'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("drive wheels by")
+        .appendField("driveAngleNB(angle")
         .appendField(new Blockly.FieldTextInput("90",
             Blockly.FieldTextInput.numberValidator), "angle")
-        .appendField("° (NB)");
+        .appendField("°);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
   }
 };
 
-Blockly.Blocks['linkbot_reset_2_NB'] = {
+Blockly.Blocks['linkbot2_reset_NB'] = {
   init: function() {
-    this.setHelpUrl('http://www.example.com/');
-    this.setColour(290);
+    this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["l_robot 1", "1"], ["l_robot 2", "2"]]), "number")
-        .appendField("reset to zero position (NB)");
+        .appendField("resetToZeroNB();");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
     this.setTooltip('');
