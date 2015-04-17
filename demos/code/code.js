@@ -472,7 +472,7 @@ Code.initLanguage = function() {
 
 /**
  * Execute the user's code.
- * Just a quick and dirty eval.  Catch infinite loops.
+ * Just a quick and dirty eval.  Catch infinite loops.trash
  */
 Code.runJS = function() {
   Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';

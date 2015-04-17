@@ -359,17 +359,19 @@ Code.init = function() {
       //el.style.left = bBox.x + 'px';
       // Height and width need to be set, read back, then set again to
       // compensate for scrollbars.
-      el.style.height = '449px';
+      el.style.marginLeft = '95px';
+      el.style.height = '1200px';
       //el.style.height = (2 * bBox.height - el.offsetHeight) + 'px';
-      el.style.width = '100%';
+      el.style.width = '680px';
+      //el.style.width = el.style.width - '95px';
       //el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
     }
     // Make the 'Blocks' tab line up with the toolbox.
-    /*if (Blockly.mainWorkspace.toolbox_.width) {
+    //if (Blockly.mainWorkspace.toolbox_.width) {
       document.getElementById('tab_blocks').style.minWidth =
           (Blockly.mainWorkspace.toolbox_.width - 38) + 'px';
           // Account for the 19 pixel margin and on each side.
-    }*/
+    //}
   };
   window.addEventListener('resize', onresize, false);
 
