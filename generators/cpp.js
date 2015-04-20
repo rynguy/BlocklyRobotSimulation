@@ -113,16 +113,54 @@ Blockly.Cpp.finish = function(code) {
   // Convert the definitions dictionary into a list.
   var imports = [];
   var definitions = [];
+  var x = 0;
   for (var name in Blockly.Cpp.definitions_) {
     var def = Blockly.Cpp.definitions_[name];
     if (def.match(/^#include\s/)) {
       imports.push(def);
     } else {
       definitions.push(def);
+      if(def.match(/^CLinkbotI l_robot1/) || def.match(/^CLinkbotI l_robot2/) || 
+        def.match(/^CMindstorms m_robot1/) || def.match(/^CMindstorms m_robot2/)) {
+        x++;
+      }
     }
   }
   var allDefs = imports.join('\n') + definitions.join('\n');
-  return allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n\n') + code;
+  var total = allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n') + code;
+  if(x == 1) {
+      total = total.replace(/l_robot1/g, 'robot');
+      total = total.replace(/l_robot2/g, 'robot');
+      total = total.replace(/m_robot1/g, 'robot');
+      total = total.replace(/m_robot2/g, 'robot');
+  }
+  else {
+      var z = [];
+      if(allDefs.indexOf('l_robot1') >= 0)
+        z.push(allDefs.indexOf('l_robot1'));
+      if(allDefs.indexOf('l_robot2') >= 0)
+        z.push(allDefs.indexOf('l_robot2'));
+      if(allDefs.indexOf('m_robot1') >= 0)
+        z.push(allDefs.indexOf('m_robot1'));
+      if(allDefs.indexOf('m_robot2') >= 0)
+        z.push(allDefs.indexOf('m_robot2'));
+      z.sort(function(a, b){return a-b});
+      for(var y = 1; y <= x; y++) {
+        if(allDefs.indexOf('l_robot1') == z[y-1]) {
+          total = total.replace(/l_robot1/g, 'robot' + y);   
+        }
+        if(allDefs.indexOf('l_robot2') == z[y-1]) {
+          total = total.replace(/l_robot2/g, 'robot' + y);   
+        }
+        if(allDefs.indexOf('m_robot1') == z[y-1]) {
+          total = total.replace(/m_robot1/g, 'robot' + y);   
+        }
+        if(allDefs.indexOf('m_robot2') == z[y-1]) {
+          total = total.replace(/m_robot2/g, 'robot' + y);   
+        }
+      }
+  }
+  return total;
 };
 
 /**
