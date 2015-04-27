@@ -45,6 +45,14 @@
   #numNav{
     
   }
+
+  #home {
+    width: 200px;
+    height: 200px;
+    background: url(./img/linkbot_spritesheet.png) 0 0;
+    border: none;
+}
+
 </style>
 
  
@@ -76,7 +84,7 @@
   <div style="position:relative; z-index:1;" class="row">
 
     <div style="padding-left:10px; margin-left:10px;" class="col-md-4">
-    <div style="position:absolute; z-index:0; " class='box'><img src="./img/minds_Transparent.png"></div> 
+    <div style="position:absolute; z-index:0; " class='box'><img id = "home" src="./img/largeTransparent.gif" style = "width: 200px; height: 200px;"></div> 
 
       <div id= "grid" style="position:relative; z-index:-1; width:540px; height:360px; float:left; background-color:#002855">
        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -423,6 +431,9 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var a = 0;
     var b = 0;
     var angle = 0;
+    var oldangle = 0;
+    var newangle = 0;
+    var direction = 0;
     var dis2 = 0;
     var dis = 0;
 
@@ -449,7 +460,17 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     }//if first is drive
     if (rootBlock.type == 'linkbot_turn_in') {
       angleBlock = rootBlock;
-      angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+      angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+      if(angle >= 360)
+        angle -= 360;
+      console.log("TIG OL BITIES " + angle)
+          var leftMargin = 0;
+          var topMargin = 0;
+          var intervalTime = 1000/(newangle/5);
+          var numImages = Math.floor(newangle/5) - 1;
+          console.log('NEWANGLE NEW ANGLE ' + newangle);
+          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)}, intervalTime);
+      //direction = 
     }//if first is turn
     var i = 0;
     childBlocks = rootBlock.getChildren();
@@ -521,15 +542,46 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         }//if drive
         if (block.type == 'linkbot_turn_in') {
           angleBlock = block;
-          angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+          angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+          newangle = (round(angleBlock.getFieldValue('turn direction')));
+          if(angle >= 360)
+            angle -= 360;
+          console.log("TIG OL BITIES " + angle)
+          var leftMargin = 0;
+          var topMargin = 0;
+          var intervalTime = 1000/(newangle/5);
+          var numImages = Math.floor(newangle/5) - 1;
+          console.log('NEWANGLE NEW ANGLE ' + newangle);
+          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)}, intervalTime);
+            //y = y - 200;
+            
+            
         }//if turn
+
           childBlocks = block.getChildren();
       if(childBlocks.length > 0){
         i = i + 1;
         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks)}, 1000);
     }//if only one block
-    }
+}
+
+function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)
+{
+  console.log('NUM IMAGESSSSSS '+ numImages)
+  if(numImages == 0)
+    return;
+  if(leftMargin == -2400){
+    leftMargin = 0;
+    topMargin-=200;
+  }
+  else
+    leftMargin -= 200;
+  $("#home").css({'background': 'url(./img/linkbot_spritesheet.png) ' + leftMargin+'px' + ' ' + topMargin+'px'});
+  numImages--;
+  setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages)}, intervalTime);
+
+}
 //Drive funtion
 function drive(x, y, robotime){
   console.log('' + x + ' ' + x);

@@ -1,0 +1,33 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+	#home {
+    width: 200px;
+    height: 200px;
+    background: url(./img/linkbot_spritesheet.png) 0 0;
+}
+
+#home2 {
+    width: 200px;
+    height: 200px;
+    background: url(./img/linkbot_spritesheet.png) -200px -200px;
+}
+</style>
+</head>
+<body>
+	<img id="home" src="./img/largeTransparent.gif"><br><br>
+	<img id="home2" src="./img/largeTransparent.gif">
+
+<script>
+var x = 0;
+var y = 0;
+setInterval(function(){
+	//y = y - 200;
+	x = x - 200;
+	$("#home").css({'background': 'url(./img/linkbot_spritesheet.png) ' + x+'px' + ' ' + y+'px'})},75
+	)
+</script>
+
+</body>
+</html>
