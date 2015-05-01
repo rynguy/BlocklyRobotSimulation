@@ -570,7 +570,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
 function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)
 {
   console.log('NUM IMAGESSSSSS '+ numImages)
-  if(numImages == 0)
+  if(numImages <= 0)
     return;
   if(leftMargin == -2400){
     leftMargin = 0;
