@@ -73,7 +73,7 @@ Blockly.Blocks['mindstorms2_blink_LED'] = {
         .appendField("blinkLED(delay")
         .appendField(new Blockly.FieldTextInput(".1",
             Blockly.FieldTextInput.numberValidator), "delay")
-        .appendField(",");
+        .appendField("sec,");
     this.appendDummyInput()
         .appendField("                numBlinks")
         .appendField(new Blockly.FieldTextInput("10",
