@@ -461,6 +461,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     if (rootBlock.type == 'linkbot_turn_in') {
       angleBlock = rootBlock;
       angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+      newangle = (round(angleBlock.getFieldValue('turn direction')));
       if(angle >= 360)
         angle -= 360;
       console.log("TIG OL BITIES " + angle)
