@@ -136,7 +136,7 @@ Blockly.Blocks['linkbot_move_wait'] = {
 
 Blockly.Blocks['linkbot_traceon'] = {
   init: function() {
-    this.setColor(Blockly.Blocks.linkbot.HUE);
+    this.setColour(Blockly.Blocks.linkbot.HUE);
     this.appendDummyInput()
         .appendField("traceOn();");
     this.setPreviousStatement(true, "null");
@@ -147,7 +147,7 @@ Blockly.Blocks['linkbot_traceon'] = {
 
 Blockly.Blocks['linkbot_traceoff'] = {
   init: function() {
-    this.setColor(Blockly.Blocks.linkbot.HUE);
+    this.setColour(Blockly.Blocks.linkbot.HUE);
     this.appendDummyInput()
         .appendField("traceOff();");
     this.setPreviousStatement(true, "null");

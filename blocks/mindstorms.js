@@ -136,7 +136,7 @@ Blockly.Blocks['mindstorms_move_wait'] = {
 
 Blockly.Blocks['mindstorms_traceon'] = {
   init: function() {
-    this.setColor(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms.HUE);
     this.appendDummyInput()
         .appendField("traceOn();");
     this.setPreviousStatement(true, "null");
@@ -147,7 +147,7 @@ Blockly.Blocks['mindstorms_traceon'] = {
 
 Blockly.Blocks['mindstorms_traceoff'] = {
   init: function() {
-    this.setColor(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms.HUE);
     this.appendDummyInput()
         .appendField("traceOff();");
     this.setPreviousStatement(true, "null");
