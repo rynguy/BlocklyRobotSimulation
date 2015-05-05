@@ -134,6 +134,28 @@ Blockly.Blocks['linkbot_move_wait'] = {
   }
 };
 
+Blockly.Blocks['linkbot_traceon'] = {
+  init: function() {
+    this.setColor(Blockly.Blocks.linkbot.HUE);
+    this.appendDummyInput()
+        .appendField("traceOn();");
+    this.setPreviousStatement(true, "null");
+    this.setNextStatement(true, "null");
+    this.setTooltip('');
+  }
+};
+
+Blockly.Blocks['linkbot_traceoff'] = {
+  init: function() {
+    this.setColor(Blockly.Blocks.linkbot.HUE);
+    this.appendDummyInput()
+        .appendField("traceOff();");
+    this.setPreviousStatement(true, "null");
+    this.setNextStatement(true, "null");
+    this.setTooltip('');
+  }
+};
+
 Blockly.Blocks['linkbot_turn_in'] = {
   init: function() {
     this.setColour(Blockly.Blocks.linkbot.HUE);

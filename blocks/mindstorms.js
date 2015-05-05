@@ -134,6 +134,28 @@ Blockly.Blocks['mindstorms_move_wait'] = {
   }
 };
 
+Blockly.Blocks['mindstorms_traceon'] = {
+  init: function() {
+    this.setColor(Blockly.Blocks.mindstorms.HUE);
+    this.appendDummyInput()
+        .appendField("traceOn();");
+    this.setPreviousStatement(true, "null");
+    this.setNextStatement(true, "null");
+    this.setTooltip('');
+  }
+};
+
+Blockly.Blocks['mindstorms_traceoff'] = {
+  init: function() {
+    this.setColor(Blockly.Blocks.mindstorms.HUE);
+    this.appendDummyInput()
+        .appendField("traceOff();");
+    this.setPreviousStatement(true, "null");
+    this.setNextStatement(true, "null");
+    this.setTooltip('');
+  }
+};
+
 Blockly.Blocks['mindstorms_turn_in'] = {
   init: function() {
     this.setColour(Blockly.Blocks.mindstorms.HUE);

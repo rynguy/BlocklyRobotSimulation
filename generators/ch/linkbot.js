@@ -92,6 +92,24 @@ Blockly.Ch['linkbot_move_wait'] = function(block) {
   return code;
 };
 
+Blockly.Ch['linkbot_traceon'] = function(block) {
+  Blockly.Ch.definitions_['include_linkbot'] =
+      '#include <linkbot.h>';
+  Blockly.Ch.definitions_['include_lrobot1'] = 
+      'CLinkbotI l_robot1;';
+  var code = 'l_robot1.traceOn();\n';
+  return code;
+};
+
+Blockly.Ch['linkbot_traceoff'] = function(block) {
+  Blockly.Ch.definitions_['include_linkbot'] =
+      '#include <linkbot.h>';
+  Blockly.Ch.definitions_['include_lrobot1'] = 
+      'CLinkbotI l_robot1;';
+  var code = 'l_robot1.traceOff();\n';
+  return code;
+};
+
 Blockly.Ch['linkbot_turn_in'] = function(block) {
   Blockly.Ch.definitions_['include_linkbot'] =
       '#include <linkbot.h>';

@@ -92,6 +92,24 @@ Blockly.Cpp['mindstorms_move_wait'] = function(block) {
   return code;
 };
 
+Blockly.Cpp['mindstorms_traceon'] = function(block) {
+  Blockly.Cpp.definitions_['include_mindstorms'] =
+      '#include <mindstorms.h>';
+  Blockly.Cpp.definitions_['include_mrobot1'] = 
+      'CMindstorms m_robot1;';
+  var code = 'm_robot1.traceOn();\n';
+  return code;
+};
+
+Blockly.Cpp['mindstorms_traceoff'] = function(block) {
+  Blockly.Cpp.definitions_['include_mindstorms'] =
+      '#include <mindstorms.h>';
+  Blockly.Cpp.definitions_['include_mrobot1'] = 
+      'CMindstorms m_robot1;';
+  var code = 'm_robot1.traceOff();\n';
+  return code;
+};
+
 Blockly.Cpp['mindstorms_turn_in'] = function(block) {
   Blockly.Cpp.definitions_['include_mindstorms'] =
       '#include <mindstorms.h>';

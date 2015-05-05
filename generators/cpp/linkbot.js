@@ -92,6 +92,24 @@ Blockly.Cpp['linkbot_move_wait'] = function(block) {
   return code;
 };
 
+Blockly.Cpp['linkbot_traceon'] = function(block) {
+  Blockly.Cpp.definitions_['include_linkbot'] =
+      '#include <linkbot.h>';
+  Blockly.Cpp.definitions_['include_lrobot1'] = 
+      'CLinkbotI l_robot1;';
+  var code = 'l_robot1.traceOn();\n';
+  return code;
+};
+
+Blockly.Cpp['linkbot_traceoff'] = function(block) {
+  Blockly.Cpp.definitions_['include_linkbot'] =
+      '#include <linkbot.h>';
+  Blockly.Cpp.definitions_['include_lrobot1'] = 
+      'CLinkbotI l_robot1;';
+  var code = 'l_robot1.traceOff();\n';
+  return code;
+};
+
 Blockly.Cpp['linkbot_turn_in'] = function(block) {
   Blockly.Cpp.definitions_['include_linkbot'] =
       '#include <linkbot.h>';
