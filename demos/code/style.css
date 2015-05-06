@@ -91,8 +91,8 @@ td.tabmax {
   border-left-style: none !important;
   border-right-style: none !important;
   width: 99%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   text-align: right;
 }
 html[dir=rtl] td.tabmax {
@@ -118,6 +118,7 @@ td {
 }
 pre.content {
   overflow: scroll;
+  height = 600px;
 }
 #content_blocks {
   padding: 0;

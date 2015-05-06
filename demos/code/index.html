@@ -47,8 +47,8 @@
   }
 
   #home {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     background: url(./img/linkbot_spritesheet.png) 0 0;
     border: none;
 }
@@ -64,8 +64,8 @@
    <div align="center" style="background-color:#C99700; color:#113661;" class="navbar-header">
        <span style="margin-left:0;" class="glyphicon glyphicon-bed" aria-hidden="true"></span>
        
-<nav style="position:relative; z-index:1;" id="numNav">Coding With Linkbot and Mindstorms
-  <ul class="pager">
+<nav style="text-align:center; font-size:25px; font-family:Arial Black, Gadget, sans-serif; position:relative; z-index:1;" id="numNav">Coding With Linkbot and Mindstorms
+  <ul style="font-size:15px; font-family:Arial" class="pager">
 
     <li><a style="background-color:#eee" href="./index.html">1</a></li>
     <li><a href="./lsn2.html">2</a></li>
@@ -73,12 +73,13 @@
     <li><a href="./lsn4.html">4</a></li>
     <li><a href="./lsn5.html">5</a></li>
     <li><a href="./lsn6.html">6</a></li>
+    <li><a href="./Playground.html">Playground</a></li>
   </ul>
 </nav>
     </div>
   </div>
 </nav>
-<body style="overflow:scroll">
+<body style="width:100%; overflow-y:scroll;">
     <div  >
 
   <div style="position:relative; z-index:1;" class="row">
@@ -121,27 +122,22 @@
     <div class="col-md-6">
     <table width="100%" height="100%">
     
-    <tr>
+    <tr> 
       <td colspan=2>
         <table width="100%">
           <tr style="background-color:#335379; color:#FFF;" id="tabRow" height="1em">
-            <td style=" width:95px !important; background-color:#335379; color:#FFF;" id="tab_blocks" class="tabon">Blocks</td>
+            <td style="background-color:#335379; color:#FFF;" id="tab_blocks" class="tabon">Blocks</td>
             <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
             <td style="background-color:#335379; color:#FFF;" id="tab_ch" class="taboff">Ch</td>
             <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
             <td style="background-color:#335379; color:#FFF;" id="tab_cpp" class="taboff">C++</td>
-            <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
-            <td class="tabmax">
-              <button style="margin-top:5px; border:none; background-color:#C99700;" id="trashButton">
-                <img src='../../media/1x1.gif' class="trash icon21">
-              </button>
-            </td>
+            <td style="background-color:#FFF;" class="tabmax">&nbsp;</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td height="99%" colspan=2 id="content_area">
+      <td height="100%" colspan=2 id="content_area">
       </td>
     </tr>
   </table>
@@ -149,7 +145,7 @@
   <pre id="content_ch" class="content"></pre>
   <pre id="content_cpp" class="content"></pre>
   <textarea id="content_xml" class="content" wrap="off"></textarea>
-      <div id="blocklyDiv" style="height: 1200px; width: 100%;"></div>
+      <div id="blocklyDiv" style="height: 600px; width: 100%;"></div>
     </div>
   </div>
   <div class="row">
@@ -157,7 +153,13 @@
       
   </div>
   <xml id="toolbox" style="display: none">
-    <sep></sep>
+    <category name="Lesson 1">
+      <block type="linkbot_turn_in"></block>
+      <block type="linkbot_drive_distance_in"></block>
+      <block type="linkbot_turn_cm"></block>
+      <block type="linkbot_drive_distance_cm"></block>
+    </category>
+      <sep></sep>
     <category name="Library">
       <category name="Logic">
         <block type="controls_if"></block>
@@ -240,96 +242,244 @@
         </block>
         <block type="math_random_float"></block>
       </category>
-      <category name="Linkbot">
+      <category name="Linkbot 1">
         <block type="linkbot_speed_in"></block>
-        <block type="linkbot_speed_cm"></block>
         <block type="linkbot_blink_LED"></block>
         <block type="linkbot_delay"></block>
         <block type="linkbot_move_joints"></block>
         <block type="linkbot_move_wait"></block>
+        <block type="linkbot_traceon"></block>
+        <block type="linkbot_traceoff"></block>
         <block type="linkbot_turn_in"></block>
-        <block type="linkbot_turn_cm"></block>
         <block type="linkbot_drive_distance_in"></block>
-        <block type="linkbot_drive_distance_cm"></block>
         <block type="linkbot_drive_time"></block>
         <block type="linkbot_drive_angle"></block>
         <block type="linkbot_reset"></block>
         <block type="linkbot_turn_in_NB"></block>
-        <block type="linkbot_turn_cm_NB"></block>
         <block type="linkbot_drive_distance_in_NB"></block>
-        <block type="linkbot_drive_distance_cm_NB"></block>
         <block type="linkbot_drive_time_NB"></block>
         <block type="linkbot_drive_angle_NB"></block>
         <block type="linkbot_reset_NB"></block>
       </category>
-      <category name="Linkbot">
+      <category name="Linkbot 2">
         <block type="linkbot2_speed_in"></block>
-        <block type="linkbot2_speed_cm"></block>
         <block type="linkbot2_blink_LED"></block>
         <block type="linkbot2_delay"></block>
         <block type="linkbot2_move_joints"></block>
         <block type="linkbot2_move_wait"></block>
+        <block type="linkbot2_traceon"></block>
+        <block type="linkbot2_traceoff"></block>
         <block type="linkbot2_turn_in"></block>
-        <block type="linkbot2_turn_cm"></block>
         <block type="linkbot2_drive_distance_in"></block>
-        <block type="linkbot2_drive_distance_cm"></block>
         <block type="linkbot2_drive_time"></block>
         <block type="linkbot2_drive_angle"></block>
         <block type="linkbot2_reset"></block>
         <block type="linkbot2_turn_in_NB"></block>
-        <block type="linkbot2_turn_cm_NB"></block>
         <block type="linkbot2_drive_distance_in_NB"></block>
-        <block type="linkbot2_drive_distance_cm_NB"></block>
         <block type="linkbot2_drive_time_NB"></block>
         <block type="linkbot2_drive_angle_NB"></block>
         <block type="linkbot2_reset_NB"></block>
       </category>
-      <category name="Mindstorms">
+      <category name="Mindstorms 1">
         <block type="mindstorms_speed_in"></block>
-        <block type="mindstorms_speed_cm"></block>
         <block type="mindstorms_blink_LED"></block>
         <block type="mindstorms_delay"></block>
         <block type="mindstorms_move_joints"></block>
         <block type="mindstorms_move_wait"></block>
+        <block type="mindstorms_traceon"></block>
+        <block type="mindstorms_traceoff"></block>
         <block type="mindstorms_turn_in"></block>
-        <block type="mindstorms_turn_cm"></block>
         <block type="mindstorms_drive_distance_in"></block>
-        <block type="mindstorms_drive_distance_cm"></block>
         <block type="mindstorms_drive_time"></block>
         <block type="mindstorms_drive_angle"></block>
         <block type="mindstorms_reset"></block>
         <block type="mindstorms_turn_in_NB"></block>
-        <block type="mindstorms_turn_cm_NB"></block>
         <block type="mindstorms_drive_distance_in_NB"></block>
-        <block type="mindstorms_drive_distance_cm_NB"></block>
         <block type="mindstorms_drive_time_NB"></block>
         <block type="mindstorms_drive_angle_NB"></block>
         <block type="mindstorms_reset_NB"></block>
       </category>
-      <category name="Mindstorms">
+      <category name="Mindstorms 2">
         <block type="mindstorms2_speed_in"></block>
-        <block type="mindstorms2_speed_cm"></block>
         <block type="mindstorms2_blink_LED"></block>
         <block type="mindstorms2_delay"></block>
         <block type="mindstorms2_move_joints"></block>
         <block type="mindstorms2_move_wait"></block>
+        <block type="mindstorms2_traceon"></block>
+        <block type="mindstorms2_traceoff"></block>
         <block type="mindstorms2_turn_in"></block>
-        <block type="mindstorms2_turn_cm"></block>
         <block type="mindstorms2_drive_distance_in"></block>
-        <block type="mindstorms2_drive_distance_cm"></block>
         <block type="mindstorms2_drive_time"></block>
         <block type="mindstorms2_drive_angle"></block>
         <block type="mindstorms2_reset"></block>
         <block type="mindstorms2_turn_in_NB"></block>
-        <block type="mindstorms2_turn_cm_NB"></block>
         <block type="mindstorms2_drive_distance_in_NB"></block>
-        <block type="mindstorms2_drive_distance_cm_NB"></block>
         <block type="mindstorms2_drive_time_NB"></block>
         <block type="mindstorms2_drive_angle_NB"></block>
         <block type="mindstorms2_reset_NB"></block>
       </category>
       <category name="Variables" custom="VARIABLE"></category>
       <category name="Functions" custom="PROCEDURE"></category>
+    </category>
+        <category name="Library">
+      <category name="Logic">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+        <block type="logic_null"></block>
+        <block type="logic_ternary"></block>
+      </category>
+      <category name="Loops">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+          <value name="BY">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
+      </category>
+      <category name="Math">
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+        <block type="math_trig"></block>
+        <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+        <block type="math_change">
+          <value name="DELTA">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_round"></block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo"></block>
+        <block type="math_constrain">
+          <value name="LOW">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="HIGH">
+            <block type="math_number">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_random_int">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_random_float"></block>
+      </category>
+      <category name="Linkbot 1">
+        <block type="linkbot_speed_cm"></block>
+        <block type="linkbot_blink_LED"></block>
+        <block type="linkbot_delay"></block>
+        <block type="linkbot_move_joints"></block>
+        <block type="linkbot_move_wait"></block>
+        <block type="linkbot_traceon"></block>
+        <block type="linkbot_traceoff"></block>
+        <block type="linkbot_turn_cm"></block>
+        <block type="linkbot_drive_distance_cm"></block>
+        <block type="linkbot_drive_time"></block>
+        <block type="linkbot_drive_angle"></block>
+        <block type="linkbot_reset"></block>
+        <block type="linkbot_turn_cm_NB"></block>
+        <block type="linkbot_drive_distance_cm_NB"></block>
+        <block type="linkbot_drive_time_NB"></block>
+        <block type="linkbot_drive_angle_NB"></block>
+        <block type="linkbot_reset_NB"></block>
+      </category>
+      <category name="Linkbot 2">
+        <block type="linkbot2_speed_cm"></block>
+        <block type="linkbot2_blink_LED"></block>
+        <block type="linkbot2_delay"></block>
+        <block type="linkbot2_move_joints"></block>
+        <block type="linkbot2_move_wait"></block>
+        <block type="linkbot2_traceon"></block>
+        <block type="linkbot2_traceoff"></block>
+        <block type="linkbot2_turn_cm"></block>
+        <block type="linkbot2_drive_distance_cm"></block>
+        <block type="linkbot2_drive_time"></block>
+        <block type="linkbot2_drive_angle"></block>
+        <block type="linkbot2_reset"></block>
+        <block type="linkbot2_turn_cm_NB"></block>
+        <block type="linkbot2_drive_distance_cm_NB"></block>
+        <block type="linkbot2_drive_time_NB"></block>
+        <block type="linkbot2_drive_angle_NB"></block>
+        <block type="linkbot2_reset_NB"></block>
+      </category>
+      <category name="Mindstorms 1">
+        <block type="mindstorms_speed_cm"></block>
+        <block type="mindstorms_blink_LED"></block>
+        <block type="mindstorms_delay"></block>
+        <block type="mindstorms_move_joints"></block>
+        <block type="mindstorms_move_wait"></block>
+        <block type="mindstorms_traceon"></block>
+        <block type="mindstorms_traceoff"></block>
+        <block type="mindstorms_turn_cm"></block>
+        <block type="mindstorms_drive_distance_cm"></block>
+        <block type="mindstorms_drive_time"></block>
+        <block type="mindstorms_drive_angle"></block>
+        <block type="mindstorms_reset"></block>
+        <block type="mindstorms_turn_cm_NB"></block>
+        <block type="mindstorms_drive_distance_cm_NB"></block>
+        <block type="mindstorms_drive_time_NB"></block>
+        <block type="mindstorms_drive_angle_NB"></block>
+        <block type="mindstorms_reset_NB"></block>
+      </category>
+      <category name="Mindstorms 2">
+        <block type="mindstorms2_speed_cm"></block>
+        <block type="mindstorms2_blink_LED"></block>
+        <block type="mindstorms2_delay"></block>
+        <block type="mindstorms2_move_joints"></block>
+        <block type="mindstorms2_move_wait"></block>
+        <block type="mindstorms2_traceon"></block>
+        <block type="mindstorms2_traceoff"></block>
+        <block type="mindstorms2_turn_cm"></block>
+        <block type="mindstorms2_drive_distance_cm"></block>
+        <block type="mindstorms2_drive_time"></block>
+        <block type="mindstorms2_drive_angle"></block>
+        <block type="mindstorms2_reset"></block>
+        <block type="mindstorms2_turn_cm_NB"></block>
+        <block type="mindstorms2_drive_distance_cm_NB"></block>
+        <block type="mindstorms2_drive_time_NB"></block>
+        <block type="mindstorms2_drive_angle_NB"></block>
+        <block type="mindstorms2_reset_NB"></block>
+      </category>
+    </category>
   </xml>
 
 <div align="center" id="footer-info" style="background-color:#FFF; color:#000;">
