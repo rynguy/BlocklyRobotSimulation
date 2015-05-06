@@ -665,8 +665,14 @@ console.log("distance in the block: " + dis);
     document.getElementsByClassName('toggleButton')[0].value = 'play';
     document.getElementsByClassName('toggleButton')[0].innerHTML = 'Run';
 
-    $('#horizTranslate').css({'margin-top': 0 + "px"});
-    $('#horizTranslate').css({'margin-left': 0 + "px"});
+    $('#home').css({'width': 200 + 'px'});
+    $('#home').css({'height': 200 + 'px'});
+    $('#home').css({'background': 'url(./img/linkbot_spritesheet.png)' + 0 +'px' + ' ' + 0 +'px'});
+    $('#home').css({'border': 'none'});
+
+    //$('#home').css({'position' : 'absolute'});
+    $('#horizTranslate').css({'margin-left': 0 +'px'});
+    $('#horizTranslate').css({'margin-top': 0 + 'px'});
   };
 }
 function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks){
