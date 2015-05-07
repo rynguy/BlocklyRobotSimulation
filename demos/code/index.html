@@ -106,6 +106,9 @@
               </button>
               <button style="margin-bottom:5px; width:100px; height:42px; background-color:#C99700; color:white; border:none;" class='toggleButton' value='play'>Run
               </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="units" id="US Customary" value="US Customary" onclick="toolbox()" checked>US Customary
+              <input type="radio" name="units" id="Metric" value="Metric" onclick="toolbox()" >Metric
               </div>
               <span><img src="./img/minds_Transparent.png"></span>
               <p>
@@ -152,12 +155,10 @@
     <div class="col-md-6">
       
   </div>
-  <xml id="toolbox" style="display: none">
+  <xml id="toolbox1" style="display: none">
     <category name="Lesson 1">
       <block type="linkbot_turn_in"></block>
       <block type="linkbot_drive_distance_in"></block>
-      <block type="linkbot_turn_cm"></block>
-      <block type="linkbot_drive_distance_cm"></block>
     </category>
       <sep></sep>
     <category name="Library">
@@ -321,7 +322,14 @@
       <category name="Variables" custom="VARIABLE"></category>
       <category name="Functions" custom="PROCEDURE"></category>
     </category>
-        <category name="Library">
+  </xml>
+  <xml id="toolbox2" style="display: none">
+    <category name="Lesson 1">
+      <block type="linkbot_turn_cm"></block>
+      <block type="linkbot_drive_distance_cm"></block>
+    </category>
+    <sep></sep>
+    <category name="Library">
       <category name="Logic">
         <block type="controls_if"></block>
         <block type="logic_compare"></block>
@@ -479,6 +487,8 @@
         <block type="mindstorms2_drive_angle_NB"></block>
         <block type="mindstorms2_reset_NB"></block>
       </category>
+      <category name="Variables" custom="VARIABLE"></category>
+      <category name="Functions" custom="PROCEDURE"></category>
     </category>
   </xml>
 
@@ -555,11 +565,21 @@ jQuery(document).ready( function($) {
 
 </div>
   <script>
+  function toolbox() {
+    document.getElementById('blocklyDiv').innerHTML = '';
+    if(document.getElementById('US Customary').checked)
     Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox')});
+        {toolbox: document.getElementById('toolbox1')});
+    else
+    Blockly.inject(document.getElementById('blocklyDiv'),
+        {toolbox: document.getElementById('toolbox2')});
+    }
   </script>
 
-
+  <script>
+    Blockly.inject(document.getElementById('blocklyDiv'),
+        {toolbox: document.getElementById('toolbox1')});
+  </script>
 
 
 
