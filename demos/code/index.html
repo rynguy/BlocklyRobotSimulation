@@ -590,6 +590,8 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var direction = 0;
     var dis2 = 0;
     var dis = 0;
+    var blockDirection;
+    var assholes;
 
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
     var childBlocks = null;
@@ -615,17 +617,19 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     if (rootBlock.type == 'linkbot_turn_in') {
       angleBlock = rootBlock;
       angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+      blockDirection = angleBlock.getFieldValue('direction');
+      assholes = "bootyfuck";
       newangle = (round(angleBlock.getFieldValue('turn direction')));
-      if(angle >= 360)
-        angle -= 360;
-      console.log("TIG OL BITIES " + angle)
+      if(newangle >= 360)
+        newangle -= 360;
+      console.log("TIG OL BITIES " + newangle)
           var leftMargin = 0;
           var topMargin = 0;
           var intervalTime = 1000/(newangle/5);
-          var numImages = Math.floor(newangle/5) - 1;
+          var numImages = Math.floor(newangle/5);
           console.log("NUMBER OF IMAGES" + numImages);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
-          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)}, intervalTime);
+          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection, assholes)}, intervalTime);
       //direction = 
     }//if first is turn
     var i = 0;
@@ -633,7 +637,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     console.log('child ' + childBlocks.length);
     console.log('#####################################')
     if(childBlocks.length > 0){
-      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks)}, 1000);
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
     }//if only one block
     //dis is the input from the puzzle
 
@@ -683,7 +687,7 @@ console.log("distance in the block: " + dis);
     $('#horizTranslate').css({'margin-top': 0 + 'px'});
   };
 }
-function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks){
+function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle){
         console.log('i ' + i);
         console.log('angle ' + angle);
         block = childBlocks[0];
@@ -707,17 +711,19 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         }//if drive
         if (block.type == 'linkbot_turn_in') {
           angleBlock = block;
+          blockDirection = angleBlock.getFieldValue('direction');
           angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
-          newangle = (round(angleBlock.getFieldValue('turn direction')));
-          if(angle >= 360)
-            angle -= 360;
-          console.log("TIG OL BITIES " + angle)
+          angleImage = (round(angleBlock.getFieldValue('turn direction')));
+          newangle += (round(angleBlock.getFieldValue('turn direction')));
+          if(newangle >= 360)
+            newangle -= 360;
+          console.log("TIG OL BITIES " + newangle)
           var leftMargin = parseInt($("#roboyes").css('margin-left'));
           var topMargin = parseInt($("#roboyes").css('margin-top'));
-          var intervalTime = 1000/(newangle/5);
-          var numImages = Math.floor(newangle/5) - 1;
+          var intervalTime = 1000/(angleImage/5);
+          var numImages = Math.floor(angleImage/5);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
-          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)}, intervalTime);
+          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection, 'fucknuts')}, intervalTime);
             //y = y - 200;
             
             
@@ -727,34 +733,61 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
       if(childBlocks.length > 0){
         i = i + 1;
         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks)}, 1000);
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
     }//if only one block
 }
 
-function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)
+function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection, assholes)
 {
+  var blockDicks = blockDirection;
   console.log("MARGINS " + leftMargin + ' ' + topMargin);
   console.log('NUM IMAGESSSSSS '+ numImages)
+  console.log("BLOCK DIRECTIOB LAT " + blockDirection)
+  console.log("ASSHOLES" + assholes)
   if(numImages <= 0)
     return;
-  if(leftMargin == -2200){
-    if(topMargin == -1000){
+  //LEFT TURN
+  if(blockDicks === 'turnLeft')
+  {
+    if(leftMargin == -2200){
+      if(topMargin == -1000){
+        leftMargin = 0;
+        topMargin = 0;
+      }
+      else{
       leftMargin = 0;
-      topMargin = 0;
+      topMargin -= 200;
+      }
     }
-    else{
-    leftMargin = 0;
-    topMargin -= 200;
-    }
+    else
+      leftMargin -= 200;
   }
-  else
-    leftMargin -= 200;
+  //RIGHT TURN
+  else if(blockDicks === 'turnRight')
+  {
+    if(leftMargin == 0){
+      if(topMargin == 0){
+        leftMargin = -2200;
+        topMargin = -1000;
+      }
+      else{
+      leftMargin = -2200;
+      topMargin += 200;
+      }
+    }
+    else
+      leftMargin += 200;
+  }
 
+  else
+  {
+    return;
+  }
   $("#home").css({'background': 'url(./img/linkbot_spritesheet.png) ' + leftMargin+'px' + ' ' + topMargin+'px'});
   $("#roboyes").css({'margin-left': + leftMargin+'px'});
   $("#roboyes").css({'margin-top': + topMargin+'px'});
   numImages--;
-  setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages)}, 2 * intervalTime);
+  setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection, assholes)}, intervalTime);
 
 }
 //Drive funtion
