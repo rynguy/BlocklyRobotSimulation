@@ -45,6 +45,14 @@
   #numNav{
     
   }
+
+  #home {
+    width: 100px;
+    height: 100px;
+    background: url(./img/linkbot_spritesheet.png) 0 0;
+    border: none;
+}
+
 </style>
 
  
@@ -56,35 +64,38 @@
    <div align="center" style="background-color:#C99700; color:#113661;" class="navbar-header">
        <span style="margin-left:0;" class="glyphicon glyphicon-bed" aria-hidden="true"></span>
        
-<nav style="position:relative; z-index:1;" id="numNav">
-  <ul class="pager">
+<nav style="text-align:center; font-size:25px; font-family:Arial Black, Gadget, sans-serif; position:relative; z-index:1;" id="numNav">Coding With Linkbot and Mindstorms
+  <ul style="font-size:15px; font-family:Arial" class="pager">
+
     <li><a href="./index.html">1</a></li>
     <li><a href="./lsn2.html">2</a></li>
     <li><a href="./lsn3.html">3</a></li>
-    <li><a href="./lsn4.html">4</a></li>
+    <li><a style="background-color:#eee" href="./lsn4.html">4</a></li>
     <li><a href="./lsn5.html">5</a></li>
+    <li><a href="./lsn6.html">6</a></li>
+    <li><a href="./Playground.html">Playground</a></li>
   </ul>
 </nav>
     </div>
   </div>
 </nav>
-<body style="overflow:scroll">
+<body style="width:100%; overflow-y:scroll;">
     <div  >
 
   <div style="position:relative; z-index:1;" class="row">
 
-    <div style="padding-left:10px; margin-left:10px;" class="col-md-5">
-    <div style="position:absolute; z-index:0; " class='box'><img src="./img/minds_Transparent.png"></div> 
+    <div style="padding-left:10px; margin-left:10px;" class="col-md-4">
+    <div style="position:absolute; z-index:0; " class='box'><img id = "home" src="./img/largeTransparent.gif" style = "width: 200px; height: 200px;"></div> 
 
-      <div id= "grid" style="position:relative; z-index:-1; width:540px; height:360px; float:left; background-color:#002855">
+      <div id= "grid" style="position:relative; z-index:-1; width:540px; height:360px; float:left; background-color:#4F6F3A">
        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
          <defs>
            <pattern id="smallGrid" width="15" height="15" patternUnits="userSpaceOnUse">
-             <path d="M 15 0 L 0 0 0 15" fill="none" stroke="gray" stroke-width="1"/>
+             <path d="M 15 0 L 0 0 0 15" fill="none" stroke="white" stroke-width="1"/>
            </pattern>
            <pattern id="grid" width="180" height="180" patternUnits="userSpaceOnUse">
              <rect width="180" height="180" fill="url(#smallGrid)"/>
-             <path d="M 180 0 L 0 0 0 180" fill="none" stroke="#C99700" stroke-width="4"/>
+             <path d="M 180 0 L 0 0 0 180" fill="none" stroke="#EF0A06" stroke-width="4"/>
            </pattern>
          </defs>
 
@@ -95,6 +106,9 @@
               </button>
               <button style="margin-bottom:5px; width:100px; height:42px; background-color:#C99700; color:white; border:none;" class='toggleButton' value='play'>Run
               </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="units" id="US Customary" value="US Customary" onclick="toolbox()" checked>US Customary
+              <input type="radio" name="units" id="Metric" value="Metric" onclick="toolbox()" >Metric
               </div>
               <span><img src="./img/minds_Transparent.png"></span>
               <p>
@@ -111,27 +125,22 @@
     <div class="col-md-6">
     <table width="100%" height="100%">
     
-    <tr>
+    <tr> 
       <td colspan=2>
         <table width="100%">
           <tr style="background-color:#335379; color:#FFF;" id="tabRow" height="1em">
-            <td style=" width:95px !important; background-color:#335379; color:#FFF;" id="tab_blocks" class="tabon">Blocks</td>
+            <td style="background-color:#335379; color:#FFF;" id="tab_blocks" class="tabon">Blocks</td>
             <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
             <td style="background-color:#335379; color:#FFF;" id="tab_ch" class="taboff">Ch</td>
             <td style="background-color:#FFF; color:#FFF;" class="tabmin">&nbsp;</td>
             <td style="background-color:#335379; color:#FFF;" id="tab_cpp" class="taboff">C++</td>
-            <td style="background-color:#FFF;" class="tabmin">&nbsp;</td>
-            <td class="tabmax">
-              <button style="margin-top:5px; border:none; background-color:#C99700;" id="trashButton">
-                <img src='../../media/1x1.gif' class="trash icon21">
-              </button>
-            </td>
+            <td style="background-color:#FFF;" class="tabmax">&nbsp;</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td height="99%" colspan=2 id="content_area">
+      <td height="100%" colspan=2 id="content_area">
       </td>
     </tr>
   </table>
@@ -139,28 +148,22 @@
   <pre id="content_ch" class="content"></pre>
   <pre id="content_cpp" class="content"></pre>
   <textarea id="content_xml" class="content" wrap="off"></textarea>
-      <div id="blocklyDiv" style="height: 1200px; width: 100%;"></div>
+      <div id="blocklyDiv" style="height: 600px; width: 100%;"></div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       
   </div>
-  <xml id="toolbox" style="display: none">
-    <category name="linkbot">
-      <block type="linkbot_drive_distance_in"></block>
+  <xml id="toolbox1" style="display: none">
+    <category name="Lesson 1">
       <block type="linkbot_turn_in"></block>
+      <block type="linkbot_drive_distance_in"></block>
     </category>
-    <category name="If">
+      <sep></sep>
+    <category name="Library">
+      <category name="Logic">
         <block type="controls_if"></block>
-        <block type="controls_if">
-          <mutation else="1"></mutation>
-        </block>
-        <block type="controls_if">
-          <mutation elseif="1" else="1"></mutation>
-        </block>
-      </category>
-      <category name="Boolean">
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
@@ -168,45 +171,415 @@
         <block type="logic_null"></block>
         <block type="logic_ternary"></block>
       </category>
+      <category name="Loops">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+          <value name="BY">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
+      </category>
+      <category name="Math">
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+        <block type="math_trig"></block>
+        <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+        <block type="math_change">
+          <value name="DELTA">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_round"></block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo"></block>
+        <block type="math_constrain">
+          <value name="LOW">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="HIGH">
+            <block type="math_number">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_random_int">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_random_float"></block>
+      </category>
+      <category name="Linkbot 1">
+        <block type="linkbot_speed_in"></block>
+        <block type="linkbot_blink_LED"></block>
+        <block type="linkbot_delay"></block>
+        <block type="linkbot_move_joints"></block>
+        <block type="linkbot_move_wait"></block>
+        <block type="linkbot_traceon"></block>
+        <block type="linkbot_traceoff"></block>
+        <block type="linkbot_turn_in"></block>
+        <block type="linkbot_drive_distance_in"></block>
+        <block type="linkbot_drive_time"></block>
+        <block type="linkbot_drive_angle"></block>
+        <block type="linkbot_reset"></block>
+        <block type="linkbot_turn_in_NB"></block>
+        <block type="linkbot_drive_distance_in_NB"></block>
+        <block type="linkbot_drive_time_NB"></block>
+        <block type="linkbot_drive_angle_NB"></block>
+        <block type="linkbot_reset_NB"></block>
+      </category>
+      <category name="Linkbot 2">
+        <block type="linkbot2_speed_in"></block>
+        <block type="linkbot2_blink_LED"></block>
+        <block type="linkbot2_delay"></block>
+        <block type="linkbot2_move_joints"></block>
+        <block type="linkbot2_move_wait"></block>
+        <block type="linkbot2_traceon"></block>
+        <block type="linkbot2_traceoff"></block>
+        <block type="linkbot2_turn_in"></block>
+        <block type="linkbot2_drive_distance_in"></block>
+        <block type="linkbot2_drive_time"></block>
+        <block type="linkbot2_drive_angle"></block>
+        <block type="linkbot2_reset"></block>
+        <block type="linkbot2_turn_in_NB"></block>
+        <block type="linkbot2_drive_distance_in_NB"></block>
+        <block type="linkbot2_drive_time_NB"></block>
+        <block type="linkbot2_drive_angle_NB"></block>
+        <block type="linkbot2_reset_NB"></block>
+      </category>
+      <category name="Mindstorms 1">
+        <block type="mindstorms_speed_in"></block>
+        <block type="mindstorms_blink_LED"></block>
+        <block type="mindstorms_delay"></block>
+        <block type="mindstorms_move_joints"></block>
+        <block type="mindstorms_move_wait"></block>
+        <block type="mindstorms_traceon"></block>
+        <block type="mindstorms_traceoff"></block>
+        <block type="mindstorms_turn_in"></block>
+        <block type="mindstorms_drive_distance_in"></block>
+        <block type="mindstorms_drive_time"></block>
+        <block type="mindstorms_drive_angle"></block>
+        <block type="mindstorms_reset"></block>
+        <block type="mindstorms_turn_in_NB"></block>
+        <block type="mindstorms_drive_distance_in_NB"></block>
+        <block type="mindstorms_drive_time_NB"></block>
+        <block type="mindstorms_drive_angle_NB"></block>
+        <block type="mindstorms_reset_NB"></block>
+      </category>
+      <category name="Mindstorms 2">
+        <block type="mindstorms2_speed_in"></block>
+        <block type="mindstorms2_blink_LED"></block>
+        <block type="mindstorms2_delay"></block>
+        <block type="mindstorms2_move_joints"></block>
+        <block type="mindstorms2_move_wait"></block>
+        <block type="mindstorms2_traceon"></block>
+        <block type="mindstorms2_traceoff"></block>
+        <block type="mindstorms2_turn_in"></block>
+        <block type="mindstorms2_drive_distance_in"></block>
+        <block type="mindstorms2_drive_time"></block>
+        <block type="mindstorms2_drive_angle"></block>
+        <block type="mindstorms2_reset"></block>
+        <block type="mindstorms2_turn_in_NB"></block>
+        <block type="mindstorms2_drive_distance_in_NB"></block>
+        <block type="mindstorms2_drive_time_NB"></block>
+        <block type="mindstorms2_drive_angle_NB"></block>
+        <block type="mindstorms2_reset_NB"></block>
+      </category>
+      <category name="Variables" custom="VARIABLE"></category>
+      <category name="Functions" custom="PROCEDURE"></category>
     </category>
-    <category name="Loops">
-      <block type="controls_repeat_ext">
-        <value name="TIMES">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="controls_whileUntil"></block>
-      <block type="controls_for">
-        <field name="VAR">i</field>
-        <value name="FROM">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-        <value name="TO">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-        <value name="BY">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
-      <block type="controls_forEach"></block>
-      <block type="controls_flow_statements"></block>
+  </xml>
+  <xml id="toolbox2" style="display: none">
+    <category name="Lesson 1">
+      <block type="linkbot_turn_cm"></block>
+      <block type="linkbot_drive_distance_cm"></block>
+    </category>
+    <sep></sep>
+    <category name="Library">
+      <category name="Logic">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+        <block type="logic_null"></block>
+        <block type="logic_ternary"></block>
+      </category>
+      <category name="Loops">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+          <value name="BY">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
+      </category>
+      <category name="Math">
+        <block type="math_number"></block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+        <block type="math_trig"></block>
+        <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+        <block type="math_change">
+          <value name="DELTA">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_round"></block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo"></block>
+        <block type="math_constrain">
+          <value name="LOW">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="HIGH">
+            <block type="math_number">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_random_int">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+        </block>
+        <block type="math_random_float"></block>
+      </category>
+      <category name="Linkbot 1">
+        <block type="linkbot_speed_cm"></block>
+        <block type="linkbot_blink_LED"></block>
+        <block type="linkbot_delay"></block>
+        <block type="linkbot_move_joints"></block>
+        <block type="linkbot_move_wait"></block>
+        <block type="linkbot_traceon"></block>
+        <block type="linkbot_traceoff"></block>
+        <block type="linkbot_turn_cm"></block>
+        <block type="linkbot_drive_distance_cm"></block>
+        <block type="linkbot_drive_time"></block>
+        <block type="linkbot_drive_angle"></block>
+        <block type="linkbot_reset"></block>
+        <block type="linkbot_turn_cm_NB"></block>
+        <block type="linkbot_drive_distance_cm_NB"></block>
+        <block type="linkbot_drive_time_NB"></block>
+        <block type="linkbot_drive_angle_NB"></block>
+        <block type="linkbot_reset_NB"></block>
+      </category>
+      <category name="Linkbot 2">
+        <block type="linkbot2_speed_cm"></block>
+        <block type="linkbot2_blink_LED"></block>
+        <block type="linkbot2_delay"></block>
+        <block type="linkbot2_move_joints"></block>
+        <block type="linkbot2_move_wait"></block>
+        <block type="linkbot2_traceon"></block>
+        <block type="linkbot2_traceoff"></block>
+        <block type="linkbot2_turn_cm"></block>
+        <block type="linkbot2_drive_distance_cm"></block>
+        <block type="linkbot2_drive_time"></block>
+        <block type="linkbot2_drive_angle"></block>
+        <block type="linkbot2_reset"></block>
+        <block type="linkbot2_turn_cm_NB"></block>
+        <block type="linkbot2_drive_distance_cm_NB"></block>
+        <block type="linkbot2_drive_time_NB"></block>
+        <block type="linkbot2_drive_angle_NB"></block>
+        <block type="linkbot2_reset_NB"></block>
+      </category>
+      <category name="Mindstorms 1">
+        <block type="mindstorms_speed_cm"></block>
+        <block type="mindstorms_blink_LED"></block>
+        <block type="mindstorms_delay"></block>
+        <block type="mindstorms_move_joints"></block>
+        <block type="mindstorms_move_wait"></block>
+        <block type="mindstorms_traceon"></block>
+        <block type="mindstorms_traceoff"></block>
+        <block type="mindstorms_turn_cm"></block>
+        <block type="mindstorms_drive_distance_cm"></block>
+        <block type="mindstorms_drive_time"></block>
+        <block type="mindstorms_drive_angle"></block>
+        <block type="mindstorms_reset"></block>
+        <block type="mindstorms_turn_cm_NB"></block>
+        <block type="mindstorms_drive_distance_cm_NB"></block>
+        <block type="mindstorms_drive_time_NB"></block>
+        <block type="mindstorms_drive_angle_NB"></block>
+        <block type="mindstorms_reset_NB"></block>
+      </category>
+      <category name="Mindstorms 2">
+        <block type="mindstorms2_speed_cm"></block>
+        <block type="mindstorms2_blink_LED"></block>
+        <block type="mindstorms2_delay"></block>
+        <block type="mindstorms2_move_joints"></block>
+        <block type="mindstorms2_move_wait"></block>
+        <block type="mindstorms2_traceon"></block>
+        <block type="mindstorms2_traceoff"></block>
+        <block type="mindstorms2_turn_cm"></block>
+        <block type="mindstorms2_drive_distance_cm"></block>
+        <block type="mindstorms2_drive_time"></block>
+        <block type="mindstorms2_drive_angle"></block>
+        <block type="mindstorms2_reset"></block>
+        <block type="mindstorms2_turn_cm_NB"></block>
+        <block type="mindstorms2_drive_distance_cm_NB"></block>
+        <block type="mindstorms2_drive_time_NB"></block>
+        <block type="mindstorms2_drive_angle_NB"></block>
+        <block type="mindstorms2_reset_NB"></block>
+      </category>
+      <category name="Variables" custom="VARIABLE"></category>
+      <category name="Functions" custom="PROCEDURE"></category>
     </category>
   </xml>
 
+<div align="center" id="footer-info" style="background-color:#FFF; color:#000;">
+
+        <!--footer container--><div class="row">
+
+   
+<div class="col-md-6">     
+
+
+
+
+</div>
+
+<div id="roboyes">
+
+</div>
+
+                   
+      
+      <div id="copyright" style="font-size:13px;"><br>Copyright © 2015 UC Davis C-STEM Center | <a href="/contact-us/" style="color:#002666;">Contact Us</a> | <a href="http://ucdavis.edu/help/privacy-accessibility.html" style="color:#002666;">Privacy Policy</a>
+        <br>
+        <a href="http://www.facebook.com/UCDCSTEM" rel="nofollow" target="_blank"><img width="32" height="32" src="http://engineering.ucdavis.edu/wp-content/plugins/social-media-widget/images/default/32/facebook.png" alt="facebook" title="Follow Us on Facebook" style="opacity: 0.8; -moz-opacity: 0.8;" class="fade"></a>
+
+<a href="http://www.twitter.com/cstematucd" rel="nofollow" target="_blank"><img width="32" height="32" src="http://engineering.ucdavis.edu/wp-content/plugins/social-media-widget/images/default/32/twitter.png" alt="twitter" title="Follow Us on Twitter" style="opacity: 0.8; -moz-opacity: 0.8;" class="fade"></a>
+
+<a href="https://secure.flickr.com/photos/c-stem/sets/" rel="nofollow" target="_blank"><img width="32" height="32" src="http://engineering.ucdavis.edu/wp-content/plugins/social-media-widget/images/default/32/flickr.png" alt="flicker" title="Follow Us on Flickr" style="opacity: 0.8; -moz-opacity: 0.8;" class="fade"></a>
+
+<a href="https://www.youtube.com/user/UCDavisIEL" rel="nofollow" target="_blank"><img width="32" height="32" src="http://engineering.ucdavis.edu/wp-content/plugins/social-media-widget/images/default/32/youtube.png" alt="youtube" title="Follow Us on YouTube" style="opacity: 0.8; -moz-opacity: 0.8;" class="fade"></a>
+      </div>
+      <div class="col-md-6">
+      </div> 
+         
+      </div>    
+      </div><!--footer info end-->
+  
+  <script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/themes/CSTEM/js/superfish.js?ver=1.0"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/themes/CSTEM/js/jquery.custom.js?ver=1.0"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/themes/CSTEM/js/jquery.fitvids.js?ver=1.0"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/themes/CSTEM/js/jquery.flexslider.js?ver=2.1"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/themes/CSTEM/js/selectnav.js?ver=0.1"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/themes/CSTEM/js/responsive-scripts.js?ver=1.2.1"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/themes/CSTEM/js/cf7js.js?ver=1.2.1"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/plugins/bbpress/templates/default/js/editor.js?ver=2.5.3-5249"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.48.0-2013.12.28"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/c-stem.ucdavis.edu\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=3.7"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"http:\/\/c-stem.ucdavis.edu\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-includes/js/thickbox/thickbox.js?ver=3.1-20121105"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-includes/js/jquery/ui/core.min.js?ver=1.11.2"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.2"></script>
+<script type="text/javascript" src="http://c-stem.ucdavis.edu/wp-includes/js/jquery/ui/tabs.min.js?ver=1.11.2"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready( function($) {
+  $("ul.menu").not(":has(li)").closest('div').prev('h3.widget-title').hide();
+});
+/* ]]> */
+</script>
+<!-- Start Of Script Generated By cforms v14.6 [Oliver Seidel | www.deliciousdays.com] -->
+<!-- End Of Script Generated By cforms -->
+
+
+
+
+</div>
   <script>
+  function toolbox() {
+    document.getElementById('blocklyDiv').innerHTML = '';
+    if(document.getElementById('US Customary').checked)
     Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox')});
+        {toolbox: document.getElementById('toolbox1')});
+    else
+    Blockly.inject(document.getElementById('blocklyDiv'),
+        {toolbox: document.getElementById('toolbox2')});
+    }
   </script>
 
-
+  <script>
+    Blockly.inject(document.getElementById('blocklyDiv'),
+        {toolbox: document.getElementById('toolbox1')});
+  </script>
 
 
 
@@ -232,6 +605,9 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var a = 0;
     var b = 0;
     var angle = 0;
+    var oldangle = 0;
+    var newangle = 0;
+    var direction = 0;
     var dis2 = 0;
     var dis = 0;
 
@@ -258,7 +634,19 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     }//if first is drive
     if (rootBlock.type == 'linkbot_turn_in') {
       angleBlock = rootBlock;
-      angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+      angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+      newangle = (round(angleBlock.getFieldValue('turn direction')));
+      if(angle >= 360)
+        angle -= 360;
+      console.log("TIG OL BITIES " + angle)
+          var leftMargin = 0;
+          var topMargin = 0;
+          var intervalTime = 1000/(newangle/5);
+          var numImages = Math.floor(newangle/5) - 1;
+          console.log("NUMBER OF IMAGES" + numImages);
+          console.log('NEWANGLE NEW ANGLE ' + newangle);
+          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)}, intervalTime);
+      //direction = 
     }//if first is turn
     var i = 0;
     childBlocks = rootBlock.getChildren();
@@ -302,8 +690,17 @@ console.log("distance in the block: " + dis);
     document.getElementsByClassName('toggleButton')[0].value = 'play';
     document.getElementsByClassName('toggleButton')[0].innerHTML = 'Run';
 
-    $('#horizTranslate').css({'margin-top': 0 + "px"});
-    $('#horizTranslate').css({'margin-left': 0 + "px"});
+    $('#home').css({'width': 200 + 'px'});
+    $('#home').css({'height': 200 + 'px'});
+    $('#home').css({'background': 'url(./img/linkbot_spritesheet.png)' + 0 +'px' + ' ' + 0 +'px'});
+    $('#home').css({'border': 'none'});
+
+
+    $('#roboyes').css({'margin-left': 0 +'px'});
+    $('#roboyes').css({'margin-top': 0 + 'px'});
+    //$('#home').css({'position' : 'absolute'});
+    $('#horizTranslate').css({'margin-left': 0 +'px'});
+    $('#horizTranslate').css({'margin-top': 0 + 'px'});
   };
 }
 function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks){
@@ -330,15 +727,56 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         }//if drive
         if (block.type == 'linkbot_turn_in') {
           angleBlock = block;
-          angle = (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+          angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+          newangle = (round(angleBlock.getFieldValue('turn direction')));
+          if(angle >= 360)
+            angle -= 360;
+          console.log("TIG OL BITIES " + angle)
+          var leftMargin = parseInt($("#roboyes").css('margin-left'));
+          var topMargin = parseInt($("#roboyes").css('margin-top'));
+          var intervalTime = 1000/(newangle/5);
+          var numImages = Math.floor(newangle/5) - 1;
+          console.log('NEWANGLE NEW ANGLE ' + newangle);
+          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)}, intervalTime);
+            //y = y - 200;
+            
+            
         }//if turn
+
           childBlocks = block.getChildren();
       if(childBlocks.length > 0){
         i = i + 1;
         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks)}, 1000);
     }//if only one block
+}
+
+function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)
+{
+  console.log("MARGINS " + leftMargin + ' ' + topMargin);
+  console.log('NUM IMAGESSSSSS '+ numImages)
+  if(numImages <= 0)
+    return;
+  if(leftMargin == -2200){
+    if(topMargin == -1000){
+      leftMargin = 0;
+      topMargin = 0;
     }
+    else{
+    leftMargin = 0;
+    topMargin -= 200;
+    }
+  }
+  else
+    leftMargin -= 200;
+
+  $("#home").css({'background': 'url(./img/linkbot_spritesheet.png) ' + leftMargin+'px' + ' ' + topMargin+'px'});
+  $("#roboyes").css({'margin-left': + leftMargin+'px'});
+  $("#roboyes").css({'margin-top': + topMargin+'px'});
+  numImages--;
+  setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages)}, 2 * intervalTime);
+
+}
 //Drive funtion
 function drive(x, y, robotime){
   console.log('' + x + ' ' + x);
