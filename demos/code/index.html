@@ -494,6 +494,10 @@
 
 </div>
 
+<div id="roboyes">
+
+</div>
+
                    
       
       <div id="copyright" style="font-size:13px;"><br>Copyright © 2015 UC Davis C-STEM Center | <a href="/contact-us/" style="color:#002666;">Contact Us</a> | <a href="http://ucdavis.edu/help/privacy-accessibility.html" style="color:#002666;">Privacy Policy</a>
@@ -619,6 +623,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           var topMargin = 0;
           var intervalTime = 1000/(newangle/5);
           var numImages = Math.floor(newangle/5) - 1;
+          console.log("NUMBER OF IMAGES" + numImages);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)}, intervalTime);
       //direction = 
@@ -670,6 +675,9 @@ console.log("distance in the block: " + dis);
     $('#home').css({'background': 'url(./img/linkbot_spritesheet.png)' + 0 +'px' + ' ' + 0 +'px'});
     $('#home').css({'border': 'none'});
 
+
+    $('#roboyes').css({'margin-left': 0 +'px'});
+    $('#roboyes').css({'margin-top': 0 + 'px'});
     //$('#home').css({'position' : 'absolute'});
     $('#horizTranslate').css({'margin-left': 0 +'px'});
     $('#horizTranslate').css({'margin-top': 0 + 'px'});
@@ -704,8 +712,8 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           if(angle >= 360)
             angle -= 360;
           console.log("TIG OL BITIES " + angle)
-          var leftMargin = 0;
-          var topMargin = 0;
+          var leftMargin = parseInt($("#roboyes").css('margin-left'));
+          var topMargin = parseInt($("#roboyes").css('margin-top'));
           var intervalTime = 1000/(newangle/5);
           var numImages = Math.floor(newangle/5) - 1;
           console.log('NEWANGLE NEW ANGLE ' + newangle);
@@ -725,18 +733,28 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
 
 function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime)
 {
+  console.log("MARGINS " + leftMargin + ' ' + topMargin);
   console.log('NUM IMAGESSSSSS '+ numImages)
   if(numImages <= 0)
     return;
-  if(leftMargin == -2400){
+  if(leftMargin == -2200){
+    if(topMargin == -1000){
+      leftMargin = 0;
+      topMargin = 0;
+    }
+    else{
     leftMargin = 0;
-    topMargin-=200;
+    topMargin -= 200;
+    }
   }
   else
     leftMargin -= 200;
+
   $("#home").css({'background': 'url(./img/linkbot_spritesheet.png) ' + leftMargin+'px' + ' ' + topMargin+'px'});
+  $("#roboyes").css({'margin-left': + leftMargin+'px'});
+  $("#roboyes").css({'margin-top': + topMargin+'px'});
   numImages--;
-  setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages)}, intervalTime);
+  setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages)}, 2 * intervalTime);
 
 }
 //Drive funtion
