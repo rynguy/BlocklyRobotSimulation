@@ -45,14 +45,14 @@ Blockly.Trashcan = function(workspace) {
  * @type {string}
  * @private
  */
-Blockly.Trashcan.prototype.SPRITE_URL_ = 'media/sprites.png';
+Blockly.Trashcan.prototype.SPRITE_URL_ = 'media/trashcanClosed.png';
 
 /**
  * URL of the lid image.
  * @type {string}
  * @private
  */
-Blockly.Trashcan.prototype.LID_URL_ = 'media/trashlid.png';
+Blockly.Trashcan.prototype.LID_URL_ = 'media/trashcanClosed.png';
 
 /**
  * Width of both the trash can and lid images.
@@ -80,7 +80,7 @@ Blockly.Trashcan.prototype.LID_HEIGHT_ = 15;
  * @type {number}
  * @private
  */
-Blockly.Trashcan.prototype.MARGIN_BOTTOM_ = 35;
+Blockly.Trashcan.prototype.MARGIN_BOTTOM_ = 100;
 
 /**
  * Distance between trashcan and right edge of workspace.
