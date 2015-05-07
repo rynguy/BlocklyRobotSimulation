@@ -110,7 +110,13 @@
               <input type="radio" name="units" id="US Customary" value="US Customary" onclick="toolbox()" checked>US Customary
               <input type="radio" name="units" id="Metric" value="Metric" onclick="toolbox()" >Metric
               </div>
-              <span><img src="./img/minds_Transparent.png"></span>
+              <span>
+                <b style = "font-size:16px;">CHOOSE YOUR ROBOT: </b>
+                <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_Transparent.png" onmouseover= "bigImg(this)" onmouseout= "normalImg(this)" onclick = "LoadShit(this);">
+                <img width= "32" height= "32" id= "1stLinkbot" src="./img/linkbot_alone.png" onmouseover= "bigImg(this)" onmouseout= "normalImg(this)" onclick = "LoadShit(this);">
+              </span>
+             
+              
               <p>
               <h3 style="PADDING-RIGHT: 4%; margin-top:-20px; display:inline;">
         <strong style="font-family:Sanchez;">
@@ -565,6 +571,21 @@ jQuery(document).ready( function($) {
 
 </div>
   <script>
+  
+  function bigImg(x) {
+    x.style.height = "64px";
+    x.style.width = "64px";
+    x.style.cursor="pointer";
+  }
+
+  function normalImg(x) {
+    x.style.height = "32px";
+    x.style.width = "32px";
+  }
+
+
+
+
   function toolbox() {
     document.getElementById('blocklyDiv').innerHTML = '';
     if(document.getElementById('US Customary').checked)
