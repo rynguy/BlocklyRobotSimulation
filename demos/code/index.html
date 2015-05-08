@@ -583,7 +583,36 @@ jQuery(document).ready( function($) {
     x.style.width = "32px";
   }
 
+  function LoadShit(x) {
+    /*document.getElementById("home").style.height = 0;
+    document.getElementById("home").style.width = 0;
+    document.getElementById("home").src = "";*/
+    $("#home").css({'width': 0});
+    $("#home").css({'height': 0});
+    $("#home").css({'background': 'none'});
+    setTimeout(function(){
+                  
+                  if(x.id == "1stLinkbot") //linkbot
+                  {
+                    document.getElementById("home").style.height = "200px";
+                    document.getElementById("home").style.width = "200px";
+                    $("#home").css({'background': 'url(./img/linkbot_spritesheet.png) 0 0'});
+                    $("#home").css({'margin-left': 0 + 'px'});
+                    $("#home").css({'margin-top': 0 + 'px'});
+                    document.getElementById("home").src = "./img/largeTransparent.gif";
+                  }
+                  else
+                  { //mindstorm nigga
 
+                    document.getElementById("home").style.height = "100px";
+                    document.getElementById("home").style.width = "100px";
+                    $("#home").css({'margin-left': 40 + 'px'});
+                    $("#home").css({'margin-top': 40 + 'px'});
+                    document.getElementById("home").src = x.src;
+                  }
+              }, 50);
+    
+  }
 
 
   function toolbox() {
