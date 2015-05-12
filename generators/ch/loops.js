@@ -36,12 +36,11 @@ Blockly.Ch['controls_repeat'] = function(block) {
   branch = Blockly.Ch.addLoopTrap(branch, block.id);
   var loopVar = Blockly.Ch.variableDB_.getDistinctName(
       'count', Blockly.Variables.NAME_TYPE);
-  var code = 'for (' + loopVar + ' = 0; ' +
-      loopVar + ' < ' + repeats + '; ' +
-      loopVar + '++) {\n' +
-      branch + '}\n';
-  Blockly.Ch.definitions_['include_count'] =
-      'int ' + loopVar + ';\n';
+  var code = loopVar + ' = 0;\n' + 'while(' + loopVar +
+      ' < ' + repeats + ') {\n' +
+      branch + loopVar + '++;\n}\n';
+  Blockly.Ch.definitions_['include_' + loopVar] =
+      'int ' + '  ' + loopVar + ';';
   return code;
 };
 
@@ -61,12 +60,11 @@ Blockly.Ch['controls_repeat_ext'] = function(block) {
         'repeat_end', Blockly.Variables.NAME_TYPE);
     code += 'var ' + endVar + ' = ' + repeats + ';\n';
   }
-  code += 'for (' + loopVar + ' = 0; ' +
-      loopVar + ' < ' + endVar + '; ' +
-      loopVar + '++) {\n' +
-      branch + '}\n';
-  Blockly.Ch.definitions_['include_count'] =
-      'int ' + loopVar + ';\n';
+  code += loopVar + ' = 0;\n' + 'while(' + loopVar +
+      ' < ' + endVar + ') {\n' +
+      branch + '  ' + loopVar + '++;\n}\n';
+  Blockly.Ch.definitions_['include_' + loopVar] =
+      'int ' + loopVar + ';';
   return code;
 };
 
@@ -101,16 +99,16 @@ Blockly.Ch['controls_for'] = function(block) {
       Blockly.isNumber(increment)) {
     // All arguments are simple numbers.
     var up = parseFloat(argument0) <= parseFloat(argument1);
-    code = 'for (' + variable0 + ' = ' + argument0 + '; ' +
-        variable0 + (up ? ' <= ' : ' >= ') + argument1 + '; ' +
-        variable0;
+    code = variable0 + ' = ' + argument0 + ';\n' + 'while(' + 
+        variable0 + (up ? ' <= ' : ' >= ') + argument1 + ') {\n' + branch +
+        '  ' + variable0;
     var step = Math.abs(parseFloat(increment));
     if (step == 1) {
       code += up ? '++' : '--';
     } else {
       code += (up ? ' += ' : ' -= ') + step;
     }
-    code += ') {\n' + branch + '}\n';
+    code += ';\n}\n';
   } else {
     code = '';
     // Cache non-trivial values to variables to prevent repeated look-ups.
@@ -137,14 +135,12 @@ Blockly.Ch['controls_for'] = function(block) {
       code += '(' + increment + ').abs();\n';
     }
     code += 'if (' + startVar + ' > ' + endVar + ') {\n';
-    code += Blockly.Ch.INDENT + incVar + ' = -' + incVar + ';\n';
+    code += Blockly.Cpp.INDENT + incVar + ' = -' + incVar + ';\n';
     code += '}\n';
-    code += 'for (' + variable0 + ' = ' + startVar + ';\n' +
-        '     ' + incVar + ' >= 0 ? ' +
-        variable0 + ' <= ' + endVar + ' : ' +
-        variable0 + ' >= ' + endVar + ';\n' +
-        '     ' + variable0 + ' += ' + incVar + ') {\n' +
-        branch + '}\n';
+    code += variable0 + ' = ' + startVar + ';\n' + 'while(' +
+        incVar + ' >= 0 ? ' + variable0 + ' <= ' + endVar + ' : ' +
+        variable0 + ' >= ' + endVar + ') {\n' + branch + 
+        '  ' + variable0 + ' += ' + incVar + ';\n}\n';
   }
   return code;
 };
