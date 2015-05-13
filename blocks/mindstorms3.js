@@ -24,15 +24,15 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.mindstorms');
+goog.provide('Blockly.Blocks.mindstorms3');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.mindstorms.HUE = 0;
+Blockly.Blocks.mindstorms3.HUE = 180;
 
-Blockly.Blocks['mindstorms_speed_in'] = {
+Blockly.Blocks['mindstorms3_speed_in'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("setSpeed(speed")
         .appendField(new Blockly.FieldTextInput("10",
@@ -48,9 +48,9 @@ Blockly.Blocks['mindstorms_speed_in'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_speed_cm'] = {
+Blockly.Blocks['mindstorms3_speed_cm'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("setSpeed(speed")
         .appendField(new Blockly.FieldTextInput("10",
@@ -66,9 +66,9 @@ Blockly.Blocks['mindstorms_speed_cm'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_blink_LED'] = {
+Blockly.Blocks['mindstorms3_blink_LED'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("blinkLED(delay")
         .appendField(new Blockly.FieldTextInput(".1",
@@ -85,9 +85,9 @@ Blockly.Blocks['mindstorms_blink_LED'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_delay'] = {
+Blockly.Blocks['mindstorms3_delay'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("delaySeconds(seconds")
         .appendField(new Blockly.FieldTextInput("3",
@@ -99,9 +99,9 @@ Blockly.Blocks['mindstorms_delay'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_move_joints'] = {
+Blockly.Blocks['mindstorms3_move_joints'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("move(angle1")
         .appendField(new Blockly.FieldTextInput("90",
@@ -123,9 +123,9 @@ Blockly.Blocks['mindstorms_move_joints'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_move_wait'] = {
+Blockly.Blocks['mindstorms3_move_wait'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("moveWait();");
     this.setPreviousStatement(true, "null");
@@ -134,9 +134,9 @@ Blockly.Blocks['mindstorms_move_wait'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_traceon'] = {
+Blockly.Blocks['mindstorms3_traceon'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("traceOn();");
     this.setPreviousStatement(true, "null");
@@ -145,9 +145,9 @@ Blockly.Blocks['mindstorms_traceon'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_traceoff'] = {
+Blockly.Blocks['mindstorms3_traceoff'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("traceOff();");
     this.setPreviousStatement(true, "null");
@@ -156,9 +156,9 @@ Blockly.Blocks['mindstorms_traceoff'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_turn_in'] = {
+Blockly.Blocks['mindstorms3_turn_in'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("turn")
         .appendField(new Blockly.FieldDropdown([["Left", "turnLeft"], ["Right", "turnRight"]]), "direction")
@@ -179,9 +179,9 @@ Blockly.Blocks['mindstorms_turn_in'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_turn_cm'] = {
+Blockly.Blocks['mindstorms3_turn_cm'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("turn")
         .appendField(new Blockly.FieldDropdown([["Left", "turnLeft"], ["Right", "turnRight"]]), "direction")
@@ -202,9 +202,9 @@ Blockly.Blocks['mindstorms_turn_cm'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_drive_distance_in'] = {
+Blockly.Blocks['mindstorms3_drive_distance_in'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("driveDistance(distance")
         .appendField(new Blockly.FieldTextInput("10",
@@ -220,9 +220,9 @@ Blockly.Blocks['mindstorms_drive_distance_in'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_drive_distance_cm'] = {
+Blockly.Blocks['mindstorms3_drive_distance_cm'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("driveDistance(distance")
         .appendField(new Blockly.FieldTextInput("10",
@@ -238,9 +238,9 @@ Blockly.Blocks['mindstorms_drive_distance_cm'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_drive_time'] = {
+Blockly.Blocks['mindstorms3_drive_time'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("driveTime(")
         .appendField(new Blockly.FieldTextInput("10",
@@ -252,9 +252,9 @@ Blockly.Blocks['mindstorms_drive_time'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_drive_angle'] = {
+Blockly.Blocks['mindstorms3_drive_angle'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("driveAngle(angle")
         .appendField(new Blockly.FieldTextInput("90",
@@ -266,9 +266,9 @@ Blockly.Blocks['mindstorms_drive_angle'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_reset'] = {
+Blockly.Blocks['mindstorms3_reset'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("resetToZero();");
     this.setPreviousStatement(true, "null");
@@ -277,9 +277,9 @@ Blockly.Blocks['mindstorms_reset'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_turn_in_NB'] = {
+Blockly.Blocks['mindstorms3_turn_in_NB'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("turn")
         .appendField(new Blockly.FieldDropdown([["Left", "turnLeft"], ["Right", "turnRight"]]), "direction")
@@ -300,9 +300,9 @@ Blockly.Blocks['mindstorms_turn_in_NB'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_turn_cm_NB'] = {
+Blockly.Blocks['mindstorms3_turn_cm_NB'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("turn")
         .appendField(new Blockly.FieldDropdown([["Left", "turnLeft"], ["Right", "turnRight"]]), "direction")
@@ -323,9 +323,9 @@ Blockly.Blocks['mindstorms_turn_cm_NB'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_drive_distance_in_NB'] = {
+Blockly.Blocks['mindstorms3_drive_distance_in_NB'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("driveDistanceNB(distance")
         .appendField(new Blockly.FieldTextInput("10",
@@ -341,9 +341,9 @@ Blockly.Blocks['mindstorms_drive_distance_in_NB'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_drive_distance_cm_NB'] = {
+Blockly.Blocks['mindstorms3_drive_distance_cm_NB'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("driveDistanceNB(distance")
         .appendField(new Blockly.FieldTextInput("10",
@@ -359,9 +359,9 @@ Blockly.Blocks['mindstorms_drive_distance_cm_NB'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_drive_time_NB'] = {
+Blockly.Blocks['mindstorms3_drive_time_NB'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("driveTimeNB(")
         .appendField(new Blockly.FieldTextInput("10",
@@ -373,9 +373,9 @@ Blockly.Blocks['mindstorms_drive_time_NB'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_drive_angle_NB'] = {
+Blockly.Blocks['mindstorms3_drive_angle_NB'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("driveAngleNB(angle")
         .appendField(new Blockly.FieldTextInput("90",
@@ -387,9 +387,9 @@ Blockly.Blocks['mindstorms_drive_angle_NB'] = {
   }
 };
 
-Blockly.Blocks['mindstorms_reset_NB'] = {
+Blockly.Blocks['mindstorms3_reset_NB'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.mindstorms.HUE);
+    this.setColour(Blockly.Blocks.mindstorms3.HUE);
     this.appendDummyInput()
         .appendField("resetToZeroNB();");
     this.setPreviousStatement(true, "null");

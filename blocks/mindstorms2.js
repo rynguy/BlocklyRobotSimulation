@@ -28,7 +28,7 @@ goog.provide('Blockly.Blocks.mindstorms2');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.mindstorms2.HUE = 270;
+Blockly.Blocks.mindstorms2.HUE = 90;
 
 Blockly.Blocks['mindstorms2_speed_in'] = {
   init: function() {

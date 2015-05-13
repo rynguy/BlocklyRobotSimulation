@@ -121,7 +121,9 @@ Blockly.Cpp.finish = function(code) {
     } else {
       definitions.push(def);
       if(def.match(/^CLinkbotI l_robot1/) || def.match(/^CLinkbotI l_robot2/) || 
-        def.match(/^CMindstorms m_robot1/) || def.match(/^CMindstorms m_robot2/)) {
+         def.match(/^CLinkbotI l_robot3/) || def.match(/^CLinkbotI l_robot4/) || 
+         def.match(/^CMindstorms m_robot1/) || def.match(/^CMindstorms m_robot2/) ||
+         def.match(/^CMindstorms m_robot3/) || def.match(/^CMindstorms m_robot4/)) {
         x++;
       }
     }
@@ -131,8 +133,12 @@ Blockly.Cpp.finish = function(code) {
   if(x == 1) {
       total = total.replace(/l_robot1/g, 'robot');
       total = total.replace(/l_robot2/g, 'robot');
+      total = total.replace(/l_robot3/g, 'robot');
+      total = total.replace(/l_robot4/g, 'robot');
       total = total.replace(/m_robot1/g, 'robot');
       total = total.replace(/m_robot2/g, 'robot');
+      total = total.replace(/m_robot3/g, 'robot');
+      total = total.replace(/m_robot4/g, 'robot');
   }
   else {
       var z = [];
@@ -140,10 +146,18 @@ Blockly.Cpp.finish = function(code) {
         z.push(allDefs.indexOf('l_robot1'));
       if(allDefs.indexOf('l_robot2') >= 0)
         z.push(allDefs.indexOf('l_robot2'));
+      if(allDefs.indexOf('l_robot3') >= 0)
+        z.push(allDefs.indexOf('l_robot3'));
+      if(allDefs.indexOf('l_robot4') >= 0)
+        z.push(allDefs.indexOf('l_robot4'));
       if(allDefs.indexOf('m_robot1') >= 0)
         z.push(allDefs.indexOf('m_robot1'));
       if(allDefs.indexOf('m_robot2') >= 0)
         z.push(allDefs.indexOf('m_robot2'));
+      if(allDefs.indexOf('m_robot3') >= 0)
+        z.push(allDefs.indexOf('m_robot3'));
+      if(allDefs.indexOf('m_robot4') >= 0)
+        z.push(allDefs.indexOf('m_robot4'));
       z.sort(function(a, b){return a-b});
       for(var y = 1; y <= x; y++) {
         if(allDefs.indexOf('l_robot1') == z[y-1]) {
@@ -152,11 +166,23 @@ Blockly.Cpp.finish = function(code) {
         if(allDefs.indexOf('l_robot2') == z[y-1]) {
           total = total.replace(/l_robot2/g, 'robot' + y);   
         }
+        if(allDefs.indexOf('l_robot3') == z[y-1]) {
+          total = total.replace(/l_robot3/g, 'robot' + y);   
+        }
+        if(allDefs.indexOf('l_robot4') == z[y-1]) {
+          total = total.replace(/l_robot4/g, 'robot' + y);   
+        }
         if(allDefs.indexOf('m_robot1') == z[y-1]) {
           total = total.replace(/m_robot1/g, 'robot' + y);   
         }
         if(allDefs.indexOf('m_robot2') == z[y-1]) {
           total = total.replace(/m_robot2/g, 'robot' + y);   
+        }
+        if(allDefs.indexOf('m_robot3') == z[y-1]) {
+          total = total.replace(/m_robot3/g, 'robot' + y);   
+        }
+        if(allDefs.indexOf('m_robot4') == z[y-1]) {
+          total = total.replace(/m_robot4/g, 'robot' + y);   
         }
       }
   }
