@@ -110,9 +110,9 @@
               <br>
               <button id = "Add" class="link" onclick="show()" >Click to Add Robot (Max 4) </button>
               <button id = "Remove" class="link" style="display: none;" onclick="hide()" >Click to Remove Robot </button>
-              <div id="R1" style="display: none;">
+              <div id="R1" style="display: ;">
               Choose Robot 1&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="robot1" id="L1" onclick="toolbox(); LoadShit(document.getElementById('1stLinkbot'))" >
+              <input type="radio" name="robot1" id="L1" onclick="toolbox(); LoadShit(document.getElementById('1stLinkbot'))" checked>
               <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
               <input type="radio" name="robot1" id="M1" onclick="toolbox(); LoadShit(document.getElementById('1stMindstorm'))" >
               <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
@@ -183,7 +183,7 @@
     <div class="col-md-6">
       
   </div>
-  <category id="Linkbot 1 in" name="Linkbot 1">
+  <category id="Linkbot 1 in" name="Robot 1">
     <block type="linkbot_speed_in"></block>
     <block type="linkbot_delay"></block>
     <block type="linkbot_move_joints"></block>
@@ -201,7 +201,7 @@
     <block type="linkbot_drive_angle_NB"></block>
     <block type="linkbot_reset_NB"></block>
   </category>
-  <category id="Linkbot 2 in" name="Linkbot 2">
+  <category id="Linkbot 2 in" name="Robot 2">
     <block type="linkbot2_speed_in"></block>
     <block type="linkbot2_delay"></block>
     <block type="linkbot2_move_joints"></block>
@@ -219,7 +219,7 @@
     <block type="linkbot2_drive_angle_NB"></block>
     <block type="linkbot2_reset_NB"></block>
   </category>
-  <category id="Linkbot 3 in" name="Linkbot 3">
+  <category id="Linkbot 3 in" name="Robot 3">
     <block type="linkbot3_speed_in"></block>
     <block type="linkbot3_delay"></block>
     <block type="linkbot3_move_joints"></block>
@@ -237,7 +237,7 @@
     <block type="linkbot3_drive_angle_NB"></block>
     <block type="linkbot3_reset_NB"></block>
   </category>
-  <category id="Linkbot 4 in" name="Linkbot 4">
+  <category id="Linkbot 4 in" name="Robot 4">
     <block type="linkbot4_speed_in"></block>
     <block type="linkbot4_delay"></block>
     <block type="linkbot4_move_joints"></block>
@@ -255,7 +255,7 @@
     <block type="linkbot4_drive_angle_NB"></block>
     <block type="linkbot4_reset_NB"></block>
   </category>
-  <category id="Mindstorms 1 in" name="Mindstorms 1">
+  <category id="Mindstorms 1 in" name="Robot 1">
     <block type="mindstorms_speed_in"></block>
     <block type="mindstorms_delay"></block>
     <block type="mindstorms_move_joints"></block>
@@ -273,7 +273,7 @@
     <block type="mindstorms_drive_angle_NB"></block>
     <block type="mindstorms_reset_NB"></block>
   </category>
-  <category id="Mindstorms 2 in" name="Mindstorms 2">
+  <category id="Mindstorms 2 in" name="Robot 2">
     <block type="mindstorms2_speed_in"></block>
     <block type="mindstorms2_delay"></block>
     <block type="mindstorms2_move_joints"></block>
@@ -291,7 +291,7 @@
     <block type="mindstorms2_drive_angle_NB"></block>
     <block type="mindstorms2_reset_NB"></block>
   </category>
-  <category id="Mindstorms 3 in" name="Mindstorms 3">
+  <category id="Mindstorms 3 in" name="Robot 3">
     <block type="mindstorms3_speed_in"></block>
     <block type="mindstorms3_delay"></block>
     <block type="mindstorms3_move_joints"></block>
@@ -309,7 +309,7 @@
     <block type="mindstorms3_drive_angle_NB"></block>
     <block type="mindstorms3_reset_NB"></block>
   </category>
-  <category id="Mindstorms 4 in" name="Mindstorms 4">
+  <category id="Mindstorms 4 in" name="Robot 4">
     <block type="mindstorms4_speed_in"></block>
     <block type="mindstorms4_delay"></block>
     <block type="mindstorms4_move_joints"></block>
@@ -327,7 +327,7 @@
     <block type="mindstorms4_drive_angle_NB"></block>
     <block type="mindstorms4_reset_NB"></block>
   </category>
-  <category id="Linkbot 1 cm" name="Linkbot 1">
+  <category id="Linkbot 1 cm" name="Robot 1">
     <block type="linkbot_speed_cm"></block>
     <block type="linkbot_delay"></block>
     <block type="linkbot_move_joints"></block>
@@ -345,7 +345,7 @@
     <block type="linkbot_drive_angle_NB"></block>
     <block type="linkbot_reset_NB"></block>
   </category>
-  <category id="Linkbot 2 cm" name="Linkbot 2">
+  <category id="Linkbot 2 cm" name="Robot 2">
     <block type="linkbot2_speed_cm"></block>
     <block type="linkbot2_delay"></block>
     <block type="linkbot2_move_joints"></block>
@@ -363,7 +363,7 @@
     <block type="linkbot2_drive_angle_NB"></block>
     <block type="linkbot2_reset_NB"></block>
   </category>
-  <category id="Linkbot 3 cm" name="Linkbot 3">
+  <category id="Linkbot 3 cm" name="Robot 3">
     <block type="linkbot3_speed_cm"></block>
     <block type="linkbot3_delay"></block>
     <block type="linkbot3_move_joints"></block>
@@ -381,7 +381,7 @@
     <block type="linkbot3_drive_angle_NB"></block>
     <block type="linkbot3_reset_NB"></block>
   </category>
-  <category id="Linkbot 4 cm" name="Linkbot 4">
+  <category id="Linkbot 4 cm" name="Robot 4">
     <block type="linkbot4_speed_cm"></block>
     <block type="linkbot4_delay"></block>
     <block type="linkbot4_move_joints"></block>
@@ -399,7 +399,7 @@
     <block type="linkbot4_drive_angle_NB"></block>
     <block type="linkbot4_reset_NB"></block>
   </category>
-  <category id="Mindstorms 1 cm" name="Mindstorms 1">
+  <category id="Mindstorms 1 cm" name="Robot 1">
     <block type="mindstorms_speed_cm"></block>
     <block type="mindstorms_delay"></block>
     <block type="mindstorms_move_joints"></block>
@@ -417,7 +417,7 @@
     <block type="mindstorms_drive_angle_NB"></block>
     <block type="mindstorms_reset_NB"></block>
   </category>
-  <category id="Mindstorms 2 cm" name="Mindstorms 2">
+  <category id="Mindstorms 2 cm" name="Robot 2">
     <block type="mindstorms2_speed_cm"></block>
     <block type="mindstorms2_delay"></block>
     <block type="mindstorms2_move_joints"></block>
@@ -435,7 +435,7 @@
     <block type="mindstorms2_drive_angle_NB"></block>
     <block type="mindstorms2_reset_NB"></block>
   </category>
-  <category id="Mindstorms 3 cm" name="Mindstorms 3">
+  <category id="Mindstorms 3 cm" name="Robot 3">
     <block type="mindstorms3_speed_cm"></block>
     <block type="mindstorms3_delay"></block>
     <block type="mindstorms3_move_joints"></block>
@@ -453,7 +453,7 @@
     <block type="mindstorms3_drive_angle_NB"></block>
     <block type="mindstorms3_reset_NB"></block>
   </category>
-  <category id="Mindstorms 4 cm" name="Mindstorms 4">
+  <category id="Mindstorms 4 cm" name="Robot 4">
     <block type="mindstorms4_speed_cm"></block>
     <block type="mindstorms4_delay"></block>
     <block type="mindstorms4_move_joints"></block>
@@ -803,15 +803,10 @@ jQuery(document).ready( function($) {
   }
   
   function show() {
-    if(document.getElementById('R1').style.display == 'none')
-    {
-      document.getElementById('R1').style.display = '';
-      document.getElementById('Remove').style.display = '';
-      document.getElementById('L1').checked = true;
-    }    
-    else if(document.getElementById('R2').style.display == 'none')
+    if(document.getElementById('R2').style.display == 'none')
     {
       document.getElementById('R2').style.display = '';
+      document.getElementById('Remove').style.display = '';
       document.getElementById('L2').checked = true;
     }
     else if(document.getElementById('R3').style.display == 'none')
@@ -845,21 +840,16 @@ jQuery(document).ready( function($) {
     else if(document.getElementById('R2').style.display == '')
     {
       document.getElementById('R2').style.display = 'none';
+      document.getElementById('Remove').style.display = 'none'; 
       document.getElementById('L2').checked = false;
       document.getElementById('M2').checked = false;
-    }
-    else if(document.getElementById('R1').style.display == '')
-    {
-      document.getElementById('R1').style.display = 'none';
-      document.getElementById('Remove').style.display = 'none'; 
-      document.getElementById('L1').checked = false;
-      document.getElementById('M1').checked = false;
     }
     toolbox();
   }
   </script>
 
   <script>
+    document.getElementById('toolbox').insertBefore(lclone1in, document.getElementById('toolbox').childNodes[6]);
     Blockly.inject(document.getElementById('blocklyDiv'),
         {toolbox: document.getElementById('toolbox')});
   </script>
