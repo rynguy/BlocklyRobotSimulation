@@ -53,7 +53,20 @@
     border: none;
 }
 
+
 </style>
+
+<script>
+  var robotX = 0;
+  var robotY = 0;
+  
+  function getCoordinates()
+  {
+    var coordinates = "(" + robotX + "," +  robotY + ")";
+    return coordinates;
+  }
+
+</script>
 
  
 </head>
@@ -101,7 +114,7 @@
     <div style="position:absolute; z-index:0; margin-top: 178px; margin-left:165px; font-weight:900; font-size:18px; color: black;">
       <b id= "origin" >0</b>
     </div>
-      <div id= "grid" style="position:relative; z-index:-1; width:542px; height:362px; float:left; background-color:#4F6F3A">
+      <div id= "grid" style="position:relative; z-index:-1; width:542px; height:542px; float:left; background-color:#4F6F3A">
        <svg id="mysvg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
          <defs>
            <pattern id="smallGrid" width="15" height="15" patternUnits="userSpaceOnUse">
@@ -127,11 +140,16 @@
               <input type="radio" name="units" id="Metric" value="Metric" onclick="toolbox()" >Metric
               </div>
               <div id="R1" >
-                Choose Robot 1&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Choose Robot 1</b>&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" >
                 <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
                 <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))" >
                 <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Coordinates</b>
+                <span id = "coordinates">
+                  <script>document.write(getCoordinates())</script>
+                </span>
               </div>
              
               
@@ -520,7 +538,7 @@
 
 </div>
 
-<div id="roboyes">
+<div id="roboyes" style = "position: absolute; z-index: -1">
 
 </div>
 
@@ -582,8 +600,24 @@ jQuery(document).ready( function($) {
 </div>
   <script>
 
+ /* var w11 = window,
+    d11 = document,
+    e11 = d11.documentElement,
+    g11 = d11.getElementsByTagName('body')[0],
+    x11 = w11.innerWidth || e11.clientWidth || g11.clientWidth,
+    y11 = w11.innerHeight|| e11.clientHeight|| g11.clientHeight;
+
+    console.log("X NIACUH: " + x11);
+    console.log("Y NIACUH: " + y11);*/
+
+
+
+
   var imgChk;
   
+
+
+
   function loadImg(x) {
     /*document.getElementById("home").style.height = 0;
     document.getElementById("home").style.width = 0;
@@ -688,45 +722,63 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var dis2 = 0;
     var dis = 0;
     var blockDirection;
-    var testParameter;
 
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
     var childBlocks = null;
     rootBlock = blocks[0];
     
     //for (var i = 0, block; block = blocks[i]; i++) {
-    if (rootBlock.type == 'linkbot_drive_distance_in') {
+    if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm') {
 
         driveBlock = rootBlock;
-        dis2 = (round(driveBlock.getFieldValue('distance'))*25);
-        dis = (round(driveBlock.getFieldValue('distance'))*25);
-        //dis 1 x y coords for robot 
-        x = dis * Math.cos(angle) + round(30)* Math.cos(angle);
-        y = dis * Math.sin(angle);
+        if(document.getElementById('US Customary').checked) //inches
+        {
+          dis2 = (round(driveBlock.getFieldValue('distance'))*15);
+          dis = (round(driveBlock.getFieldValue('distance'))*15);
+          robotime = (round(driveBlock.getFieldValue('distance'))*15)/500;
+          //dis 1 x y coords for robot 
+          x = dis * Math.cos(angle);
+          y = dis * Math.sin(angle);
+          robotX += x/15;
+          robotY += y/15;
+        }
+        else //metric
+        {
+          dis2 = (round(driveBlock.getFieldValue('distance'))*18);
+          dis = (round(driveBlock.getFieldValue('distance'))*18);
+          robotime = (round(driveBlock.getFieldValue('distance'))*18)/500;
+          x = dis * Math.cos(angle);
+          y = dis * Math.sin(angle);
+          robotX += x/18;
+          robotY += y/18;
+        }
+        
+
+       
         //dis 2 x y  coords for line
         a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
         b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
       
-        robotime = (round(driveBlock.getFieldValue('distance'))*25)/500;
+        
         console.log('dis x' + x)
         drive(x,y,robotime);
+        document.getElementById('coordinates').innerHTML = getCoordinates();
     }//if first is drive
-    if (rootBlock.type == 'linkbot_turn_in') {
+    if (rootBlock.type == 'linkbot_turn_in' || rootBlock.type == 'linkbot_turn_cm') {
       angleBlock = rootBlock;
       angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
       blockDirection = angleBlock.getFieldValue('direction');
-      testParameter = "bootyfuck";
       newangle = (round(angleBlock.getFieldValue('turn direction')));
       if(newangle >= 360)
         newangle -= 360;
       console.log("TIG OL BITIES " + newangle)
           var leftMargin = 0;
           var topMargin = 0;
-          var intervalTime = 1000/(newangle/5);
+          var intervalTime = 500/(newangle/5);
           var numImages = Math.floor(newangle/5);
           console.log("NUMBER OF IMAGES" + numImages);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
-          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection, testParameter)}, intervalTime);
+          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
       //direction = 
     }//if first is turn
     var i = 0;
@@ -791,6 +843,9 @@ console.log("distance in the block: " + dis);
     }
     $('#home').css({'border': 'none'});
 
+    document.getElementById('coordinates').innerHTML = "(0,0)"; 
+    robotX = 0;
+    robotY = 0;
 
     $('#roboyes').css({'margin-left': 0 +'px'});
     $('#roboyes').css({'margin-top': 0 + 'px'});
@@ -807,23 +862,38 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         block = childBlocks[0];
         console.log('i ' + i);
         console.log('child ' + childBlocks.length);
-        if (block.type == 'linkbot_drive_distance_in') {
+        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm') {
           driveBlock = block;
-          dis2 = (round(driveBlock.getFieldValue('distance'))*25);
-          dis = (round(driveBlock.getFieldValue('distance'))*25);
-          //dis 1 x y coords for robot 
-          console.log('angtle ' + angle)
-          x = dis * Math.cos(angle) + round(30)* Math.cos(angle);
-          y = dis * Math.sin(angle);
+          if(document.getElementById('US Customary').checked)
+          {
+            dis2 = (round(driveBlock.getFieldValue('distance'))*15);
+            dis = (round(driveBlock.getFieldValue('distance'))*15);
+            robotime = (round(driveBlock.getFieldValue('distance'))*15)/500;
+            x = dis * Math.cos(angle);
+            y = dis * Math.sin(angle);
+            robotX += round(x/15);
+            robotY += round(y/15);
+          }
+          else
+          {
+            dis2 = (round(driveBlock.getFieldValue('distance'))*18);
+            dis = (round(driveBlock.getFieldValue('distance'))*18);
+            robotime = (round(driveBlock.getFieldValue('distance'))*18)/500;
+            x = dis * Math.cos(angle);
+            y = dis * Math.sin(angle);
+            robotX += round(x/18);
+            robotY += round(y/18);
+          }
+
           //dis 2 x y  coords for line
           a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
           b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
         
-          robotime = (round(driveBlock.getFieldValue('distance'))*25)/500;
 
           drive(x,y,robotime);
+          document.getElementById('coordinates').innerHTML = getCoordinates();
         }//if drive
-        if (block.type == 'linkbot_turn_in') {
+        if (block.type == 'linkbot_turn_in' || block.type == 'linkbot_turn_cm') {
           angleBlock = block;
           blockDirection = angleBlock.getFieldValue('direction');
           angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
@@ -834,10 +904,10 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           console.log("TIG OL BITIES " + newangle)
           var leftMargin = parseInt($("#roboyes").css('margin-left'));
           var topMargin = parseInt($("#roboyes").css('margin-top'));
-          var intervalTime = 1000/(angleImage/5);
+          var intervalTime = 500/(angleImage/5);
           var numImages = Math.floor(angleImage/5);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
-          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection, 'fucknuts')}, intervalTime);
+          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
             //y = y - 200;
             
             
@@ -851,13 +921,12 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
     }//if only one block
 }
 
-function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection, testParameter)
+function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)
 {
   var blockDicks = blockDirection;
   console.log("MARGINS " + leftMargin + ' ' + topMargin);
   console.log('NUM IMAGESSSSSS '+ numImages)
   console.log("BLOCK DIRECTIOB LAT " + blockDirection)
-  console.log("testParameter" + testParameter)
   if(numImages <= 0)
     return;
   //LEFT TURN
@@ -907,11 +976,12 @@ function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, b
   $("#roboyes").css({'margin-left': + leftMargin+'px'});
   $("#roboyes").css({'margin-top': + topMargin+'px'});
   numImages--;
-  setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection, testParameter)}, intervalTime);
+  setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
 
 }
 //Drive funtion
 function drive(x, y, robotime){
+  console.log('DRIIIVEEEEE');
   console.log('' + x + ' ' + x);
   console.log('' + y + ' ' + y);
   console.log('top' + ' ' + parseInt($('#horizTranslate').css('margin-top')));
@@ -920,6 +990,7 @@ function drive(x, y, robotime){
   var oldy = y;
   x = x + parseInt($('#horizTranslate').css('margin-left'));
   //y = y + parseInt($('#horizTranslate').css('margin-top'));
+  console.log('oldx ' + oldx);
   console.log('x ' + x);
   console.log('y ' + y);
   $('#horizTranslate').css({'-webkit-transition': robotime+'s linear'});
@@ -938,7 +1009,10 @@ function drive(x, y, robotime){
     }
     else if(Math.abs(oldx) < 1){
       console.log('leftssss ' + $('#horizTranslate').css('margin-left'));
-      if (y>0) {y=oldy - oldy};
+      if (y>0 && y == Math.floor(parseInt($('#horizTranslate').css('margin-top')))) {y=oldy - oldy};
+      if(Math.abs(y)==Math.abs(Math.floor(parseInt($('#horizTranslate').css('margin-top'))))){
+        y=y*2;
+      }
       $('#horizTranslate').css({'margin-top': -y + "px"});
       console.log(' 2oldy' + oldy);
       console.log(' 2oldx' + oldx);
