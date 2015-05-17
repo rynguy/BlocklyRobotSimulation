@@ -74,9 +74,8 @@
 <span style="margin-bottom:1px; padding:7px; background-color:#FFF; position:absolute; z-index:0;">
   <a href= "http://c-stem.ucdavis.edu/"><img src="./img/cstemlogo.png"></a></span>
  <div data-toggle="popover" data-trigger="focus"  data-content="Pull a block from here into the workspace to complete the task!" align="center" style="background-color:#C99700; color:#113661;" class="container-fluid">
-   <div align="center" style="background-color:#C99700; color:#113661;" class="navbar-header">
-       <span style="margin-left:0;" class="glyphicon glyphicon-bed" aria-hidden="true"></span>
-       
+   <div align="center" style=" padding-left: 300px; width:80%; background-color:#C99700; color:#113661;" class="navbar-header">
+       <span style="margin-left:0;" class="glyphicon glyphicon-bed" aria-hidden="true"></span>  
 <nav style="text-align:center; font-size:25px; font-family:Arial Black, Gadget, sans-serif; position:relative; z-index:1;" id="numNav">Coding With Linkbot and Mindstorms
   <ul style="font-size:15px; font-family:Arial" class="pager">
 
@@ -89,6 +88,7 @@
     <li><a href="./Playground.html">Playground</a></li>
   </ul>
 </nav>
+
     </div>
   </div>
 </nav>
@@ -131,7 +131,7 @@
        </div>
 
        <div>
-      <button id="startover" style="margin-bottom:5px; width:100px; height:42px; background-color:#C99700; color:white; border:none;" class='start_Over' value='play'><span style="height:21px">Start Over</span>
+      <button id="startover" style="margin-bottom:5px; margin-top:5px; width:100px; height:42px; background-color:#C99700; color:white; border:none;" class='start_Over' value='play'><span style="height:21px">Start Over</span>
               </button>
               <button id="runButton" style="margin-bottom:5px; width:100px; height:42px; background-color:#C99700; color:white; border:none;" class='toggleButton' value='play'>Run
               </button>
@@ -164,7 +164,7 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div style= "position:absolute; width:100%; padding-left:610px; padding-right:40px;"class="col-md-6">
     <table width="100%" height="100%">
     
     <tr> 
@@ -544,7 +544,9 @@
 
                    
       
-      <div id="copyright" style="font-size:13px;"><br>Copyright © 2015 UC Davis C-STEM Center | <a href="/contact-us/" style="color:#002666;">Contact Us</a> | <a href="http://ucdavis.edu/help/privacy-accessibility.html" style="color:#002666;">Privacy Policy</a>
+      <div id="copyright" allign="center" style="position: absolute; font-size:13px; margin-top: 120px; width:100%">
+      <div>
+      <br>Copyright © 2015 UC Davis C-STEM Center | <a href="/contact-us/" style="color:#002666;">Contact Us</a> | <a href="http://ucdavis.edu/help/privacy-accessibility.html" style="color:#002666;">Privacy Policy</a>
         <br>
         <a href="http://www.facebook.com/UCDCSTEM" rel="nofollow" target="_blank"><img width="32" height="32" src="http://engineering.ucdavis.edu/wp-content/plugins/social-media-widget/images/default/32/facebook.png" alt="facebook" title="Follow Us on Facebook" style="opacity: 0.8; -moz-opacity: 0.8;" class="fade"></a>
 
@@ -554,8 +556,8 @@
 
 <a href="https://www.youtube.com/user/UCDavisIEL" rel="nofollow" target="_blank"><img width="32" height="32" src="http://engineering.ucdavis.edu/wp-content/plugins/social-media-widget/images/default/32/youtube.png" alt="youtube" title="Follow Us on YouTube" style="opacity: 0.8; -moz-opacity: 0.8;" class="fade"></a>
       </div>
-      <div class="col-md-6">
-      </div> 
+    </div>
+
          
       </div>    
       </div><!--footer info end-->
@@ -1130,14 +1132,15 @@ $('.toggleButton:eq(1)').on('click', function() {
     //show the popovers initially
     $('#content_blocks').popover('show');
     //display size of the overhead navs
-    var w = ($( window ).width())/2.5;
+    //var w = ($( window ).width())/2.5;
     //hide taps on click
     /*$("#tits").onClick(function(){
         $('#content_blocks').popover('hide')      
     })*/
-   $( window ).resize(function() {
-     w = ($( window ).width())/2.5;
-     $("#numNav").css({'margin-left':w});
+   // $( window ).resize(function() {
+   //   w = ($( window ).width())/2.5;
+   //   $("#numNav").css({'margin-left':w});
+   // $("#copyright").css({'margin-left':w});
  });
 </script>
 
