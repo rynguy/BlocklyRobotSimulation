@@ -397,9 +397,9 @@ Code.init = function() {
   Code.tabClick(Code.selected);
   Blockly.fireUiEvent(window, 'resize');
 
-  Code.bindClick('trashButton',
-      function() {Code.discard(); Code.renderContent();});
-  //Code.bindClick('runButton', Code.runJS);
+  // Code.bindClick('trashButton',
+  //     function() {Code.discard(); Code.renderContent();});
+  // //Code.bindClick('runButton', Code.runJS);
 
   for (var i = 0; i < Code.TABS_.length; i++) {
     var name = Code.TABS_[i];
