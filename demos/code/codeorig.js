@@ -359,10 +359,10 @@ Code.init = function() {
       //el.style.left = bBox.x + 'px';
       // Height and width need to be set, read back, then set again to
       // compensate for scrollbars.
-      el.style.marginLeft = '54%';
+      el.style.marginLeft = '35%';
       el.style.height = '600px';
       //el.style.height = (2 * bBox.height - el.offsetHeight) + 'px';
-      el.style.width = '43%';
+      el.style.width = '31.5%';
       //el.style.width = el.style.width - '95px';
       //el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
     }
