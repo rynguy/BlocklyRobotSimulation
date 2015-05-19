@@ -370,39 +370,39 @@ jQuery(document).ready( function($) {
   }
 
 
-  function toolbox() {
-    document.getElementById('blocklyDiv').innerHTML = '';
-    //change between customary and metric
-    if(document.getElementById('US Customary').checked){
-      Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox')});
-      // edit the grid size
-      elem = sv.getElementById("smallGrid");
-      elem.setAttribute("width", "15");
-      elem.setAttribute("height", "15");
-      elem = sv.getElementById("smallGrid2");
-      elem.setAttribute("d", "M 15 0 L 0 0 0 15");
-      document.getElementById("plus-y").innerHTML= '12';
-      document.getElementById("minus-y").innerHTML= '-12';
-      document.getElementById("plus-x").innerHTML= '12';
-      document.getElementById("minus-x").innerHTML= '-12';
-      document.getElementById("origin").innerHTML= '0';
-    }
-    else{
-      Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox')});
-      elem = sv.getElementById("smallGrid");
-      elem.setAttribute("width", "18");
-      elem.setAttribute("height", "18");
-      elem = sv.getElementById("smallGrid2");
-      elem.setAttribute("d", "M 18 0 L 0 0 0 18");
-      document.getElementById("plus-y").innerHTML= '10';
-      document.getElementById("minus-y").innerHTML= '-10';
-      document.getElementById("plus-x").innerHTML= '10';
-      document.getElementById("minus-x").innerHTML= '-10';
-      document.getElementById("origin").innerHTML= '0';
-    }
-  }
+  // function toolbox() {
+  //   document.getElementById('blocklyDiv').innerHTML = '';
+  //   //change between customary and metric
+  //   if(document.getElementById('US Customary').checked){
+  //     Blockly.inject(document.getElementById('blocklyDiv'),
+  //       {toolbox: document.getElementById('toolbox')});
+  //     // edit the grid size
+  //     elem = sv.getElementById("smallGrid");
+  //     elem.setAttribute("width", "15");
+  //     elem.setAttribute("height", "15");
+  //     elem = sv.getElementById("smallGrid2");
+  //     elem.setAttribute("d", "M 15 0 L 0 0 0 15");
+  //     document.getElementById("plus-y").innerHTML= '12';
+  //     document.getElementById("minus-y").innerHTML= '-12';
+  //     document.getElementById("plus-x").innerHTML= '12';
+  //     document.getElementById("minus-x").innerHTML= '-12';
+  //     document.getElementById("origin").innerHTML= '0';
+  //   }
+  //   else{
+  //     Blockly.inject(document.getElementById('blocklyDiv'),
+  //       {toolbox: document.getElementById('toolbox')});
+  //     elem = sv.getElementById("smallGrid");
+  //     elem.setAttribute("width", "18");
+  //     elem.setAttribute("height", "18");
+  //     elem = sv.getElementById("smallGrid2");
+  //     elem.setAttribute("d", "M 18 0 L 0 0 0 18");
+  //     document.getElementById("plus-y").innerHTML= '10';
+  //     document.getElementById("minus-y").innerHTML= '-10';
+  //     document.getElementById("plus-x").innerHTML= '10';
+  //     document.getElementById("minus-x").innerHTML= '-10';
+  //     document.getElementById("origin").innerHTML= '0';
+  //   }
+  // }
   
   
   var lclone1in = document.getElementById('Linkbot 1 in').cloneNode(true);
@@ -444,7 +444,34 @@ jQuery(document).ready( function($) {
     }
     Blockly.inject(document.getElementById('blocklyDiv'),
       {toolbox: document.getElementById('toolbox')});
+    if(document.getElementById('US Customary').checked){
+      // edit the grid size
+      elem = sv.getElementById("smallGrid");
+      elem.setAttribute("width", "15");
+      elem.setAttribute("height", "15");
+      elem = sv.getElementById("smallGrid2");
+      elem.setAttribute("d", "M 15 0 L 0 0 0 15");
+      document.getElementById("plus-y").innerHTML= '12';
+      document.getElementById("minus-y").innerHTML= '-12';
+      document.getElementById("plus-x").innerHTML= '12';
+      document.getElementById("minus-x").innerHTML= '-12';
+      document.getElementById("origin").innerHTML= '0';
+    }
+    else{
+      elem = sv.getElementById("smallGrid");
+      elem.setAttribute("width", "18");
+      elem.setAttribute("height", "18");
+      elem = sv.getElementById("smallGrid2");
+      elem.setAttribute("d", "M 18 0 L 0 0 0 18");
+      document.getElementById("plus-y").innerHTML= '10';
+      document.getElementById("minus-y").innerHTML= '-10';
+      document.getElementById("plus-x").innerHTML= '10';
+      document.getElementById("minus-x").innerHTML= '-10';
+      document.getElementById("origin").innerHTML= '0';
+    }
+
   }
+    
     
   function solution()
   {
