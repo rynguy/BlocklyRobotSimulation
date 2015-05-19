@@ -487,6 +487,7 @@ jQuery(document).ready( function($) {
 
   <script type="text/javascript">
   var round = Math.round;
+  var speeed = 10;
       var boxOne = document.getElementsByClassName('box')[0],
     $boxTwo = $('.box:eq(1)');
     boxOne.classList.add('horizTranslate');
@@ -526,7 +527,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         {
           dis2 = (round(driveBlock.getFieldValue('distance'))*15);
           dis = (round(driveBlock.getFieldValue('distance'))*15);
-          robotime = (round(driveBlock.getFieldValue('distance'))*15)/500;
+          robotime = round(driveBlock.getFieldValue('distance')) / speeed;
           //dis 1 x y coords for robot 
           x = dis * Math.cos(angle);
           y = dis * Math.sin(angle);
@@ -537,7 +538,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         {
           dis2 = (round(driveBlock.getFieldValue('distance'))*18);
           dis = (round(driveBlock.getFieldValue('distance'))*18);
-          robotime = (round(driveBlock.getFieldValue('distance'))*18)/500;
+          robotime = (round(driveBlock.getFieldValue('distance'))) / speeed;
           x = dis * Math.cos(angle);
           y = dis * Math.sin(angle);
           robotX += x/18;
@@ -572,6 +573,14 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
       //direction = 
     }//if first is turn
+
+    if(rootBlock.type == 'linkbot_speed_in' || rootBlock.type == 'linkbot_speed_cm')
+    {
+      speedBlock = rootBlock;
+      speeed = speedBlock.getFieldValue('speed');
+    }
+
+
     var i = 0;
     childBlocks = rootBlock.getChildren();
     console.log('child ' + childBlocks.length);
@@ -645,6 +654,14 @@ console.log("distance in the block: " + dis);
     $('#horizTranslate').css({'margin-top': 0 + 'px'});
     $('#home').css({'margin-left': 80 +'px'});
     $('#home').css({'margin-top': 75 + 'px'});
+
+    $('#horizTranslate').css({'-webkit-transition': 0.5+'s linear'});
+    $('#horizTranslate').css({'-moz-transition': 0.5+'s linear'});
+    $('#horizTranslate').css({'-ms-transition': 0.5+'s linear'});
+    $('#horizTranslate').css({'-o-transition': 0.5+'s linear'});
+    $('#horizTranslate').css({'transition': 0.5+'s linear'});
+
+
   };
 }
 function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle){
@@ -659,7 +676,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           {
             dis2 = (round(driveBlock.getFieldValue('distance'))*15);
             dis = (round(driveBlock.getFieldValue('distance'))*15);
-            robotime = (round(driveBlock.getFieldValue('distance'))*15)/500;
+            robotime = (round(driveBlock.getFieldValue('distance')))/speeed;
             x = dis * Math.cos(angle);
             y = dis * Math.sin(angle);
             robotX += round(x/15);
@@ -669,7 +686,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           {
             dis2 = (round(driveBlock.getFieldValue('distance'))*18);
             dis = (round(driveBlock.getFieldValue('distance'))*18);
-            robotime = (round(driveBlock.getFieldValue('distance'))*18)/500;
+            robotime = (round(driveBlock.getFieldValue('distance')))/speeed;
             x = dis * Math.cos(angle);
             y = dis * Math.sin(angle);
             robotX += round(x/18);
@@ -703,6 +720,13 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
             
             
         }//if turn
+
+        if(block.type == 'linkbot_speed_in' || block.type == 'linkbot_speed_cm')
+        {
+          speedBlock = block;
+          speeed = speedBlock.getFieldValue('speed');
+        }
+        
 
           childBlocks = block.getChildren();
       if(childBlocks.length > 0){
