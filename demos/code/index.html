@@ -49,7 +49,7 @@
   #home {
     width: 100px;
     height: 100px;
-    background: url(./img/mindstorms_spritesheet.png) 0 0;
+    background: url(./img/linkbot_spritesheet.png) 0 0;
     border: none;
 }
 
@@ -78,13 +78,31 @@
        <span style="margin-left:0;" class="glyphicon glyphicon-bed" aria-hidden="true"></span>  
 <nav style="text-align:center; font-size:25px; font-family:Arial Black, Gadget, sans-serif; position:relative; z-index:1;" id="numNav">Coding With Linkbot and Mindstorms
   <ul style="font-size:15px; font-family:Arial" class="pager">
-
-    <li><a style="background-color:#eee" href="./index.html">1</a></li>
-    <li><a href="./lsn2.html">2</a></li>
-    <li><a href="./lsn3.html">3</a></li>
-    <li><a href="./lsn4.html">4</a></li>
-    <li><a href="./lsn5.html">5</a></li>
-    <li><a href="./lsn6.html">6</a></li>
+    Coding
+    <li><a style="background-color:#113661" href="./index.html">1</a></li>
+    <li><a href="./c2.html">2</a></li>
+    <li><a href="./c3.html">3</a></li>
+    <li><a href="./c4.html">4</a></li>
+    <li><a href="./c5.html">5</a></li>
+    <li><a href="./c6.html">6</a></li>
+    <li><a href="./c7.html">7</a></li>
+    <li><a href="./c8.html">8</a></li>
+    <li><a href="./c9.html">9</a></li>
+    <li><a href="./c10.html">10</a></li>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Math
+    <li><a href="./m1.html">1</a></li>
+    <li><a href="./m2.html">2</a></li>
+    <li><a href="./m3.html">3</a></li>
+    <li><a href="./m4.html">4</a></li>
+    <li><a href="./m5.html">5</a></li>
+    <li><a href="./m6.html">6</a></li>
+    <li><a href="./m7.html">7</a></li>
+    <li><a href="./m8.html">8</a></li>
+    <li><a href="./m9.html">9</a></li>
+    <li><a href="./m10.html">10</a></li>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <li><a href="./Playground.html">Playground</a></li>
   </ul>
 </nav>
@@ -141,7 +159,7 @@
               </div>
               <div id="R1" >
                 <b>Choose Robot 1</b>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" >
+                <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" checked>
                 <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
                 <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))" >
                 <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
@@ -155,9 +173,19 @@
               
               <p>
               <h3 style="PADDING-RIGHT: 4%; margin-top:-20px; display:inline;">
-        <strong style="font-family:Sanchez;">
-          Hi! I'm lego mindstorm. Can you help me create a single line?
+        <strong style="font-size:18px; font-family:tahoma;">
+        Hello, I am Lego Mindstorm/Linkbot. Help me to set my speed using the setSpeed block. (Note: If this is not set, the default value will be 10 units/sec)
         </strong>
+        <br> <br>
+        <button type="button" class="btn btn-primary" onclick="solution();">Solution</button>
+        <div id="solution" style="display: none; font-size:18px; font-family:tahoma; color: #E64040;">
+        #include &lt;linkbot.h&gt;
+        <br>
+        CLinkbotI robot;
+        <br>
+        <br>
+        robot.setSpeed(10, 1.75);
+        </div>
       </h3>
       </p>
       
@@ -197,333 +225,21 @@
     <div class="col-md-6">
       
   </div>
-  <xml id="toolbox1" style="display: none">
-    <category name="Lesson 1">
-      <block type="linkbot_turn_in"></block>
-      <block type="linkbot_drive_distance_in"></block>
-    </category>
-      <sep></sep>
-    <category name="Library">
-      <category name="Logic">
-        <block type="controls_if"></block>
-        <block type="logic_compare"></block>
-        <block type="logic_operation"></block>
-        <block type="logic_negate"></block>
-        <block type="logic_boolean"></block>
-        <block type="logic_null"></block>
-        <block type="logic_ternary"></block>
-      </category>
-      <category name="Loops">
-        <block type="controls_repeat_ext">
-          <value name="TIMES">
-            <block type="math_number">
-              <field name="NUM">10</field>
-            </block>
-          </value>
-        </block>
-        <block type="controls_whileUntil"></block>
-        <block type="controls_for">
-          <value name="FROM">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="TO">
-            <block type="math_number">
-              <field name="NUM">10</field>
-            </block>
-          </value>
-          <value name="BY">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-        </block>
-        <block type="controls_forEach"></block>
-        <block type="controls_flow_statements"></block>
-      </category>
-      <category name="Math">
-        <block type="math_number"></block>
-        <block type="math_arithmetic"></block>
-        <block type="math_single"></block>
-        <block type="math_trig"></block>
-        <block type="math_constant"></block>
-        <block type="math_number_property"></block>
-        <block type="math_change">
-          <value name="DELTA">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-        </block>
-        <block type="math_round"></block>
-        <block type="math_on_list"></block>
-        <block type="math_modulo"></block>
-        <block type="math_constrain">
-          <value name="LOW">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="HIGH">
-            <block type="math_number">
-              <field name="NUM">100</field>
-            </block>
-          </value>
-        </block>
-        <block type="math_random_int">
-          <value name="FROM">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="TO">
-            <block type="math_number">
-              <field name="NUM">100</field>
-            </block>
-          </value>
-        </block>
-        <block type="math_random_float"></block>
-      </category>
-      <category name="Linkbot 1">
-        <block type="linkbot_speed_in"></block>
-        <block type="linkbot_delay"></block>
-        <block type="linkbot_move_joints"></block>
-        <block type="linkbot_move_wait"></block>
-        <block type="linkbot_traceon"></block>
-        <block type="linkbot_traceoff"></block>
-        <block type="linkbot_turn_in"></block>
-        <block type="linkbot_drive_distance_in"></block>
-        <block type="linkbot_drive_time"></block>
-        <block type="linkbot_drive_angle"></block>
-        <block type="linkbot_reset"></block>
-        <block type="linkbot_turn_in_NB"></block>
-        <block type="linkbot_drive_distance_in_NB"></block>
-        <block type="linkbot_drive_time_NB"></block>
-        <block type="linkbot_drive_angle_NB"></block>
-        <block type="linkbot_reset_NB"></block>
-      </category>
-      <category name="Linkbot 2">
-        <block type="linkbot2_speed_in"></block>
-        <block type="linkbot2_delay"></block>
-        <block type="linkbot2_move_joints"></block>
-        <block type="linkbot2_move_wait"></block>
-        <block type="linkbot2_traceon"></block>
-        <block type="linkbot2_traceoff"></block>
-        <block type="linkbot2_turn_in"></block>
-        <block type="linkbot2_drive_distance_in"></block>
-        <block type="linkbot2_drive_time"></block>
-        <block type="linkbot2_drive_angle"></block>
-        <block type="linkbot2_reset"></block>
-        <block type="linkbot2_turn_in_NB"></block>
-        <block type="linkbot2_drive_distance_in_NB"></block>
-        <block type="linkbot2_drive_time_NB"></block>
-        <block type="linkbot2_drive_angle_NB"></block>
-        <block type="linkbot2_reset_NB"></block>
-      </category>
-      <category name="Mindstorms 1">
-        <block type="mindstorms_speed_in"></block>
-        <block type="mindstorms_delay"></block>
-        <block type="mindstorms_move_joints"></block>
-        <block type="mindstorms_move_wait"></block>
-        <block type="mindstorms_traceon"></block>
-        <block type="mindstorms_traceoff"></block>
-        <block type="mindstorms_turn_in"></block>
-        <block type="mindstorms_drive_distance_in"></block>
-        <block type="mindstorms_drive_time"></block>
-        <block type="mindstorms_drive_angle"></block>
-        <block type="mindstorms_reset"></block>
-        <block type="mindstorms_turn_in_NB"></block>
-        <block type="mindstorms_drive_distance_in_NB"></block>
-        <block type="mindstorms_drive_time_NB"></block>
-        <block type="mindstorms_drive_angle_NB"></block>
-        <block type="mindstorms_reset_NB"></block>
-      </category>
-      <category name="Mindstorms 2">
-        <block type="mindstorms2_speed_in"></block>
-        <block type="mindstorms2_delay"></block>
-        <block type="mindstorms2_move_joints"></block>
-        <block type="mindstorms2_move_wait"></block>
-        <block type="mindstorms2_traceon"></block>
-        <block type="mindstorms2_traceoff"></block>
-        <block type="mindstorms2_turn_in"></block>
-        <block type="mindstorms2_drive_distance_in"></block>
-        <block type="mindstorms2_drive_time"></block>
-        <block type="mindstorms2_drive_angle"></block>
-        <block type="mindstorms2_reset"></block>
-        <block type="mindstorms2_turn_in_NB"></block>
-        <block type="mindstorms2_drive_distance_in_NB"></block>
-        <block type="mindstorms2_drive_time_NB"></block>
-        <block type="mindstorms2_drive_angle_NB"></block>
-        <block type="mindstorms2_reset_NB"></block>
-      </category>
-      <category name="Variables" custom="VARIABLE"></category>
-      <category name="Functions" custom="PROCEDURE"></category>
-    </category>
-  </xml>
-  <xml id="toolbox2" style="display: none">
-    <category name="Lesson 1">
-      <block type="linkbot_turn_cm"></block>
-      <block type="linkbot_drive_distance_cm"></block>
-    </category>
-    <sep></sep>
-    <category name="Library">
-      <category name="Logic">
-        <block type="controls_if"></block>
-        <block type="logic_compare"></block>
-        <block type="logic_operation"></block>
-        <block type="logic_negate"></block>
-        <block type="logic_boolean"></block>
-        <block type="logic_null"></block>
-        <block type="logic_ternary"></block>
-      </category>
-      <category name="Loops">
-        <block type="controls_repeat_ext">
-          <value name="TIMES">
-            <block type="math_number">
-              <field name="NUM">10</field>
-            </block>
-          </value>
-        </block>
-        <block type="controls_whileUntil"></block>
-        <block type="controls_for">
-          <value name="FROM">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="TO">
-            <block type="math_number">
-              <field name="NUM">10</field>
-            </block>
-          </value>
-          <value name="BY">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-        </block>
-        <block type="controls_forEach"></block>
-        <block type="controls_flow_statements"></block>
-      </category>
-      <category name="Math">
-        <block type="math_number"></block>
-        <block type="math_arithmetic"></block>
-        <block type="math_single"></block>
-        <block type="math_trig"></block>
-        <block type="math_constant"></block>
-        <block type="math_number_property"></block>
-        <block type="math_change">
-          <value name="DELTA">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-        </block>
-        <block type="math_round"></block>
-        <block type="math_on_list"></block>
-        <block type="math_modulo"></block>
-        <block type="math_constrain">
-          <value name="LOW">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="HIGH">
-            <block type="math_number">
-              <field name="NUM">100</field>
-            </block>
-          </value>
-        </block>
-        <block type="math_random_int">
-          <value name="FROM">
-            <block type="math_number">
-              <field name="NUM">1</field>
-            </block>
-          </value>
-          <value name="TO">
-            <block type="math_number">
-              <field name="NUM">100</field>
-            </block>
-          </value>
-        </block>
-        <block type="math_random_float"></block>
-      </category>
-      <category name="Linkbot 1">
-        <block type="linkbot_speed_cm"></block>
-        <block type="linkbot_delay"></block>
-        <block type="linkbot_move_joints"></block>
-        <block type="linkbot_move_wait"></block>
-        <block type="linkbot_traceon"></block>
-        <block type="linkbot_traceoff"></block>
-        <block type="linkbot_turn_cm"></block>
-        <block type="linkbot_drive_distance_cm"></block>
-        <block type="linkbot_drive_time"></block>
-        <block type="linkbot_drive_angle"></block>
-        <block type="linkbot_reset"></block>
-        <block type="linkbot_turn_cm_NB"></block>
-        <block type="linkbot_drive_distance_cm_NB"></block>
-        <block type="linkbot_drive_time_NB"></block>
-        <block type="linkbot_drive_angle_NB"></block>
-        <block type="linkbot_reset_NB"></block>
-      </category>
-      <category name="Linkbot 2">
-        <block type="linkbot2_speed_cm"></block>
-        <block type="linkbot2_delay"></block>
-        <block type="linkbot2_move_joints"></block>
-        <block type="linkbot2_move_wait"></block>
-        <block type="linkbot2_traceon"></block>
-        <block type="linkbot2_traceoff"></block>
-        <block type="linkbot2_turn_cm"></block>
-        <block type="linkbot2_drive_distance_cm"></block>
-        <block type="linkbot2_drive_time"></block>
-        <block type="linkbot2_drive_angle"></block>
-        <block type="linkbot2_reset"></block>
-        <block type="linkbot2_turn_cm_NB"></block>
-        <block type="linkbot2_drive_distance_cm_NB"></block>
-        <block type="linkbot2_drive_time_NB"></block>
-        <block type="linkbot2_drive_angle_NB"></block>
-        <block type="linkbot2_reset_NB"></block>
-      </category>
-      <category name="Mindstorms 1">
-        <block type="mindstorms_speed_cm"></block>
-        <block type="mindstorms_delay"></block>
-        <block type="mindstorms_move_joints"></block>
-        <block type="mindstorms_move_wait"></block>
-        <block type="mindstorms_traceon"></block>
-        <block type="mindstorms_traceoff"></block>
-        <block type="mindstorms_turn_cm"></block>
-        <block type="mindstorms_drive_distance_cm"></block>
-        <block type="mindstorms_drive_time"></block>
-        <block type="mindstorms_drive_angle"></block>
-        <block type="mindstorms_reset"></block>
-        <block type="mindstorms_turn_cm_NB"></block>
-        <block type="mindstorms_drive_distance_cm_NB"></block>
-        <block type="mindstorms_drive_time_NB"></block>
-        <block type="mindstorms_drive_angle_NB"></block>
-        <block type="mindstorms_reset_NB"></block>
-      </category>
-      <category name="Mindstorms 2">
-        <block type="mindstorms2_speed_cm"></block>
-        <block type="mindstorms2_delay"></block>
-        <block type="mindstorms2_move_joints"></block>
-        <block type="mindstorms2_move_wait"></block>
-        <block type="mindstorms2_traceon"></block>
-        <block type="mindstorms2_traceoff"></block>
-        <block type="mindstorms2_turn_cm"></block>
-        <block type="mindstorms2_drive_distance_cm"></block>
-        <block type="mindstorms2_drive_time"></block>
-        <block type="mindstorms2_drive_angle"></block>
-        <block type="mindstorms2_reset"></block>
-        <block type="mindstorms2_turn_cm_NB"></block>
-        <block type="mindstorms2_drive_distance_cm_NB"></block>
-        <block type="mindstorms2_drive_time_NB"></block>
-        <block type="mindstorms2_drive_angle_NB"></block>
-        <block type="mindstorms2_reset_NB"></block>
-      </category>
-      <category name="Variables" custom="VARIABLE"></category>
-      <category name="Functions" custom="PROCEDURE"></category>
-    </category>
+  <category id="Linkbot 1 in" name="Lesson 1">
+    <block type="linkbot_speed_in"></block>
+  </category>
+  <category id="Linkbot 1 cm" name="Lesson 1">
+    <block type="linkbot_speed_cm"></block>
+  </category>
+  <category id="Mindstorms 1 in" name="Lesson 1">
+    <block type="mindstorms_speed_in"></block>
+  </category>
+  <category id="Mindstorms 1 cm" name="Lesson 1">
+    <block type="mindstorms_speed_cm"></block>
+  </category>
+  
+  <xml id="toolbox" style="display: none">
+
   </xml>
 
 <div align="center" id="footer-info" style="background-color:#FFF; color:#000;">
@@ -615,7 +331,7 @@ jQuery(document).ready( function($) {
 
 
 
-  var imgChk;
+  var imgChk = "linkbot";
   
 
 
@@ -659,7 +375,7 @@ jQuery(document).ready( function($) {
     //change between customary and metric
     if(document.getElementById('US Customary').checked){
       Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox1')});
+        {toolbox: document.getElementById('toolbox')});
       // edit the grid size
       elem = sv.getElementById("smallGrid");
       elem.setAttribute("width", "15");
@@ -674,7 +390,7 @@ jQuery(document).ready( function($) {
     }
     else{
       Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox2')});
+        {toolbox: document.getElementById('toolbox')});
       elem = sv.getElementById("smallGrid");
       elem.setAttribute("width", "18");
       elem.setAttribute("height", "18");
@@ -687,11 +403,60 @@ jQuery(document).ready( function($) {
       document.getElementById("origin").innerHTML= '0';
     }
   }
+  
+  
+  var lclone1in = document.getElementById('Linkbot 1 in').cloneNode(true);
+  var mclone1in = document.getElementById('Mindstorms 1 in').cloneNode(true);
+  var lclone1cm = document.getElementById('Linkbot 1 cm').cloneNode(true);
+  var mclone1cm = document.getElementById('Mindstorms 1 cm').cloneNode(true);
+  
+  function toolbox() {
+    document.getElementById('blocklyDiv').innerHTML = '';
+    if(document.getElementById('toolbox').contains(lclone1in))
+      document.getElementById('toolbox').removeChild(lclone1in);
+    if(document.getElementById('toolbox').contains(mclone1in))
+      document.getElementById('toolbox').removeChild(mclone1in);
+    if(document.getElementById('toolbox').contains(lclone1cm))
+      document.getElementById('toolbox').removeChild(lclone1cm);
+    if(document.getElementById('toolbox').contains(mclone1cm))
+      document.getElementById('toolbox').removeChild(mclone1cm);
+    if(document.getElementById('US Customary').checked)
+    {      
+      if(document.getElementById('L1').checked)
+      {
+        document.getElementById('toolbox').insertBefore(lclone1in, document.getElementById('toolbox').childNodes[1]);
+      }
+      else if(document.getElementById('M1').checked)
+      {
+        document.getElementById('toolbox').insertBefore(mclone1in, document.getElementById('toolbox').childNodes[1]);
+      }
+    }
+    else
+    {
+      if(document.getElementById('L1').checked)
+      {
+        document.getElementById('toolbox').insertBefore(lclone1cm, document.getElementById('toolbox').childNodes[1]);
+      }
+      else if(document.getElementById('M1').checked)
+      {
+        document.getElementById('toolbox').insertBefore(mclone1cm, document.getElementById('toolbox').childNodes[1]);
+      }
+    }
+    Blockly.inject(document.getElementById('blocklyDiv'),
+      {toolbox: document.getElementById('toolbox')});
+  }
+    
+  function solution()
+  {
+    if(document.getElementById('solution').style.display == '')
+      document.getElementById('solution').style.display = 'none';
+    else
+      document.getElementById('solution').style.display = '';
+  }
   </script>
 
   <script>
-    Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox1')});
+    toolbox();
   </script>
 
 
