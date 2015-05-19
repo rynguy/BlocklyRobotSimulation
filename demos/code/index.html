@@ -192,7 +192,7 @@
 
     </div>
 
-    <div style= " z-index: -1; position:absolute; width:100%; padding-left:610px; padding-right:40px;"class="col-md-6">
+    <div id = "workspace" style= " z-index: -1; position:absolute; width:100%; padding-left:610px; padding-right:40px;"class="col-md-6">
     <table width="100%" height="100%">
     
     <tr> 
@@ -370,39 +370,39 @@ jQuery(document).ready( function($) {
   }
 
 
-  function toolbox() {
-    document.getElementById('blocklyDiv').innerHTML = '';
-    //change between customary and metric
-    if(document.getElementById('US Customary').checked){
-      Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox')});
-      // edit the grid size
-      elem = sv.getElementById("smallGrid");
-      elem.setAttribute("width", "15");
-      elem.setAttribute("height", "15");
-      elem = sv.getElementById("smallGrid2");
-      elem.setAttribute("d", "M 15 0 L 0 0 0 15");
-      document.getElementById("plus-y").innerHTML= '12';
-      document.getElementById("minus-y").innerHTML= '-12';
-      document.getElementById("plus-x").innerHTML= '12';
-      document.getElementById("minus-x").innerHTML= '-12';
-      document.getElementById("origin").innerHTML= '0';
-    }
-    else{
-      Blockly.inject(document.getElementById('blocklyDiv'),
-        {toolbox: document.getElementById('toolbox')});
-      elem = sv.getElementById("smallGrid");
-      elem.setAttribute("width", "18");
-      elem.setAttribute("height", "18");
-      elem = sv.getElementById("smallGrid2");
-      elem.setAttribute("d", "M 18 0 L 0 0 0 18");
-      document.getElementById("plus-y").innerHTML= '10';
-      document.getElementById("minus-y").innerHTML= '-10';
-      document.getElementById("plus-x").innerHTML= '10';
-      document.getElementById("minus-x").innerHTML= '-10';
-      document.getElementById("origin").innerHTML= '0';
-    }
-  }
+  // function toolbox() {
+  //   document.getElementById('blocklyDiv').innerHTML = '';
+  //   //change between customary and metric
+  //   if(document.getElementById('US Customary').checked){
+  //     Blockly.inject(document.getElementById('blocklyDiv'),
+  //       {toolbox: document.getElementById('toolbox')});
+  //     // edit the grid size
+  //     elem = sv.getElementById("smallGrid");
+  //     elem.setAttribute("width", "15");
+  //     elem.setAttribute("height", "15");
+  //     elem = sv.getElementById("smallGrid2");
+  //     elem.setAttribute("d", "M 15 0 L 0 0 0 15");
+  //     document.getElementById("plus-y").innerHTML= '12';
+  //     document.getElementById("minus-y").innerHTML= '-12';
+  //     document.getElementById("plus-x").innerHTML= '12';
+  //     document.getElementById("minus-x").innerHTML= '-12';
+  //     document.getElementById("origin").innerHTML= '0';
+  //   }
+  //   else{
+  //     Blockly.inject(document.getElementById('blocklyDiv'),
+  //       {toolbox: document.getElementById('toolbox')});
+  //     elem = sv.getElementById("smallGrid");
+  //     elem.setAttribute("width", "18");
+  //     elem.setAttribute("height", "18");
+  //     elem = sv.getElementById("smallGrid2");
+  //     elem.setAttribute("d", "M 18 0 L 0 0 0 18");
+  //     document.getElementById("plus-y").innerHTML= '10';
+  //     document.getElementById("minus-y").innerHTML= '-10';
+  //     document.getElementById("plus-x").innerHTML= '10';
+  //     document.getElementById("minus-x").innerHTML= '-10';
+  //     document.getElementById("origin").innerHTML= '0';
+  //   }
+  // }
   
   
   var lclone1in = document.getElementById('Linkbot 1 in').cloneNode(true);
@@ -444,6 +444,32 @@ jQuery(document).ready( function($) {
     }
     Blockly.inject(document.getElementById('blocklyDiv'),
       {toolbox: document.getElementById('toolbox')});
+    if(document.getElementById('US Customary').checked){
+      // edit the grid size
+      elem = sv.getElementById("smallGrid");
+      elem.setAttribute("width", "15");
+      elem.setAttribute("height", "15");
+      elem = sv.getElementById("smallGrid2");
+      elem.setAttribute("d", "M 15 0 L 0 0 0 15");
+      document.getElementById("plus-y").innerHTML= '12';
+      document.getElementById("minus-y").innerHTML= '-12';
+      document.getElementById("plus-x").innerHTML= '12';
+      document.getElementById("minus-x").innerHTML= '-12';
+      document.getElementById("origin").innerHTML= '0';
+    }
+    else{
+      elem = sv.getElementById("smallGrid");
+      elem.setAttribute("width", "18");
+      elem.setAttribute("height", "18");
+      elem = sv.getElementById("smallGrid2");
+      elem.setAttribute("d", "M 18 0 L 0 0 0 18");
+      document.getElementById("plus-y").innerHTML= '10';
+      document.getElementById("minus-y").innerHTML= '-10';
+      document.getElementById("plus-x").innerHTML= '10';
+      document.getElementById("minus-x").innerHTML= '-10';
+      document.getElementById("origin").innerHTML= '0';
+    }
+
   }
     
   function solution()
@@ -455,9 +481,7 @@ jQuery(document).ready( function($) {
   }
   </script>
 
-  <script>
-    toolbox();
-  </script>
+
 
 
 
@@ -833,6 +857,10 @@ $('.toggleButton:eq(1)').on('click', function() {
     $('#horizTranslate').css({'margin-top': 0 + "px"});
     $('#horizTranslate').css({'margin-left': 0 + "px"});
   }
+  </script>
+
+  <script>
+    toolbox();
   </script>
 
   <script>
