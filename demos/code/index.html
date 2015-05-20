@@ -59,12 +59,21 @@
 <script>
   var robotX = 0;
   var robotY = 0;
+  var displayAngle = 0;
   
   function getCoordinates()
   {
     var coordinates = "(" + robotX + "," +  robotY + ")";
     return coordinates;
   }
+
+
+  function getAngle()
+  {
+    var disp= displayAngle + "°";
+    return disp;
+  }
+
 
 </script>
 
@@ -170,10 +179,15 @@
                 <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
                 <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))" checked>
                 <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
                   <script>document.write(getCoordinates())</script>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Current Angle: </b>
+                <span id = "displayAngle">
+                  <script>document.write(getAngle())</script>
                 </span>
               </div>
              
@@ -580,9 +594,18 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
       blockDirection = angleBlock.getFieldValue('direction');
       newangle = (round(angleBlock.getFieldValue('turn direction')));
+      if(blockDirection == 'turnLeft')
+      {
+        displayAngle += newangle;
+      }
+      else if(blockDirection == 'turnRight')
+      {
+        displayAngle = 360 - newangle;
+      }
+
       if(newangle >= 360)
         newangle -= 360;
-      console.log("TIG OL BITIES " + newangle)
+
           var leftMargin = 0;
           var topMargin = 0;
           var intervalTime = 500/(newangle/5);
@@ -590,6 +613,8 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           console.log("NUMBER OF IMAGES" + numImages);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
+          document.getElementById('displayAngle').innerHTML = getAngle();
+
       //direction = 
     }//if first is turn
 
@@ -680,6 +705,9 @@ console.log("distance in the block: " + dis);
     $('#horizTranslate').css({'-o-transition': 0.5+'s linear'});
     $('#horizTranslate').css({'transition': 0.5+'s linear'});
 
+    document.getElementById('displayAngle').innerHTML = "0°";
+    displayAngle = 0;
+
 
   };
 }
@@ -725,9 +753,23 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           blockDirection = angleBlock.getFieldValue('direction');
           angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
           angleImage = (round(angleBlock.getFieldValue('turn direction')));
-          newangle += (round(angleBlock.getFieldValue('turn direction')));
-          if(newangle >= 360)
-            newangle -= 360;
+          //newangle += (round(angleBlock.getFieldValue('turn direction')));
+
+          if(blockDirection == 'turnLeft')
+          {
+              newangle += (round(angleBlock.getFieldValue('turn direction')));
+              if(newangle >= 360)
+                newangle -= 360;  
+          }
+          else
+          {
+              newangle -= (round(angleBlock.getFieldValue('turn direction')));
+              if(newangle < 0)    
+                newangle += 360;
+              
+          }
+          displayAngle = newangle; 
+
           console.log("TIG OL BITIES " + newangle)
           var leftMargin = parseInt($("#roboyes").css('margin-left'));
           var topMargin = parseInt($("#roboyes").css('margin-top'));
@@ -735,6 +777,8 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           var numImages = Math.floor(angleImage/5);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
+          
+          document.getElementById('displayAngle').innerHTML = getAngle();
             //y = y - 200;
             
             
@@ -757,14 +801,14 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
 
 function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)
 {
-  var blockDicks = blockDirection;
+  var blockDirec = blockDirection;
   console.log("MARGINS " + leftMargin + ' ' + topMargin);
   console.log('NUM IMAGESSSSSS '+ numImages)
   console.log("BLOCK DIRECTIOB LAT " + blockDirection)
   if(numImages <= 0)
     return;
   //LEFT TURN
-  if(blockDicks === 'turnLeft')
+  if(blockDirec === 'turnLeft')
   {
     if(leftMargin == -2200){
       if(topMargin == -1000){
@@ -780,7 +824,7 @@ function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, b
       leftMargin -= 200;
   }
   //RIGHT TURN
-  else if(blockDicks === 'turnRight')
+  else if(blockDirec === 'turnRight')
   {
     if(leftMargin == 0){
       if(topMargin == 0){
