@@ -38,7 +38,7 @@ Blockly.Cpp['controls_repeat'] = function(block) {
       'count', Blockly.Variables.NAME_TYPE);
   var code = loopVar + ' = 0;\n' + 'while(' + loopVar +
       ' < ' + repeats + ') {\n' +
-      branch + '  ' + loopVar + '++;\n}\n';
+      branch + '  ' + loopVar + ' = ' + loopVar + ' + 1;\n}\n';
   Blockly.Cpp.definitions_['include_' + loopVar] =
       'int ' + loopVar + ';';
   return code;
@@ -62,7 +62,7 @@ Blockly.Cpp['controls_repeat_ext'] = function(block) {
   }
   code += loopVar + ' = 0;\n' + 'while(' + loopVar +
       ' < ' + endVar + ') {\n' +
-      branch + '  ' + loopVar + '++;\n}\n';
+      branch + '  ' + loopVar + ' = ' + loopVar + ' + 1;\n}\n';
   Blockly.Cpp.definitions_['include_' + loopVar] =
       'int ' + loopVar + ';';
   return code;
@@ -104,7 +104,7 @@ Blockly.Cpp['controls_for'] = function(block) {
         '  ' + variable0;
     var step = Math.abs(parseFloat(increment));
     if (step == 1) {
-      code += up ? '++' : '--';
+      code += up ? (' = ' + variable0 + ' + 1') : (' = ' + variable0 + ' - 1');
     } else {
       code += (up ? ' += ' : ' -= ') + step;
     }
