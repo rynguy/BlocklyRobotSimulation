@@ -235,18 +235,22 @@
   <category id="Linkbot 1 in" name="Lesson 1">
     <block type="linkbot_speed_in"></block>
     <block type="linkbot_drive_distance_in"></block>
+    <block type="linkbot_turn_in"></block>
   </category>
   <category id="Linkbot 1 cm" name="Lesson 1">
     <block type="linkbot_speed_cm"></block>
     <block type="linkbot_drive_distance_cm"></block>
+    <block type="linkbot_turn_cm"></block>
   </category>
   <category id="Mindstorms 1 in" name="Lesson 1">
     <block type="mindstorms_speed_in"></block>
     <block type="mindstorms_drive_distance_in"></block>
+    <block type="mindstorms_turn_in"></block>
   </category>
   <category id="Mindstorms 1 cm" name="Lesson 1">
     <block type="mindstorms_speed_cm"></block>
     <block type="mindstorms_drive_distance_cm"></block>
+    <block type="mindstorms_turn_in"></block>
   </category>
   
   <xml id="toolbox" style="display: none">
@@ -535,7 +539,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     rootBlock = blocks[0];
     
     //for (var i = 0, block; block = blocks[i]; i++) {
-    if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm') {
+    if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm') {
 
         driveBlock = rootBlock;
         if(document.getElementById('US Customary').checked) //inches
@@ -571,7 +575,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         drive(x,y,robotime);
         document.getElementById('coordinates').innerHTML = getCoordinates();
     }//if first is drive
-    if (rootBlock.type == 'linkbot_turn_in' || rootBlock.type == 'linkbot_turn_cm') {
+    if (rootBlock.type == 'linkbot_turn_in' || rootBlock.type == 'linkbot_turn_cm' || rootBlock.type == 'mindstorms_turn_in' || rootBlock.type == 'mindstorms_turn_cm') {
       angleBlock = rootBlock;
       angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
       blockDirection = angleBlock.getFieldValue('direction');
@@ -589,7 +593,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       //direction = 
     }//if first is turn
 
-    if(rootBlock.type == 'linkbot_speed_in' || rootBlock.type == 'linkbot_speed_cm')
+    if(rootBlock.type == 'linkbot_speed_in' || rootBlock.type == 'linkbot_speed_cm' || rootBlock.type == 'mindstorms_speed_in' || rootBlock.type == 'mindstorms_speed_cm')
     {
       speedBlock = rootBlock;
       speeed = speedBlock.getFieldValue('speed');
@@ -685,7 +689,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         block = childBlocks[0];
         console.log('i ' + i);
         console.log('child ' + childBlocks.length);
-        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm') {
+        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm') {
           driveBlock = block;
           if(document.getElementById('US Customary').checked)
           {
@@ -716,7 +720,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           drive(x,y,robotime);
           document.getElementById('coordinates').innerHTML = getCoordinates();
         }//if drive
-        if (block.type == 'linkbot_turn_in' || block.type == 'linkbot_turn_cm') {
+        if (block.type == 'linkbot_turn_in' || block.type == 'linkbot_turn_cm' || block.type == 'mindstorms_turn_in' || block.type == 'mindstorms_turn_cm') {
           angleBlock = block;
           blockDirection = angleBlock.getFieldValue('direction');
           angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
@@ -736,7 +740,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
             
         }//if turn
 
-        if(block.type == 'linkbot_speed_in' || block.type == 'linkbot_speed_cm')
+        if(block.type == 'linkbot_speed_in' || block.type == 'linkbot_speed_cm' || block.type == 'mindstorms_speed_in' || block.type == 'mindstorms_speed_cm')
         {
           speedBlock = block;
           speeed = speedBlock.getFieldValue('speed');
@@ -973,7 +977,7 @@ $('.toggleButton:eq(1)').on('click', function() {
    //   w = ($( window ).width())/2.5;
    //   $("#numNav").css({'margin-left':w});
    // $("#copyright").css({'margin-left':w});
- });
+ // });
 </script>
 
 <script>
