@@ -21,6 +21,8 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="accordion.css"/>
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="./bootstrap/js/bootstrap.min.js"></script>
@@ -49,7 +51,7 @@
   #home {
     width: 100px;
     height: 100px;
-    background: url(./img/mindstorms_spritesheet.png) 0 0;
+    background: url(./img/linkbot_spritesheet.png) 0 0;
     border: none;
 }
 
@@ -59,6 +61,7 @@
 <script>
   var robotX = 0;
   var robotY = 0;
+  var displayAngle = 0;
   
   function getCoordinates()
   {
@@ -66,45 +69,87 @@
     return coordinates;
   }
 
+
+  function getAngle()
+  {
+    var disp= displayAngle + "°";
+    return disp;
+  }
+
+
 </script>
 
  
 </head>
+
+
 <nav class="navbar" style="background-color:#C99700; color:#113661; z-index:0;">
 <span style="margin-bottom:1px; padding:7px; background-color:#FFF; position:absolute; z-index:0;">
   <a href= "http://c-stem.ucdavis.edu/"><img src="./img/cstemlogo.png"></a></span>
  <div data-toggle="popover" data-trigger="focus"  data-content="Pull a block from here into the workspace to complete the task!" align="center" style="background-color:#C99700; color:#113661;" class="container-fluid">
-   <div align="center" style=" padding-left: 300px; width:80%; background-color:#C99700; color:#113661;" class="navbar-header">
+   <div align="center" style=" padding-left: 440px; width:75%; background-color:#C99700; color:#113661;" class="navbar-header">
        <span style="margin-left:0;" class="glyphicon glyphicon-bed" aria-hidden="true"></span>  
 <nav style="text-align:center; font-size:25px; font-family:Arial Black, Gadget, sans-serif; position:relative; z-index:1;" id="numNav">Coding With Linkbot and Mindstorms
-  <ul style="font-size:15px; font-family:Arial" class="pager">
-    Coding
-    <li><a href="./index.html">1</a></li>
-    <li><a href="./c2.html">2</a></li>
-    <li><a href="./c3.html">3</a></li>
-    <li><a href="./c4.html">4</a></li>
-    <li><a href="./c5.html">5</a></li>
-    <li><a href="./c6.html">6</a></li>
-    <li><a href="./c7.html">7</a></li>
-    <li><a href="./c8.html">8</a></li>
-    <li><a href="./c9.html">9</a></li>
-    <li><a href="./c10.html">10</a></li>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;Math
-    <li><a href="./m1.html">1</a></li>
-    <li><a href="./m2.html">2</a></li>
-    <li><a href="./m3.html">3</a></li>
-    <li><a href="./m4.html">4</a></li>
-    <li><a href="./m5.html">5</a></li>
-    <li><a href="./m6.html">6</a></li>
-    <li><a href="./m7.html">7</a></li>
-    <li><a href="./m8.html">8</a></li>
-    <li><a href="./m9.html">9</a></li>
-    <li><a href="./m10.html">10</a></li>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <li><a style="background-color:#113661" href="./Playground.html">Playground</a></li>
-  </ul>
+<div align="center" class="accordion horizontal">
+    <ul>
+        <li>
+            <input type="radio" id="vert-1" name="vert-accordion" />
+            <label for="vert-1">Tutorial</label>
+            <div class="content">
+                <h3>
+                <a href="./v1.html">1</a>
+                <a href="./v2.html">2</a>
+                <a href="./v3.html">3</a>
+                <a href="./v4.html">4</a>
+                <a href="./v5.html">5</a>
+                </h3>
+            </div>
+        </li>
+        <li>
+            <input type="radio" id="vert-2" name="vert-accordion" />
+            <label for="vert-2">Coding Lessons</label>
+            <div class="content">
+                <h3>
+                <a href="./index.html">1</a>
+                <a href="./c2.html">2</a>
+                <a href="./c3.html">3</a>
+                <a href="./c4.html">4</a>
+                <a href="./c5.html">5</a>
+                <a href="./c6.html">6</a>
+                <a href="./c7.html">7</a>
+                <a href="./c8.html">8</a>
+                <a href="./c9.html">9</a>
+                <a href="./c10.html">10</a>
+                </h3>
+            </div>
+        </li>
+        <li>
+            <input type="radio" id="vert-3" name="vert-accordion" />
+            <label for="vert-3">Math Lessons</label>
+            <div class="content">
+                <h3>
+                <a href="./m1.html">1</a>
+                <a href="./m2.html">2</a>
+                <a href="./m3.html">3</a>
+                <a href="./m4.html">4</a>
+                <a href="./m5.html">5</a>
+                <a href="./m6.html">6</a>
+                <a href="./m7.html">7</a>
+                <a href="./m8.html">8</a>
+                <a href="./m9.html">9</a>
+                <a href="./m10.html">10</a>
+                </h3>
+            </div>
+        </li>
+        <li>
+            <input type="radio" id="vert-4" checked="checked" name="vert-accordion" />
+            <label for="vert-4">Playground</label>
+            <div class="content">
+                <h3><a style="color:#113661" href="./Playground.html">Playground</a></h3>
+            </div>
+        </li>
+    </ul>
+</div>
 </nav>
 
     </div>
@@ -169,14 +214,19 @@
               <button id = "Remove" class="link" style="display: none;" onclick="hide()" >Click to Remove Robot </button>
               <div id="R1" style="display: ;">
                 <b>Choose Robot 1</b>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" >
+                <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" checked>
                 <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
-                <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))" checked>
+                <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))" >
                 <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
                   <script>document.write(getCoordinates())</script>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Current Angle: </b>
+                <span id = "displayAngle">
+                  <script>document.write(getAngle())</script>
                 </span>
               </div>
               <div id="R2" style="display: none;">
@@ -185,10 +235,15 @@
                 <img id= "2ndLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
                 <input type="radio" name="robot2" id="M2" onclick="toolbox();" >
                 <img id= "2ndMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
                   <script>document.write(getCoordinates())</script>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Current Angle: </b>
+                <span id = "displayAngle">
+                  <script>document.write(getAngle())</script>
                 </span>
               </div>
               <div id="R3" style="display: none;">
@@ -197,10 +252,15 @@
                 <img id= "3rdLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
                 <input type="radio" name="robot3" id="M3" onclick="toolbox();" >
                 <img id= "3rdMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
                   <script>document.write(getCoordinates())</script>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Current Angle: </b>
+                <span id = "displayAngle">
+                  <script>document.write(getAngle())</script>
                 </span>
               </div>
               <div id="R4" style="display: none;">
@@ -209,19 +269,22 @@
                 <img id= "4thLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
                 <input type="radio" name="robot4" id="M4" onclick="toolbox();" >
                 <img id= "4thMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
                   <script>document.write(getCoordinates())</script>
                 </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Current Angle: </b>
+                <span id = "displayAngle">
+                  <script>document.write(getAngle())</script>
+                </span>
               </div>
-              
               <p>
               <h3 style="PADDING-RIGHT: 4%; margin-top:-20px; display:inline;">
         <strong style="font-size:18px; font-family:tahoma;">
-        Hello, I am Lego Mindstorm/Linkbot.
+        This is the playground, feel free to try your hand at coding.
         </strong>
-        <br> <br>
       </h3>
       </p>
       
@@ -724,7 +787,7 @@ jQuery(document).ready( function($) {
 
 
 
-  var imgChk = "mindstorms";
+  var imgChk = "linkbot";
   
 
 
@@ -797,6 +860,7 @@ jQuery(document).ready( function($) {
   //   }
   // }
   
+  
   var lclone1in = document.getElementById('Linkbot 1 in').cloneNode(true);
   var mclone1in = document.getElementById('Mindstorms 1 in').cloneNode(true);
   var lclone2in = document.getElementById('Linkbot 2 in').cloneNode(true);
@@ -854,35 +918,35 @@ jQuery(document).ready( function($) {
     {      
       if(document.getElementById('L1').checked)
       {
-        document.getElementById('toolbox').insertBefore(lclone1in, document.getElementById('toolbox').childNodes[6]);
+        document.getElementById('toolbox').insertBefore(lclone1in, document.getElementById('toolbox').childNodes[10]);
       }
       else if(document.getElementById('M1').checked)
       {
-        document.getElementById('toolbox').insertBefore(mclone1in, document.getElementById('toolbox').childNodes[6]);
+        document.getElementById('toolbox').insertBefore(mclone1in, document.getElementById('toolbox').childNodes[10]);
       }
       if(document.getElementById('L2').checked)
       {
-        document.getElementById('toolbox').insertBefore(lclone2in, document.getElementById('toolbox').childNodes[7]);
+        document.getElementById('toolbox').insertBefore(lclone2in, document.getElementById('toolbox').childNodes[11]);
       }
       else if(document.getElementById('M2').checked)
       {
-        document.getElementById('toolbox').insertBefore(mclone2in, document.getElementById('toolbox').childNodes[7]);
+        document.getElementById('toolbox').insertBefore(mclone2in, document.getElementById('toolbox').childNodes[11]);
       }
       if(document.getElementById('L3').checked)
       {
-        document.getElementById('toolbox').insertBefore(lclone3in, document.getElementById('toolbox').childNodes[8]);
+        document.getElementById('toolbox').insertBefore(lclone3in, document.getElementById('toolbox').childNodes[12]);
       }
       else if(document.getElementById('M3').checked)
       {
-        document.getElementById('toolbox').insertBefore(mclone3in, document.getElementById('toolbox').childNodes[8]);
+        document.getElementById('toolbox').insertBefore(mclone3in, document.getElementById('toolbox').childNodes[12]);
       }
       if(document.getElementById('L4').checked)
       {
-        document.getElementById('toolbox').insertBefore(lclone4in, document.getElementById('toolbox').childNodes[9]);
+        document.getElementById('toolbox').insertBefore(lclone4in, document.getElementById('toolbox').childNodes[13]);
       }
       else if(document.getElementById('M4').checked)
       {
-        document.getElementById('toolbox').insertBefore(mclone4in, document.getElementById('toolbox').childNodes[9]);
+        document.getElementById('toolbox').insertBefore(mclone4in, document.getElementById('toolbox').childNodes[13]);
       }
       
       Blockly.inject(document.getElementById('blocklyDiv'),
@@ -892,35 +956,35 @@ jQuery(document).ready( function($) {
     {
       if(document.getElementById('L1').checked)
       {
-        document.getElementById('toolbox').insertBefore(lclone1cm, document.getElementById('toolbox').childNodes[6]);
+        document.getElementById('toolbox').insertBefore(lclone1cm, document.getElementById('toolbox').childNodes[10]);
       }
       else if(document.getElementById('M1').checked)
       {
-        document.getElementById('toolbox').insertBefore(mclone1cm, document.getElementById('toolbox').childNodes[6]);
+        document.getElementById('toolbox').insertBefore(mclone1cm, document.getElementById('toolbox').childNodes[10]);
       }
       if(document.getElementById('L2').checked)
       {
-        document.getElementById('toolbox').insertBefore(lclone2cm, document.getElementById('toolbox').childNodes[7]);
+        document.getElementById('toolbox').insertBefore(lclone2cm, document.getElementById('toolbox').childNodes[11]);
       }
       else if(document.getElementById('M2').checked)
       {
-        document.getElementById('toolbox').insertBefore(mclone2cm, document.getElementById('toolbox').childNodes[7]);
+        document.getElementById('toolbox').insertBefore(mclone2cm, document.getElementById('toolbox').childNodes[11]);
       }
       if(document.getElementById('L3').checked)
       {
-        document.getElementById('toolbox').insertBefore(lclone3cm, document.getElementById('toolbox').childNodes[8]);
+        document.getElementById('toolbox').insertBefore(lclone3cm, document.getElementById('toolbox').childNodes[12]);
       }
       else if(document.getElementById('M3').checked)
       {
-        document.getElementById('toolbox').insertBefore(mclone3cm, document.getElementById('toolbox').childNodes[8]);
+        document.getElementById('toolbox').insertBefore(mclone3cm, document.getElementById('toolbox').childNodes[12]);
       }
       if(document.getElementById('L4').checked)
       {
-        document.getElementById('toolbox').insertBefore(lclone4cm, document.getElementById('toolbox').childNodes[9]);
+        document.getElementById('toolbox').insertBefore(lclone4cm, document.getElementById('toolbox').childNodes[13]);
       }
       else if(document.getElementById('M4').checked)
       {
-        document.getElementById('toolbox').insertBefore(mclone4cm, document.getElementById('toolbox').childNodes[9]);
+        document.getElementById('toolbox').insertBefore(mclone4cm, document.getElementById('toolbox').childNodes[13]);
       }
       
       Blockly.inject(document.getElementById('blocklyDiv'),
@@ -980,8 +1044,6 @@ jQuery(document).ready( function($) {
     else
       document.getElementById('solution').style.display = '';
   }
-  
-
   </script>
 
 
@@ -1064,9 +1126,18 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
       blockDirection = angleBlock.getFieldValue('direction');
       newangle = (round(angleBlock.getFieldValue('turn direction')));
+      if(blockDirection == 'turnLeft')
+      {
+        displayAngle += newangle;
+      }
+      else if(blockDirection == 'turnRight')
+      {
+        displayAngle = 360 - newangle;
+      }
+
       if(newangle >= 360)
         newangle -= 360;
-      console.log("TIG OL BITIES " + newangle)
+
           var leftMargin = 0;
           var topMargin = 0;
           var intervalTime = 500/(newangle/5);
@@ -1074,6 +1145,8 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           console.log("NUMBER OF IMAGES" + numImages);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
+          document.getElementById('displayAngle').innerHTML = getAngle();
+
       //direction = 
     }//if first is turn
 
@@ -1164,6 +1237,9 @@ console.log("distance in the block: " + dis);
     $('#horizTranslate').css({'-o-transition': 0.5+'s linear'});
     $('#horizTranslate').css({'transition': 0.5+'s linear'});
 
+    document.getElementById('displayAngle').innerHTML = "0°";
+    displayAngle = 0;
+
 
   };
 }
@@ -1209,9 +1285,23 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           blockDirection = angleBlock.getFieldValue('direction');
           angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
           angleImage = (round(angleBlock.getFieldValue('turn direction')));
-          newangle += (round(angleBlock.getFieldValue('turn direction')));
-          if(newangle >= 360)
-            newangle -= 360;
+          //newangle += (round(angleBlock.getFieldValue('turn direction')));
+
+          if(blockDirection == 'turnLeft')
+          {
+              newangle += (round(angleBlock.getFieldValue('turn direction')));
+              if(newangle >= 360)
+                newangle -= 360;  
+          }
+          else
+          {
+              newangle -= (round(angleBlock.getFieldValue('turn direction')));
+              if(newangle < 0)    
+                newangle += 360;
+              
+          }
+          displayAngle = newangle; 
+
           console.log("TIG OL BITIES " + newangle)
           var leftMargin = parseInt($("#roboyes").css('margin-left'));
           var topMargin = parseInt($("#roboyes").css('margin-top'));
@@ -1219,6 +1309,8 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           var numImages = Math.floor(angleImage/5);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
+          
+          document.getElementById('displayAngle').innerHTML = getAngle();
             //y = y - 200;
             
             
@@ -1241,14 +1333,14 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
 
 function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)
 {
-  var blockDicks = blockDirection;
+  var blockDirec = blockDirection;
   console.log("MARGINS " + leftMargin + ' ' + topMargin);
   console.log('NUM IMAGESSSSSS '+ numImages)
   console.log("BLOCK DIRECTIOB LAT " + blockDirection)
   if(numImages <= 0)
     return;
   //LEFT TURN
-  if(blockDicks === 'turnLeft')
+  if(blockDirec === 'turnLeft')
   {
     if(leftMargin == -2200){
       if(topMargin == -1000){
@@ -1264,7 +1356,7 @@ function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, b
       leftMargin -= 200;
   }
   //RIGHT TURN
-  else if(blockDicks === 'turnRight')
+  else if(blockDirec === 'turnRight')
   {
     if(leftMargin == 0){
       if(topMargin == 0){

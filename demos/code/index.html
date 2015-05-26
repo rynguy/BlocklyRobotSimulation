@@ -21,6 +21,8 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="accordion.css"/>
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="./bootstrap/js/bootstrap.min.js"></script>
@@ -49,7 +51,7 @@
   #home {
     width: 100px;
     height: 100px;
-    background: url(./img/mindstorms_spritesheet.png) 0 0;
+    background: url(./img/linkbot_spritesheet.png) 0 0;
     border: none;
 }
 
@@ -79,41 +81,75 @@
 
  
 </head>
+
+
 <nav class="navbar" style="background-color:#C99700; color:#113661; z-index:0;">
 <span style="margin-bottom:1px; padding:7px; background-color:#FFF; position:absolute; z-index:0;">
   <a href= "http://c-stem.ucdavis.edu/"><img src="./img/cstemlogo.png"></a></span>
  <div data-toggle="popover" data-trigger="focus"  data-content="Pull a block from here into the workspace to complete the task!" align="center" style="background-color:#C99700; color:#113661;" class="container-fluid">
-   <div align="center" style=" padding-left: 300px; width:80%; background-color:#C99700; color:#113661;" class="navbar-header">
+   <div align="center" style=" padding-left: 440px; width:75%; background-color:#C99700; color:#113661;" class="navbar-header">
        <span style="margin-left:0;" class="glyphicon glyphicon-bed" aria-hidden="true"></span>  
 <nav style="text-align:center; font-size:25px; font-family:Arial Black, Gadget, sans-serif; position:relative; z-index:1;" id="numNav">Coding With Linkbot and Mindstorms
-  <ul style="font-size:15px; font-family:Arial" class="pager">
-    Coding
-    <li><a style="background-color:#113661" href="./index.html">1</a></li>
-    <li><a href="./c2.html">2</a></li>
-    <li><a href="./c3.html">3</a></li>
-    <li><a href="./c4.html">4</a></li>
-    <li><a href="./c5.html">5</a></li>
-    <li><a href="./c6.html">6</a></li>
-    <li><a href="./c7.html">7</a></li>
-    <li><a href="./c8.html">8</a></li>
-    <li><a href="./c9.html">9</a></li>
-    <li><a href="./c10.html">10</a></li>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;Math
-    <li><a href="./m1.html">1</a></li>
-    <li><a href="./m2.html">2</a></li>
-    <li><a href="./m3.html">3</a></li>
-    <li><a href="./m4.html">4</a></li>
-    <li><a href="./m5.html">5</a></li>
-    <li><a href="./m6.html">6</a></li>
-    <li><a href="./m7.html">7</a></li>
-    <li><a href="./m8.html">8</a></li>
-    <li><a href="./m9.html">9</a></li>
-    <li><a href="./m10.html">10</a></li>
-    <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <li><a href="./Playground.html">Playground</a></li>
-  </ul>
+<div align="center" class="accordion horizontal">
+    <ul>
+        <li>
+            <input type="radio" id="vert-1" name="vert-accordion" />
+            <label for="vert-1">Tutorial</label>
+            <div class="content">
+                <h3>
+                <a href="./v1.html">1</a>
+                <a href="./v2.html">2</a>
+                <a href="./v3.html">3</a>
+                <a href="./v4.html">4</a>
+                <a href="./v5.html">5</a>
+                </h3>
+            </div>
+        </li>
+        <li>
+            <input type="radio" id="vert-2" checked="checked" name="vert-accordion" />
+            <label for="vert-2">Coding Lessons</label>
+            <div class="content">
+                <h3>
+                <a style="color:#113661" href="./index.html">1</a>
+                <a href="./c2.html">2</a>
+                <a href="./c3.html">3</a>
+                <a href="./c4.html">4</a>
+                <a href="./c5.html">5</a>
+                <a href="./c6.html">6</a>
+                <a href="./c7.html">7</a>
+                <a href="./c8.html">8</a>
+                <a href="./c9.html">9</a>
+                <a href="./c10.html">10</a>
+                </h3>
+            </div>
+        </li>
+        <li>
+            <input type="radio" id="vert-3" name="vert-accordion" />
+            <label for="vert-3">Math Lessons</label>
+            <div class="content">
+                <h3>
+                <a href="./m1.html">1</a>
+                <a href="./m2.html">2</a>
+                <a href="./m3.html">3</a>
+                <a href="./m4.html">4</a>
+                <a href="./m5.html">5</a>
+                <a href="./m6.html">6</a>
+                <a href="./m7.html">7</a>
+                <a href="./m8.html">8</a>
+                <a href="./m9.html">9</a>
+                <a href="./m10.html">10</a>
+                </h3>
+            </div>
+        </li>
+        <li>
+            <input type="radio" id="vert-4" name="vert-accordion" />
+            <label for="vert-4">Playground</label>
+            <div class="content">
+                <h3><a href="./Playground.html">Playground</a></h3>
+            </div>
+        </li>
+    </ul>
+</div>
 </nav>
 
     </div>
@@ -175,10 +211,10 @@
               </div>
               <div id="R1" >
                 <b>Choose Robot 1</b>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" >
+                <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" checked>
                 <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
-                <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))" checked>
-                <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
+                <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))">
+                <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_alone.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
@@ -195,17 +231,16 @@
               <p>
               <h3 style="PADDING-RIGHT: 4%; margin-top:-20px; display:inline;">
         <strong style="font-size:18px; font-family:tahoma;">
-        Hello, I am Lego Mindstorm/Linkbot. Help me to set my speed using the setSpeed block. (Note: If this is not set, the default value will be 10 units/sec)
+        Hello, I am Linkbot/Lego Mindstorm. Can you help me move forward 10 units?
         </strong>
         <br> <br>
-        <button type="button" class="btn btn-primary" onclick="solution();">Solution</button>
-        <div id="solution" style="display: none; font-size:18px; font-family:tahoma; color: #E64040;">
-        #include &lt;linkbot.h&gt;
+        <button type="button" class="btn btn-primary" onclick="solution();">Possible Solution</button>
+        <div id="solution" style="display: none; font-size:18px; font-family:tahoma;">
+        <span class="com">#include</span><span class="pln"> </span><span class="str">&lt;linkbot.h&gt;</span><span class="pln"></span>
         <br>
-        CLinkbotI robot;
-        <br>
-        <br>
-        robot.setSpeed(10, 1.75);
+        <span class="typ">CLinkbotI</span><span class="pln"> robot</span><span class="pun">;</span>
+        <br><br>
+        <span class="pln">robot</span><span class="pun">.</span><span class="pln">driveDistance</span><span class="pun">(</span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.75</span><span class="pun">);</span>
         </div>
       </h3>
       </p>
@@ -246,25 +281,17 @@
     <div class="col-md-6">
       
   </div>
-  <category id="Linkbot 1 in" name="Lesson 1">
-    <block type="linkbot_speed_in"></block>
+  <category id="Linkbot 1 in" name="Robot">
     <block type="linkbot_drive_distance_in"></block>
-    <block type="linkbot_turn_in"></block>
   </category>
-  <category id="Linkbot 1 cm" name="Lesson 1">
-    <block type="linkbot_speed_cm"></block>
+  <category id="Linkbot 1 cm" name="Robot">
     <block type="linkbot_drive_distance_cm"></block>
-    <block type="linkbot_turn_cm"></block>
   </category>
-  <category id="Mindstorms 1 in" name="Lesson 1">
-    <block type="mindstorms_speed_in"></block>
+  <category id="Mindstorms 1 in" name="Robot">
     <block type="mindstorms_drive_distance_in"></block>
-    <block type="mindstorms_turn_in"></block>
   </category>
-  <category id="Mindstorms 1 cm" name="Lesson 1">
-    <block type="mindstorms_speed_cm"></block>
+  <category id="Mindstorms 1 cm" name="Robot">
     <block type="mindstorms_drive_distance_cm"></block>
-    <block type="mindstorms_turn_in"></block>
   </category>
   
   <xml id="toolbox" style="display: none">
@@ -360,7 +387,7 @@ jQuery(document).ready( function($) {
 
 
 
-  var imgChk = "mindstorms";
+  var imgChk = "linkbot";
   
 
 

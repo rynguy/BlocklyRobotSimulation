@@ -113,7 +113,7 @@ td {
   visibility: hidden;
   margin: 0;
   padding: 1ex;
-  position: absolute;
+  position: inherit;
   direction: ltr;
 }
 pre.content {
