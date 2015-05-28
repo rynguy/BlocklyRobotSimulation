@@ -65,7 +65,10 @@
   
   function getCoordinates()
   {
-    var coordinates = "(" + robotX + "," +  robotY + ")";
+    if(document.getElementById('US Customary').checked)
+      var coordinates = "(" + robotX + " in," +  robotY + " in)";
+    else
+      var coordinates = "(" + robotX + " cm," +  robotY + " cm)";
     return coordinates;
   }
 
@@ -205,23 +208,27 @@
               </button>
               <button id="runButton" style="margin-bottom:5px; width:100px; height:42px; background-color:#C99700; color:white; border:none;" class='toggleButton' value='play'>Run
               </button>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="units" id="US Customary" value="US Customary" onclick="toolbox()" checked>US Customary
-              <input type="radio" name="units" id="Metric" value="Metric" onclick="toolbox()" >Metric
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Units:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="units" id="US Customary" value="US Customary" onclick="toolbox()" onchange="document.getElementById('coordinates').innerHTML = getCoordinates();" checked>US Customary
+              <input type="radio" name="units" id="Metric" value="Metric" onclick="toolbox()" onchange="document.getElementById('coordinates').innerHTML = getCoordinates();" >Metric
+              <br>
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              Tracing:&nbsp;&nbsp;
+              <input type="checkbox" name="trace" >Enable Robot Position Tracing
               </div>
               <div id="R1" >
-                <b>Choose Robot 1</b>&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>Choose Robot 1</b>
                 <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" checked>
                 <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
                 <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))">
                 <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_alone.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Coordinates</b>
+                <b>Position: </b>
                 <span id = "coordinates">
                   <script>document.write(getCoordinates())</script>
                 </span>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Current Angle: </b>
+                <b>Angle: </b>
                 <span id = "displayAngle">
                   <script>document.write(getAngle())</script>
                 </span>
@@ -714,7 +721,10 @@ console.log("distance in the block: " + dis);
     }
     $('#home').css({'border': 'none'});
 
-    document.getElementById('coordinates').innerHTML = "(0,0)"; 
+    if(document.getElementById('US Customary').checked)
+      document.getElementById('coordinates').innerHTML = "(0 in,0 in)";
+    else
+      document.getElementById('coordinates').innerHTML = "(0 cm,0 cm)";    
     robotX = 0;
     robotY = 0;
 
