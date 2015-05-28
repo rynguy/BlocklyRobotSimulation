@@ -35,11 +35,11 @@ Blockly.Blocks['linkbot2_speed_in'] = {
     this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
         .appendField("setSpeed(speed")
-        .appendField(new Blockly.FieldTextInput("10",
-            Blockly.FieldTextInput.nonnegativeIntegerValidator), "speed")
+        .appendField(new Blockly.FieldTextInput("4",
+            Blockly.FieldTextInput.numberValidator), "speed")
         .appendField("in/sec,");
     this.appendDummyInput()
-        .appendField("                radius")
+        .appendField("              radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
@@ -53,12 +53,12 @@ Blockly.Blocks['linkbot2_speed_cm'] = {
     this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
         .appendField("setSpeed(speed")
-        .appendField(new Blockly.FieldTextInput("10",
-            Blockly.FieldTextInput.nonnegativeIntegerValidator), "speed")
+        .appendField(new Blockly.FieldTextInput("10.16",
+            Blockly.FieldTextInput.numberValidator), "speed")
         .appendField("cm/sec,");
     this.appendDummyInput()
-        .appendField("                radius")
-        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
+        .appendField("              radius")
+        .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -91,7 +91,7 @@ Blockly.Blocks['linkbot2_delay'] = {
     this.appendDummyInput()
         .appendField("delaySeconds(seconds")
         .appendField(new Blockly.FieldTextInput("3",
-            Blockly.FieldTextInput.nonnegativeIntegerValidator), "time")
+            Blockly.FieldTextInput.numberValidator), "time")
         .appendField(");");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -108,12 +108,12 @@ Blockly.Blocks['linkbot2_move_joints'] = {
             Blockly.FieldTextInput.numberValidator), "angle1")
         .appendField("°,");
     this.appendDummyInput()
-        .appendField("          angle2")
+        .appendField("         angle2")
         .appendField(new Blockly.FieldTextInput("90",
             Blockly.FieldTextInput.numberValidator), "angle2")
         .appendField("°,");
     this.appendDummyInput()
-        .appendField("          angle3")
+        .appendField("         angle3")
         .appendField(new Blockly.FieldTextInput("90",
             Blockly.FieldTextInput.numberValidator), "angle3")
         .appendField("°);");
@@ -166,11 +166,11 @@ Blockly.Blocks['linkbot2_turn_in'] = {
         .appendField(new Blockly.FieldAngle("90"), "turn direction")
         .appendField(",");
     this.appendDummyInput()
-        .appendField("                     radius")
+        .appendField("                   radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
         .appendField("in,");
     this.appendDummyInput()
-        .appendField("                     trackwidth")
+        .appendField("                   trackwidth")
         .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
@@ -189,11 +189,11 @@ Blockly.Blocks['linkbot2_turn_cm'] = {
         .appendField(new Blockly.FieldAngle("90"), "turn direction")
         .appendField(",");
     this.appendDummyInput()
-        .appendField("                     radius")
+        .appendField("                   radius")
         .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
         .appendField("cm,");
     this.appendDummyInput()
-        .appendField("                     trackwidth")
+        .appendField("                   trackwidth")
         .appendField(new Blockly.FieldDropdown([["9.37", "9.37"]]), "width")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
@@ -207,11 +207,11 @@ Blockly.Blocks['linkbot2_drive_distance_in'] = {
     this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
         .appendField("driveDistance(distance")
-        .appendField(new Blockly.FieldTextInput("10",
+        .appendField(new Blockly.FieldTextInput("5",
             Blockly.FieldTextInput.numberValidator), "distance")
         .appendField("in,");
     this.appendDummyInput()
-        .appendField("                       radius")
+        .appendField("                    radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
@@ -225,11 +225,11 @@ Blockly.Blocks['linkbot2_drive_distance_cm'] = {
     this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
         .appendField("driveDistance(distance")
-        .appendField(new Blockly.FieldTextInput("10",
+        .appendField(new Blockly.FieldTextInput("12.7",
             Blockly.FieldTextInput.numberValidator), "distance")
         .appendField("cm,");
     this.appendDummyInput()
-        .appendField("                       radius")
+        .appendField("                    radius")
         .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
@@ -243,7 +243,7 @@ Blockly.Blocks['linkbot2_drive_time'] = {
     this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
         .appendField("driveTime(")
-        .appendField(new Blockly.FieldTextInput("10",
+        .appendField(new Blockly.FieldTextInput("4",
             Blockly.FieldTextInput.numberValidator), "time")
         .appendField("sec);");
     this.setPreviousStatement(true, "null");
@@ -287,11 +287,11 @@ Blockly.Blocks['linkbot2_turn_in_NB'] = {
         .appendField(new Blockly.FieldAngle("90"), "turn direction")
         .appendField(",");
     this.appendDummyInput()
-        .appendField("                           radius")
+        .appendField("                       radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
         .appendField("in,");
     this.appendDummyInput()
-        .appendField("                           trackwidth")
+        .appendField("                       trackwidth")
         .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
@@ -310,11 +310,11 @@ Blockly.Blocks['linkbot2_turn_cm_NB'] = {
         .appendField(new Blockly.FieldAngle("90"), "turn direction")
         .appendField(",");
     this.appendDummyInput()
-        .appendField("                           radius")
+        .appendField("                       radius")
         .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
         .appendField("cm,");
     this.appendDummyInput()
-        .appendField("                           trackwidth")
+        .appendField("                       trackwidth")
         .appendField(new Blockly.FieldDropdown([["9.37", "9.37"]]), "width")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
@@ -328,11 +328,11 @@ Blockly.Blocks['linkbot2_drive_distance_in_NB'] = {
     this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
         .appendField("driveDistanceNB(distance")
-        .appendField(new Blockly.FieldTextInput("10",
+        .appendField(new Blockly.FieldTextInput("5",
             Blockly.FieldTextInput.numberValidator), "distance")
         .appendField("in,");
     this.appendDummyInput()
-        .appendField("                            radius")
+        .appendField("                        radius")
         .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
@@ -346,11 +346,11 @@ Blockly.Blocks['linkbot2_drive_distance_cm_NB'] = {
     this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
         .appendField("driveDistanceNB(distance")
-        .appendField(new Blockly.FieldTextInput("10",
+        .appendField(new Blockly.FieldTextInput("12.7",
             Blockly.FieldTextInput.numberValidator), "distance")
         .appendField("cm,");
     this.appendDummyInput()
-        .appendField("                            radius")
+        .appendField("                        radius")
         .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
@@ -364,7 +364,7 @@ Blockly.Blocks['linkbot2_drive_time_NB'] = {
     this.setColour(Blockly.Blocks.linkbot2.HUE);
     this.appendDummyInput()
         .appendField("driveTimeNB(")
-        .appendField(new Blockly.FieldTextInput("10",
+        .appendField(new Blockly.FieldTextInput("4",
             Blockly.FieldTextInput.numberValidator), "time")
         .appendField("sec);");
     this.setPreviousStatement(true, "null");

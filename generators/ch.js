@@ -129,6 +129,8 @@ Blockly.Ch.finish = function(code) {
     }
   }
   var allDefs = imports.join('\n') + definitions.join('\n');
+  allDefs = allDefs.replace('>double', '>\ndouble');
+  allDefs = allDefs.replace('\n\nCLinkbot', '\nCLinkbot').replace('\n\nCMindstorms', '\nCMindstorms');
   var total = allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n') + code;
   if(x == 1) {
       total = total.replace(/l_robot1/g, 'robot');

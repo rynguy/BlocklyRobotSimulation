@@ -174,12 +174,7 @@ Blockly.Cpp['mindstorms4_drive_angle'] = function(block) {
   Blockly.Cpp.definitions_['include_mrobot4'] = 
       'CMindstorms m_robot4;';
   var text_angle = block.getFieldValue('angle');
-  if(Number(text_angle) >= 0)
-    var code = 'm_robot4.driveForward(' + text_angle + ');\n';
-  else {
-    text_angle = (-Number(text_angle)).toString();
-    var code = 'm_robot4.driveBackward(' + text_angle + ');\n';
-  }
+  var code = 'm_robot4.driveAngle(' + text_angle + ');\n';
   return code;
 };
 
@@ -256,12 +251,7 @@ Blockly.Cpp['mindstorms4_drive_angle_NB'] = function(block) {
   Blockly.Cpp.definitions_['include_mrobot4'] = 
       'CMindstorms m_robot4;';
   var text_angle = block.getFieldValue('angle');
-  if(Number(text_angle) >= 0)
-    var code = 'm_robot4.driveForwardNB(' + text_angle + ');\n';
-  else {
-    text_angle = (-Number(text_angle)).toString();
-    var code = 'm_robot4.driveBackwardNB(' + text_angle + ');\n';
-  }
+  var code = 'm_robot4.driveAngleNB(' + text_angle + ');\n';
   return code;
 };
 

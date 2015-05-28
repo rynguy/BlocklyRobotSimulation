@@ -40,7 +40,7 @@ Blockly.Ch['controls_repeat'] = function(block) {
       ' < ' + repeats + ') {\n' +
       branch + loopVar + ' = ' + loopVar + ' + 1;\n}\n';
   Blockly.Ch.definitions_['include_' + loopVar] =
-      'int ' + '  ' + loopVar + ';';
+      'int ' + '  ' + loopVar + ';\n';
   return code;
 };
 
@@ -64,7 +64,7 @@ Blockly.Ch['controls_repeat_ext'] = function(block) {
       ' < ' + endVar + ') {\n' +
       branch + '  ' + loopVar + ' = ' + loopVar + ' + 1;\n}\n';
   Blockly.Ch.definitions_['include_' + loopVar] =
-      'int ' + loopVar + ';';
+      'int ' + loopVar + ';\n';
   return code;
 };
 

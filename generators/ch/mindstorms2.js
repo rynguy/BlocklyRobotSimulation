@@ -174,12 +174,7 @@ Blockly.Ch['mindstorms2_drive_angle'] = function(block) {
   Blockly.Ch.definitions_['include_mrobot2'] = 
       'CMindstorms m_robot2;';
   var text_angle = block.getFieldValue('angle');
-  if(Number(text_angle) >= 0)
-    var code = 'm_robot2.driveForward(' + text_angle + ');\n';
-  else {
-    text_angle = (-Number(text_angle)).toString();
-    var code = 'm_robot2.driveBackward(' + text_angle + ');\n';
-  }
+  var code = 'm_robot2.driveAngle(' + text_angle + ');\n';
   return code;
 };
 
@@ -256,12 +251,7 @@ Blockly.Ch['mindstorms2_drive_angle_NB'] = function(block) {
   Blockly.Ch.definitions_['include_mrobot2'] = 
       'CMindstorms m_robot2;';
   var text_angle = block.getFieldValue('angle');
-  if(Number(text_angle) >= 0)
-    var code = 'm_robot2.driveForwardNB(' + text_angle + ');\n';
-  else {
-    text_angle = (-Number(text_angle)).toString();
-    var code = 'm_robot2.driveBackwardNB(' + text_angle + ');\n';
-  }
+  var code = 'm_robot2.driveAngleNB(' + text_angle + ');\n';
   return code;
 };
 

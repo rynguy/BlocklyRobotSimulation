@@ -174,12 +174,7 @@ Blockly.Ch['linkbot_drive_angle'] = function(block) {
   Blockly.Ch.definitions_['include_lrobot1'] = 
       'CLinkbotI l_robot1;';
   var text_angle = block.getFieldValue('angle');
-  if(Number(text_angle) >= 0)
-    var code = 'l_robot1.driveForward(' + text_angle + ');\n';
-  else {
-    text_angle = (-Number(text_angle)).toString();
-    var code = 'l_robot1.driveBackward(' + text_angle + ');\n';
-  }
+  var code = 'l_robot1.driveAngle(' + text_angle + ');\n';
   return code;
 };
 
@@ -256,12 +251,7 @@ Blockly.Ch['linkbot_drive_angle_NB'] = function(block) {
   Blockly.Ch.definitions_['include_lrobot1'] = 
       'CLinkbotI l_robot1;';
   var text_angle = block.getFieldValue('angle');
-  if(Number(text_angle) >= 0)
-    var code = 'l_robot1.driveForwardNB(' + text_angle + ');\n';
-  else {
-    text_angle = (-Number(text_angle)).toString();
-    var code = 'l_robot1.driveBackwardNB(' + text_angle + ');\n';
-  }
+  var code = 'l_robot1.driveAngleNB(' + text_angle + ');\n';
   return code;
 };
 
