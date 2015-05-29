@@ -51,7 +51,7 @@
   #home {
     width: 100px;
     height: 100px;
-    background: url(./img/linkbot_spritesheet.png) 0 0;
+    background: url(./img/linkbot_spritesheet_robot_1.png) 0 0;
     border: none;
 }
 
@@ -215,9 +215,9 @@
               <div id="R1" style="display: ;">
                 <b>Choose Robot 1</b>&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="robot1" id="L1" onclick="toolbox(); loadImg(document.getElementById('1stLinkbot'))" checked>
-                <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
+                <img id= "1stLinkbot" width= "32" height= "32" src="./img/linkbot_alone_robot_1.png">
                 <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))" >
-                <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
+                <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_alone_robot_1.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
@@ -232,9 +232,9 @@
               <div id="R2" style="display: none;">
                 <b>Choose Robot 2</b>&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="robot2" id="L2" onclick="toolbox();" >
-                <img id= "2ndLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
+                <img id= "2ndLinkbot" width= "32" height= "32" src="./img/linkbot_alone_robot_2.png">
                 <input type="radio" name="robot2" id="M2" onclick="toolbox();" >
-                <img id= "2ndMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
+                <img id= "2ndMindstorm" width="32" height= "32" src="./img/minds_alone_robot_2.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
@@ -249,9 +249,9 @@
               <div id="R3" style="display: none;">
                 <b>Choose Robot 3</b>&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="robot3" id="L3" onclick="toolbox();" >
-                <img id= "3rdLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
+                <img id= "3rdLinkbot" width= "32" height= "32" src="./img/linkbot_alone_robot_3.png">
                 <input type="radio" name="robot3" id="M3" onclick="toolbox();" >
-                <img id= "3rdMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
+                <img id= "3rdMindstorm" width="32" height= "32" src="./img/minds_alone_robot_3.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
@@ -266,9 +266,9 @@
               <div id="R4" style="display: none;">
                 <b>Choose Robot 4</b>&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="robot4" id="L4" onclick="toolbox();" >
-                <img id= "4thLinkbot" width= "32" height= "32" src="./img/linkbot_alone.png">
+                <img id= "4thLinkbot" width= "32" height= "32" src="./img/linkbot_alone_robot_4.png">
                 <input type="radio" name="robot4" id="M4" onclick="toolbox();" >
-                <img id= "4thMindstorm" width="32" height= "32" src="./img/minds_Transparent.png">
+                <img id= "4thMindstorm" width="32" height= "32" src="./img/minds_alone_robot_4.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <b>Coordinates</b>
                 <span id = "coordinates">
@@ -454,7 +454,7 @@
     <block type="mindstorms4_speed_in"></block>
     <block type="mindstorms4_delay"></block>
     <block type="mindstorms4_move_joints"></block>
-    <block type="mindstorms4_move_wait"></block>
+    <block type="mindstorms4_move_wait"></block
     <block type="mindstorms4_traceon"></block>
     <block type="mindstorms4_traceoff"></block>
     <block type="mindstorms4_turn_in"></block>
@@ -806,7 +806,7 @@ jQuery(document).ready( function($) {
                     imgChk = "linkbot";
                     document.getElementById("home").style.height = "200px";
                     document.getElementById("home").style.width = "200px";
-                    $("#home").css({'background': 'url(./img/linkbot_spritesheet.png) 0 0'});
+                    $("#home").css({'background': 'url(./img/linkbot_spritesheet_robot_1.png) 0 0'});
                     $("#home").css({'margin-left': 80 + 'px'});
                     $("#home").css({'margin-top': 255 + 'px'});
                     document.getElementById("home").src = "./img/largeTransparent.gif";
@@ -816,7 +816,7 @@ jQuery(document).ready( function($) {
                     imgChk = "mindstorms";
                     document.getElementById("home").style.height = "200px";
                     document.getElementById("home").style.width = "200px";
-                    $("#home").css({'background': 'url(./img/mindstorms_spritesheet.png) 0 0'});
+                    $("#home").css({'background': 'url(./img/mindstorms_spritesheet_robot_1.png) 0 0'});
                     $("#home").css({'margin-left': 80 + 'px'});
                     $("#home").css({'margin-top': 255 + 'px'});
                     document.getElementById("home").src = "./img/largeTransparent.gif";
@@ -1212,10 +1212,10 @@ console.log("distance in the block: " + dis);
     $('#home').css({'width': 200 + 'px'});
     $('#home').css({'height': 200 + 'px'});
     if(imgChk == "linkbot"){
-      $('#home').css({'background': 'url(./img/linkbot_spritesheet.png)' + 0 +'px' + ' ' + 0 +'px'});
+      $('#home').css({'background': 'url(./img/linkbot_spritesheet_robot_1.png)' + 0 +'px' + ' ' + 0 +'px'});
     }
     else{
-      $('#home').css({'background': 'url(./img/mindstorms_spritesheet.png)' + 0 +'px' + ' ' + 0 +'px'});
+      $('#home').css({'background': 'url(./img/mindstorms_spritesheet_robot_1.png)' + 0 +'px' + ' ' + 0 +'px'});
     }
     $('#home').css({'border': 'none'});
 
@@ -1377,10 +1377,10 @@ function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, b
     return;
   }
   if(imgChk == "linkbot"){
-    $("#home").css({'background': 'url(./img/linkbot_spritesheet.png) ' + leftMargin+'px' + ' ' + topMargin+'px'});
+    $("#home").css({'background': 'url(./img/linkbot_spritesheet_robot_1.png) ' + leftMargin+'px' + ' ' + topMargin+'px'});
   }
   else{
-    $("#home").css({'background': 'url(./img/mindstorms_spritesheet.png) ' + leftMargin+'px' + ' ' + topMargin+'px'});
+    $("#home").css({'background': 'url(./img/mindstorms_spritesheet_robot_1.png) ' + leftMargin+'px' + ' ' + topMargin+'px'});
   }
   
   $("#roboyes").css({'margin-left': + leftMargin+'px'});
