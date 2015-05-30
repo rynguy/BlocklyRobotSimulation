@@ -78,8 +78,7 @@
     var disp= displayAngle + "°";
     return disp;
   }
-
-
+  
 </script>
 
  
@@ -182,8 +181,8 @@
               <button id="runButton" style="margin-bottom:5px; width:100px; height:42px; background-color:#C99700; color:white; border:none;" class='toggleButton' value='play'>Run
               </button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Units:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="units" id="US Customary" value="US Customary" onclick="toolbox()" onchange="document.getElementById('coordinates1').innerHTML = getCoordinates(); document.getElementById('coordinates2').innerHTML = getCoordinates(); document.getElementById('coordinates3').innerHTML = getCoordinates(); document.getElementById('coordinates4').innerHTML = getCoordinates();" checked>US Customary
-              <input type="radio" name="units" id="Metric" value="Metric" onclick="toolbox()" onchange="document.getElementById('coordinates1').innerHTML = getCoordinates(); document.getElementById('coordinates2').innerHTML = getCoordinates(); document.getElementById('coordinates3').innerHTML = getCoordinates(); document.getElementById('coordinates4').innerHTML = getCoordinates();" >Metric
+              <input type="radio" name="units" id="US Customary" value="US Customary" onclick="toolbox()" onchange="document.getElementById('coordinates1').innerHTML = getCoordinates(); document.getElementById('coordinates2').innerHTML = getCoordinates(); document.getElementById('coordinates3').innerHTML = getCoordinates(); document.getElementById('coordinates4').innerHTML = getCoordinates(); units(); redraw();" checked>US Customary
+              <input type="radio" name="units" id="Metric" value="Metric" onclick="toolbox()" onchange="document.getElementById('coordinates1').innerHTML = getCoordinates(); document.getElementById('coordinates2').innerHTML = getCoordinates(); document.getElementById('coordinates3').innerHTML = getCoordinates(); document.getElementById('coordinates4').innerHTML = getCoordinates(); units(); redraw();" >Metric
               <br>
               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               Tracing:&nbsp;&nbsp;
@@ -198,12 +197,22 @@
                 <input type="radio" name="robot1" id="M1" onclick="toolbox(); loadImg(document.getElementById('1stMindstorm'))">
                 <img id= "1stMindstorm" width="32" height= "32" src="./img/minds_alone_robot_1.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Position: </b>
+                <b>Initial Position: </b>
+                (<input type="text" size ="1" id = "x1" value = "0" onchange="robotX = Number(document.getElementById('x1').value); document.getElementById('coordinates1').innerHTML = getCoordinates(); redraw();"></span>
+                <span id = "u1">in</span>,<input type="text" size ="1" id = "y1" value = "0" onchange="robotY = Number(document.getElementById('y1').value); document.getElementById('coordinates1').innerHTML = getCoordinates(); redraw();"></span>
+                <span id = "u2">in</span>)<br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Initial Angle: </b>
+                <input type="text" size ="1" id = "a1" value = "0" onchange="displayAngle = Number(document.getElementById('a1').value); document.getElementById('displayAngle1').innerHTML = getAngle(); redraw();"></span>°
+                <br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Current Position: </b>
                 <span id = "coordinates1">
                   <script>document.write(getCoordinates())</script>
                 </span>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Angle: </b>
+                <br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Current Angle: </b>
                 <span id = "displayAngle1">
                   <script>document.write(getAngle())</script>
                 </span>
@@ -215,12 +224,22 @@
                 <input type="radio" name="robot2" id="M2" onclick="toolbox();" >
                 <img id= "2ndMindstorm" width="32" height= "32" src="./img/minds_alone_robot_2.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Position: </b>
+                <b>Initial Position: </b>
+                (<span id = "x2" contenteditable="true">0 </span>
+                <span id = "u3">in</span>,<span id = "y2" contenteditable="true">0</span>
+                <span id = "u4">in</span>)<br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Initial Angle: </b>
+                <span id = "a2" contenteditable="true">0</span>°
+                <br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Current Position: </b>
                 <span id = "coordinates2">
                   <script>document.write(getCoordinates())</script>
                 </span>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Angle: </b>
+                <br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Current Angle: </b>
                 <span id = "displayAngle2">
                   <script>document.write(getAngle())</script>
                 </span>
@@ -232,12 +251,22 @@
                 <input type="radio" name="robot3" id="M3" onclick="toolbox();" >
                 <img id= "3rdMindstorm" width="32" height= "32" src="./img/minds_alone_robot_3.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Position: </b>
+                <b>Initial Position: </b>
+                (<span id = "x3" contenteditable="true">0 </span>
+                <span id = "u5">in</span>,<span id = "y3" contenteditable="true">0</span>
+                <span id = "u6">in</span>)<br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Initial Angle: </b>
+                <span id = "a3" contenteditable="true">0</span>°
+                <br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Current Position: </b>
                 <span id = "coordinates3">
                   <script>document.write(getCoordinates())</script>
                 </span>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Angle: </b>
+                <br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Current Angle: </b>
                 <span id = "displayAngle3">
                   <script>document.write(getAngle())</script>
                 </span>
@@ -249,12 +278,22 @@
                 <input type="radio" name="robot4" id="M4" onclick="toolbox();" >
                 <img id= "4thMindstorm" width="32" height= "32" src="./img/minds_alone_robot_4.png">
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Position: </b>
+                <b>Initial Position: </b>
+                (<span id = "x4" contenteditable="true">0 </span>
+                <span id = "u7">in</span>,<span id = "y4" contenteditable="true">0</span>
+                <span id = "u8">in</span>)<br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Initial Angle: </b>
+                <span id = "a4" contenteditable="true">0</span>°
+                <br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Current Position: </b>
                 <span id = "coordinates4">
                   <script>document.write(getCoordinates())</script>
                 </span>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Angle: </b>
+                <br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <b>Current Angle: </b>
                 <span id = "displayAngle4">
                   <script>document.write(getAngle())</script>
                 </span>
@@ -1121,6 +1160,60 @@ jQuery(document).ready( function($) {
       document.getElementById('p1').style.display = '';
     }
   }
+  
+  function units()
+  {
+    if(document.getElementById('US Customary').checked)
+    {
+      document.getElementById('u1').innerHTML = 'in';
+      document.getElementById('u2').innerHTML = 'in';
+      document.getElementById('u3').innerHTML = 'in';
+      document.getElementById('u4').innerHTML = 'in';
+      document.getElementById('u5').innerHTML = 'in';
+      document.getElementById('u6').innerHTML = 'in';
+      document.getElementById('u7').innerHTML = 'in';
+      document.getElementById('u8').innerHTML = 'in';
+    }
+    else
+    {    
+      document.getElementById('u1').innerHTML = 'cm';
+      document.getElementById('u2').innerHTML = 'cm';
+      document.getElementById('u3').innerHTML = 'cm';
+      document.getElementById('u4').innerHTML = 'cm';
+      document.getElementById('u5').innerHTML = 'cm';
+      document.getElementById('u6').innerHTML = 'cm';
+      document.getElementById('u7').innerHTML = 'cm';
+      document.getElementById('u8').innerHTML = 'cm';
+    }
+  }
+
+  function redraw()
+  {
+    $('#roboyes').css({'margin-left': 0 +'px'});
+    $('#roboyes').css({'margin-top': 0 + 'px'});
+    //$('#home').css({'position' : 'absolute'});
+    if(document.getElementById('US Customary').checked)
+    {
+      $('#horizTranslate').css({'margin-left': Number(document.getElementById('x1').value)*15 +'px'});
+      $('#horizTranslate').css({'margin-top': Number(document.getElementById('y1').value)*-15 + 'px'});
+    }
+    else
+    {
+      $('#horizTranslate').css({'margin-left': Number(document.getElementById('x1').value)*18 +'px'});
+      $('#horizTranslate').css({'margin-top': Number(document.getElementById('y1').value)*-18 + 'px'});
+    }
+    $('#home').css({'margin-left': 80 +'px'});
+    $('#home').css({'margin-top': 255 + 'px'});
+
+    $('#horizTranslate').css({'-webkit-transition': 0.5+'s linear'});
+    $('#horizTranslate').css({'-moz-transition': 0.5+'s linear'});
+    $('#horizTranslate').css({'-ms-transition': 0.5+'s linear'});
+    $('#horizTranslate').css({'-o-transition': 0.5+'s linear'});
+    $('#horizTranslate').css({'transition': 0.5+'s linear'});
+    
+
+  }
+  
   </script>
 
 
@@ -1222,7 +1315,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           console.log("NUMBER OF IMAGES" + numImages);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
-          document.getElementById('displayAngle').innerHTML = getAngle();
+          document.getElementById('displayAngle1').innerHTML = getAngle();
 
       //direction = 
     }//if first is turn
@@ -1297,17 +1390,25 @@ console.log("distance in the block: " + dis);
     $('#home').css({'border': 'none'});
 
     if(document.getElementById('US Customary').checked)
-      document.getElementById('coordinates1').innerHTML = "(0 in,0 in)";
+      document.getElementById('coordinates1').innerHTML = "(" + Number(document.getElementById('x1').value) + " in," + Number(document.getElementById('y1').value) + " in)";
     else
-      document.getElementById('coordinates1').innerHTML = "(0 cm,0 cm)";    
-    robotX = 0;
-    robotY = 0;
+      document.getElementById('coordinates1').innerHTML = "(" + Number(document.getElementById('x1').value) + " cm," + Number(document.getElementById('y1').value) + " cm)";
+    robotX = Number(document.getElementById('x1').value);
+    robotY = Number(document.getElementById('y1').value);
 
     $('#roboyes').css({'margin-left': 0 +'px'});
     $('#roboyes').css({'margin-top': 0 + 'px'});
     //$('#home').css({'position' : 'absolute'});
-    $('#horizTranslate').css({'margin-left': 0 +'px'});
-    $('#horizTranslate').css({'margin-top': 0 + 'px'});
+    if(document.getElementById('US Customary').checked)
+    {
+      $('#horizTranslate').css({'margin-left': Number(document.getElementById('x1').value)*15 +'px'});
+      $('#horizTranslate').css({'margin-top': Number(document.getElementById('y1').value)*-15 + 'px'});
+    }
+    else
+    {
+      $('#horizTranslate').css({'margin-left': Number(document.getElementById('x1').value)*18 +'px'});
+      $('#horizTranslate').css({'margin-top': Number(document.getElementById('y1').value)*-18 + 'px'});
+    }
     $('#home').css({'margin-left': 80 +'px'});
     $('#home').css({'margin-top': 255 + 'px'});
 
@@ -1317,8 +1418,8 @@ console.log("distance in the block: " + dis);
     $('#horizTranslate').css({'-o-transition': 0.5+'s linear'});
     $('#horizTranslate').css({'transition': 0.5+'s linear'});
 
-    document.getElementById('displayAngle').innerHTML = "0°";
-    displayAngle = 0;
+    document.getElementById('displayAngle1').innerHTML = Number(document.getElementById('a1').value) + "°";
+    displayAngle = Number(document.getElementById('a1').value);
 
 
   };
@@ -1390,7 +1491,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           console.log('NEWANGLE NEW ANGLE ' + newangle);
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
           
-          document.getElementById('displayAngle').innerHTML = getAngle();
+          document.getElementById('displayAngle1').innerHTML = getAngle();
             //y = y - 200;
             
             
