@@ -40,7 +40,7 @@ Blockly.Blocks['mindstorms4_speed_in'] = {
         .appendField("in/sec,");
     this.appendDummyInput()
         .appendField("              radius")
-        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["1.10", "1.10"]]), "radius")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -58,7 +58,7 @@ Blockly.Blocks['mindstorms4_speed_cm'] = {
         .appendField("cm/sec,");
     this.appendDummyInput()
         .appendField("              radius")
-        .appendField(new Blockly.FieldDropdown([["4.45", "4.445"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["2.79", "2.79"]]), "radius")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -167,11 +167,11 @@ Blockly.Blocks['mindstorms4_turn_in'] = {
         .appendField(",");
     this.appendDummyInput()
         .appendField("                   radius")
-        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["1.10", "1.10"]]), "radius")
         .appendField("in,");
     this.appendDummyInput()
         .appendField("                   trackwidth")
-        .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
+        .appendField(new Blockly.FieldDropdown([["4.54", "4.54"]]), "width")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -190,11 +190,11 @@ Blockly.Blocks['mindstorms4_turn_cm'] = {
         .appendField(",");
     this.appendDummyInput()
         .appendField("                   radius")
-        .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["2.79", "2.79"]]), "radius")
         .appendField("cm,");
     this.appendDummyInput()
         .appendField("                   trackwidth")
-        .appendField(new Blockly.FieldDropdown([["9.37", "9.37"]]), "width")
+        .appendField(new Blockly.FieldDropdown([["11.53", "11.53"]]), "width")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -212,7 +212,7 @@ Blockly.Blocks['mindstorms4_drive_distance_in'] = {
         .appendField("in,");
     this.appendDummyInput()
         .appendField("                    radius")
-        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["1.10", "1.10"]]), "radius")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -230,7 +230,7 @@ Blockly.Blocks['mindstorms4_drive_distance_cm'] = {
         .appendField("cm,");
     this.appendDummyInput()
         .appendField("                    radius")
-        .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["2.79", "2.79"]]), "radius")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -288,11 +288,11 @@ Blockly.Blocks['mindstorms4_turn_in_NB'] = {
         .appendField(",");
     this.appendDummyInput()
         .appendField("                       radius")
-        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["1.10", "1.10"]]), "radius")
         .appendField("in,");
     this.appendDummyInput()
         .appendField("                       trackwidth")
-        .appendField(new Blockly.FieldDropdown([["3.69", "3.69"]]), "width")
+        .appendField(new Blockly.FieldDropdown([["4.54", "4.54"]]), "width")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -311,11 +311,11 @@ Blockly.Blocks['mindstorms4_turn_cm_NB'] = {
         .appendField(",");
     this.appendDummyInput()
         .appendField("                       radius")
-        .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["2.79", "2.79"]]), "radius")
         .appendField("cm,");
     this.appendDummyInput()
         .appendField("                       trackwidth")
-        .appendField(new Blockly.FieldDropdown([["9.37", "9.37"]]), "width")
+        .appendField(new Blockly.FieldDropdown([["11.53", "11.53"]]), "width")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -333,7 +333,7 @@ Blockly.Blocks['mindstorms4_drive_distance_in_NB'] = {
         .appendField("in,");
     this.appendDummyInput()
         .appendField("                        radius")
-        .appendField(new Blockly.FieldDropdown([["1.75", "1.75"], ["1.625", "1.625"], ["2.0", "2.0"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["1.10", "1.10"]]), "radius")
         .appendField("in);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
@@ -351,7 +351,7 @@ Blockly.Blocks['mindstorms4_drive_distance_cm_NB'] = {
         .appendField("cm,");
     this.appendDummyInput()
         .appendField("                        radius")
-        .appendField(new Blockly.FieldDropdown([["4.45", "4.45"], ["4.13", "4.13"], ["5.08", "5.08"]]), "radius")
+        .appendField(new Blockly.FieldDropdown([["2.79", "2.79"]]), "radius")
         .appendField("cm);");
     this.setPreviousStatement(true, "null");
     this.setNextStatement(true, "null");
