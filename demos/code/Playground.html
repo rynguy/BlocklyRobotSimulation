@@ -66,16 +66,16 @@
   function getCoordinates()
   {
     if(document.getElementById('US Customary').checked)
-      var coordinates = "(" + robotX + " in," +  robotY + " in)";
+      var coordinates = "(" + Math.round(robotX*100)/100 + " in," +  Math.round(robotY*100)/100 + " in)";
     else
-      var coordinates = "(" + robotX + " cm," +  robotY + " cm)";
+      var coordinates = "(" + Math.round(robotX*100)/100 + " cm," +  Math.round(robotY*100)/100 + " cm)";
     return coordinates;
   }
 
 
   function getAngle()
   {
-    var disp= displayAngle + "°";
+    var disp= Math.round(displayAngle) + "°";
     return disp;
   }
   
@@ -1242,7 +1242,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var y = 0;
     var a = 0;
     var b = 0;
-    var angle = 0;
+    var angle = displayAngle*Math.PI/180;
     var oldangle = 0;
     var newangle = 0;
     var direction = 0;
@@ -1260,9 +1260,9 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         driveBlock = rootBlock;
         if(document.getElementById('US Customary').checked) //inches
         {
-          dis2 = (round(driveBlock.getFieldValue('distance'))*15);
-          dis = (round(driveBlock.getFieldValue('distance'))*15);
-          robotime = round(driveBlock.getFieldValue('distance')) / speeed;
+          dis2 = driveBlock.getFieldValue('distance')*15;
+          dis = driveBlock.getFieldValue('distance')*15;
+          robotime = driveBlock.getFieldValue('distance') / speeed;
           //dis 1 x y coords for robot 
           x = dis * Math.cos(angle);
           y = dis * Math.sin(angle);
@@ -1271,9 +1271,9 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         }
         else //metric
         {
-          dis2 = (round(driveBlock.getFieldValue('distance'))*18);
-          dis = (round(driveBlock.getFieldValue('distance'))*18);
-          robotime = (round(driveBlock.getFieldValue('distance'))) / speeed;
+          dis2 = driveBlock.getFieldValue('distance')*18;
+          dis = driveBlock.getFieldValue('distance')*18;
+          robotime = driveBlock.getFieldValue('distance') / speeed;
           x = dis * Math.cos(angle);
           y = dis * Math.sin(angle);
           robotX += x/18;
@@ -1283,8 +1283,8 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
 
        
         //dis 2 x y  coords for line
-        a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
-        b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
+        a = dis2 * Math.cos(angle)  + 60* Math.cos(angle);
+        b = dis2 * Math.sin(angle)  + 60* Math.sin(angle);
       
         
         console.log('dis x' + x)
@@ -1293,16 +1293,16 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     }//if first is drive
     if (rootBlock.type == 'linkbot_turn_in' || rootBlock.type == 'linkbot_turn_cm' || rootBlock.type == 'mindstorms_turn_in' || rootBlock.type == 'mindstorms_turn_cm') {
       angleBlock = rootBlock;
-      angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
+      angle += angleBlock.getFieldValue('turn direction')*Math.PI/180;
       blockDirection = angleBlock.getFieldValue('direction');
-      newangle = (round(angleBlock.getFieldValue('turn direction')));
+      newangle = angleBlock.getFieldValue('turn direction');
       if(blockDirection == 'turnLeft')
       {
         displayAngle += newangle;
       }
       else if(blockDirection == 'turnRight')
       {
-        displayAngle = 360 - newangle;
+        displayAngle += 360 - newangle;
       }
 
       if(newangle >= 360)
@@ -1434,28 +1434,28 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           driveBlock = block;
           if(document.getElementById('US Customary').checked)
           {
-            dis2 = (round(driveBlock.getFieldValue('distance'))*15);
-            dis = (round(driveBlock.getFieldValue('distance'))*15);
-            robotime = (round(driveBlock.getFieldValue('distance')))/speeed;
-            x = dis * Math.cos(angle);
-            y = dis * Math.sin(angle);
-            robotX += round(x/15);
-            robotY += round(y/15);
+            dis2 = driveBlock.getFieldValue('distance')*15;
+            dis = driveBlock.getFieldValue('distance')*15;
+            robotime = driveBlock.getFieldValue('distance')/speeed;
+            x = dis * Math.cos(displayAngle*Math.PI/180);
+            y = dis * Math.sin(displayAngle*Math.PI/180);
+            robotX += x/15;
+            robotY += y/15;
           }
           else
           {
-            dis2 = (round(driveBlock.getFieldValue('distance'))*18);
-            dis = (round(driveBlock.getFieldValue('distance'))*18);
-            robotime = (round(driveBlock.getFieldValue('distance')))/speeed;
-            x = dis * Math.cos(angle);
-            y = dis * Math.sin(angle);
-            robotX += round(x/18);
-            robotY += round(y/18);
+            dis2 = driveBlock.getFieldValue('distance')*18;
+            dis = driveBlock.getFieldValue('distance')*18;
+            robotime = driveBlock.getFieldValue('distance')/speeed;
+            x = dis * Math.cos(displayAngle*Math.PI/180);
+            y = dis * Math.sin(displayAngle*Math.PI/180);
+            robotX += x/18;
+            robotY += y/18;
           }
 
           //dis 2 x y  coords for line
-          a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
-          b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
+          a = dis2 * Math.cos(angle)  + 60* Math.cos(angle);
+          b = dis2 * Math.sin(angle)  + 60* Math.sin(angle);
         
 
           drive(x,y,robotime);
@@ -1464,8 +1464,8 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         if (block.type == 'linkbot_turn_in' || block.type == 'linkbot_turn_cm' || block.type == 'mindstorms_turn_in' || block.type == 'mindstorms_turn_cm') {
           angleBlock = block;
           blockDirection = angleBlock.getFieldValue('direction');
-          angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
-          angleImage = (round(angleBlock.getFieldValue('turn direction')));
+          angle += angleBlock.getFieldValue('turn direction')*Math.PI/180;
+          angleImage = angleBlock.getFieldValue('turn direction');
           //newangle += (round(angleBlock.getFieldValue('turn direction')));
 
           if(blockDirection == 'turnLeft')
@@ -1580,14 +1580,7 @@ function drive(x, y, robotime){
   var oldx = x;
   var oldy = y;
   x = x + parseInt($('#horizTranslate').css('margin-left'));
-  if(blockDirec == 'turnRight'){
-    x=-x;
-    if(parseInt($('#horizTranslate').css('margin-left')) <= 0 && parseInt($('#horizTranslate').css('margin-top')) <= 0){
-        x=-x;
-        y=-y;
-    }
 
-  }
   //y = y + parseInt($('#horizTranslate').css('margin-top'));
   console.log('oldx ' + oldx);
   console.log('x ' + x);
