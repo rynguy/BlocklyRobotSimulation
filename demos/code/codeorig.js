@@ -362,11 +362,11 @@ Code.init = function() {
       el.style.marginLeft = '33%';
 
       el.style.paddingRight = '40px';
-      el.style.height = '600px';
+      el.style.height = '585px';
       //el.style.height = (2 * bBox.height - el.offsetHeight) + 'px';
       //el.style.width = '31.5%';
-      //get the same width as the workspace, sub left-margin offset(610px), sub left padding offset(33%), sub right padding offset (40px)
-      el.style.width = (bBox.width - 650 - (bBox.width * .33)) + 'px';
+      //get the same width as the workspace, sub left-margin offset(610px), sub left padding offset(33%), sub right padding offset (40px), sub scroll bar (15px)
+      el.style.width = (bBox.width - 650 - 15 -  (bBox.width * .33)) + 'px';
       //el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
     }
     // Make the 'Blocks' tab line up with the toolbox.
