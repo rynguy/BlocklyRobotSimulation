@@ -1359,6 +1359,7 @@ console.log(document.getElementsByClassName('toggleButton')[0].value )
 
 var first =0;
 var angle = 0;
+var newangle = 0;
 var x = 0;
 var y = 0;
 
@@ -1372,7 +1373,7 @@ function ass(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a
     setTimeout(function(){
       console.log("IS CHILDBLOCKS DEFINED: " + children);
 
-      runRootBlock(children[num], i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
+      move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 1);
 
 
       ass(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
@@ -1381,136 +1382,7 @@ function ass(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a
   }
 }
 
-function runRootBlock(rootBlock,i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
-{
-    
-    var whileBlock;
-    var oldangle;
-    var newangle;
-    var direction;
-    var blockDirection;
 
-    //var blocks = Blockly.mainWorkspace.getTopBlocks(false);
-
-    if(rootBlock.type == 'controls_repeat_ext')
-    {
-      console.log("TEN DICKS TO THE FACE");
-      whileBlock = rootBlock;
-      childBlocks = whileBlock.getChildren();
-      if(childBlocks[0].type == 'math_number')
-      {
-        var math_number = childBlocks[0].getFieldValue('NUM');
-        console.log("MATH NUMBER BLOCK BITCH")
-        console.log("THE REAL MATH NUMER BITCH: " + math_number);
-      }
-
-
-      
-      if(childBlocks.length == 2){
-        setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
-      }
-      else if(childBlocks.length > 2){
-        for(var j = 0; j < math_number; j++)
-        {
-        setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks[1].getChildren(), newangle)}, 1000);
-        }
-        setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks[2].getChildren(), newangle)}, 1000);
-      }
-
-    }
-    
-    //for (var i = 0, block; block = blocks[i]; i++) {
-    if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm') {
-
-        console.log("FUCKIN MADE IT IN THIS DRIVE BITCH")
-        driveBlock = rootBlock;
-        if(document.getElementById('US Customary').checked) //inches
-        {
-          dis2 = (round(driveBlock.getFieldValue('distance'))*15);
-          dis = (round(driveBlock.getFieldValue('distance'))*15);
-          robotime = round(driveBlock.getFieldValue('distance')) / speeed;
-          //dis 1 x y coords for robot 
-          x = dis * Math.cos(angle);
-          y = dis * Math.sin(angle);
-          robotX += x/15;
-          robotY += y/15;
-        }
-        else //metric
-        {
-          dis2 = (round(driveBlock.getFieldValue('distance'))*18);
-          dis = (round(driveBlock.getFieldValue('distance'))*18);
-          robotime = (round(driveBlock.getFieldValue('distance'))) / speeed;
-          x = dis * Math.cos(angle);
-          y = dis * Math.sin(angle);
-          robotX += x/18;
-          robotY += y/18;
-        }
-        
-
-       
-        //dis 2 x y  coords for line
-        a = dis2 * Math.cos(angle)  + round(60)* Math.cos(angle);
-        b = dis2 * Math.sin(angle)  + round(60)* Math.sin(angle);
-      
-        
-        console.log('dis x' + x)
-        drive(x,y,robotime);
-        document.getElementById('coordinates').innerHTML = getCoordinates();
-    }//if first is drive
-    if (rootBlock.type == 'linkbot_turn_in' || rootBlock.type == 'linkbot_turn_cm' || rootBlock.type == 'mindstorms_turn_in' || rootBlock.type == 'mindstorms_turn_cm') {
-      angleBlock = rootBlock;
-      angle += (round(angleBlock.getFieldValue('turn direction'))*Math.PI/180);
-      blockDirection = angleBlock.getFieldValue('direction');
-      newangle = (round(angleBlock.getFieldValue('turn direction')));
-      if(blockDirection == 'turnLeft')
-      {
-        displayAngle += newangle;
-      }
-      else if(blockDirection == 'turnRight')
-      {
-        displayAngle = 360 - newangle;
-      }
-
-      if(newangle >= 360)
-        newangle -= 360;
-
-          var leftMargin = 0;
-          var topMargin = 0;
-          var intervalTime = 500/(newangle/5);
-          var numImages = Math.floor(newangle/5);
-          console.log("NUMBER OF IMAGES" + numImages);
-          console.log('NEWANGLE NEW ANGLE ' + newangle);
-          setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
-          document.getElementById('displayAngle').innerHTML = getAngle();
-
-      //direction = 
-    }//if first is turn
-
-    if(rootBlock.type == 'linkbot_speed_in' || rootBlock.type == 'linkbot_speed_cm' || rootBlock.type == 'mindstorms_speed_in' || rootBlock.type == 'mindstorms_speed_cm')
-    {
-      speedBlock = rootBlock;
-      speeed = speedBlock.getFieldValue('speed');
-    }
-
-
-    var i = 0;
-    childBlocks = rootBlock.getChildren();
-    console.log('child ' + childBlocks.length);
-    console.log('#####################################');
-    //document.getElementById('runButton').css({'background-color': '#fff'});
-    document.getElementsByClassName('toggleButton')[0].style.background = 'gray';
-    document.getElementsByClassName('toggleButton')[0].disabled = true;
-    setTimeout(function(){
-        document.getElementsByClassName('toggleButton')[0].disabled = false; document.getElementsByClassName('toggleButton')[0].style.background = '#C99700';
-      }, childBlocks.length*1000);
-
-    if(childBlocks.length > 0){
-  
-      console.log("BUFFALO CHICKEN SAUCE: " + childBlocks);
-      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
-      
-    }//if only one block
-}
 
 document.getElementsByClassName('toggleButton')[0].onclick = function() {
   if( document.getElementsByClassName('toggleButton')[0].value === 'play') 
@@ -1551,18 +1423,41 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         console.log("THE REAL MATH NUMER BITCH: " + math_number);
       }
 
-
+      var childBlockCheck = childBlocks;
+      var loopTIME = 0;
+      var piss = 1;
+      while(childBlockCheck[piss])
+      {
+        if(childBlockCheck[piss].type == 'linkbot_drive_distance_in' || childBlockCheck[piss].type == 'linkbot_drive_distance_cm' || childBlockCheck[piss].type == 'mindstorms_drive_distance_in' || childBlockCheck[piss].type == 'mindstorms_drive_distance_cm')
+        {
+          loopTIME += 2000;
+        }
+            
+        else{
+          loopTIME += 600;
+        }
+        
+        childBlockCheck = childBlockCheck[piss].getChildren();
+        piss = 0;
+      }
       
       if(childBlocks.length == 2){
         setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
       }
+
       else if(childBlocks.length > 2){
+            
+            setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+
+            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME + 1000 + (math_number*2000));
+      }
+      /*else if(childBlocks.length > 2){
         for(var j = 0; j < math_number; j++)
         {
         setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks[1].getChildren(), newangle)}, 1000);
         }
         setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks[2].getChildren(), newangle)}, 1000);
-      }
+      }*/
 
     }
     
@@ -1653,7 +1548,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     if(childBlocks.length > 0){
   
       
-      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 1000);
       
     }//if only one block
     //dis is the input from the puzzle
@@ -1736,12 +1631,39 @@ console.log("distance in the block: " + dis);
 
   };
 }
-function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle){
+function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, num){
         console.log('i ' + i);
         console.log('angle ' + angle);
-        block = childBlocks[0];
+        block = childBlocks[num];
         console.log('i ' + i);
         console.log('child ' + childBlocks.length);
+
+        if(block.type == 'controls_repeat_ext')
+        {
+          console.log("TEN DICKS TO THE FACE");
+          whileBlock = block;
+          childBlocks = whileBlock.getChildren();
+          if(childBlocks[0].type == 'math_number')
+          {
+            var math_number = childBlocks[0].getFieldValue('NUM');
+            console.log("MATH NUMBER BLOCK BITCH")
+            console.log("THE REAL MATH NUMER BITCH: " + math_number);
+          }
+
+
+          
+          if(childBlocks.length == 2){
+            setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+          }
+          else if(childBlocks.length > 2){
+            
+            setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+
+            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, 10000);
+          }
+
+        }
+
         if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm') {
           driveBlock = block;
           if(document.getElementById('US Customary').checked)
@@ -1820,7 +1742,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
       if(childBlocks.length > 0){
         i = i + 1;
         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 1000);
     }//if only one block
 }
 
