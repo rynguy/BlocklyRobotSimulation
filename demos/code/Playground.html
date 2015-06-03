@@ -1362,12 +1362,19 @@ var angle = 0;
 var newangle = 0;
 var x = 0;
 var y = 0;
-
+var mathNumCheck = 0;
 function ass(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
 {
   console.log("IS CHILDBLOCKS DEFINED BLAAAAT?: " + children);
   if(math_number == 0)
     return;
+  else if(math_number == mathNumCheck)
+  {
+    move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 1);
+
+
+      ass(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
+  }
   else
   {
     setTimeout(function(){
@@ -1442,14 +1449,18 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       }
       
       if(childBlocks.length == 2){
-        setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
-      }
+        mathNumCheck = math_number;
+        ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
+        /*setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+*/      }
 
       else if(childBlocks.length > 2){
-            
-            setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+            mathNumCheck = math_number;
+            ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
 
-            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME + 1000 + (math_number*2000));
+            /*setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);*/
+
+            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME + (math_number*2000));
       }
       /*else if(childBlocks.length > 2){
         for(var j = 0; j < math_number; j++)
@@ -1548,7 +1559,8 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     if(childBlocks.length > 0){
   
       
-      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 1000);
+      move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0);
+      /*setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 1000);*/
       
     }//if only one block
     //dis is the input from the puzzle
@@ -1650,16 +1662,36 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
             console.log("THE REAL MATH NUMER BITCH: " + math_number);
           }
 
+          var childBlockCheck = childBlocks;
+          var loopTIME = 0;
+          var piss = 1;
+          while(childBlockCheck[piss])
+          {
+            if(childBlockCheck[piss].type == 'linkbot_drive_distance_in' || childBlockCheck[piss].type == 'linkbot_drive_distance_cm' || childBlockCheck[piss].type == 'mindstorms_drive_distance_in' || childBlockCheck[piss].type == 'mindstorms_drive_distance_cm')
+            {
+              loopTIME += 2000;
+            }
+                
+            else{
+              loopTIME += 600;
+            }
+            
+            childBlockCheck = childBlockCheck[piss].getChildren();
+            piss = 0;
+          }
+
 
           
           if(childBlocks.length == 2){
+
+            mathNumCheck = math_number;
             setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
           }
           else if(childBlocks.length > 2){
-            
+            mathNumCheck = math_number;
             setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
 
-            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, 10000);
+            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME + 1000 + ((math_number-1)*2000));
           }
 
         }
