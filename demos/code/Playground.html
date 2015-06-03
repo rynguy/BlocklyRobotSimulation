@@ -1296,54 +1296,68 @@ jQuery(document).ready( function($) {
   </script>
 
   <script type="text/javascript">
-  var round = Math.round;
-  var speeed = 10;
+  
       var boxOne = document.getElementsByClassName('box')[0],
     $boxTwo = $('.box:eq(1)');
     boxOne.classList.add('horizTranslate');
     boxOne.id = 'horizTranslate';
 console.log(document.getElementsByClassName('toggleButton')[0].value )
 
+//declaration of global variables
+var round = Math.round;
+var speeed = 4;
 var first =0;
 var angle = 0;
 var newangle = 0;
 var x = 0;
 var y = 0;
 var mathNumCheck = 0;
-function whileRecurse(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
+
+
+//function to handle while loop blocks
+function whileRecurse(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, whileTime)
 {
   console.log("IS CHILDBLOCKS DEFINED BLAAAAT?: " + children);
+  console.log("WHAT IS ROBOTIME BLAAT? " + robotime)
+  //base case/last iteration
   if(math_number == 0)
     return;
+
+  //first iteration
   else if(math_number == mathNumCheck)
   {
+    //does either drive or turn move based on childBlock
     move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 1);
 
-
-      whileRecurse(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
+      //recursive call
+      whileRecurse(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, whileTime);
   }
+
+  //default case/all middle iterations
   else
   {
+    //we set timeout to avoid overlapping animations
     setTimeout(function(){
       console.log("IS CHILDBLOCKS DEFINED: " + children);
 
       move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 1);
 
 
-      whileRecurse(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
-      }, 2000);
+      whileRecurse(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, whileTime);
+      }, whileTime);
     
   }
 }
 
 
-
+//function happens when user clicks Run button
 document.getElementsByClassName('toggleButton')[0].onclick = function() {
   if( document.getElementsByClassName('toggleButton')[0].value === 'play') 
   {
     document.getElementsByClassName('toggleButton')[0].value = 'reset';
     document.getElementsByClassName('toggleButton')[0].innerHTML = 'Reset';
 
+    //declaration of local variables
     var robotime = 0;
     var rootBlock = null;
     var driveBlock = null;
@@ -1361,63 +1375,73 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var dis = 0;
     var blockDirection;
 
+    //this gets blocks from workspace and puts them into blocks array
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
     var childBlocks = null;
+
+    //root/top block put into rootBlock
     rootBlock = blocks[0];
     
+
+    //check if rootBlock is while loop block
     if(rootBlock.type == 'controls_repeat_ext')
     {
-      console.log("TEN DICKS TO THE FACE");
       whileBlock = rootBlock;
       childBlocks = whileBlock.getChildren();
+      //get loop counter/number of iterations and store in math_number
       if(childBlocks[0].type == 'math_number')
       {
         var math_number = childBlocks[0].getFieldValue('NUM');
-        console.log("MATH NUMBER BLOCK BITCH")
-        console.log("THE REAL MATH NUMER BITCH: " + math_number);
       }
 
+      //loop checks all other blocks inside while block to determine total setTimeout for loop
       var childBlockCheck = childBlocks;
       var loopTIME = 0;
-      var piss = 1;
-      while(childBlockCheck[piss])
+      var cbIndex = 1;
+      while(childBlockCheck[cbIndex])
       {
-        if(childBlockCheck[piss].type == 'linkbot_drive_distance_in' || childBlockCheck[piss].type == 'linkbot_drive_distance_cm' || childBlockCheck[piss].type == 'mindstorms_drive_distance_in' || childBlockCheck[piss].type == 'mindstorms_drive_distance_cm')
+        if(childBlockCheck[cbIndex].type == 'linkbot_drive_distance_in' || childBlockCheck[cbIndex].type == 'linkbot_drive_distance_cm' || childBlockCheck[cbIndex].type == 'mindstorms_drive_distance_in' || childBlockCheck[cbIndex].type == 'mindstorms_drive_distance_cm')
         {
-          loopTIME += 2000;
+
+          loopTIME += (childBlockCheck[cbIndex].getFieldValue('distance') / speeed)*1000;
         }
             
         else{
           loopTIME += 600;
         }
         
-        childBlockCheck = childBlockCheck[piss].getChildren();
-        piss = 0;
+        childBlockCheck = childBlockCheck[cbIndex].getChildren();
+        cbIndex = 0;
       }
-      
+       
+      //if no other blocks underneath while loop
       if(childBlocks.length == 2){
         mathNumCheck = math_number;
-        whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
+        whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, loopTIME)
       }
 
+      //if more blocks underneath while loop
       else if(childBlocks.length > 2){
             mathNumCheck = math_number;
-            whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
+            whileRecurse(math_number, childBlocks, 1, i, robotime, driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, loopTIME)
 
-            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME + (math_number*2000));
+            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME * math_number + 200);
       }
 
     }
     
+    //check if rootBlock is drive block
     if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm') {
 
         driveBlock = rootBlock;
+        //check grid units to drive appropriate distance
         if(document.getElementById('US Customary').checked) //inches
         {
-          dis2 = driveBlock.getFieldValue('distance')*15;
+          //get distance from block
           dis = driveBlock.getFieldValue('distance')*15;
+          //calculate time needed to move robot
           robotime = driveBlock.getFieldValue('distance') / speeed;
-          //dis 1 x y coords for robot 
+          //coordinates for robot 
           x = dis * Math.cos(angle);
           y = dis * Math.sin(angle);
           robotX += x/15;
@@ -1425,7 +1449,6 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         }
         else //metric
         {
-          dis2 = driveBlock.getFieldValue('distance')*18;
           dis = driveBlock.getFieldValue('distance')*18;
           robotime = driveBlock.getFieldValue('distance') / speeed;
           x = dis * Math.cos(angle);
@@ -1434,22 +1457,22 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           robotY += y/18;
         }
         
-
-       
-        //dis 2 x y  coords for line
-        a = dis2 * Math.cos(angle)  + 60* Math.cos(angle);
-        b = dis2 * Math.sin(angle)  + 60* Math.sin(angle);
-      
-        
         console.log('dis x' + x)
+        //call drive animation function
         drive(x,y,robotime);
+        //display coordinates on screen
         document.getElementById('coordinates1').innerHTML = getCoordinates();
-    }//if first is drive
+    }
+
+    //check if rootBlock is turn block
     if (rootBlock.type == 'linkbot_turn_in' || rootBlock.type == 'linkbot_turn_cm' || rootBlock.type == 'mindstorms_turn_in' || rootBlock.type == 'mindstorms_turn_cm') {
       angleBlock = rootBlock;
+      //get angle and turn direction from block
       angle += angleBlock.getFieldValue('turn direction')*Math.PI/180;
       blockDirection = angleBlock.getFieldValue('direction');
       newangle = angleBlock.getFieldValue('turn direction');
+
+      //update Display Angle based on turn direction
       if(blockDirection == 'turnLeft')
       {
         displayAngle += newangle;
@@ -1462,37 +1485,46 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       if(newangle >= 360)
         newangle -= 360;
 
+      //declare margin variables to get correct robot image from spritesheet
           var leftMargin = 0;
           var topMargin = 0;
+          //determine time needed for each image turn interval
           var intervalTime = 500/(newangle/5);
+          //determine number of images to cycle through on spritesheet
           var numImages = Math.floor(newangle/5);
           console.log("NUMBER OF IMAGES" + numImages);
           console.log('NEWANGLE NEW ANGLE ' + newangle);
+          //call turn animation function
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
-          document.getElementById('displayAngle1').innerHTML = getAngle();
+          //display current robot angle on screen
+          document.getElementById('displayAngle1').innerHTML = getAngle(); 
+    }
 
-     
-    }//if first is turn
-
+    //check if rootBlock is setSpeed block
     if(rootBlock.type == 'linkbot_speed_in' || rootBlock.type == 'linkbot_speed_cm' || rootBlock.type == 'mindstorms_speed_in' || rootBlock.type == 'mindstorms_speed_cm')
     {
       speedBlock = rootBlock;
+      //get speed parameter from block
       speeed = speedBlock.getFieldValue('speed');
     }
 
 
     var i = 0;
+    //get all child blocks of root block
     childBlocks = rootBlock.getChildren();
     console.log('child ' + childBlocks.length);
     console.log('#####################################');
+
+    //FIX THIS GRAYED RESET BUTTON SHITTTT********
     document.getElementsByClassName('toggleButton')[0].style.background = 'gray';
     document.getElementsByClassName('toggleButton')[0].disabled = true;
     setTimeout(function(){
         document.getElementsByClassName('toggleButton')[0].disabled = false; document.getElementsByClassName('toggleButton')[0].style.background = '#C99700';
       }, childBlocks.length*1000);
 
+    //if rootBlock has child block(s)
     if(childBlocks.length > 0){
-  
+      //check type of child block to set appropriate timeout before next move
       if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm')
       {
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
@@ -1513,11 +1545,14 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
 console.log("distance in the block: " + dis);
  
   }
+
+  //if user clicks Reset button
   else if(document.getElementsByClassName('toggleButton')[0].value ==='reset'
 ) {
     document.getElementsByClassName('toggleButton')[0].value = 'play';
     document.getElementsByClassName('toggleButton')[0].innerHTML = 'Run';
 
+    //reset all variables and animations to their starting/original state
     $('#home').css({'width': 200 + 'px'});
     $('#home').css({'height': 200 + 'px'});
     if(imgChk == "linkbot"){
@@ -1558,10 +1593,17 @@ console.log("distance in the block: " + dis);
 
     document.getElementById('displayAngle1').innerHTML = Number(document.getElementById('a1').value) + "°";
     displayAngle = Number(document.getElementById('a1').value);
-
-
+    speeed = 4;
+    first =0;
+    angle = 0;
+    newangle = 0;
+    x = 0;
+    y = 0;
+    mathNumCheck = 0;
   };
 }
+
+//for every block after rootblock. has same functionality as onclick Run function.
 function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, num){
         console.log('i ' + i);
         console.log('angle ' + angle);
@@ -1571,32 +1613,29 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
 
         if(block.type == 'controls_repeat_ext')
         {
-          console.log("TEN DICKS TO THE FACE");
           whileBlock = block;
           childBlocks = whileBlock.getChildren();
           if(childBlocks[0].type == 'math_number')
           {
             var math_number = childBlocks[0].getFieldValue('NUM');
-            console.log("MATH NUMBER BLOCK BITCH")
-            console.log("THE REAL MATH NUMER BITCH: " + math_number);
           }
 
           var childBlockCheck = childBlocks;
           var loopTIME = 0;
-          var piss = 1;
-          while(childBlockCheck[piss])
+          var cbIndex = 1;
+          while(childBlockCheck[cbIndex])
           {
-            if(childBlockCheck[piss].type == 'linkbot_drive_distance_in' || childBlockCheck[piss].type == 'linkbot_drive_distance_cm' || childBlockCheck[piss].type == 'mindstorms_drive_distance_in' || childBlockCheck[piss].type == 'mindstorms_drive_distance_cm')
+            if(childBlockCheck[cbIndex].type == 'linkbot_drive_distance_in' || childBlockCheck[cbIndex].type == 'linkbot_drive_distance_cm' || childBlockCheck[cbIndex].type == 'mindstorms_drive_distance_in' || childBlockCheck[cbIndex].type == 'mindstorms_drive_distance_cm')
             {
-              loopTIME += 2000;
+              loopTIME += (childBlockCheck[cbIndex].getFieldValue('distance') / speeed)*1000;
             }
                 
             else{
               loopTIME += 600;
             }
             
-            childBlockCheck = childBlockCheck[piss].getChildren();
-            piss = 0;
+            childBlockCheck = childBlockCheck[cbIndex].getChildren();
+            cbIndex = 0;
           }
 
 
@@ -1604,13 +1643,13 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           if(childBlocks.length == 2){
 
             mathNumCheck = math_number;
-            setTimeout(function(){whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+            setTimeout(function(){whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, loopTIME)}, 50);
           }
           else if(childBlocks.length > 2){
             mathNumCheck = math_number;
-            setTimeout(function(){whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+            setTimeout(function(){whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, loopTIME)}, 1000);
 
-            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME + 1000 + ((math_number-1)*2000));
+            setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, 1100 + ((math_number)*loopTIME));
           }
 
         }
@@ -1667,7 +1706,6 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
               
           }
           displayAngle = newangle; 
-          console.log("TIG OL BITIES " + newangle)
           var leftMargin = parseInt($("#roboyes").css('margin-left'));
           var topMargin = parseInt($("#roboyes").css('margin-top'));
           var intervalTime = 500/(angleImage/5);
@@ -1707,6 +1745,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
     }//if only one block
 }
 
+//linkbot turn animation function
 function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)
 {
   blockDirec = blockDirection;
@@ -1762,10 +1801,11 @@ function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, b
   $("#roboyes").css({'margin-left': + leftMargin+'px'});
   $("#roboyes").css({'margin-top': + topMargin+'px'});
   numImages--;
+  //call function recursively
   setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
 
 }
-//Drive funtion
+//linkbot Drive animation function
 function drive(x, y, robotime){
   console.log('DRIIIVEEEEE');
   console.log("ROBOTIMEEEEE: " + robotime)
@@ -1781,20 +1821,26 @@ function drive(x, y, robotime){
   console.log('oldx ' + oldx);
   console.log('x ' + x);
   console.log('y ' + y);
+  //move the robot for robotime amount of seconds
   $('#horizTranslate').css({'-webkit-transition': robotime+'s linear'});
     $('#horizTranslate').css({'-moz-transition': robotime+'s linear'});
     $('#horizTranslate').css({'-ms-transition': robotime+'s linear'});
     $('#horizTranslate').css({'-o-transition': robotime+'s linear'});
     $('#horizTranslate').css({'transition': robotime+'s linear'});
+
+    //if only x changes
     if(Math.abs(oldy) < 1){
       console.log('topssss ' + $('#horizTranslate').css('margin-top'));
       console.log(' 1oldx' + oldx);
       console.log(' 1oldy' + oldy);  
       $('#horizTranslate').css({'margin-left': x + "px"});
     }
+    //if only y changes
     else if(Math.abs(oldx) < 1){
        $('#horizTranslate').css({'margin-top': y + "px"});
     }
+
+    //if both x and y change
     else
     {
       $('#horizTranslate').css({'margin-top': y + "px"});
