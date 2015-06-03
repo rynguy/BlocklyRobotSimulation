@@ -829,18 +829,6 @@ jQuery(document).ready( function($) {
 </div>
   <script>
 
- /* var w11 = window,
-    d11 = document,
-    e11 = d11.documentElement,
-    g11 = d11.getElementsByTagName('body')[0],
-    x11 = w11.innerWidth || e11.clientWidth || g11.clientWidth,
-    y11 = w11.innerHeight|| e11.clientHeight|| g11.clientHeight;
-
-    console.log("X NIACUH: " + x11);
-    console.log("Y NIACUH: " + y11);*/
-
-
-
 
   var imgChk = "linkbot";
   
@@ -848,9 +836,7 @@ jQuery(document).ready( function($) {
 
 
   function loadImg(x) {
-    /*document.getElementById("home").style.height = 0;
-    document.getElementById("home").style.width = 0;
-    document.getElementById("home").src = "";*/
+    
     if(x.id == "1stLinkbot" || x.id == "1stMindstorm")
     {
       $("#home").css({'width': 0});
@@ -964,41 +950,6 @@ jQuery(document).ready( function($) {
               }, 50);
     
   }
-
-
-  // function toolbox() {
-  //   document.getElementById('blocklyDiv').innerHTML = '';
-  //   //change between customary and metric
-  //   if(document.getElementById('US Customary').checked){
-  //     Blockly.inject(document.getElementById('blocklyDiv'),
-  //       {toolbox: document.getElementById('toolbox')});
-  //     // edit the grid size
-  //     elem = sv.getElementById("smallGrid");
-  //     elem.setAttribute("width", "15");
-  //     elem.setAttribute("height", "15");
-  //     elem = sv.getElementById("smallGrid2");
-  //     elem.setAttribute("d", "M 15 0 L 0 0 0 15");
-  //     document.getElementById("plus-y").innerHTML= '12';
-  //     document.getElementById("minus-y").innerHTML= '-12';
-  //     document.getElementById("plus-x").innerHTML= '12';
-  //     document.getElementById("minus-x").innerHTML= '-12';
-  //     document.getElementById("origin").innerHTML= '0';
-  //   }
-  //   else{
-  //     Blockly.inject(document.getElementById('blocklyDiv'),
-  //       {toolbox: document.getElementById('toolbox')});
-  //     elem = sv.getElementById("smallGrid");
-  //     elem.setAttribute("width", "18");
-  //     elem.setAttribute("height", "18");
-  //     elem = sv.getElementById("smallGrid2");
-  //     elem.setAttribute("d", "M 18 0 L 0 0 0 18");
-  //     document.getElementById("plus-y").innerHTML= '10';
-  //     document.getElementById("minus-y").innerHTML= '-10';
-  //     document.getElementById("plus-x").innerHTML= '10';
-  //     document.getElementById("minus-x").innerHTML= '-10';
-  //     document.getElementById("origin").innerHTML= '0';
-  //   }
-  // }
   
   
   var lclone1in = document.getElementById('Linkbot 1 in').cloneNode(true);
@@ -1344,10 +1295,6 @@ jQuery(document).ready( function($) {
   
   </script>
 
-
-
-
-
   <script type="text/javascript">
   var round = Math.round;
   var speeed = 10;
@@ -1363,7 +1310,7 @@ var newangle = 0;
 var x = 0;
 var y = 0;
 var mathNumCheck = 0;
-function ass(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
+function whileRecurse(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
 {
   console.log("IS CHILDBLOCKS DEFINED BLAAAAT?: " + children);
   if(math_number == 0)
@@ -1373,7 +1320,7 @@ function ass(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a
     move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 1);
 
 
-      ass(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
+      whileRecurse(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
   }
   else
   {
@@ -1383,7 +1330,7 @@ function ass(math_number, children, num, i, robotime,driveBlock,angleBlock,x,y,a
       move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 1);
 
 
-      ass(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
+      whileRecurse(math_number-1, children, num, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle);
       }, 2000);
     
   }
@@ -1450,29 +1397,18 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       
       if(childBlocks.length == 2){
         mathNumCheck = math_number;
-        ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
-        /*setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
-*/      }
+        whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
+      }
 
       else if(childBlocks.length > 2){
             mathNumCheck = math_number;
-            ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
-
-            /*setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);*/
+            whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)
 
             setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME + (math_number*2000));
       }
-      /*else if(childBlocks.length > 2){
-        for(var j = 0; j < math_number; j++)
-        {
-        setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks[1].getChildren(), newangle)}, 1000);
-        }
-        setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks[2].getChildren(), newangle)}, 1000);
-      }*/
 
     }
     
-    //for (var i = 0, block; block = blocks[i]; i++) {
     if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm') {
 
         driveBlock = rootBlock;
@@ -1535,7 +1471,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
           document.getElementById('displayAngle1').innerHTML = getAngle();
 
-      //direction = 
+     
     }//if first is turn
 
     if(rootBlock.type == 'linkbot_speed_in' || rootBlock.type == 'linkbot_speed_cm' || rootBlock.type == 'mindstorms_speed_in' || rootBlock.type == 'mindstorms_speed_cm')
@@ -1549,7 +1485,6 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     childBlocks = rootBlock.getChildren();
     console.log('child ' + childBlocks.length);
     console.log('#####################################');
-    //document.getElementById('runButton').css({'background-color': '#fff'});
     document.getElementsByClassName('toggleButton')[0].style.background = 'gray';
     document.getElementsByClassName('toggleButton')[0].disabled = true;
     setTimeout(function(){
@@ -1558,40 +1493,25 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
 
     if(childBlocks.length > 0){
   
-      
-      move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0);
-      /*setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 1000);*/
-      
-    }//if only one block
-    //dis is the input from the puzzle
-
-
-    /*elem = sv.getElementById("tits");
-    if(a<0) {
-      if(b<0)
-        elem.setAttribute("d", "M 63 63 L" + -a + -b);
+      if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm')
+      {
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
+      }
+      else if(rootBlock.type == 'linkbot_turn_in' || rootBlock.type == 'linkbot_turn_cm' || rootBlock.type == 'mindstorms_turn_in' || rootBlock.type == 'mindstorms_turn_cm')
+      {
+        setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 700);
+      }
       else
-        elem.setAttribute("d", "M 63 63 L" + -a + b);
+      {
+        move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)
+      }
+      
     }
-    else {
-      if(b<0)
-        elem.setAttribute("d", "M 63 63 L" + a + -b);
-      else
-        elem.setAttribute("d", "M 63 63 L" + a + b);
-    }*/
 
     
     
 console.log("distance in the block: " + dis);
  
-  //console.log("capacity: " + Blockly.Workspace.prototype.remainingCapacity())
-    //var block = Blockly.Workspace.prototype.getBlockById('linkbot_drive');
-    /*console.log("block id: " + rootBlock);
-    console.log("distance in the block: " + dis);
-    updateStyleSheet('line');
-    //this.innerHTML = 'Pause';
-    boxOne.classList.add('horizTranslate');
-    $("#success").css({'visibility':'visible'});*/
   }
   else if(document.getElementsByClassName('toggleButton')[0].value ==='reset'
 ) {
@@ -1617,7 +1537,6 @@ console.log("distance in the block: " + dis);
 
     $('#roboyes').css({'margin-left': 0 +'px'});
     $('#roboyes').css({'margin-top': 0 + 'px'});
-    //$('#home').css({'position' : 'absolute'});
     if(document.getElementById('US Customary').checked)
     {
       $('#horizTranslate').css({'margin-left': Number(document.getElementById('x1').value)*15 +'px'});
@@ -1685,11 +1604,11 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           if(childBlocks.length == 2){
 
             mathNumCheck = math_number;
-            setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+            setTimeout(function(){whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
           }
           else if(childBlocks.length > 2){
             mathNumCheck = math_number;
-            setTimeout(function(){ass(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
+            setTimeout(function(){whileRecurse(math_number, childBlocks, 1, i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle)}, 1000);
 
             setTimeout(function(){move(0, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 2)}, loopTIME + 1000 + ((math_number-1)*2000));
           }
@@ -1732,8 +1651,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           blockDirection = angleBlock.getFieldValue('direction');
           angle += angleBlock.getFieldValue('turn direction')*Math.PI/180;
           angleImage = angleBlock.getFieldValue('turn direction');
-          //newangle += (round(angleBlock.getFieldValue('turn direction')));
-
+          
           if(blockDirection == 'turnLeft')
           {
               console.log("WE IN IF BLOCKDIREC TURNLEFT FOR THE SECOND TURN: " + Number(newangle) + " " + displayAngle)
@@ -1758,8 +1676,6 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           setTimeout(function(){linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, blockDirection)}, intervalTime);
           
           document.getElementById('displayAngle1').innerHTML = getAngle();
-            //y = y - 200;
-            
             
         }//if turn
 
@@ -1774,7 +1690,20 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
       if(childBlocks.length > 0){
         i = i + 1;
         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 1000);
+
+        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm')
+      {
+      setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
+      }
+      else if(block.type == 'linkbot_turn_in' || block.type == 'linkbot_turn_cm' || block.type == 'mindstorms_turn_in' || block.type == 'mindstorms_turn_cm')
+      {
+        setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 700);
+      }
+      else
+      {
+        move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)
+      }
+
     }//if only one block
 }
 
@@ -1839,8 +1768,7 @@ function linkbotTurn(leftMargin, topMargin, newangle, numImages, intervalTime, b
 //Drive funtion
 function drive(x, y, robotime){
   console.log('DRIIIVEEEEE');
-  /*console.log('' + x + ' ' + x);
-  console.log('' + y + ' ' + y);*/
+  console.log("ROBOTIMEEEEE: " + robotime)
   console.log('top' + ' ' + parseInt($('#horizTranslate').css('margin-top')));
   console.log('left' + ' ' + parseInt($('#horizTranslate').css('margin-left')));
   var oldx = x;
@@ -1850,8 +1778,6 @@ function drive(x, y, robotime){
   y = -y;
   y = y + parseInt($('#horizTranslate').css('margin-top'));
 
-
-  //y = y + parseInt($('#horizTranslate').css('margin-top'));
   console.log('oldx ' + oldx);
   console.log('x ' + x);
   console.log('y ' + y);
@@ -1863,62 +1789,12 @@ function drive(x, y, robotime){
     if(Math.abs(oldy) < 1){
       console.log('topssss ' + $('#horizTranslate').css('margin-top'));
       console.log(' 1oldx' + oldx);
-      console.log(' 1oldy' + oldy);
-
-      
+      console.log(' 1oldy' + oldy);  
       $('#horizTranslate').css({'margin-left': x + "px"});
     }
     else if(Math.abs(oldx) < 1){
-      // console.log('leftssss ' + $('#horizTranslate').css('margin-left'));
-      // if (y>0 && y == Math.floor(parseInt($('#horizTranslate').css('margin-top')))) {y=oldy - oldy};
-      // if(y>0 && Math.abs(y)==Math.abs(Math.floor(parseInt($('#horizTranslate').css('margin-top'))))){
-      //   y=y*2;
-      // }
-      // if( y<0 && Math.abs(y)==Math.abs(Math.floor(parseInt($('#horizTranslate').css('margin-top'))))){
-      //   y=0;
-      // }
-      $('#horizTranslate').css({'margin-top': y + "px"});
-      /*console.log(' 2oldy' + oldy);
-      console.log(' 2oldx' + oldx);*/
+       $('#horizTranslate').css({'margin-top': y + "px"});
     }
-    /*else{
-      console.log()
-      /*console.log('leftssss ' + Math.floor(parseInt($('#horizTranslate').css('margin-left'))));
-      console.log('topssss ' + Math.floor(parseInt($('#horizTranslate').css('margin-top'))));
-      //console.log(' x' + x);
-      console.log(' oldy ' + Math.floor(oldy));
-      console.log('oldx ' + oldx)
-      console.log(' y ' + Math.abs(Math.floor((y))) + ' top ' + Math.abs(Math.floor(parseInt($('#horizTranslate').css('margin-top')))));
-      /*if( Math.abs(Math.floor((y)))==Math.abs(Math.floor(parseInt($('#horizTranslate').css('margin-top'))))
-        || Math.abs(Math.floor((y)))==1+Math.abs(Math.floor(parseInt($('#horizTranslate').css('margin-top')
-          )))
-        || Math.abs(Math.floor((y)))==Math.abs(Math.floor(parseInt($('#horizTranslate').css('margin-top'))))-1 ){
-        y=0;
-      }
-
-      if( Math.abs(y)<1){
-        y=0;
-      }
-
-
-      /*if(Math.floor(Math.abs(oldy)) == Math.floor(parseInt($('#horizTranslate').css('margin-top')))){
-        $('#horizTranslate').css({'margin-top': -(y) + "px"});
-      }
-      // else{
-      //   console.log('blah')
-      else if(((Math.floor(y) - 1) == Math.floor(parseInt($('#horizTranslate').css('margin-top'))))
-        ||((Math.floor(y) + 1) == Math.floor(parseInt($('#horizTranslate').css('margin-top'))))
-        ||((Math.floor(y)) == Math.floor(parseInt($('#horizTranslate').css('margin-top')))
-        ))
-      {
-        console.log('blah')
-        y += y;
-      }
-      $('#horizTranslate').css({'margin-top': y + "px"});
-      
-      // }
-      $('#horizTranslate').css({'margin-left': x + "px"});
-    }*/
     else
     {
       $('#horizTranslate').css({'margin-top': y + "px"});
@@ -1990,7 +1866,6 @@ $('.toggleButton:eq(1)').on('click', function() {
           href: newstylesheet
         });
 
-        //$("#tits").css({'visibility':'visible'});
  
     // If the <link> element already exists, we
     // simply need to change the value of "href". 
