@@ -148,12 +148,12 @@
 <a id="m2" href="./m2.html">2</a>
 <a id="m3" href="./m3.html">3</a>
 <a id="m4" href="./m4.html">4</a>
-<a id="m5" style="color:#276AC3;" href="./m5.html">5</a>
+<a id="m5" href="./m5.html">5</a>
 <a id="m6" href="./m6.html">6</a>
 <a id="m7" href="./m7.html">7</a>
 <a id="m8" href="./m8.html">8</a>
 <a id="m9" href="./m9.html">9</a>
-<a id="m10" href="./m10.html">10</a>
+<a id="m10" style="color:#276AC3;" href="./m10.html">10</a>
 <a id="p1" style="display:none;" href="./Playground.html">Playground</a>
 </nav>
 
@@ -331,21 +331,21 @@
               <p>
               <h3 style="PADDING-RIGHT: 4%; margin-top:-20px; display:inline;">
         <strong style="font-size:18px; font-family:tahoma;">
-        Can you move me to (5,0). Then move me left twice that distance.
+        If a robot started at (0,6) and was moving at 2 units/sec, how fast would you have to be moving to surpass it after 5 seconds if you started at (0,0)?
         </strong>
         <br> <br>
         <button type="button" class="btn btn-primary" onclick="solution();">Possible Solution</button>
         <div id="solution" style="display: none; font-size:18px; font-family:tahoma;">
-        <span class="com">#include</span><span class="pln"> </span><span class="str">&lt;linkbot.h&gt;</span>
+        <span class="com">#include</span><span class="pln"> </span><span class="str">&lt;linkbot.h&gt;</span><span class="pln"></span>
         <br>
         <span class="typ">CLinkbotI</span><span class="pln"> robot</span><span class="pun">;</span>
         <br><br>
-        <span class="pln">robot</span><span class="pun">.</span><span class="pln">driveDistance</span><span class="pun">(</span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.75</span><span class="pun">);</span>
+        <span class="pln">robot</span><span class="pun">.</span><span class="pln">setSpeed</span><span class="pun">(</span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.75</span><span class="pun">);</span>
         <br>
         <span class="pln">robot</span><span class="pun">.</span><span class="pln">turnLeft</span><span class="pun">(</span><span class="lit">90</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.75</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3.69</span><span class="pun">);</span>
         <br>
-        <span class="pln">robot</span><span class="pun">.</span><span class="pln">driveDistance</span><span class="pun">(</span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.75</span><span class="pun">);</span>
-        </h3>
+        <span class="pln">robot</span><span class="pun">.</span><span class="pln">driveDistance</span><span class="pun">(</span><span class="lit">16</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1.75</span><span class="pun">);</span>
+        </div>
       </h3>
       </p>
       
