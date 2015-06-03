@@ -1525,11 +1525,11 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     //if rootBlock has child block(s)
     if(childBlocks.length > 0){
       //check type of child block to set appropriate timeout before next move
-      if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm')
+      if (childBlocks[0].type == 'linkbot_drive_distance_in' || childBlocks[0].type == 'linkbot_drive_distance_cm' || childBlocks[0].type == 'mindstorms_drive_distance_in' || childBlocks[0].type == 'mindstorms_drive_distance_cm')
       {
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
       }
-      else if(rootBlock.type == 'linkbot_turn_in' || rootBlock.type == 'linkbot_turn_cm' || rootBlock.type == 'mindstorms_turn_in' || rootBlock.type == 'mindstorms_turn_cm')
+      else if(childBlocks[0].type == 'linkbot_turn_in' || childBlocks[0].type == 'linkbot_turn_cm' || childBlocks[0].type == 'mindstorms_turn_in' || childBlocks[0].type == 'mindstorms_turn_cm')
       {
         setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 700);
       }
@@ -1729,11 +1729,11 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         i = i + 1;
         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
-        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm')
+        if (childBlocks[0].type == 'linkbot_drive_distance_in' || childBlocks[0].type == 'linkbot_drive_distance_cm' || childBlocks[0].type == 'mindstorms_drive_distance_in' || childBlocks[0].type == 'mindstorms_drive_distance_cm')
       {
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
       }
-      else if(block.type == 'linkbot_turn_in' || block.type == 'linkbot_turn_cm' || block.type == 'mindstorms_turn_in' || block.type == 'mindstorms_turn_cm')
+      else if(childBlocks[0].type == 'linkbot_turn_in' || childBlocks[0].type == 'linkbot_turn_cm' || childBlocks[0].type == 'mindstorms_turn_in' || childBlocks[0].type == 'mindstorms_turn_cm')
       {
         setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, 700);
       }
