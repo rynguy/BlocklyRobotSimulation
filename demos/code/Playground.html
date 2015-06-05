@@ -92,6 +92,10 @@
   var robotFourX = 0;
   var robotFourY = 0;
   var displayAngle = 0;
+  var robot_r = 1.75;
+  var robotTwo_r = 1.75;
+  var robotThree_r = 1.75;
+  var robotFour_r = 1.75;
   
   function getCoordinates()
   {
@@ -105,7 +109,7 @@
 
   function getAngle()
   {
-    var disp= Math.round(displayAngle) + "°";
+    var disp= Math.round(displayAngle) + " deg";
     return disp;
   }
   
@@ -240,7 +244,7 @@
                 <span id = "u2">in</span>)<br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Initial Angle: </b>
-                <input type="text" size ="1" id = "a1" value = "0" onchange="displayAngle = Number(document.getElementById('a1').value); document.getElementById('displayAngle1').innerHTML = getAngle(); redraw();"></span>°
+                <input type="text" size ="1" id = "a1" value = "0" onchange="displayAngle = Number(document.getElementById('a1').value); document.getElementById('displayAngle1').innerHTML = getAngle(); redraw();"></span>deg
                 <br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Current Position: </b>
@@ -267,7 +271,7 @@
                 <span id = "u4">in</span>)<br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Initial Angle: </b>
-                <input type="text" size ="1" id = "a2" value = "0" onchange=""></span>°
+                <input type="text" size ="1" id = "a2" value = "0" onchange=""></span>deg
                 <br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Current Position: </b>
@@ -294,7 +298,7 @@
                 <span id = "u6">in</span>)<br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Initial Angle: </b>
-                <input type="text" size ="1" id = "a3" value = "0" onchange=""></span>°
+                <input type="text" size ="1" id = "a3" value = "0" onchange=""></span>deg
                 <br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Current Position: </b>
@@ -321,7 +325,7 @@
                 <span id = "u8">in</span>)<br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Initial Angle: </b>
-                <input type="text" size ="1" id = "a4" value = "0" onchange=""></span>°
+                <input type="text" size ="1" id = "a4" value = "0" onchange=""></span>deg
                 <br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Current Position: </b>
@@ -380,58 +384,58 @@
       
   </div>
   <category id="Linkbot 1 in" name="Robot 1">
+    <block type="linkbot_drive_distance_in"></block>
+    <block type="linkbot_drive_angle"></block>
+    <block type="linkbot_drive_time"></block>
+    <block type="linkbot_turn_in"></block>
+    <block type="linkbot_reset"></block>
+    <block type="linkbot_drive_distance_in_NB"></block>
+    <block type="linkbot_drive_angle_NB"></block>
+    <block type="linkbot_drive_time_NB"></block>
+    <block type="linkbot_turn_in_NB"></block>
+    <block type="linkbot_reset_NB"></block>
     <block type="linkbot_speed_in"></block>
-    <block type="linkbot_delay"></block>
-    <block type="linkbot_move_joints"></block>
     <block type="linkbot_move_wait"></block>
     <block type="linkbot_traceon"></block>
     <block type="linkbot_traceoff"></block>
-    <block type="linkbot_turn_in"></block>
-    <block type="linkbot_drive_distance_in"></block>
-    <block type="linkbot_drive_time"></block>
-    <block type="linkbot_drive_angle"></block>
-    <block type="linkbot_reset"></block>
-    <block type="linkbot_turn_in_NB"></block>
-    <block type="linkbot_drive_distance_in_NB"></block>
-    <block type="linkbot_drive_time_NB"></block>
-    <block type="linkbot_drive_angle_NB"></block>
-    <block type="linkbot_reset_NB"></block>
+    <block type="linkbot_delay"></block>
+    <block type="linkbot_move_joints"></block>
   </category>
   <category id="Linkbot 2 in" name="Robot 2">
+    <block type="linkbot2_drive_distance_in"></block>
+    <block type="linkbot2_drive_angle"></block>
+    <block type="linkbot2_drive_time"></block>
+    <block type="linkbot2_turn_in"></block>
+    <block type="linkbot2_reset"></block>
+    <block type="linkbot2_drive_distance_in_NB"></block>
+    <block type="linkbot2_drive_angle_NB"></block>
+    <block type="linkbot2_drive_time_NB"></block>
+    <block type="linkbot2_turn_in_NB"></block>
+    <block type="linkbot2_reset_NB"></block>
     <block type="linkbot2_speed_in"></block>
-    <block type="linkbot2_delay"></block>
-    <block type="linkbot2_move_joints"></block>
     <block type="linkbot2_move_wait"></block>
     <block type="linkbot2_traceon"></block>
     <block type="linkbot2_traceoff"></block>
-    <block type="linkbot2_turn_in"></block>
-    <block type="linkbot2_drive_distance_in"></block>
-    <block type="linkbot2_drive_time"></block>
-    <block type="linkbot2_drive_angle"></block>
-    <block type="linkbot2_reset"></block>
-    <block type="linkbot2_turn_in_NB"></block>
-    <block type="linkbot2_drive_distance_in_NB"></block>
-    <block type="linkbot2_drive_time_NB"></block>
-    <block type="linkbot2_drive_angle_NB"></block>
-    <block type="linkbot2_reset_NB"></block>
+    <block type="linkbot2_delay"></block>
+    <block type="linkbot2_move_joints"></block>
   </category>
   <category id="Linkbot 3 in" name="Robot 3">
+    <block type="linkbot3_drive_distance_in"></block>
+    <block type="linkbot3_drive_angle"></block>
+    <block type="linkbot3_drive_time"></block>
+    <block type="linkbot3_turn_in"></block>
+    <block type="linkbot3_reset"></block>
+    <block type="linkbot3_drive_distance_in_NB"></block>
+    <block type="linkbot3_drive_angle_NB"></block>
+    <block type="linkbot3_drive_time_NB"></block>
+    <block type="linkbot3_turn_in_NB"></block>
+    <block type="linkbot3_reset_NB"></block>
     <block type="linkbot3_speed_in"></block>
-    <block type="linkbot3_delay"></block>
-    <block type="linkbot3_move_joints"></block>
     <block type="linkbot3_move_wait"></block>
     <block type="linkbot3_traceon"></block>
     <block type="linkbot3_traceoff"></block>
-    <block type="linkbot3_turn_in"></block>
-    <block type="linkbot3_drive_distance_in"></block>
-    <block type="linkbot3_drive_time"></block>
-    <block type="linkbot3_drive_angle"></block>
-    <block type="linkbot3_reset"></block>
-    <block type="linkbot3_turn_in_NB"></block>
-    <block type="linkbot3_drive_distance_in_NB"></block>
-    <block type="linkbot3_drive_time_NB"></block>
-    <block type="linkbot3_drive_angle_NB"></block>
-    <block type="linkbot3_reset_NB"></block>
+    <block type="linkbot3_delay"></block>
+    <block type="linkbot3_move_joints"></block>
   </category>
   <category id="Linkbot 4 in" name="Robot 4">
     <block type="linkbot4_speed_in"></block>
@@ -470,112 +474,112 @@
     <block type="mindstorms_reset_NB"></block>
   </category>
   <category id="Mindstorms 2 in" name="Robot 2">
+    <block type="mindstorms2_drive_distance_in"></block>
+    <block type="mindstorms2_drive_angle"></block>
+    <block type="mindstorms2_drive_time"></block>
+    <block type="mindstorms2_turn_in"></block>
+    <block type="mindstorms2_reset"></block>
+    <block type="mindstorms2_drive_distance_in_NB"></block>
+    <block type="mindstorms2_drive_angle_NB"></block>
+    <block type="mindstorms2_drive_time_NB"></block>
+    <block type="mindstorms2_turn_in_NB"></block>
+    <block type="mindstorms2_reset_NB"></block>
     <block type="mindstorms2_speed_in"></block>
-    <block type="mindstorms2_delay"></block>
-    <block type="mindstorms2_move_joints"></block>
     <block type="mindstorms2_move_wait"></block>
     <block type="mindstorms2_traceon"></block>
     <block type="mindstorms2_traceoff"></block>
-    <block type="mindstorms2_turn_in"></block>
-    <block type="mindstorms2_drive_distance_in"></block>
-    <block type="mindstorms2_drive_time"></block>
-    <block type="mindstorms2_drive_angle"></block>
-    <block type="mindstorms2_reset"></block>
-    <block type="mindstorms2_turn_in_NB"></block>
-    <block type="mindstorms2_drive_distance_in_NB"></block>
-    <block type="mindstorms2_drive_time_NB"></block>
-    <block type="mindstorms2_drive_angle_NB"></block>
-    <block type="mindstorms2_reset_NB"></block>
+    <block type="mindstorms2_delay"></block>
+    <block type="mindstorms2_move_joints"></block>
   </category>
   <category id="Mindstorms 3 in" name="Robot 3">
+    <block type="mindstorms3_drive_distance_in"></block>
+    <block type="mindstorms3_drive_angle"></block>
+    <block type="mindstorms3_drive_time"></block>
+    <block type="mindstorms3_turn_in"></block>
+    <block type="mindstorms3_reset"></block>
+    <block type="mindstorms3_drive_distance_in_NB"></block>
+    <block type="mindstorms3_drive_angle_NB"></block>
+    <block type="mindstorms3_drive_time_NB"></block>
+    <block type="mindstorms3_turn_in_NB"></block>
+    <block type="mindstorms3_reset_NB"></block>
     <block type="mindstorms3_speed_in"></block>
-    <block type="mindstorms3_delay"></block>
-    <block type="mindstorms3_move_joints"></block>
     <block type="mindstorms3_move_wait"></block>
     <block type="mindstorms3_traceon"></block>
     <block type="mindstorms3_traceoff"></block>
-    <block type="mindstorms3_turn_in"></block>
-    <block type="mindstorms3_drive_distance_in"></block>
-    <block type="mindstorms3_drive_time"></block>
-    <block type="mindstorms3_drive_angle"></block>
-    <block type="mindstorms3_reset"></block>
-    <block type="mindstorms3_turn_in_NB"></block>
-    <block type="mindstorms3_drive_distance_in_NB"></block>
-    <block type="mindstorms3_drive_time_NB"></block>
-    <block type="mindstorms3_drive_angle_NB"></block>
-    <block type="mindstorms3_reset_NB"></block>
+    <block type="mindstorms3_delay"></block>
+    <block type="mindstorms3_move_joints"></block>
   </category>
   <category id="Mindstorms 4 in" name="Robot 4">
+    <block type="mindstorms4_drive_distance_in"></block>
+    <block type="mindstorms4_drive_angle"></block>
+    <block type="mindstorms4_drive_time"></block>
+    <block type="mindstorms4_turn_in"></block>
+    <block type="mindstorms4_reset"></block>
+    <block type="mindstorms4_drive_distance_in_NB"></block>
+    <block type="mindstorms4_drive_angle_NB"></block>
+    <block type="mindstorms4_drive_time_NB"></block>
+    <block type="mindstorms4_turn_in_NB"></block>
+    <block type="mindstorms4_reset_NB"></block>
     <block type="mindstorms4_speed_in"></block>
-    <block type="mindstorms4_delay"></block>
-    <block type="mindstorms4_move_joints"></block>
-    <block type="mindstorms4_move_wait"></block
+    <block type="mindstorms4_move_wait"></block>
     <block type="mindstorms4_traceon"></block>
     <block type="mindstorms4_traceoff"></block>
-    <block type="mindstorms4_turn_in"></block>
-    <block type="mindstorms4_drive_distance_in"></block>
-    <block type="mindstorms4_drive_time"></block>
-    <block type="mindstorms4_drive_angle"></block>
-    <block type="mindstorms4_reset"></block>
-    <block type="mindstorms4_turn_in_NB"></block>
-    <block type="mindstorms4_drive_distance_in_NB"></block>
-    <block type="mindstorms4_drive_time_NB"></block>
-    <block type="mindstorms4_drive_angle_NB"></block>
-    <block type="mindstorms4_reset_NB"></block>
+    <block type="mindstorms4_delay"></block>
+    <block type="mindstorms4_move_joints"></block>
   </category>
   <category id="Linkbot 1 cm" name="Robot 1">
+    <block type="linkbot_drive_distance_cm"></block>
+    <block type="linkbot_drive_angle"></block>
+    <block type="linkbot_drive_time"></block>
+    <block type="linkbot_turn_cm"></block>
+    <block type="linkbot_reset"></block>
+    <block type="linkbot_drive_distance_cm_NB"></block>
+    <block type="linkbot_drive_angle_NB"></block>
+    <block type="linkbot_drive_time_NB"></block>
+    <block type="linkbot_turn_cm_NB"></block>
+    <block type="linkbot_reset_NB"></block>
     <block type="linkbot_speed_cm"></block>
-    <block type="linkbot_delay"></block>
-    <block type="linkbot_move_joints"></block>
     <block type="linkbot_move_wait"></block>
     <block type="linkbot_traceon"></block>
     <block type="linkbot_traceoff"></block>
-    <block type="linkbot_turn_cm"></block>
-    <block type="linkbot_drive_distance_cm"></block>
-    <block type="linkbot_drive_time"></block>
-    <block type="linkbot_drive_angle"></block>
-    <block type="linkbot_reset"></block>
-    <block type="linkbot_turn_cm_NB"></block>
-    <block type="linkbot_drive_distance_cm_NB"></block>
-    <block type="linkbot_drive_time_NB"></block>
-    <block type="linkbot_drive_angle_NB"></block>
-    <block type="linkbot_reset_NB"></block>
+    <block type="linkbot_delay"></block>
+    <block type="linkbot_move_joints"></block>
   </category>
   <category id="Linkbot 2 cm" name="Robot 2">
+    <block type="linkbot2_drive_distance_cm"></block>
+    <block type="linkbot2_drive_angle"></block>
+    <block type="linkbot2_drive_time"></block>
+    <block type="linkbot2_turn_cm"></block>
+    <block type="linkbot2_reset"></block>
+    <block type="linkbot2_drive_distance_cm_NB"></block>
+    <block type="linkbot2_drive_angle_NB"></block>
+    <block type="linkbot2_drive_time_NB"></block>
+    <block type="linkbot2_turn_cm_NB"></block>
+    <block type="linkbot2_reset_NB"></block>
     <block type="linkbot2_speed_cm"></block>
-    <block type="linkbot2_delay"></block>
-    <block type="linkbot2_move_joints"></block>
     <block type="linkbot2_move_wait"></block>
     <block type="linkbot2_traceon"></block>
     <block type="linkbot2_traceoff"></block>
-    <block type="linkbot2_turn_cm"></block>
-    <block type="linkbot2_drive_distance_cm"></block>
-    <block type="linkbot2_drive_time"></block>
-    <block type="linkbot2_drive_angle"></block>
-    <block type="linkbot2_reset"></block>
-    <block type="linkbot2_turn_cm_NB"></block>
-    <block type="linkbot2_drive_distance_cm_NB"></block>
-    <block type="linkbot2_drive_time_NB"></block>
-    <block type="linkbot2_drive_angle_NB"></block>
-    <block type="linkbot2_reset_NB"></block>
+    <block type="linkbot2_delay"></block>
+    <block type="linkbot2_move_joints"></block>
   </category>
   <category id="Linkbot 3 cm" name="Robot 3">
+    <block type="linkbot3_drive_distance_cm"></block>
+    <block type="linkbot3_drive_angle"></block>
+    <block type="linkbot3_drive_time"></block>
+    <block type="linkbot3_turn_cm"></block>
+    <block type="linkbot3_reset"></block>
+    <block type="linkbot3_drive_distance_cm_NB"></block>
+    <block type="linkbot3_drive_angle_NB"></block>
+    <block type="linkbot3_drive_time_NB"></block>
+    <block type="linkbot3_turn_cm_NB"></block>
+    <block type="linkbot3_reset_NB"></block>
     <block type="linkbot3_speed_cm"></block>
-    <block type="linkbot3_delay"></block>
-    <block type="linkbot3_move_joints"></block>
     <block type="linkbot3_move_wait"></block>
     <block type="linkbot3_traceon"></block>
     <block type="linkbot3_traceoff"></block>
-    <block type="linkbot3_turn_cm"></block>
-    <block type="linkbot3_drive_distance_cm"></block>
-    <block type="linkbot3_drive_time"></block>
-    <block type="linkbot3_drive_angle"></block>
-    <block type="linkbot3_reset"></block>
-    <block type="linkbot3_turn_cm_NB"></block>
-    <block type="linkbot3_drive_distance_cm_NB"></block>
-    <block type="linkbot3_drive_time_NB"></block>
-    <block type="linkbot3_drive_angle_NB"></block>
-    <block type="linkbot3_reset_NB"></block>
+    <block type="linkbot3_delay"></block>
+    <block type="linkbot3_move_joints"></block>
   </category>
   <category id="Linkbot 4 cm" name="Robot 4">
     <block type="linkbot4_speed_cm"></block>
@@ -614,58 +618,58 @@
     <block type="mindstorms_reset_NB"></block>
   </category>
   <category id="Mindstorms 2 cm" name="Robot 2">
+    <block type="mindstorms2_drive_distance_cm"></block>
+    <block type="mindstorms2_drive_angle"></block>
+    <block type="mindstorms2_drive_time"></block>
+    <block type="mindstorms2_turn_cm"></block>
+    <block type="mindstorms2_reset"></block>
+    <block type="mindstorms2_drive_distance_cm_NB"></block>
+    <block type="mindstorms2_drive_angle_NB"></block>
+    <block type="mindstorms2_drive_time_NB"></block>
+    <block type="mindstorms2_turn_cm_NB"></block>
+    <block type="mindstorms2_reset_NB"></block>
     <block type="mindstorms2_speed_cm"></block>
-    <block type="mindstorms2_delay"></block>
-    <block type="mindstorms2_move_joints"></block>
     <block type="mindstorms2_move_wait"></block>
     <block type="mindstorms2_traceon"></block>
     <block type="mindstorms2_traceoff"></block>
-    <block type="mindstorms2_turn_cm"></block>
-    <block type="mindstorms2_drive_distance_cm"></block>
-    <block type="mindstorms2_drive_time"></block>
-    <block type="mindstorms2_drive_angle"></block>
-    <block type="mindstorms2_reset"></block>
-    <block type="mindstorms2_turn_cm_NB"></block>
-    <block type="mindstorms2_drive_distance_cm_NB"></block>
-    <block type="mindstorms2_drive_time_NB"></block>
-    <block type="mindstorms2_drive_angle_NB"></block>
-    <block type="mindstorms2_reset_NB"></block>
+    <block type="mindstorms2_delay"></block>
+    <block type="mindstorms2_move_joints"></block>
   </category>
   <category id="Mindstorms 3 cm" name="Robot 3">
+    <block type="mindstorms3_drive_distance_cm"></block>
+    <block type="mindstorms3_drive_angle"></block>
+    <block type="mindstorms3_drive_time"></block>
+    <block type="mindstorms3_turn_cm"></block>
+    <block type="mindstorms3_reset"></block>
+    <block type="mindstorms3_drive_distance_cm_NB"></block>
+    <block type="mindstorms3_drive_angle_NB"></block>
+    <block type="mindstorms3_drive_time_NB"></block>
+    <block type="mindstorms3_turn_cm_NB"></block>
+    <block type="mindstorms3_reset_NB"></block>
     <block type="mindstorms3_speed_cm"></block>
-    <block type="mindstorms3_delay"></block>
-    <block type="mindstorms3_move_joints"></block>
     <block type="mindstorms3_move_wait"></block>
     <block type="mindstorms3_traceon"></block>
     <block type="mindstorms3_traceoff"></block>
-    <block type="mindstorms3_turn_cm"></block>
-    <block type="mindstorms3_drive_distance_cm"></block>
-    <block type="mindstorms3_drive_time"></block>
-    <block type="mindstorms3_drive_angle"></block>
-    <block type="mindstorms3_reset"></block>
-    <block type="mindstorms3_turn_cm_NB"></block>
-    <block type="mindstorms3_drive_distance_cm_NB"></block>
-    <block type="mindstorms3_drive_time_NB"></block>
-    <block type="mindstorms3_drive_angle_NB"></block>
-    <block type="mindstorms3_reset_NB"></block>
+    <block type="mindstorms3_delay"></block>
+    <block type="mindstorms3_move_joints"></block>
   </category>
   <category id="Mindstorms 4 cm" name="Robot 4">
+    <block type="mindstorms4_drive_distance_cm"></block>
+    <block type="mindstorms4_drive_angle"></block>
+    <block type="mindstorms4_drive_time"></block>
+    <block type="mindstorms4_turn_cm"></block>
+    <block type="mindstorms4_reset"></block>
+    <block type="mindstorms4_drive_distance_cm_NB"></block>
+    <block type="mindstorms4_drive_angle_NB"></block>
+    <block type="mindstorms4_drive_time_NB"></block>
+    <block type="mindstorms4_turn_cm_NB"></block>
+    <block type="mindstorms4_reset_NB"></block>
     <block type="mindstorms4_speed_cm"></block>
-    <block type="mindstorms4_delay"></block>
-    <block type="mindstorms4_move_joints"></block>
     <block type="mindstorms4_move_wait"></block>
     <block type="mindstorms4_traceon"></block>
     <block type="mindstorms4_traceoff"></block>
-    <block type="mindstorms4_turn_cm"></block>
-    <block type="mindstorms4_drive_distance_cm"></block>
-    <block type="mindstorms4_drive_time"></block>
-    <block type="mindstorms4_drive_angle"></block>
-    <block type="mindstorms4_reset"></block>
-    <block type="mindstorms4_turn_cm_NB"></block>
-    <block type="mindstorms4_drive_distance_cm_NB"></block>
-    <block type="mindstorms4_drive_time_NB"></block>
-    <block type="mindstorms4_drive_angle_NB"></block>
-    <block type="mindstorms4_reset_NB"></block>
+    <block type="mindstorms4_delay"></block>
+    <block type="mindstorms4_move_joints"></block>
   </category>
   
   <xml id="toolbox" style="display: none">
@@ -1268,6 +1272,45 @@ jQuery(document).ready( function($) {
 
   function redraw()
   {
+    if(document.getElementbyId('US Customary').checked)
+    {
+      if(document.getElementbyId('L1').checked)
+        robot_r = 1.75;
+      else
+        robot_r = 1.10;
+      if(document.getElementbyId('L2').checked)
+        robotTwo_r = 1.75;
+      else
+        robotTwo_r = 1.10;
+      if(document.getElementbyId('L3').checked)
+        robotThree_r = 1.75;
+      else
+        robotThree_r = 1.10;
+      if(document.getElementbyId('L4').checked)
+        robotFour_r = 1.75;
+      else
+        robotFour_r = 1.10;
+    }
+    else
+    {
+      if(document.getElementbyId('L1').checked)
+        robot_r = 4.45;
+      else
+        robot_r = 2.79;
+      if(document.getElementbyId('L2').checked)
+        robotTwo_r = 4.45;
+      else
+        robotTwo_r = 2.79;
+      if(document.getElementbyId('L3').checked)
+        robotThree_r = 4.45;
+      else
+        robotThree_r = 2.79;
+      if(document.getElementbyId('L4').checked)
+        robotFour_r = 4.45;
+      else
+        robotFour_r = 2.79;
+    }
+  
     $('#roboyes').css({'margin-left': 0 +'px'});
     $('#roboyes').css({'margin-top': 0 + 'px'});
     //$('#home').css({'position' : 'absolute'});
@@ -1430,10 +1473,46 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
 
     }
     
+    if(rootBlock.type == 'linkbot_drive_angle' || rootBlock.type == 'mindstorms_drive_angle')
+    {
+        driveBlock = rootBlock;
+        
+        if(document.getElementById('US Customary').checked) //inches
+        {
+          //get distance from block
+          dis = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle')*15 / 360;
+          //calculate time needed to move robot
+          robotime = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle') / (360 * speeed);
+          //coordinates for robot 
+          x = dis * Math.cos(angle);
+          y = dis * Math.sin(angle);
+          robotX += x/15;
+          robotY += y/15;
+        }
+        else //metric
+        {
+          dis = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle')*18 / 360;
+          //calculate time needed to move robot
+          robotime = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle') / (360 * speeed);
+          //coordinates for robot 
+          x = dis * Math.cos(angle);
+          y = dis * Math.sin(angle);
+          robotX += x/18;
+          robotY += y/18;
+        }
+        
+        console.log('dis x' + x)
+        //call drive animation function
+        drive(x,y,robotime);
+        //display coordinates on screen
+        document.getElementById('coordinates1').innerHTML = getCoordinates();
+    }
+    
     //check if rootBlock is drive block
     if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm') {
 
         driveBlock = rootBlock;
+        robot_r = driveBlock.getFieldValue('radius');
         //check grid units to drive appropriate distance
         if(document.getElementById('US Customary').checked) //inches
         {
@@ -1471,6 +1550,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       angle += angleBlock.getFieldValue('turn direction')*Math.PI/180;
       blockDirection = angleBlock.getFieldValue('direction');
       newangle = angleBlock.getFieldValue('turn direction');
+      robot_r = angleBlock.getFieldValue('radius');
 
       //update Display Angle based on turn direction
       if(blockDirection == 'turnLeft')
@@ -1499,6 +1579,8 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           //display current robot angle on screen
           document.getElementById('displayAngle1').innerHTML = getAngle(); 
     }
+    
+    
 
     //check if rootBlock is setSpeed block
     if(rootBlock.type == 'linkbot_speed_in' || rootBlock.type == 'linkbot_speed_cm' || rootBlock.type == 'mindstorms_speed_in' || rootBlock.type == 'mindstorms_speed_cm')
@@ -1506,6 +1588,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       speedBlock = rootBlock;
       //get speed parameter from block
       speeed = speedBlock.getFieldValue('speed');
+      robot_r = speedBlock.getFieldValue('radius');
     }
 
 
@@ -1525,7 +1608,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     //if rootBlock has child block(s)
     if(childBlocks.length > 0){
       //check type of child block to set appropriate timeout before next move
-      if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm')
+      if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm'  || block.type == 'linkbot_drive_angle' || block.type == 'mindstorms_drive_angle')
       {
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
       }
@@ -1547,10 +1630,11 @@ console.log("distance in the block: " + dis);
   }
 
   //if user clicks Reset button
-  else if(document.getElementsByClassName('toggleButton')[0].value ==='reset'
-) {
+  else if(document.getElementsByClassName('toggleButton')[0].value ==='reset') {
+
     document.getElementsByClassName('toggleButton')[0].value = 'play';
     document.getElementsByClassName('toggleButton')[0].innerHTML = 'Run';
+    
 
     //reset all variables and animations to their starting/original state
     $('#home').css({'width': 200 + 'px'});
@@ -1591,7 +1675,7 @@ console.log("distance in the block: " + dis);
     $('#horizTranslate').css({'-o-transition': 0.5+'s linear'});
     $('#horizTranslate').css({'transition': 0.5+'s linear'});
 
-    document.getElementById('displayAngle1').innerHTML = Number(document.getElementById('a1').value) + "°";
+    document.getElementById('displayAngle1').innerHTML = Number(document.getElementById('a1').value) + " deg";
     displayAngle = Number(document.getElementById('a1').value);
     speeed = 4;
     first =0;
@@ -1629,7 +1713,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
             {
               loopTIME += (childBlockCheck[cbIndex].getFieldValue('distance') / speeed)*1000;
             }
-                
+               
             else{
               loopTIME += 600;
             }
@@ -1654,8 +1738,46 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
 
         }
 
+        if(block.type == 'linkbot_drive_angle' || block.type == 'mindstorms_drive_angle')
+        {
+            driveBlock = block;
+        
+            if(document.getElementById('US Customary').checked) //inches
+            {
+                //get distance from block
+                dis = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle')*15 / 360;
+                dis2 = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle')*15 / 360;
+                //calculate time needed to move robot
+                robotime = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle') / (360 * speeed);
+                //coordinates for robot 
+                x = dis * Math.cos(displayAngle*Math.PI/180);
+                y = dis * Math.sin(displayAngle*Math.PI/180);
+                robotX += x/15;
+                robotY += y/15;
+            }
+            else //metric
+            {
+                dis = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle')*18 / 360;
+                dis2 = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle')*18 / 360;
+                //calculate time needed to move robot
+                robotime = 2 * Math.PI * robot_r * driveBlock.getFieldValue('angle') / (360 * speeed);
+                //coordinates for robot 
+                x = dis * Math.cos(displayAngle*Math.PI/180);
+                y = dis * Math.sin(displayAngle*Math.PI/180);
+                robotX += x/18;
+                robotY += y/18;
+            }
+            a = dis2 * Math.cos(angle)  + 60* Math.cos(angle);
+            b = dis2 * Math.sin(angle)  + 60* Math.sin(angle);
+
+            drive(x,y,robotime);
+            //display coordinates on screen
+            document.getElementById('coordinates1').innerHTML = getCoordinates();
+        }
+        
         if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm') {
           driveBlock = block;
+          robot_r = driveBlock.getFieldValue('radius');
           if(document.getElementById('US Customary').checked)
           {
             dis2 = driveBlock.getFieldValue('distance')*15;
@@ -1687,6 +1809,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         }//if drive
         if (block.type == 'linkbot_turn_in' || block.type == 'linkbot_turn_cm' || block.type == 'mindstorms_turn_in' || block.type == 'mindstorms_turn_cm') {
           angleBlock = block;
+          robot_r = angleBlock.getFieldValue('radius');
           blockDirection = angleBlock.getFieldValue('direction');
           angle += angleBlock.getFieldValue('turn direction')*Math.PI/180;
           angleImage = angleBlock.getFieldValue('turn direction');
@@ -1721,6 +1844,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         {
           speedBlock = block;
           speeed = speedBlock.getFieldValue('speed');
+          robot_r = speedBlock.getFieldValue('radius');
         }
         
 
@@ -1729,7 +1853,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         i = i + 1;
         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
-        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm')
+        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm' || block.type == 'linkbot_drive_angle' || block.type == 'mindstorms_drive_angle')
       {
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
       }
