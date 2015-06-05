@@ -1349,6 +1349,9 @@ console.log(document.getElementsByClassName('toggleButton')[0].value )
 //declaration of global variables
 var round = Math.round;
 var speeed = 4;
+var speeed2 = 4;
+var speeed3 = 4;
+var speeed4 = 4;
 var first =0;
 var angle = 0;
 var newangle = 0;
@@ -1508,6 +1511,41 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         document.getElementById('coordinates1').innerHTML = getCoordinates();
     }
     
+    if(rootBlock.type == 'linkbot_drive_time' || rootBlock.type == 'mindstorms_drive_time')
+    {
+        driveBlock = rootBlock;
+        
+        if(document.getElementById('US Customary').checked) //inches
+        {
+          //get distance from block
+          dis = speeed * driveBlock.getFieldValue('time')*15;
+          //calculate time needed to move robot
+          robotime = speeed * driveBlock.getFieldValue('time') / speeed;
+          //coordinates for robot 
+          x = dis * Math.cos(angle);
+          y = dis * Math.sin(angle);
+          robotX += x/15;
+          robotY += y/15;
+        }
+        else //metric
+        {
+          dis = speeed * driveBlock.getFieldValue('time')*18;
+          //calculate time needed to move robot
+          robotime = speeed * driveBlock.getFieldValue('time') / speeed;
+          //coordinates for robot 
+          x = dis * Math.cos(angle);
+          y = dis * Math.sin(angle);
+          robotX += x/18;
+          robotY += y/18;
+        }
+        
+        console.log('dis x' + x)
+        //call drive animation function
+        drive(x,y,robotime);
+        //display coordinates on screen
+        document.getElementById('coordinates1').innerHTML = getCoordinates();
+    }
+    
     //check if rootBlock is drive block
     if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm') {
 
@@ -1608,7 +1646,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     //if rootBlock has child block(s)
     if(childBlocks.length > 0){
       //check type of child block to set appropriate timeout before next move
-      if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm'  || block.type == 'linkbot_drive_angle' || block.type == 'mindstorms_drive_angle')
+      if (rootBlock.type == 'linkbot_drive_distance_in' || rootBlock.type == 'linkbot_drive_distance_cm' || rootBlock.type == 'mindstorms_drive_distance_in' || rootBlock.type == 'mindstorms_drive_distance_cm'  || block.type == 'linkbot_drive_angle' || block.type == 'mindstorms_drive_angle' || block.type == 'linkbot_drive_time' || block.type == 'mindstorms_drive_time')
       {
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
       }
@@ -1678,6 +1716,9 @@ console.log("distance in the block: " + dis);
     document.getElementById('displayAngle1').innerHTML = Number(document.getElementById('a1').value) + " deg";
     displayAngle = Number(document.getElementById('a1').value);
     speeed = 4;
+    speeed2 = 4;
+    speeed3 = 4;
+    speeed4 = 4;
     first =0;
     angle = 0;
     newangle = 0;
@@ -1775,6 +1816,43 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
             document.getElementById('coordinates1').innerHTML = getCoordinates();
         }
         
+        if(block.type == 'linkbot_drive_time' || block.type == 'mindstorms_drive_time')
+        {
+            driveBlock = block;
+            
+            if(document.getElementById('US Customary').checked) //inches
+            {
+            //get distance from block
+            dis = speeed * driveBlock.getFieldValue('time')*15;
+            dis2 = speeed * driveBlock.getFieldValue('time')*15;
+            //calculate time needed to move robot
+            robotime = speeed * driveBlock.getFieldValue('time') / speeed;
+            //coordinates for robot 
+            x = dis * Math.cos(angle);
+            y = dis * Math.sin(angle);
+            robotX += x/15;
+            robotY += y/15;
+            }
+            else //metric
+            {
+            dis = speeed * driveBlock.getFieldValue('time')*18;
+            dis2 = speeed * driveBlock.getFieldValue('time')*18;
+            //calculate time needed to move robot
+            robotime = speeed * driveBlock.getFieldValue('time') / speeed;
+            //coordinates for robot 
+            x = dis * Math.cos(angle);
+            y = dis * Math.sin(angle);
+            robotX += x/18;
+            robotY += y/18;
+            }
+            a = dis2 * Math.cos(angle)  + 60* Math.cos(angle);
+            b = dis2 * Math.sin(angle)  + 60* Math.sin(angle);
+       
+            drive(x,y,robotime);
+            //display coordinates on screen
+            document.getElementById('coordinates1').innerHTML = getCoordinates();
+        }
+        
         if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm') {
           driveBlock = block;
           robot_r = driveBlock.getFieldValue('radius');
@@ -1853,7 +1931,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
         i = i + 1;
         console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
-        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm' || block.type == 'linkbot_drive_angle' || block.type == 'mindstorms_drive_angle')
+        if (block.type == 'linkbot_drive_distance_in' || block.type == 'linkbot_drive_distance_cm' || block.type == 'mindstorms_drive_distance_in' || block.type == 'mindstorms_drive_distance_cm' || block.type == 'linkbot_drive_angle' || block.type == 'mindstorms_drive_angle' || block.type == 'linkbot_drive_time' || block.type == 'mindstorms_drive_time')
       {
       setTimeout(function(){move(i, robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, childBlocks, newangle, 0)}, (robotime * 1000) + 100);
       }
