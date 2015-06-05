@@ -105,7 +105,7 @@
 
   function getAngle()
   {
-    var disp= Math.round(displayAngle) + "°";
+    var disp= Math.round(displayAngle) + " deg";
     return disp;
   }
   
@@ -260,7 +260,7 @@
                 <span id = "u4">in</span>)<br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Initial Angle: </b>
-                <input type="text" size ="1" id = "a2" value = "0" onchange=""></span>°
+                <input type="text" size ="1" id = "a2" value = "0" onchange=""></span>deg
                 <br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Current Position: </b>
@@ -287,7 +287,7 @@
                 <span id = "u6">in</span>)<br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Initial Angle: </b>
-                <input type="text" size ="1" id = "a3" value = "0" onchange=""></span>°
+                <input type="text" size ="1" id = "a3" value = "0" onchange=""></span>deg
                 <br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Current Position: </b>
@@ -314,7 +314,7 @@
                 <span id = "u8">in</span>)<br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Initial Angle: </b>
-                <input type="text" size ="1" id = "a4" value = "0" onchange=""></span>°
+                <input type="text" size ="1" id = "a4" value = "0" onchange=""></span>deg
                 <br>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <b>Current Position: </b>
@@ -1557,7 +1557,7 @@ console.log("distance in the block: " + dis);
     $('#horizTranslate').css({'-o-transition': 0.5+'s linear'});
     $('#horizTranslate').css({'transition': 0.5+'s linear'});
 
-    document.getElementById('displayAngle1').innerHTML = Number(document.getElementById('a1').value) + "°";
+    document.getElementById('displayAngle1').innerHTML = Number(document.getElementById('a1').value) + " deg";
     displayAngle = Number(document.getElementById('a1').value);
     speeed = 4;
     first =0;
