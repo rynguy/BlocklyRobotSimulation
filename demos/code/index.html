@@ -1318,6 +1318,10 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
           robotY += y/18;
         }
         
+        if(robotime < 0)
+        {
+          robotime *= -1;
+        }
         console.log('dis x' + x)
         //call drive animation function
         drive(x,y,robotime);
@@ -1538,6 +1542,10 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
             robotY += y/18;
           }
 
+          if(robotime < 0)
+          {
+            robotime *= -1;
+          }
           //dis 2 x y  coords for line
           a = dis2 * Math.cos(angle)  + 60* Math.cos(angle);
           b = dis2 * Math.sin(angle)  + 60* Math.sin(angle);
