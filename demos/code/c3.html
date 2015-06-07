@@ -1329,6 +1329,8 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         if(robotX >24 || robotX <-12 || robotY >24 || robotY <-12){ 
 
           // alert that tells the user to reset
+
+          alert("Keep the robot on the grid! \n Please reset and try again.");
           return;
         }
 
@@ -1560,6 +1562,7 @@ function move(i,robotime,driveBlock,angleBlock,x,y,a,b,angle,dis, dis2, blocks, 
           if(robotX >24 || robotX <-12 || robotY >24 || robotY <-12){ 
 
             // alert that tells the user to reset
+            alert("Keep the robot on the grid! \n Please reset and try again.");
             return;
           }
 
