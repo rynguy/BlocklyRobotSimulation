@@ -134,11 +134,11 @@
   <option id="select3" >Math Lessons</option>
   <option id="select4" >Playground</option>
 </select>
-<a id="v1" style="display:none;" href="./v1.html">1</a>
-<a id="v2" style="display:none;" href="./v1.html">2</a>
-<a id="v3" style="display:none;" href="./v1.html">3</a>
-<a id="v4" style="display:none;" href="./v1.html">4</a>
-<a id="v5" style="display:none;" href="./v1.html">5</a>
+<a id="v1" style="display:none;" href="./t1.html">1</a>
+<a id="v2" style="display:none;" href="./t2.html">2</a>
+<a id="v3" style="display:none;" href="./t3.html">3</a>
+<a id="v4" style="display:none;" href="./t4.html">4</a>
+<a id="v5" style="display:none;" href="./t5.html">5</a>
 <a id="c1" href="./index.html">1</a>
 <a id="c2" href="./c2.html">2</a>
 <a id="c3" href="./c3.html">3</a>
@@ -1447,6 +1447,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     var dis2 = 0;
     var dis = 0;
     var blockDirection;
+    var resetDisableTime = 0;
 
     //this gets blocks from workspace and puts them into blocks array
     var blocks = Blockly.mainWorkspace.getTopBlocks(false);
@@ -1487,6 +1488,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         cbIndex = 0;
       }
        
+       resetDisableTime += (loopTIME * math_number);
       //if no other blocks underneath while loop
       if(childBlocks.length == 2){
         mathNumCheck = math_number;
@@ -1546,6 +1548,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         
         console.log('dis x' + x)
         //call drive animation function
+        resetDisableTime += (robotime * 1000);
         drive(x,y,robotime);
         //display coordinates on screen
         document.getElementById('coordinates1').innerHTML = getCoordinates();
@@ -1594,6 +1597,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         
         console.log('dis x' + x)
         //call drive animation function
+        resetDisableTime += (robotime * 1000);
         drive(x,y,robotime);
         //display coordinates on screen
         document.getElementById('coordinates1').innerHTML = getCoordinates();
@@ -1644,6 +1648,8 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         
         console.log('dis x' + x)
         //call drive animation function
+        resetDisableTime += (robotime * 1000);
+
         drive(x,y,robotime);
         //display coordinates on screen
         document.getElementById('coordinates1').innerHTML = getCoordinates();
@@ -1671,6 +1677,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
       if(newangle >= 360)
         newangle -= 360;
 
+      resetDisableTime += 600;
       //declare margin variables to get correct robot image from spritesheet
           var leftMargin = parseInt($("#roboyes").css('margin-left'));
           var topMargin = parseInt($("#roboyes").css('margin-top'));
@@ -1704,13 +1711,66 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
     console.log('child ' + childBlocks.length);
     console.log('#####################################');
 
+    var mainBranchChildren = childBlocks;
+      var mBIndex = 0;
+      while(mainBranchChildren[mBIndex])
+      {
+        if(mainBranchChildren[mBIndex].type == 'linkbot_drive_distance_in' || mainBranchChildren[mBIndex].type == 'linkbot_drive_distance_cm' || mainBranchChildren[mBIndex].type == 'mindstorms_drive_distance_in' || mainBranchChildren[mBIndex].type == 'mindstorms_drive_distance_cm')
+        {
+
+          resetDisableTime += (mainBranchChildren[mBIndex].getFieldValue('distance') / speeed)*1000;
+        }
+        
+        else if(mainBranchChildren[mBIndex].type == 'linkbot_drive_angle')
+        {
+
+          resetDisableTime += (2 * Math.PI * robot_r * driveBlock.getFieldValue('angle') / (360 * speeed))*1000;
+        }
+        
+        else if(mainBranchChildren[mBIndex].type == 'linkbot_drive_time')
+        {
+
+          resetDisableTime += (mainBranchChildren[mBIndex].getFieldValue('time'))*1000;
+        }
+
+        else if(mainBranchChildren[mBIndex].type == 'linkbot_turn_in' || mainBranchChildren[mBIndex].type == 'linkbot_turn_cm' || mainBranchChildren[mBIndex].type == 'mindstorms_turn_in' || mainBranchChildren[mBIndex].type == 'mindstorms_turn_cm')
+        {
+          resetDisableTime += 600;
+        }
+
+        else if(mainBranchChildren[mBIndex].type == 'controls_repeat_ext')
+        {
+          var loopsChildren = mainBranchChildren[mBIndex].getChildren()
+          var nestedIndex = 1;
+          while(loopsChildren[nestedIndex])
+          {
+            if(loopsChildren[nestedIndex].type == 'linkbot_drive_distance_in' || loopsChildren[nestedIndex].type == 'linkbot_drive_distance_cm' || loopsChildren[nestedIndex].type == 'mindstorms_drive_distance_in' || loopsChildren[nestedIndex].type == 'mindstorms_drive_distance_cm')
+            {
+
+              resetDisableTime += (loopsChildren[nestedIndex].getFieldValue('distance') / speeed)*1000;
+            }
+                
+            else{
+              resetDisableTime += 600;
+            }
+            
+            loopsChildren = loopsChildren[nestedIndex].getChildren();
+            nestedIndex = 0;
+          }
+        }
+        mainBranchChildren = mainBranchChildren[mBIndex].getChildren();
+
+      }
+
+
+
     //FIX THIS GRAYED RESET BUTTON SHITTTT********
     document.getElementsByClassName('toggleButton')[0].style.zIndex = 3;
     document.getElementsByClassName('toggleButton')[0].style.background = 'gray';
     document.getElementsByClassName('toggleButton')[0].disabled = true;
     setTimeout(function(){
         document.getElementsByClassName('toggleButton')[0].disabled = false; document.getElementsByClassName('toggleButton')[0].style.background = '#C99700';
-      }, childBlocks.length*1000);
+      }, resetDisableTime + 500);
 
     //if rootBlock has child block(s)
     if(childBlocks.length > 0){

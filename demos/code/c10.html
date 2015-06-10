@@ -134,11 +134,11 @@
   <option id="select3" >Math Lessons</option>
   <option id="select4" >Playground</option>
 </select>
-<a id="v1" style="display:none;" href="./v1.html">1</a>
-<a id="v2" style="display:none;" href="./v1.html">2</a>
-<a id="v3" style="display:none;" href="./v1.html">3</a>
-<a id="v4" style="display:none;" href="./v1.html">4</a>
-<a id="v5" style="display:none;" href="./v1.html">5</a>
+<a id="v1" style="display:none;" href="./t1.html">1</a>
+<a id="v2" style="display:none;" href="./t2.html">2</a>
+<a id="v3" style="display:none;" href="./t3.html">3</a>
+<a id="v4" style="display:none;" href="./t4.html">4</a>
+<a id="v5" style="display:none;" href="./t5.html">5</a>
 <a id="c1" href="./index.html">1</a>
 <a id="c2" href="./c2.html">2</a>
 <a id="c3" href="./c3.html">3</a>
@@ -1552,6 +1552,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         
         console.log('dis x' + x)
         //call drive animation function
+        resetDisableTime += (robotime * 1000);
         drive(x,y,robotime);
         //display coordinates on screen
         document.getElementById('coordinates1').innerHTML = getCoordinates();
@@ -1600,6 +1601,7 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         
         console.log('dis x' + x)
         //call drive animation function
+        resetDisableTime += (robotime * 1000);
         drive(x,y,robotime);
         //display coordinates on screen
         document.getElementById('coordinates1').innerHTML = getCoordinates();
@@ -1721,6 +1723,18 @@ document.getElementsByClassName('toggleButton')[0].onclick = function() {
         {
 
           resetDisableTime += (mainBranchChildren[mBIndex].getFieldValue('distance') / speeed)*1000;
+        }
+        
+        else if(mainBranchChildren[mBIndex].type == 'linkbot_drive_angle')
+        {
+
+          resetDisableTime += (2 * Math.PI * robot_r * driveBlock.getFieldValue('angle') / (360 * speeed))*1000;
+        }
+        
+        else if(mainBranchChildren[mBIndex].type == 'linkbot_drive_time')
+        {
+
+          resetDisableTime += (mainBranchChildren[mBIndex].getFieldValue('time'))*1000;
         }
 
         else if(mainBranchChildren[mBIndex].type == 'linkbot_turn_in' || mainBranchChildren[mBIndex].type == 'linkbot_turn_cm' || mainBranchChildren[mBIndex].type == 'mindstorms_turn_in' || mainBranchChildren[mBIndex].type == 'mindstorms_turn_cm')
