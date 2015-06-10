@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html id="page">
+
+<nav class="navbar" style="background-color:#C99700; color:#113661; z-index:0;">
+<span style="margin-bottom:1px; padding:7px; background-color:#FFF; position:absolute; z-index:0;">
+  <a href= "http://c-stem.ucdavis.edu/"><img src="./img/cstemlogo.png"></a></span>
+ <div align="center" style="background-color:#C99700; color:#113661;" class="container-fluid">
+   <div align="center" style=" padding-left: 300px; background-color:#C99700; color:#113661;" class="navbar-header">
+       <span style="margin-left:0;" class="glyphicon glyphicon-bed" aria-hidden="true"></span>  
+<nav style="text-align:center; font-size:25px; font-family:Arial Black, Gadget, sans-serif; position:relative; z-index:1;" id="numNav">Coding With Linkbot and Mindstorms
+<br>
+<select name="lessons" align="center" onchange="select_lessons();">
+  <option id="select1" selected="selected">Tutorial </option>
+  <option id="select2" >Coding Lessons</option>
+  <option id="select3" >Math Lessons</option>
+  <option id="select4" >Playground</option>
+</select>
+<a id="v1" href="./t1.html">1</a>
+<a id="v2" href="./t2.html">2</a>
+<a id="v3" style="color:#276AC3;" href="./t3.html">3</a>
+<a id="v4" href="./t4.html">4</a>
+<a id="v5" href="./t5.html">5</a>
+<a id="c1" style="display:none;" href="./index.html">1</a>
+<a id="c2" style="display:none;" href="./c2.html">2</a>
+<a id="c3" style="display:none;" href="./c3.html">3</a>
+<a id="c4" style="display:none;" href="./c4.html">4</a>
+<a id="c5" style="display:none;" href="./c5.html">5</a>
+<a id="c6" style="display:none;" href="./c6.html">6</a>
+<a id="c7" style="display:none;" href="./c7.html">7</a>
+<a id="c8" style="display:none;" href="./c8.html">8</a>
+<a id="c9" style="display:none;" href="./c9.html">9</a>
+<a id="c10" style="display:none;" href="./c10.html">10</a>
+<a id="m1" style="display:none;" href="./m1.html">1</a>
+<a id="m2" style="display:none;" href="./m2.html">2</a>
+<a id="m3" style="display:none;" href="./m3.html">3</a>
+<a id="m4" style="display:none;" href="./m4.html">4</a>
+<a id="m5" style="display:none;" href="./m5.html">5</a>
+<a id="m6" style="display:none;" href="./m6.html">6</a>
+<a id="m7" style="display:none;" href="./m7.html">7</a>
+<a id="m8" style="display:none;" href="./m8.html">8</a>
+<a id="m9" style="display:none;" href="./m9.html">9</a>
+<a id="m10" style="display:none;" href="./m10.html">10</a>
+<a id="p1" style="display:none;" href="./Playground.html">Playground</a>
+</nav>
+
+    </div>
+  </div>
+</nav>
+
+<body>
+<iframe width="480" height="320"
+src="https://www.youtube.com/embed/UfaEvR0mF6Y" frameborder="0" allowfullscreen>
+</iframe>
+</body>
+  
+<script>
+
+
+
+function select_lessons()
+  {
+    document.getElementById('v1').style.display = 'none';
+    document.getElementById('v2').style.display = 'none';
+    document.getElementById('v3').style.display = 'none';
+    document.getElementById('v4').style.display = 'none';
+    document.getElementById('v5').style.display = 'none';
+    document.getElementById('c1').style.display = 'none';
+    document.getElementById('c2').style.display = 'none';
+    document.getElementById('c3').style.display = 'none';
+    document.getElementById('c4').style.display = 'none';
+    document.getElementById('c5').style.display = 'none';
+    document.getElementById('c6').style.display = 'none';
+    document.getElementById('c7').style.display = 'none';
+    document.getElementById('c8').style.display = 'none';
+    document.getElementById('c9').style.display = 'none';
+    document.getElementById('c10').style.display = 'none';
+    document.getElementById('m1').style.display = 'none';
+    document.getElementById('m2').style.display = 'none';
+    document.getElementById('m3').style.display = 'none';
+    document.getElementById('m4').style.display = 'none';
+    document.getElementById('m5').style.display = 'none';
+    document.getElementById('m6').style.display = 'none';
+    document.getElementById('m7').style.display = 'none';
+    document.getElementById('m8').style.display = 'none';
+    document.getElementById('m9').style.display = 'none';
+    document.getElementById('m10').style.display = 'none';
+    document.getElementById('p1').style.display = 'none';
+    if(document.getElementById('select1').selected)
+    {
+      document.getElementById('v1').style.display = '';
+      document.getElementById('v2').style.display = '';
+      document.getElementById('v3').style.display = '';
+      document.getElementById('v4').style.display = '';
+      document.getElementById('v5').style.display = '';
+      
+    }
+    else if(document.getElementById('select2').selected)
+    {
+      document.getElementById('c1').style.display = '';
+      document.getElementById('c2').style.display = '';
+      document.getElementById('c3').style.display = '';
+      document.getElementById('c4').style.display = '';
+      document.getElementById('c5').style.display = '';
+      document.getElementById('c6').style.display = '';
+      document.getElementById('c7').style.display = '';
+      document.getElementById('c8').style.display = '';
+      document.getElementById('c9').style.display = '';
+      document.getElementById('c10').style.display = '';
+    }
+    else if(document.getElementById('select3').selected)
+    {
+      document.getElementById('m1').style.display = '';
+      document.getElementById('m2').style.display = '';
+      document.getElementById('m3').style.display = '';
+      document.getElementById('m4').style.display = '';
+      document.getElementById('m5').style.display = '';
+      document.getElementById('m6').style.display = '';
+      document.getElementById('m7').style.display = '';
+      document.getElementById('m8').style.display = '';
+      document.getElementById('m9').style.display = '';
+      document.getElementById('m10').style.display = '';
+    }
+    else
+    {
+      document.getElementById('p1').style.display = '';
+    }
+  }
+
+</script>
+
+</html>
